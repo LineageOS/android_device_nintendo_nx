@@ -94,6 +94,7 @@ TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_nx
 VENDOR_SECURITY_PATCH := 2022-04-05
 
 # SELinux
+SELINUX_IGNORE_NEVERALLOWS := true
 BOARD_VENDOR_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/private
 

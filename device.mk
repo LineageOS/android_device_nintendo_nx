@@ -103,6 +103,7 @@ PRODUCT_PACKAGES += \
 
 # Joycons
 PRODUCT_PACKAGES += \
+    joycond \
     jc_setup
 
 # Kernel Modules

@@ -3,6 +3,10 @@
    "repository": "android_device_nvidia_t210-common",
    "target_path": "device/nvidia/t210-common"
  },
+  {
+   "repository": "android_hardware_nintendo_joycond",
+   "target_path": "hardware/nintendo/joycond"
+ },
  {
    "repository": "android_kernel_nvidia_cypress-fmac",
    "target_path": "kernel/nvidia/cypress-fmac"

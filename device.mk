@@ -107,6 +107,7 @@ endif
 
 # Joycons
 PRODUCT_PACKAGES += \
+    joycond \
     jc_setup
 
 # Kernel Modules

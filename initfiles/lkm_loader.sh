@@ -195,6 +195,14 @@ do_insmod /vendor/lib/modules/cx25840.ko
 do_insmod /vendor/lib/modules/cx2341x.ko
 /vendor/bin/log -t "$scriptName" -p i "Early loading ODM TV tuner modules completed"
 fi
+
+# Joycons (make sure to load after pwm_fan to avoid excessive fanspin!)
+/vendor/bin/log -t "$scriptName" -p i "Loading JoyCon serdev modules started"
+
+do_insmod /vendor/lib/modules/crc8.ko
+do_insmod /vendor/lib/modules/joycon-serdev.ko
+
+/vendor/bin/log -t "$scriptName" -p i "Loading JoyCon serdev modules completed"
 }
 
 #===================================================================================

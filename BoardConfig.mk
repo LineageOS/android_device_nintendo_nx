@@ -52,7 +52,9 @@ KERNEL_TOOLCHAIN_PREFIX        := aarch64-linux-gnu-
 # Kernel Source
 TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)
 TARGET_KERNEL_CONFIG           := tegra_android_defconfig
-TARGET_KERNEL_ADDITIONAL_FLAGS := "NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)"
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
 # Kernel Image Parameters
 BOARD_KERNEL_IMAGE_NAME        := Image.gz

@@ -3,6 +3,12 @@ on post-fs-data
     mount vfat /dev/block/platform/sdhci-tegra.0/by-name/hos_data /mnt/vendor/factory rw noatime
     start vendor.jc_setup
 
+on boot
+    chown system system /sys/bus/serial/devices/serial0-0/wake
+    chmod 0664 /sys/bus/serial/devices/serial0-0/wake
+    chown system system /sys/bus/serial/devices/serial1-0/wake
+    chmod 0664 /sys/bus/serial/devices/serial1-0/wake
+
 service vendor.jc_setup /vendor/bin/jc_setup.sh /mnt/vendor/factory/switchroot/joycon_mac.ini /data/misc/bluedroid/bt_config.conf
     class main
     user root

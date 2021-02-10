@@ -8,8 +8,8 @@
    "target_path": "hardware/nintendo/joycond"
  },
  {
-   "repository": "android_kernel_nvidia_cypress-fmac",
-   "target_path": "kernel/nvidia/cypress-fmac"
+   "repository": "android_kernel_nvidia_cypress-fmac-upstream",
+   "target_path": "kernel/nvidia/cypress-fmac-upstream"
  },
  {
    "repository": "android_kernel_nvidia_kernel",

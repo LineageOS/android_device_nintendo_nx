@@ -45,7 +45,7 @@ do_insmod /vendor/lib/modules/bluedroid_pm.ko
 if [ "`cat /proc/device-tree/brcmfmac_pcie_wlan/status`" = "okay" ]; then
         /vendor/bin/log -t "wifiloader" -p i " Loading brcmfmac driver for wlan"
         do_insmod /vendor/lib/modules/compat.ko
-        do_insmod /vendor/lib/modules/cy_cfg80211.ko
+        do_insmod /vendor/lib/modules/cfg80211.ko
         do_insmod /vendor/lib/modules/brcmutil.ko
         do_insmod /vendor/lib/modules/brcmfmac.ko
 fi

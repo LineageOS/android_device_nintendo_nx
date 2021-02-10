@@ -19,10 +19,13 @@ package org.lineageos.settings.device;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemProperties;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        context.startService(new Intent(context, DisplayService.class));
+        if (SystemProperties.get("ro.product.device", "").equals("nx")) {
+            context.startService(new Intent(context, DockService.class));
+        }
     }
 }

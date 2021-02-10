@@ -27,8 +27,8 @@ import android.view.WindowManagerPolicyConstants;
 
 public class DisplaySettingsActivity extends PreferenceActivity {
     public final Receiver mReceiver = new Receiver();
-    private DisplaySettingsFragment mFragment;
     public boolean mExternalDisplayConnected;
+    private DisplaySettingsFragment mFragment;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,31 +50,26 @@ public class DisplaySettingsActivity extends PreferenceActivity {
     }
 
     final class Receiver extends BroadcastReceiver {
-        private boolean mReceivedInitialIntent = false;
         public boolean mBlocked;
+        private boolean mReceivedInitialIntent = false;
 
         public void init(Context context) {
+            mReceivedInitialIntent = false;
+
             // Refresh UI on external display status change
             IntentFilter filter = new IntentFilter();
-
             filter.addAction(WindowManagerPolicyConstants.ACTION_HDMI_PLUGGED);
-
-            mReceivedInitialIntent = false;
             context.registerReceiver(this, filter);
         }
 
         public void onReceive(Context context, Intent intent) {
             mExternalDisplayConnected = intent.getBooleanExtra(WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
 
-            if (mBlocked)
-                return;
+            if (mBlocked) return;
 
-            if (mReceivedInitialIntent)
-                recreate();
+            if (mReceivedInitialIntent) recreate();
 
             mReceivedInitialIntent = true;
         }
     }
-
-    ;
 }

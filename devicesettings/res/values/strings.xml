@@ -15,12 +15,14 @@
      limitations under the License.
 -->
 <resources>
-    <string name="display_panel_title">Display Configuration</string>
-    <string name="display_panel_summary">Adjust external display and dock settings</string>
+    <string name="display_panel_title">Display and Performance Configuration</string>
+    <string name="display_panel_summary">Adjust display and performance settings</string>
+    <string name="perf_category_title">Performance</string>
+    <string name="perf_setting_title">Performance Mode</string>
+    <string name="perf_setting_summary">Modifies CPU and GPU clocks in order to get the best possible performance at the cost of higher battery wear and usage</string>
+    <string name="perf_warning_title">WARNING</string>
+    <string name="perf_warning_summary">This will decrease the lifespan of your console and its battery, potentially leading to instability.\n\nAre you sure you want to continue?</string>
     <string name="mode_selection_title">Select Mode</string>
     <string name="mode_confirmation_title">Confirmation</string>
     <string name="mode_confirmation_summary">Are you sure you want to keep these display settings?\n\nWill revert in %1$d seconds</string>
-    <string name="disable_internal_on_external_connected_title">Turn off when an external display is connected</string>
-    <string name="disable_internal_on_external_connected_summary_on">The internal panel will be turned off when an external display is connected</string>
-    <string name="disable_internal_on_external_connected_summary_off">Both the internal panel and external display will show the same image</string>
 </resources>

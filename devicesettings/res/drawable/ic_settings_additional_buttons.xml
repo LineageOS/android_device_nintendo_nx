@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
-   Copyright (c) 2017 The LineageOS Project
+from: https://github.com/neuicons/neu
+MIT License
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+Copyright (c) 2020 Royyan Wijaya
 
-       http://www.apache.org/licenses/LICENSE-2.0
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 -->
+
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-   android:width="24dp"
-   android:height="24dp"
-   android:viewportWidth="24"
-   android:viewportHeight="24">
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
 
     <path
-       android:fillColor="@android:color/white"
-       android:pathData="M17,1L7,1C5.9,1,5,1.9,5,3v2h2v4H5v12c0,1.1,0.9,2,2,2h10c1.1,0,2-0.9,2-2V3C19,1.9,18.1,1,17,1z
-M11,21H7v-2h4V21z M17,21 h-4v-2h4V21z" />
+        android:fillColor="#757575"
+        android:pathData="M23,12v6a1,1,0,0,1-1,1H13v2h3a1,1,0,0,1,0,2H8a1,1,0,0,1,0-2h3V19H2a1,1,0,0,1-1-1V4A1,1,0,0,1,2,3H12a1,1,0,0,1,0,2H3V17H21V12a1,1,0,0,1,2,0ZM21.585,6.075a0.417 0.417 ,0,0,0,0.079 0.458 l0.444 0.444 a0.4 0.4 ,0,0,1,0,0.571l-0.56 0.561 a0.4 0.4 ,0,0,1-0.571,0l-0.444-0.444a0.416 0.416 ,0,0,0-0.458-0.08l-0.006,0a0.416 0.416 ,0,0,0-0.269 0.38 V8.6a0.4 0.4 ,0,0,1-0.4 0.4 H18.6a0.4 0.4 ,0,0,1-0.4-0.4V7.968a0.415 0.415 ,0,0,0-0.27-0.38l0,0a0.417 0.417 ,0,0,0-0.459 0.08 l-0.444 0.444 a0.4 0.4 ,0,0,1-0.571,0l-0.56-0.561a0.4 0.4 ,0,0,1,0-0.571l0.444-0.444a0.415 0.415 ,0,0,0,0.079-0.458l0-0.006a0.416 0.416 ,0,0,0-0.381-0.269H15.4a0.4 0.4 ,0,0,1-0.4-0.4V4.6a0.4 0.4 ,0,0,1,0.4-0.4h0.628a0.415 0.415 ,0,0,0,0.381-0.27l0-0.005a0.415 0.415 ,0,0,0-0.079-0.458l-0.444-0.444a0.4 0.4 ,0,0,1,0-0.571l0.56-0.561a0.4 0.4 ,0,0,1,0.571,0l0.444 0.444 a0.417 0.417 ,0,0,0,0.459 0.08 l0,0a0.415 0.415 ,0,0,0,0.27-0.38V1.4a0.4 0.4 ,0,0,1,0.4-0.4H19.4a0.4 0.4 ,0,0,1,0.4 0.4 v0.628a0.416 0.416 ,0,0,0,0.269 0.38 l0.006,0a0.416 0.416 ,0,0,0,0.458-0.08l0.444-0.444a0.4 0.4 ,0,0,1,0.571,0l0.56 0.561 a0.4 0.4 ,0,0,1,0,0.571l-0.444 0.444 a0.417 0.417 ,0,0,0-0.079 0.458 l0,0.005a0.416 0.416 ,0,0,0,0.381 0.27 H22.6a0.4 0.4 ,0,0,1,0.4 0.4 V5.4a0.4 0.4 ,0,0,1-0.4 0.4 h-0.628a0.417 0.417 ,0,0,0-0.381 0.269 ZM20.2,5A1.2,1.2,0,1,0,19,6.2,1.2,1.2,0,0,0,20.2,5Z" />
 </vector>

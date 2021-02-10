@@ -19,11 +19,9 @@ package org.lineageos.settings.device;
 import android.os.RemoteException;
 import android.util.Log;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
@@ -35,6 +33,8 @@ import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 public class DisplayUtils {
     private static final String TAG = DisplayUtils.class.getSimpleName();
 
+    public static final String POWER_UPDATE_INTENT = "com.lineage.devicesettings.UPDATE_POWER";
+ 
     public static void setInternalDisplayState(boolean state) {
         Log.d(TAG, "setInternalDisplayState: " + String.valueOf(state));
         try {

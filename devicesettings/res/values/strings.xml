@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="display_panel_title">Display Configuration</string>
+    <string name="display_panel_summary">Adjust external display and dock settings</string>
+    <string name="mode_selection_title">Select Mode</string>
+    <string name="mode_confirmation_title">Confirmation</string>
+    <string name="mode_confirmation_summary">Are you sure you want to keep these display settings?\n\nWill revert in %1$d seconds</string>
+    <string name="disable_internal_on_external_connected_title">Turn off when an external display is connected</string>
+    <string name="disable_internal_on_external_connected_summary_on">The internal panel will be turned off when an external display is connected</string>
+    <string name="disable_internal_on_external_connected_summary_off">Both the internal panel and external display will show the same image</string>
+</resources>

@@ -96,7 +96,7 @@ endif
 
 # Kernel Modules
 PRODUCT_PACKAGES += \
-    cypress-fmac
+    cypress-fmac-upstream
 
 # Keylayouts
 PRODUCT_PACKAGES += \

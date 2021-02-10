@@ -2,5 +2,6 @@
 <permissions>
     <privapp-permissions package="org.lineageos.settings.device">
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <permission name="android.permission.CONTROL_KEYGUARD" />
     </privapp-permissions>
 </permissions>

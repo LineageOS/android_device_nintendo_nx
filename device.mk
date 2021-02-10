@@ -96,6 +96,10 @@ PRODUCT_PACKAGES += \
     nvaudio_fx.xml
 endif
 
+# Device Settings
+PRODUCT_PACKAGES += \
+    DeviceSettingsNX
+
 # Kernel Modules
 PRODUCT_PACKAGES += \
     cypress-fmac-upstream

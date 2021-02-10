@@ -46,12 +46,12 @@ do_insmod /vendor/lib/modules/r8168.ko
 
 # load COMMS drivers
 do_insmod /vendor/lib/modules/bluedroid_pm.ko
-if [ "`cat /proc/device-tree/brcmfmac_pcie_wlan/status`" = "okay" ]; then
+if [ "`cat /proc/device-tree/brcmfmac_pcie_wlan_upstream/status`" = "okay" ]; then
         /vendor/bin/log -t "wifiloader" -p i " Loading brcmfmac driver for wlan"
-        do_insmod /vendor/lib/modules/compat.ko
-        do_insmod /vendor/lib/modules/cy_cfg80211.ko
-        do_insmod /vendor/lib/modules/brcmutil.ko
-        do_insmod /vendor/lib/modules/brcmfmac.ko
+        do_insmod /vendor/lib/modules/cypress-fmac-upstream/compat.ko
+        do_insmod /vendor/lib/modules/cypress-fmac-upstream/cfg80211.ko
+        do_insmod /vendor/lib/modules/cypress-fmac-upstream/brcmutil.ko
+        do_insmod /vendor/lib/modules/cypress-fmac-upstream/brcmfmac.ko
 fi
 
 # USB-to-serial driver

@@ -97,6 +97,10 @@ PRODUCT_PACKAGES += \
     nvaudio_fx.xml
 endif
 
+# Device Settings
+PRODUCT_PACKAGES += \
+    DeviceSettingsSR
+
 # Joycons
 PRODUCT_PACKAGES += \
     joycond \

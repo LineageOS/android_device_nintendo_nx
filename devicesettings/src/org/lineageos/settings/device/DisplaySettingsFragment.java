@@ -17,16 +17,19 @@
 package org.lineageos.settings.device;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.MenuItem;
 
-import android.app.AlertDialog;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
@@ -44,33 +47,32 @@ import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayType;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcModeType;
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
+import com.nvidia.NvAppProfiles;
+import com.nvidia.NvConstants;
+
 public class DisplaySettingsFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = DisplaySettingsFragment.class.getSimpleName();
     public boolean mInModeChange = false;
     private INvDisplay mDisplayService;
+    private NvAppProfiles mAppProfiles = null;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         try {
             mDisplayService = INvDisplay.getService(true /* retry */);
         } catch (RemoteException e) {
+            throw new RuntimeException(e);
         }
+
+        mAppProfiles = new NvAppProfiles(getActivity());
 
         addPreferencesFromResource(R.xml.display_panel);
         PreferenceScreen preferenceScreen = this.getPreferenceScreen();
 
-        for (int i = HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL; i <= HwcSvcDisplay.HWC_SVC_DISPLAY_HDMI2; i++) {
-            PreferenceCategory category = new PreferenceCategory(preferenceScreen.getContext());
-
-            if (!initializeDisplayCategory(category, i))
-                continue;
-
-            preferenceScreen.addPreference(category);
-            populateDisplayCategory(category, i);
-
-        }
+        createPerfSettings(preferenceScreen);
+        createDisplaySettings(preferenceScreen);
 
         final ActionBar actionBar = getActivity().getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -108,16 +110,10 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
             if (display >= 0) {
                 int modeIndex = Integer.valueOf(sharedPrefs.getString(key, ""));
-                ((DisplaySettingsActivity)getActivity()).mReceiver.mBlocked = true;
+                ((DisplaySettingsActivity) getActivity()).mReceiver.mBlocked = true;
                 performModeChange(sharedPrefs, key, modeIndex, display);
             }
 
-            return;
-        }
-
-        if (key.equals("disable_internal_on_external_connected")) {
-            DisplayUtils.setInternalDisplayState(!(((DisplaySettingsActivity)getActivity()).mExternalDisplayConnected && sharedPrefs.getBoolean(key, false)));
-            return;
         }
     }
 
@@ -138,7 +134,8 @@ public class DisplaySettingsFragment extends PreferenceFragment
                             mDisplayService.modeDefaultCommit(display);
                             mDisplayService.modeDefaultStore(display);
                         } catch (RemoteException e) {
-                            Log.e(TAG, "Failed to save default display mode");;
+                            Log.e(TAG, "Failed to save default display mode");
+                            ;
                         }
                         break;
 
@@ -158,7 +155,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
                     currentMode = mDisplayService.getMode(display, HwcSvcModeType.HWC_SVC_MODE_TYPE_CURRENT);
                 } catch (RemoteException e) {
                     Log.e(TAG, "Failed to read display mode");
-                    ((DisplaySettingsActivity)getActivity()).mReceiver.mBlocked = false;
+                    ((DisplaySettingsActivity) getActivity()).mReceiver.mBlocked = false;
                     getActivity().recreate();
                     return;
                 }
@@ -166,7 +163,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
                 SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString(key, String.valueOf(currentMode.index));
                 editor.commit();
-                ((DisplaySettingsActivity)getActivity()).mReceiver.mBlocked = false;
+                ((DisplaySettingsActivity) getActivity()).mReceiver.mBlocked = false;
                 getActivity().recreate();
             }
         };
@@ -185,16 +182,82 @@ public class DisplaySettingsFragment extends PreferenceFragment
         new CountDownTimer(waitTime * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                if (confirmationDialog != null && isAdded())
+                if (isAdded())
                     confirmationDialog.setMessage(getString(R.string.mode_confirmation_summary, millisUntilFinished / 1000));
             }
 
             @Override
             public void onFinish() {
-                if (confirmationDialog != null && isAdded())
+                if (isAdded())
                     confirmationDialog.getButton(DialogInterface.BUTTON_NEGATIVE).performClick();
             }
         }.start();
+    }
+
+    private void createPerfSettings(PreferenceScreen preferenceScreen) {
+        PreferenceCategory perfCategory = new PreferenceCategory(preferenceScreen.getContext());
+        perfCategory.setTitle(R.string.perf_category_title);
+
+        SwitchPreference perfPreference = new SwitchPreference(perfCategory.getContext());
+        perfPreference.setTitle(R.string.perf_setting_title);
+        perfPreference.setSummary(R.string.perf_setting_summary);
+        perfPreference.setKey("perf_mode");
+
+        perfPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (((Boolean) newValue) != PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("perf_mode", false)) {
+                    final boolean isEnabled = (Boolean) newValue;
+                    if (isEnabled) {
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle(R.string.perf_warning_title)
+                                .setMessage(R.string.perf_warning_summary)
+                                .setNegativeButton(getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                    }
+                                })
+                                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                                        SharedPreferences.Editor editor = sharedPrefs.edit();
+                                        editor.putBoolean("perf_mode", true);
+                                        editor.commit();
+                                        perfPreference.setChecked(true);
+                                    }
+                                })
+                                .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss(DialogInterface dialog) {
+                                        Intent intent=new Intent(DisplayUtils.POWER_UPDATE_INTENT);
+                                        getActivity().sendBroadcast(intent);
+                                    }
+                                }).create().show();
+                        return false;
+                    }
+                }
+                Intent intent=new Intent(DisplayUtils.POWER_UPDATE_INTENT);
+                getActivity().sendBroadcast(intent);
+                return true;
+            }
+        });
+
+        preferenceScreen.addPreference(perfCategory);
+        perfCategory.addPreference(perfPreference);
+    }
+
+    private void createDisplaySettings(PreferenceScreen preferenceScreen) {
+        for (int i = HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL; i <= HwcSvcDisplay.HWC_SVC_DISPLAY_HDMI2; i++) {
+            PreferenceCategory category = new PreferenceCategory(preferenceScreen.getContext());
+
+            if (!initializeDisplayCategory(category, i))
+                continue;
+
+            preferenceScreen.addPreference(category);
+            populateDisplayCategory(category, i);
+
+        }
     }
 
     private boolean initializeDisplayCategory(PreferenceCategory category, int display) {
@@ -230,35 +293,33 @@ public class DisplaySettingsFragment extends PreferenceFragment
         }
 
         // Sort by resolution and refresh rate
-        Collections.sort(availableModes, new Comparator() {
-            public int compare(Object a, Object b) {
-                HwcSvcDisplayMode modeA = (HwcSvcDisplayMode) a;
-                HwcSvcDisplayMode modeB = (HwcSvcDisplayMode) b;
+        Collections.sort(availableModes, (Comparator) (a, b) -> {
+            HwcSvcDisplayMode modeA = (HwcSvcDisplayMode) a;
+            HwcSvcDisplayMode modeB = (HwcSvcDisplayMode) b;
 
-                if (modeA.xres == modeB.xres) {
-                    if (modeA.yres == modeB.yres) {
-                        if (modeA.refresh == modeB.refresh)
-                            return 0;
-                        else if (modeA.refresh > modeB.refresh)
-                            return -1;
-                        else
-                            return 1;
-                    } else if (modeA.yres > modeB.yres) {
+            if (modeA.xres == modeB.xres) {
+                if (modeA.yres == modeB.yres) {
+                    if (modeA.refresh == modeB.refresh)
+                        return 0;
+                    else if (modeA.refresh > modeB.refresh)
                         return -1;
-                    } else {
+                    else
                         return 1;
-                    }
-                } else if (modeA.xres > modeB.xres) {
+                } else if (modeA.yres > modeB.yres) {
                     return -1;
                 } else {
                     return 1;
                 }
+            } else if (modeA.xres > modeB.xres) {
+                return -1;
+            } else {
+                return 1;
             }
         });
 
         ListPreference modesPreference = new ListPreference(category.getContext());
-        ArrayList<String> displayedModes = new ArrayList<String>();
-        ArrayList<String> modeIndices = new ArrayList<String>();
+        ArrayList<String> displayedModes = new ArrayList<>();
+        ArrayList<String> modeIndices = new ArrayList<>();
 
         availableModes.forEach((mode) -> displayedModes.add(DisplayUtils.makeModeInfoString(mode) + " " + DisplayUtils.makeColorInfoString(mode)));
         availableModes.forEach((mode) -> modeIndices.add(String.valueOf(mode.index)));
@@ -271,16 +332,5 @@ public class DisplaySettingsFragment extends PreferenceFragment
         modesPreference.setValue(String.valueOf(currentMode.index));
 
         category.addPreference(modesPreference);
-
-        // Show checkbox to disable internal panel when an external display is connected
-        if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL) {
-            SwitchPreference disableInternalOnExternalConnectedPreference = new SwitchPreference(category.getContext());
-            disableInternalOnExternalConnectedPreference.setTitle(R.string.disable_internal_on_external_connected_title);
-            disableInternalOnExternalConnectedPreference.setSummaryOn(R.string.disable_internal_on_external_connected_summary_on);
-            disableInternalOnExternalConnectedPreference.setSummaryOff(R.string.disable_internal_on_external_connected_summary_off);
-            disableInternalOnExternalConnectedPreference.setKey("disable_internal_on_external_connected");
-
-            category.addPreference(disableInternalOnExternalConnectedPreference);
-        }
     }
 }

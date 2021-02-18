@@ -1,0 +1,8 @@
+service wifi_reset /system/bin/wifi_reset.sh
+    user root
+    group root system
+    disabled
+    oneshot
+
+on property:wlan.driver.status=unloaded
+   start wifi_reset

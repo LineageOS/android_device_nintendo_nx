@@ -147,5 +147,6 @@ PRODUCT_PACKAGES += \
 # Wi-Fi
 ifeq ($(TARGET_TEGRA_WIFI),bcm)
 PRODUCT_PACKAGES += \
+    wifi_reset \
     WifiOverlay
 endif

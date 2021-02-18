@@ -18,6 +18,7 @@ import /vendor/etc/init/hw/init.loki_foster_e_common.rc
 
 on init
     setprop ro.boot.secureos none
+    setprop ro.hardware.sensors stmicro
 
     # Workaround broke HWC rotation
     setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270

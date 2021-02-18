@@ -105,6 +105,10 @@ GMS_MAKEFILE=gms_minimal.mk
 WITH_GMS_COMMS_SUITE := false
 endif
 
+# Joycons
+PRODUCT_PACKAGES += \
+    jc_setup
+
 # Kernel Modules
 PRODUCT_PACKAGES += \
     cypress-fmac-upstream

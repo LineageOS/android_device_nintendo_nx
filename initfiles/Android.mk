@@ -67,3 +67,12 @@ LOCAL_MODULE_SUFFIX := .sh
 LOCAL_INIT_RC       := wifi_reset.rc
 LOCAL_MODULE_CLASS  := EXECUTABLES
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := jc_setup
+LOCAL_SRC_FILES     := jc_setup.sh
+LOCAL_MODULE_SUFFIX := .sh
+LOCAL_INIT_RC       := nx_jc.rc
+LOCAL_MODULE_CLASS  := EXECUTABLES
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_PREBUILT)

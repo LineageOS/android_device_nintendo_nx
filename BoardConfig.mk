@@ -62,6 +62,9 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2022-04-05
 
+# Sensors (IIO)
+BOARD_SENSORS_STMICRO_IIO_DEFCONFIG := device/nintendo/nx/sensors/sensors_nx_defconfig
+
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 BOARD_VNDK_VERSION                     := current

@@ -160,4 +160,5 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
+    wifi_reset \
     WifiOverlay

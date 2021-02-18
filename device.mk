@@ -154,3 +154,9 @@ PRODUCT_PACKAGES += \
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
+
+# Wi-Fi
+ifeq ($(TARGET_TEGRA_WIFI),bcm)
+PRODUCT_PACKAGES += \
+    wifi_reset
+endif

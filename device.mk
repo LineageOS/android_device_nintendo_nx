@@ -101,6 +101,10 @@ endif
 PRODUCT_PACKAGES += \
     DeviceSettingsNX
 
+# Joycons
+PRODUCT_PACKAGES += \
+    jc_setup
+
 # Kernel Modules
 PRODUCT_PACKAGES += \
     cypress-fmac-upstream

@@ -17,6 +17,9 @@ import /vendor/etc/init/hw/init.t210.rc
 import /vendor/etc/init/hw/init.loki_foster_e_common.rc
 import /vendor/etc/init/hw/init.${ro.hardware.sku}.rc
 
+on early-init
+    write /proc/sys/kernel/sched_cfs_boost 100
+
 on init
     setprop ro.boot.secureos none
     setprop ro.hardware.sensors stmicro
@@ -68,3 +71,6 @@ on property:init.svc.bootanim=running
     write /sys/class/graphics/fb0/blank 1
     write /sys/class/graphics/fb0/state 0
     write /sys/class/graphics/fb0/blank 0
+
+on property:sys.boot_completed=1
+    write /proc/sys/kernel/sched_cfs_boost 0

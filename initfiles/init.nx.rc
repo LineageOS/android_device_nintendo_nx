@@ -17,6 +17,9 @@ import /vendor/etc/init/hw/init.t210.rc
 import /vendor/etc/init/hw/init.loki_foster_e_common.rc
 import /vendor/etc/init/hw/init.${ro.boot.hardware.sku}.rc
 
+on early-init
+    write /proc/sys/kernel/sched_cfs_boost 100
+
 on init
     setprop ro.boot.secureos none
     setprop ro.hardware.sensors stmicro
@@ -36,6 +39,9 @@ on post-fs
 on boot
     write /sys/devices/system/cpu/cpufreq/schedutil/up_rate_limit_us 500
     write /sys/module/input_cfboost/parameters/boost_gpu 460800
+
+on property:sys.boot_completed=1
+    write /proc/sys/kernel/sched_cfs_boost 0
 
 service vendor.sensors_calib /vendor/bin/sensors_calib.sh /mnt/vendor/factory/switchroot/android /data/STSensorHAL/factory_calibration
     class main

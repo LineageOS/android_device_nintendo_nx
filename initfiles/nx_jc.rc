@@ -1,6 +1,6 @@
 on post-fs-data
-    mount vfat /dev/block/platform/sdhci-tegra.0/by-name/hos_data /mnt/vendor/factory rw noatime
     restorecon_recursive /mnt/vendor/factory
+    mount vfat /dev/block/platform/sdhci-tegra.0/by-name/hos_data /mnt/vendor/factory rw noatime
     start vendor.jc_setup
 
 service vendor.jc_setup /vendor/bin/jc_setup.sh /mnt/vendor/factory/switchroot/joycon_mac.ini /data/misc/bluedroid/bt_config.conf

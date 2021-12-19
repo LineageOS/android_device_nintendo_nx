@@ -55,7 +55,6 @@ def AddBootloaderAssertion(info, input_zip):
     bootloaders = m.group(1).split("|")
     if "*" not in bootloaders:
       info.script.AssertSomeBootloader(*bootloaders)
-    info.metadata["pre-bootloader"] = m.group(1)
 
 def AddBootloaderFlash(info, input_zip):
   """ nx """

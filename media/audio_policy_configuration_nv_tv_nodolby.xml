@@ -67,7 +67,7 @@
                        sources="primary_output"/>
                 <!-- Capture routes -->
                 <route type="mix" sink="primary_input"
-                       sources="Built-In Mic,Digital Dock HS Mic"/>
+                       sources="Wired Headset Mic,Digital Dock HS Mic"/>
             </routes>
 
         </module>

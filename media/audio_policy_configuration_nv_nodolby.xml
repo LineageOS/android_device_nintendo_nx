@@ -78,7 +78,7 @@
 
                 <!-- Capture routes -->
                 <route type="mix" sink="primary_input"
-                       sources="Built-In Mic,BT SCO Headset Mic,Digital Dock HS Mic,AudioIP-In"/>
+                       sources="Wired Headset Mic,BT SCO Headset Mic,Digital Dock HS Mic,AudioIP-In"/>
             </routes>
 
         </module>

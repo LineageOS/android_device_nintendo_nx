@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+on early-init
+    # TWRP doesn't have bootanim, so reset fb on early-init
+    write /sys/class/graphics/fb0/blank 1
+    write /sys/class/graphics/fb0/state 0
+    write /sys/class/graphics/fb0/blank 0
+
 on init
     setprop persist.twrp.rotation 270
     setprop ro.minui.default_rotation "ROTATION_LEFT"

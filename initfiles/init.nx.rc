@@ -44,3 +44,9 @@ service vendor.sensors_calib /vendor/bin/sensors_calib.sh /mnt/vendor/factory/sw
     group root
     disabled
     oneshot
+
+# Reset FB to workaround SLD coldboot issues
+on property:init.svc.bootanim=running 
+    write /sys/class/graphics/fb0/blank 1
+    write /sys/class/graphics/fb0/state 0
+    write /sys/class/graphics/fb0/blank 0

@@ -17,6 +17,7 @@ import /vendor/etc/init/hw/init.t210.rc
 import /vendor/etc/init/hw/init.loki_foster_e_common.rc
 
 on init
+    setprop ro.boot.secureos none
     setprop ro.hardware.sensors stmicro
 
 on fs

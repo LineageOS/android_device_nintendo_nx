@@ -18,6 +18,7 @@ import /vendor/etc/init/hw/init.loki_foster_e_common.rc
 
 on init
     setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270
+    setprop ro.boot.secureos none
 
 on fs
     mount_all /vendor/etc/fstab.nx

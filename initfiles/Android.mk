@@ -107,3 +107,11 @@ LOCAL_SRC_FILES            := cec_disable.xml
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := staging
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := sensors_calib
+LOCAL_SRC_FILES     := sensors_calib.sh
+LOCAL_MODULE_SUFFIX := .sh
+LOCAL_MODULE_CLASS  := EXECUTABLES
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_PREBUILT)

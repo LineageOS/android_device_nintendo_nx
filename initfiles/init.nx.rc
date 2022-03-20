@@ -31,6 +31,15 @@ on fs
 on post-fs
     write /sys/bus/platform/drivers/tegra-reboot2payload/r2p/default_payload_ready 1
 
+    start vendor.sensors_calib
+
 on boot
     write /sys/devices/system/cpu/cpufreq/schedutil/up_rate_limit_us 500
     write /sys/module/input_cfboost/parameters/boost_gpu 460800
+
+service vendor.sensors_calib /vendor/bin/sensors_calib.sh /mnt/vendor/factory/switchroot/android /data/STSensorHAL/factory_calibration
+    class main
+    user root
+    group root
+    disabled
+    oneshot

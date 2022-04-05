@@ -21,4 +21,5 @@ on early-init
 on init
     setprop persist.twrp.rotation 270
     setprop ro.minui.default_rotation "ROTATION_LEFT"
+    setprop sys.usb.configfs 1
     write /sys/bus/platform/drivers/tegra-reboot2payload/r2p/default_payload_ready 1

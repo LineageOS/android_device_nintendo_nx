@@ -23,6 +23,8 @@ on init
     # Workaround broke HWC rotation
     setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270
 
+    setprop sys.usb.configfs 1
+
 on fs
     mount_all /vendor/etc/fstab.nx
     swapon_all /vendor/etc/fstab.nx
@@ -45,6 +47,11 @@ on boot
     chmod 0664 /sys/bus/serial/devices/serial0-0/wake
     chown system system /sys/bus/serial/devices/serial1-0/wake
     chmod 0664 /sys/bus/serial/devices/serial1-0/wake
+
+# Override and disable adbenable because it is not needed on icosa
+service adb_enable /vendor/bin/adbenable.sh
+    override
+    disabled
 
 service vendor.sensors_calib /vendor/bin/sensors_calib.sh /mnt/vendor/factory/switchroot/android /data/STSensorHAL/factory_calibration
     class main

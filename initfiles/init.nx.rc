@@ -20,13 +20,15 @@ on init
     setprop ro.boot.secureos none
     setprop ro.hardware.sensors stmicro
 
+    # Workaround broke HWC rotation
+    setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270
+
 on fs
     mount_all /vendor/etc/fstab.nx
     swapon_all /vendor/etc/fstab.nx
 
 on post-fs
     write /sys/bus/platform/drivers/tegra-reboot2payload/r2p/default_payload_ready 1
-
     start vendor.sensors_calib
 
 on boot

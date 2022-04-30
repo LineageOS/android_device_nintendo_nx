@@ -10,6 +10,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_PROPERTY_OVERRIDES += \
     persist.sys.NV_ECO.IF.CHARGING=false
 
+# HWC
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.tegra.stb.mode=1
+
 # USB configfs
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.nv.usb.pid.adb=7104 \

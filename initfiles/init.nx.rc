@@ -19,6 +19,9 @@ import /vendor/etc/init/hw/init.loki_foster_e_common.rc
 on init
     setprop ro.boot.secureos none
 
+    # Workaround broke HWC rotation
+    setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270
+
 on fs
     mount_all /vendor/etc/fstab.nx
     swapon_all /vendor/etc/fstab.nx

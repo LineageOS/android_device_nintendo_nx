@@ -99,6 +99,11 @@ endif
 PRODUCT_PACKAGES += \
     DeviceSettingsNX
 
+# GMS
+ifeq ($(WITH_GMS),true)
+GMS_MAKEFILE=gms_minimal.mk
+endif
+
 # Kernel Modules
 PRODUCT_PACKAGES += \
     cypress-fmac-upstream

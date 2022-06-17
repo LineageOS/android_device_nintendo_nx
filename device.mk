@@ -64,9 +64,7 @@ PRODUCT_PACKAGES += \
     fstab.nx \
     init.loki_e_common.rc \
     init.loki_foster_e_common.rc \
-    init.nx_sd.rc \
-    init.nx_common.rc \
-    init.nx_emmc.rc \
+    init.nx.rc \
     init.recovery.nx.rc \
     power.nx.rc
 

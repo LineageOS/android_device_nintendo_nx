@@ -12,108 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.batuu.xml
+LOCAL_MODULE        := thermalhal.nx.xml
 LOCAL_MODULE_TAGS   := optional
 LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.porg.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.darcy.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.foster_e.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.foster_e_hdd.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.icosa.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.icosa_emmc.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.jetson_cv.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.jetson_e.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.loki_e_lte.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.loki_e.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.loki_e_wifi.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.loki_e.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.porg.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.porg.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.porg_sd.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.porg.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.sif.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.darcy.xml
+LOCAL_SRC_FILES     := thermalhal.nx.xml
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)

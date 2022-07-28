@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,484 +15,62 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.batuu
+LOCAL_MODULE        := fstab.nx
 LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.porg_sd
+LOCAL_SRC_FILES     := fstab.nx
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.darcy
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.darcy
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.dragon
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.dragon
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.foster
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.foster_e
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.foster_e_hdd
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e_hdd
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.icosa
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.icosa
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.icosa_emmc
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.icosa_emmc
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.jetson_e
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.jetson_cv
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.loki_e_base
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.loki_e_lte
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.loki_e_wifi
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.porg
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.porg_sd
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.porg_sd
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.sif
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := fstab.foster_e
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.batuu.rc
+LOCAL_MODULE               := init.nx.rc
 LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.batuu.rc
+LOCAL_SRC_FILES            := init.nx.rc
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := init/hw
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := init.darcy.rc
+LOCAL_MODULE               := init.nx_common.rc
 LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.darcy.rc
+LOCAL_SRC_FILES            := init.nx_common.rc
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := init/hw
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := init.dragon.rc
+LOCAL_MODULE               := init.nx_emmc.rc
 LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.dragon.rc
+LOCAL_SRC_FILES            := init.nx_emmc.rc
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := init/hw
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := init.foster_e.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.foster_e.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.foster_e_hdd.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.foster_e_hdd.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.icosa.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.icosa.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.icosa_common.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.icosa_common.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.icosa_emmc.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.icosa_emmc.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.jetson_e.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.jetson_e.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.jetson_cv.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.jetson_cv.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.loki_e_base.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.loki_e_base.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.loki_e_lte.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.loki_e_lte.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.loki_e_wifi.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.loki_e_wifi.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.porg.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.porg.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.porg_sd.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.porg_sd.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.sif.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.sif.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.batuu.rc
+LOCAL_MODULE       := init.recovery.nx.rc
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster.rc
+LOCAL_SRC_FILES    := init.recovery.nx.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.darcy.rc
+LOCAL_MODULE       := init.recovery.nx_emmc.rc
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.darcy.rc
+LOCAL_SRC_FILES    := init.recovery.nx.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.dragon.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.dragon.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.foster_e.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.foster_e_hdd.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.icosa.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.icosa.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.icosa_emmc.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.icosa.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.jetson_cv.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.jetson_e.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.loki_e_base.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.loki.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.loki_e_lte.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.loki.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.loki_e_wifi.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.loki.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.porg.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.porg_sd.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.sif.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.sif.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.foster_common.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.foster_common.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.foster_e_common.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.foster_e_common.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.loki_e_common.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.loki_e_common.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := init.loki_foster_e_common.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.loki_foster_e_common.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.batuu.rc
+LOCAL_MODULE       := power.nx.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.darcy.rc
+LOCAL_SRC_FILES    := power.nx.rc
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := power.darcy.rc
+LOCAL_MODULE       := power.nx_emmc.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.darcy.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.dragon.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.abca.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.foster_e.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.foster_e_common.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.foster_e_hdd.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.foster_e_common.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.icosa.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.icosa.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.icosa_emmc.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.icosa.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.jetson_cv.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.foster_e_common.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.jetson_e.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.foster_e_common.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.loki_e_base.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.loki_e_common.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.loki_e_lte.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.loki_e_common.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.loki_e_wifi.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.loki_e_common.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.porg.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.darcy.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.porg_sd.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.darcy.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := power.sif.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.darcy.rc
+LOCAL_SRC_FILES    := power.nx.rc
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -509,4 +87,20 @@ LOCAL_MODULE_CLASS         := ETC
 LOCAL_SRC_FILES            := init.eks2.rc
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := init
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := init.loki_e_common.rc
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_SRC_FILES            := init.loki_e_common.rc
+LOCAL_VENDOR_MODULE        := true
+LOCAL_MODULE_RELATIVE_PATH := init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := init.loki_foster_e_common.rc
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_SRC_FILES            := init.loki_foster_e_common.rc
+LOCAL_VENDOR_MODULE        := true
+LOCAL_MODULE_RELATIVE_PATH := init/hw
 include $(BUILD_PREBUILT)

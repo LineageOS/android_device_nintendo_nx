@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,15 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_foster.mk \
-    $(LOCAL_DIR)/lineage_foster.mk \
-    $(LOCAL_DIR)/twrp_foster.mk
+    $(LOCAL_DIR)/lineage_nx.mk \
+    $(LOCAL_DIR)/twrp_nx.mk
+
+COMMON_LUNCH_CHOICES := \
+    lineage_nx-eng \
+    lineage_nx-user \
+    lineage_nx-userdebug \
+    lineage_nx_tab-eng \
+    lineage_nx_tab-user \
+    lineage_nx_tab-userdebug \
+    twrp_nx-eng \
+    twrp_nx-userdebug

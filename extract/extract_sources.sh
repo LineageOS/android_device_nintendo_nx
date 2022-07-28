@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +14,4 @@
 # limitations under the License.
 #
 
-FILELIST_PATHS+=("foster");
-PATCH_PATHS+=("foster");
+FILELIST_PATHS+=("nx");

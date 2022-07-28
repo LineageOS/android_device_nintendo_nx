@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
 #
 
 BOARD_FLASH_BLOCK_SIZE             := 4096
-BOARD_BOOTIMAGE_PARTITION_SIZE     := 26738688
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 26767360
-BOARD_CACHEIMAGE_PARTITION_SIZE    := 268435456
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 33554432
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 734003200
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10099646976
-BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1616904192
-BOARD_VENDORIMAGE_PARTITION_SIZE   := 379584512
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 2147483648
+BOARD_VENDORIMAGE_PARTITION_SIZE   := 1073741824
 TARGET_USERIMAGES_USE_EXT4         := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE  := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -28,7 +28,7 @@ TARGET_COPY_OUT_VENDOR             := vendor
 BOARD_BUILD_SYSTEM_ROOT_IMAGE      := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := foster,darcy,jetson,loki,icosa,mdarcy,sif
+TARGET_OTA_ASSERT_DEVICE := nx
 
 # Boot image
 BOARD_CUSTOM_BOOTIMG    := true
@@ -36,15 +36,15 @@ BOARD_CUSTOM_BOOTIMG_MK := device/nvidia/foster/mkbootimg.mk
 BOARD_MKBOOTIMG_ARGS    := --header_version 1
 
 # Bootloader versions
-TARGET_BOARD_INFO_FILE := device/nvidia/foster/board-info.txt
+TARGET_BOARD_INFO_FILE := device/nintendo/nx/board-info.txt
 
 # Manifest
-DEVICE_MANIFEST_FILE := device/nvidia/foster/manifest.xml
+DEVICE_MANIFEST_FILE := device/nintendo/nx/manifest.xml
 
 # Bluetooth
 ifeq ($(TARGET_TEGRA_BT),bcm)
-BOARD_CUSTOM_BT_CONFIG := device/nvidia/foster/comms/vnd_foster.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nvidia/foster/comms
+BOARD_CUSTOM_BT_CONFIG := device/nintendo/nx/comms/vnd_nx.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nintendo/nx/comms
 endif
 
 # Charger
@@ -61,12 +61,12 @@ BOARD_KERNEL_IMAGE_NAME        := Image.gz
 TARGET_KERNEL_ADDITIONAL_FLAGS := "NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)"
 
 # Recovery
-TARGET_RECOVERY_FSTAB        := device/nvidia/foster/initfiles/fstab.foster
+TARGET_RECOVERY_FSTAB        := device/nintendo/nx/initfiles/fstab.nx
 TARGET_RECOVERY_UPDATER_LIBS := librecoveryupdater_tegra
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/nvidia/foster/releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
 
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2022-04-05
@@ -78,7 +78,7 @@ PRODUCT_FULL_TREBLE_OVERRIDE           := true
 
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
-include device/nvidia/foster/twrp/twrp.mk
+include device/nintendo/nx/twrp/twrp.mk
 endif
 
 include device/nvidia/t210-common/BoardConfigCommon.mk

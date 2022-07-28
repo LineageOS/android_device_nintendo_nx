@@ -1,4 +1,4 @@
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit some common twrp stuff.
+# Inherit some common TWRP stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# Inherit device configuration for foster.
-include device/nvidia/foster/lineage.mk
-$(call inherit-product, device/nvidia/foster/full_foster.mk)
+# Inherit full configuration for nx.
+include device/nintendo/nx/lineage.mk
 
-PRODUCT_NAME := twrp_foster
-PRODUCT_DEVICE := foster
+# Inherit some common AOSP stuff.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+
+# Inherit some common ATV stuff.
+$(call inherit-product, device/google/atv/products/atv_base.mk)
+
+# Inherit device configuration for nx.
+$(call inherit-product, device/nintendo/nx/device.mk)
+
+PRODUCT_NAME := twrp_nx
+PRODUCT_DEVICE := nx
+PRODUCT_BRAND := NINTENDO
+PRODUCT_MANUFACTURER := NINTENDO
+PRODUCT_MODEL := Switch

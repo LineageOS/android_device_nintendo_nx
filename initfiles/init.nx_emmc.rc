@@ -12,4 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import init.recovery.usb.rc
+import /vendor/etc/init/hw/init.nx_common.rc
+
+on fs
+    mount_all /vendor/etc/fstab.nx_emmc
+    swapon_all /vendor/etc/fstab.nx_emmc

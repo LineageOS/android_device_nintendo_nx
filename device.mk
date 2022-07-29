@@ -132,13 +132,13 @@ PRODUCT_PACKAGES += \
     nvphsd.conf
 endif
 
+# Shipping API
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia \
     thermalhal.nx.xml
-
-# Treble workaround
-PRODUCT_PACKAGES += $(PRODUCT_PACKAGES_SHIPPING_API_LEVEL_29)
 
 # Trust HAL
 PRODUCT_PACKAGES += \

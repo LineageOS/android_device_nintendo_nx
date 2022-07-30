@@ -15,6 +15,5 @@
 $(call inherit-product, device/nvidia/t210-common/vendor/t210.mk)
 $(call inherit-product, device/nvidia/tegra-common/vendor/common-by-flags.mk)
 $(call inherit-product, device/nintendo/nx/vendor/bcm_firmware/bcm.mk)
-$(call inherit-product, device/nvidia/shield-common/vendor/shield-by-flags.mk)
 
 PRODUCT_PACKAGES += public.libraries

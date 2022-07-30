@@ -78,34 +78,6 @@
         <item>250</item>
     </integer-array>
 
-    <!-- Array of output values for button backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>75</item>
-        <item>90</item>
-        <item>140</item>
-        <item>190</item>
-        <item>240</item>
-        <item>250</item>
-        <item>255</item>
-    </integer-array>
-
-    <!-- Array of output values for keyboard backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>75</item>
-        <item>60</item>
-        <item>40</item>
-        <item>20</item>
-        <item>10</item>
-        <item>5</item>
-        <item>0</item>
-    </integer-array>
-
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
 

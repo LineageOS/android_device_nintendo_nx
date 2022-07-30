@@ -13,7 +13,6 @@
 # limitations under the License.
 
 INSTALLED_KERNEL_TARGET := $(PRODUCT_OUT)/kernel
-INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 
 ifeq ($(filter 3.10 4.9, $(TARGET_TEGRA_KERNEL)),)
 DTB_SUBFOLDER := nvidia/

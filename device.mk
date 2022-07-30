@@ -158,10 +158,6 @@ PRODUCT_PACKAGES += \
     nvphsd.conf
 endif
 
-# SKU Specific Overlays
-PRODUCT_PACKAGES += \
-    DarcyOverlay
-
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia \

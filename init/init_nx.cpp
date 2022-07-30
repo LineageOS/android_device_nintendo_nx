@@ -59,12 +59,6 @@ void vendor_set_usb_product_ids(tegra_init *ti)
 		ti->property_set(id.first, id.second);
 }
 
-void vendor_set_nrdp_props(tegra_init *ti)
-{
-	ti->property_set("ro.vendor.nrdp.audio.otfs", "true");
-	ti->property_set("ro.vendor.nrdp.validation", "ninja_6");
-}
-
 void vendor_load_properties()
 {
        //                                             device    name     model          id   sku api dpi
@@ -86,11 +80,6 @@ void vendor_load_properties()
 			ti.property_set("ro.boot.avb_version", "");
 	}
 
-	if (ti.vendor_context() || ti.recovery_context()) {
+	if (ti.vendor_context() || ti.recovery_context())
 		vendor_set_usb_product_ids(&ti);
-
-		if (ti.property_get("ro.build.characteristics") == "tv") {
-			vendor_set_nrdp_props(&ti);
-		}
-	}
 }

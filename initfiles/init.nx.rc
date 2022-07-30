@@ -20,6 +20,8 @@ on init
     setprop ro.boot.secureos none
     setprop ro.hardware.sensors stmicro
 
+    setprop sys.io.scheduler deadline
+
     # Workaround broke HWC rotation
     setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270
 

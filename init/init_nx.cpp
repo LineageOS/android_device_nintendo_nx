@@ -74,10 +74,6 @@ void vendor_load_properties()
 	if (ti.recovery_context()) {
 		ti.property_set("ro.product.vendor.model", ti.property_get("ro.product.model"));
 		ti.property_set("ro.product.vendor.manufacturer", ti.property_get("ro.product.manufacturer"));
-
-		// Unset avb flags. This is to ignore compatibility checks on unified builds
-		if (ti.is_model("mdarcy") || ti.is_model("sif"))
-			ti.property_set("ro.boot.avb_version", "");
 	}
 
 	if (ti.vendor_context() || ti.recovery_context())

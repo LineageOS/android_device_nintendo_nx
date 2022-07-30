@@ -52,14 +52,6 @@ LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := init.eks2.rc
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := init.eks2.rc
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := init
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := init.loki_e_common.rc
 LOCAL_MODULE_CLASS         := ETC
 LOCAL_SRC_FILES            := init.loki_e_common.rc

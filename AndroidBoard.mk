@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
 INSTALLED_KERNEL_TARGET := $(PRODUCT_OUT)/kernel
 
 ifeq ($(filter 3.10 4.9, $(TARGET_TEGRA_KERNEL)),)
@@ -27,5 +26,3 @@ $(INSTALLED_DTB_TARGETS): $(INSTALLED_KERNEL_TARGET) | $(ACP)
 	cp $(@F:%=$(KERNEL_OUT)/arch/arm64/boot/dts/$(DTB_SUBFOLDER)%) $(PRODUCT_OUT)/install/
 
 ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_DTB_TARGETS)
-
-endif

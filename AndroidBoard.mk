@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
 INSTALLED_KERNEL_TARGET := $(PRODUCT_OUT)/kernel
 
 DTB_SUBFOLDER := nvidia/
@@ -28,4 +27,3 @@ $(INSTALLED_DTBIMAGE_TARGET): $(INSTALLED_KERNEL_TARGET) | mkdtimg
 		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-frig.dtb --id=0x46524947 --rev=0xa00
 
 ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_DTBIMAGE_TARGET)
-endif

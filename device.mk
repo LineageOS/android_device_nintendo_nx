@@ -103,13 +103,9 @@ PRODUCT_PACKAGES += \
     nvaudio_fx.xml
 endif
 
-# Kernel
-ifneq ($(TARGET_PREBUILT_KERNEL),)
-TARGET_FORCE_PREBUILT_KERNEL := true
-else
+# Kernel Modules
 PRODUCT_PACKAGES += \
     cypress-fmac
-endif
 
 # Keylayouts
 PRODUCT_PACKAGES += \

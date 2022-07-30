@@ -22,7 +22,6 @@ import os
 APP_PART     = '/dev/block/by-name/APP'
 DTB_PART     = '/dev/block/by-name/DTB'
 STAGING_PART = '/dev/block/by-name/USP'
-VBMETA_PART  = '/dev/block/by-name/vbmeta'
 VENDOR_PART  = '/dev/block/by-name/vendor'
 NX_SD        = '/external_sd/switchroot/android/'
 

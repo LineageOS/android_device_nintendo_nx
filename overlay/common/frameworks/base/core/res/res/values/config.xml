@@ -91,4 +91,7 @@
 
     <!-- Use proper headphone jack detection -->
     <bool name="config_useDevInputEventForAudioJack">true</bool>
+
+    <!-- Enable lockscreen rotation by default -->
+    <bool name="config_enableLockScreenRotation">true</bool>
 </resources>

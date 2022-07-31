@@ -28,7 +28,7 @@ TARGET_COPY_OUT_VENDOR             := vendor
 BOARD_BUILD_SYSTEM_ROOT_IMAGE      := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := nx
+TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
 
 # Boot image
 BOARD_CUSTOM_BOOTIMG    := true

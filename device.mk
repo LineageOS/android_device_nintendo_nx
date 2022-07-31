@@ -44,9 +44,14 @@ include device/nvidia/t210-common/t210.mk
 # Properties
 include $(LOCAL_PATH)/properties.mk
 
-PRODUCT_CHARACTERISTICS   := tv
-PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi mdpi hdpi tvdpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG  := xhdpi
+ifeq ($(PRODUCT_IS_ATV),true)
+PRODUCT_CHARACTERISTICS   := tv
+PRODUCT_AAPT_PREBUILT_DPI += tvdpi
+else
+PRODUCT_CHARACTERISTICS   := tablet
+endif
 
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
@@ -54,7 +59,11 @@ $(call inherit-product, device/nintendo/nx/vendor/nx-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    device/nintendo/nx/overlay
+    device/nintendo/nx/overlay/common
+ifneq ($(PRODUCT_IS_ATV),true)
+DEVICE_PACKAGE_OVERLAYS += \
+    device/nintendo/nx/overlay/tablet
+endif
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += device/nintendo/nx
@@ -71,7 +80,15 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
-    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml
+    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
+ifneq ($(PRODUCT_IS_ATV),true)
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.device_admin.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_admin.xml \
+    frameworks/native/data/etc/android.software.managed_users.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.managed_users.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
+endif
 
 # ATV specific stuff
 ifeq ($(PRODUCT_IS_ATV),true)

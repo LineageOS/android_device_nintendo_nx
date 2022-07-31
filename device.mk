@@ -63,7 +63,6 @@ PRODUCT_SOONG_NAMESPACES += device/nintendo/nx
 # Init related
 PRODUCT_PACKAGES += \
     fstab.nx \
-    init.loki_e_common.rc \
     init.loki_foster_e_common.rc \
     init.nx.rc \
     init.recovery.nx.rc \

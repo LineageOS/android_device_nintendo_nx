@@ -147,6 +147,5 @@ PRODUCT_PACKAGES += \
 # WiFi
 ifeq ($(TARGET_TEGRA_WIFI),bcm)
 PRODUCT_PACKAGES += \
-    wifi_reset \
-    wifi_scan_config.conf
+    wifi_reset
 endif

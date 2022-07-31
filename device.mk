@@ -143,10 +143,5 @@ PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
 
 # WiFi
-ifeq ($(TARGET_TEGRA_WIFI),bcm)
-PRODUCT_PACKAGES += \
-    wifi_scan_config.conf
-endif
-
 PRODUCT_PACKAGES += \
     WifiOverlay

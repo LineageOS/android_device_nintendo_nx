@@ -143,9 +143,3 @@ PRODUCT_PACKAGES += $(PRODUCT_PACKAGES_SHIPPING_API_LEVEL_29)
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
-
-# WiFi
-ifeq ($(TARGET_TEGRA_WIFI),bcm)
-PRODUCT_PACKAGES += \
-    wifi_scan_config.conf
-endif

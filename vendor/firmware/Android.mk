@@ -13,6 +13,7 @@
 # limitations under the License.
 
 LOCAL_PATH := $(call my-dir)
+LINEAGE_TOOLS_PATH := $(abspath prebuilts/tools-lineage/$(HOST_PREBUILT_TAG)/bin)
 NX_VENDOR_PATH := ../../../../../vendor/nintendo
 
 include $(CLEAR_VARS)
@@ -24,3 +25,29 @@ LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/firmware/
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 include $(BUILD_NVIDIA_PREBUILT)
+
+# Uscript
+include $(CLEAR_VARS)
+LOCAL_MODULE        := boot.scr
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+
+_uscript_input := $(abspath vendor/nintendo/bootfiles/android_boot.txt)
+_uscript_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
+_uscript_archive := $(_uscript_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+
+$(_uscript_archive):
+	@mkdir -p $(dir $@)
+	$(LINEAGE_TOOLS_PATH)/mkimage -A arm -T script -O linux -d $(_uscript_input) $(_uscript_intermediates)/boot.scr
+
+include $(BUILD_SYSTEM)/base_rules.mk
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/boot.scr
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := coreboot
+LOCAL_MODULE_SUFFIX := .rom
+LOCAL_SRC_FILES     := $(NX_VENDOR_PATH)/bootfiles/coreboot.rom
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+include $(BUILD_PREBUILT)
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/coreboot.rom

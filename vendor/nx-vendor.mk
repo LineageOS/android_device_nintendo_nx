@@ -20,4 +20,6 @@ $(call inherit-product, device/nintendo/nx/vendor/nx-recovery.mk)
 PRODUCT_PACKAGES += public.libraries
 
 # Switch reboot2payload hekate
-PRODUCT_PACKAGES += reboot_payload
+PRODUCT_PACKAGES += \
+	reboot_payload \
+	boot.scr

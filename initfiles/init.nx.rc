@@ -14,7 +14,7 @@
 
 import /vendor/etc/init/hw/init.tegra.rc
 import /vendor/etc/init/hw/init.t210.rc
-import /vendor/etc/init/hw/init.loki_e_common.rc
+import /vendor/etc/init/hw/init.loki_foster_e_common.rc
 
 on fs
     mount_all /vendor/etc/fstab.nx

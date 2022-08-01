@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (C) 2021 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,27 +13,33 @@
 # limitations under the License.
 #
 
-""" Custom OTA commands for NX devices """
+""" Custom OTA commands for icosa_sr devices """
 
 import common
 import re
 import os
 
-APP_PART     = '/dev/block/by-name/APP'
-DTB_PART     = '/dev/block/by-name/DTB'
-STAGING_PART = '/dev/block/by-name/USP'
-VBMETA_PART  = '/dev/block/by-name/vbmeta'
-VENDOR_PART  = '/dev/block/by-name/vendor'
-NX_SD     = '/external_sd/switchroot/android/'
+APP_PART        = '/dev/block/by-name/APP'
+DTB_PART        = '/dev/block/by-name/DTB'
+RECOVERY_PART   = '/dev/block/by-name/SOS'
+VENDOR_PART     = '/dev/block/by-name/vendor'
+ICOSA_FILES     = '/external_sd/switchroot/android/'
+ICOSA_BL_CONFIG = '/external_sd/bootloader/ini/'
 
+PUBLIC_KEY_PATH     = '/sys/devices/7000f800.efuse/7000f800.efuse:efuse-burn/public_key'
+FUSED_PATH          = '/sys/devices/7000f800.efuse/7000f800.efuse:efuse-burn/odm_production_mode'
 DTSFILENAME_PATH    = '/proc/device-tree/nvidia,dtsfilename'
 
-NX_BL_VERSION    = '2020.04-03755-gf4d532d00d-rev3'
+MODE_UNFUSED        = '0x00000000\n'
+MODE_FUSED          = '0x00000001\n'
+
+ICOSA_PUBLIC_KEY    = '0x7e39e100d1135918ceedfe5d66e66496eed21ecb3486d72095cc0b7c60b8bd4f\n'
+ICOSA_BL_VERSION    = '2020.04-03753-g53ff5d2195-rev6'  # See ver_simple in boot.scr
 
 def FullOTA_PostValidate(info):
   if 'INSTALL/bin/resize2fs_static' in info.input_zip.namelist():
-    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + APP_PART + '");');
-    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + VENDOR_PART + '");');
+    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + APP_PART + '");')
+    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + VENDOR_PART + '");')
 
 def FullOTA_Assertions(info):
   if 'RADIO/coreboot.rom' in info.input_zip.namelist():
@@ -62,29 +68,64 @@ def AddBootloaderAssertion(info, input_zip):
     info.metadata["pre-bootloader"] = m.group(1)
 
 def AddBootloaderFlash(info, input_zip):
-  """ NX Detected """
+  """ If device is fused """
   info.script.AppendExtra('ifelse(')
-  info.script.AppendExtra('  getprop("ro.hardware") == "nx",')
+  info.script.AppendExtra('  read_file("' + FUSED_PATH + '") == "' + MODE_FUSED + '",')
   info.script.AppendExtra('  (')
+
+  """ Fused icosa """
   info.script.AppendExtra('    ifelse(')
-  info.script.AppendExtra('      getprop("ro.bootloader") == "' + NX_BL_VERSION + '",')
+  info.script.AppendExtra('      getprop("ro.hardware") == "nx",')
   info.script.AppendExtra('      (')
-  info.script.AppendExtra('        ui_print("Correct bootloader already installed for fused " + getprop(ro.hardware));')
-  info.script.AppendExtra('      ),')
-  info.script.AppendExtra('      (')
-  info.script.AppendExtra('      ui_print("Flashing updated bootloader for fused " + getprop(ro.hardware));')
-  info.script.AppendExtra('      package_extract_file("firmware-update/coreboot.rom", "' + NX_FILES + 'coreboot.rom");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/boot.scr", "' + NX_FILES + 'boot.scr");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/bootlogo_android.bmp", "' + NX_FILES + 'bootlogo_android.bmp");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/icon_android_hue.bmp", "' + NX_FILES + 'icon_android_hue.bmp");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/00-android.ini", "' + NX_BL_CONFIG + '00-android.ini");')
-  info.script.AppendExtra('      ),')
+  info.script.AppendExtra('        ifelse(')
+  info.script.AppendExtra('          getprop("ro.bootloader") == "' + ICOSA_BL_VERSION + '",')
+  info.script.AppendExtra('          (')
+  info.script.AppendExtra('            ui_print("Correct bootloader already installed for fused " + getprop(ro.hardware));')
+  info.script.AppendExtra('          ),')
+  info.script.AppendExtra('          ifelse(')
+  info.script.AppendExtra('            read_file("' + PUBLIC_KEY_PATH + '") == "' + ICOSA_PUBLIC_KEY + '",')
+  info.script.AppendExtra('            (')
+  info.script.AppendExtra('              ui_print("Flashing updated bootloader for fused " + getprop(ro.hardware));')
+  info.script.AppendExtra('              package_extract_file("firmware-update/coreboot.rom", "' + ICOSA_FILES + 'coreboot.rom");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/boot.scr", "' + ICOSA_FILES + 'boot.scr");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/bootlogo_android.bmp", "' + ICOSA_FILES + 'bootlogo_android.bmp");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/icon_android_hue.bmp", "' + ICOSA_FILES + 'icon_android_hue.bmp");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/00-android.ini", "' + ICOSA_BL_CONFIG + '00-android.ini");')
+  info.script.AppendExtra('            ),')
+  info.script.AppendExtra('            (')
+  info.script.AppendExtra('              ui_print("Unknown public key " + read_file("' + PUBLIC_KEY_PATH + '") + " for icosa detected.");')
+  info.script.AppendExtra('              ui_print("This is not supported. Please report to LineageOS Maintainer.");')
+  info.script.AppendExtra('              abort();')
+  info.script.AppendExtra('            )')
+  info.script.AppendExtra('          )')
+  info.script.AppendExtra('        );')
+  info.script.AppendExtra('        package_extract_file("install/" + tegra_get_dtbname(), "' + DTB_PART + '");')
+  info.script.AppendExtra('      )')
   info.script.AppendExtra('    );')
-  info.script.AppendExtra('    package_extract_file("install/" + tegra_get_dtbname(), "' + DTB_PART + '");')
-  info.script.AppendExtra('  )')
-  info.script.AppendExtra(');')
 
   info.script.AppendExtra('  ),')
+
+  """ If not fused """
+  info.script.AppendExtra('  (')
+
+  """ Unfused icosa """
+  info.script.AppendExtra('    ifelse(')
+  info.script.AppendExtra('      getprop("ro.hardware") == "nx",')
+  info.script.AppendExtra('      (')
+  info.script.AppendExtra('        ifelse(')
+  info.script.AppendExtra('          getprop("ro.bootloader") == "' + ICOSA_BL_VERSION + '",')
+  info.script.AppendExtra('          (')
+  info.script.AppendExtra('            ui_print("Correct bootloader already installed for unfused " + getprop(ro.hardware));')
+  info.script.AppendExtra('          ),')
+  info.script.AppendExtra('          (')
+  info.script.AppendExtra('            ui_print("This is an unfused icosa. Many devlopers would kill for this unit.");')
+  info.script.AppendExtra('            ui_print("This is not supported. Please report to LineageOS Maintainer.");')
+  info.script.AppendExtra('            abort();')
+  info.script.AppendExtra('          )')
+  info.script.AppendExtra('        );')
+  info.script.AppendExtra('        package_extract_file("install/" + tegra_get_dtbname(), "' + DTB_PART + '");')
+  info.script.AppendExtra('      )')
+  info.script.AppendExtra('    );')
 
   info.script.AppendExtra('  )')
   info.script.AppendExtra(');')

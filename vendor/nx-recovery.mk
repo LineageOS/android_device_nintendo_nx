@@ -12,12 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/nvidia/t210-common/vendor/t210.mk)
-$(call inherit-product, device/nvidia/tegra-common/vendor/common-by-flags.mk)
-$(call inherit-product, device/nintendo/nx/vendor/bcm_firmware/bcm.mk)
-$(call inherit-product, device/nintendo/nx/vendor/nx-recovery.mk)
+NX_BOOTLOADER_PATH := vendor/nintendo/bootloader
 
-PRODUCT_PACKAGES += public.libraries
-
-# Switch reboot2payload hekate
-PRODUCT_PACKAGES += reboot_payload
+# Hekate r2p
+PRODUCT_COPY_FILES += \
+    $(NX_BOOTLOADER_PATH)/hekate.bin:recovery/root/system/etc/firmware/reboot_payload.bin

@@ -12,12 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/nvidia/t210-common/vendor/t210.mk)
-$(call inherit-product, device/nvidia/tegra-common/vendor/common-by-flags.mk)
-$(call inherit-product, device/nintendo/nx/vendor/bcm_firmware/bcm.mk)
-$(call inherit-product, device/nintendo/nx/vendor/nx-recovery.mk)
+LOCAL_PATH := $(call my-dir)
+NX_VENDOR_PATH := ../../../../../vendor/nintendo
 
-PRODUCT_PACKAGES += public.libraries
-
-# Switch reboot2payload hekate
-PRODUCT_PACKAGES += reboot_payload
+include $(CLEAR_VARS)
+LOCAL_MODULE               := reboot_payload
+LOCAL_SRC_FILES            := $(NX_VENDOR_PATH)/bootloader/hekate.bin
+LOCAL_MODULE_SUFFIX        := .bin
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/firmware/
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+include $(BUILD_NVIDIA_PREBUILT)

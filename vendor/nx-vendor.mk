@@ -19,7 +19,10 @@ $(call inherit-product, device/nintendo/nx/vendor/nx-recovery.mk)
 
 PRODUCT_PACKAGES += public.libraries
 
-# Switch reboot2payload hekate
+# Switch firmware files
 PRODUCT_PACKAGES += \
 	reboot_payload \
-	boot.scr
+	boot.scr \
+	00-android \
+	bootlogo_android \
+	icon_android_hue

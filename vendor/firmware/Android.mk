@@ -18,7 +18,7 @@ NX_VENDOR_PATH := ../../../../../vendor/nintendo
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := reboot_payload
-LOCAL_SRC_FILES            := $(NX_VENDOR_PATH)/hekate.bin
+LOCAL_SRC_FILES            := $(NX_VENDOR_PATH)/bootloader/hekate.bin
 LOCAL_MODULE_SUFFIX        := .bin
 LOCAL_MODULE_CLASS         := ETC
 LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/firmware/
@@ -51,3 +51,31 @@ LOCAL_MODULE_CLASS  := ETC
 LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 include $(BUILD_PREBUILT)
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/coreboot.rom
+
+# Config
+include $(CLEAR_VARS)
+LOCAL_MODULE        := 00-android
+LOCAL_MODULE_SUFFIX := .ini
+LOCAL_SRC_FILES     := $(NX_VENDOR_PATH)/config/00-android.ini
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+include $(BUILD_PREBUILT)
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/00-android.ini
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := bootlogo_android
+LOCAL_MODULE_SUFFIX := .bmp
+LOCAL_SRC_FILES     := $(NX_VENDOR_PATH)/config/bootlogo_android.bmp
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+include $(BUILD_PREBUILT)
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bootlogo_android.bmp
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := icon_android_hue
+LOCAL_MODULE_SUFFIX := .bmp
+LOCAL_SRC_FILES     := $(NX_VENDOR_PATH)/config/icon_android_hue.bmp
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+include $(BUILD_PREBUILT)
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/icon_android_hue.bmp

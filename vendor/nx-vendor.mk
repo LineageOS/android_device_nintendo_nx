@@ -21,5 +21,8 @@ PRODUCT_PACKAGES += public.libraries
 
 # Switch specific firmware
 PRODUCT_PACKAGES += \
+    00-android \
     boot.scr \
+    bootlogo_android \
+    icon_android_hue \
     reboot_payload

@@ -18,7 +18,7 @@ TARGET_TEGRA_VARIANT    ?= common
 
 TARGET_TEGRA_AUDIO    ?= nvaudio
 TARGET_TEGRA_BT       ?= bcm
-TARGET_TEGRA_CEC      ?= nvhdmi
+TARGET_TEGRA_CEC      ?= aosp
 TARGET_TEGRA_KERNEL   ?= 4.9
 TARGET_TEGRA_KEYSTORE ?= nvkeystore
 TARGET_TEGRA_MEMTRACK ?= nvmemtrack

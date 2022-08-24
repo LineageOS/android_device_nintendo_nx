@@ -145,6 +145,9 @@ PRODUCT_PACKAGES += \
     media_profiles_V1_0.xml \
     enctune.conf
 
+# Partitions
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+
 # Power
 PRODUCT_PACKAGES += \
     powerhal.nx.xml

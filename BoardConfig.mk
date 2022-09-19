@@ -56,6 +56,7 @@ TARGET_KERNEL_CONFIG           := tegra_android_defconfig
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+include device/nintendo/nx/modules.mk
 
 # Kernel Image Parameters
 BOARD_KERNEL_IMAGE_NAME        := Image.gz

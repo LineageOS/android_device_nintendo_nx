@@ -18,10 +18,6 @@ on fs
     setprop camera.disable_zsl_mode 1
     setprop ro.config.media_vol_default 15
 
-    # start Early Loadable Kernel Module service
-    exec /vendor/bin/lkm_loader.sh early
-    restorecon_recursive /sys
-
 #start pbc daemon
 service pbc2 /system/vendor/bin/pbc2
     class main
@@ -59,10 +55,6 @@ on boot
     write /sys/devices/system/cpu/cpufreq/schedutil/down_rate_limit_us 2000
     write /sys/devices/system/cpu/cpufreq/schedutil/capacity_margin 256
 
-    # start Loadable Kernel Module service
-    start vendor.lkm_loader
-
-    restorecon_recursive /sys/devices/system/cpu/cpufreq/interactive
     setprop persist.vendor.tegra.decompression cde-client
 
     wait /sys/devices/57000000.gpu/devfreq/57000000.gpu/available_frequencies 10

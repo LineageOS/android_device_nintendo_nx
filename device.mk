@@ -44,7 +44,7 @@ else
 PRODUCT_CHARACTERISTICS   := tablet
 endif
 
-$(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
 
 $(call inherit-product, device/nintendo/nx/vendor/nx-vendor.mk)
 

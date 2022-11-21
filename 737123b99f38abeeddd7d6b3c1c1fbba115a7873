@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af1a5a9_fcf6adb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-21T21:48:55Z",
+      "side": 1,
+      "message": "The config prop is set by tegra-common. And the adbenable script has been removed.",
+      "revId": "737123b99f38abeeddd7d6b3c1c1fbba115a7873",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

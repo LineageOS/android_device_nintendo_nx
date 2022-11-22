@@ -29,36 +29,6 @@
 
 #include <map>
 
-void vendor_set_usb_product_ids(tegra_init *ti)
-{
-	std::map<std::string, std::string> mCommonUsbIds, mDeviceUsbIds;
-
-	mCommonUsbIds["ro.vendor.nv.usb.pid.rndis.acm.adb"]    	= "AF00";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.adb"]              	= "7104";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.accessory.adb"]    	= "7105";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.audio_source.adb"] 	= "7106";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.ncm"]              	= "7107";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.ncm.adb"]          	= "7108";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.midi"]             	= "7109";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.midi.adb"]         	= "710A";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.ecm"]              	= "710B";
-	mCommonUsbIds["ro.vendor.nv.usb.pid.ecm.adb"]          	= "710C";
-
-	mDeviceUsbIds["ro.vendor.nv.usb.vid"]           	= "057E";
-	mDeviceUsbIds["ro.vendor.nv.usb.pid.mtp"]       	= "2000";
-	mDeviceUsbIds["ro.vendor.nv.usb.pid.mtp.adb"]   	= "2000";
-	mDeviceUsbIds["ro.vendor.nv.usb.pid.ptp"]       	= "2000";
-	mDeviceUsbIds["ro.vendor.nv.usb.pid.ptp.adb"]   	= "2000";
-	mDeviceUsbIds["ro.vendor.nv.usb.pid.rndis"]     	= "2000";
-	mDeviceUsbIds["ro.vendor.nv.usb.pid.rndis.adb"] 	= "2000";
-
-	for (auto const& id : mDeviceUsbIds)
-		ti->property_set(id.first, id.second);
-
-	for (auto const& id : mCommonUsbIds)
-		ti->property_set(id.first, id.second);
-}
-
 void vendor_load_properties()
 {
        //                                             device    name     model          id   sku api dpi
@@ -75,7 +45,4 @@ void vendor_load_properties()
 		ti.property_set("ro.product.vendor.model", ti.property_get("ro.product.model"));
 		ti.property_set("ro.product.vendor.manufacturer", ti.property_get("ro.product.manufacturer"));
 	}
-
-	if (ti.vendor_context() || ti.recovery_context())
-		vendor_set_usb_product_ids(&ti);
 }

@@ -13,7 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<!-- Copyright (C) 2018-2021 NVIDIA Corporation.  All rights reserved. -->
+<!-- Copyright (C) 2018-2019 NVIDIA Corporation.  All rights reserved. -->
 
 <audioPolicyConfiguration version="1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
     <!-- version section contains a “version” tag in the form “major.minor” e.g version=”1.0” -->
@@ -47,52 +47,62 @@
         <!-- Primary Audio HAL -->
         <module name="primary" halVersion="2.0">
             <attachedDevices>
-                <item>DummySpeaker</item>
-                <item>Built-In Mic</item>
+                <item>Speaker</item>
             </attachedDevices>
-            <defaultOutputDevice>DummySpeaker</defaultOutputDevice>
+            <defaultOutputDevice>Speaker</defaultOutputDevice>
 
             <!-- Primary HAL mixPorts and devicePorts -->
-            <xi:include href="primary_module_mixports.xml"/>
-            <xi:include href="primary_module_deviceports_tv.xml"/>
+            <xi:include href="/vendor/etc/primary_module_mixports.xml"/>
+            <xi:include href="/vendor/etc/primary_module_deviceports.xml"/>
 
             <!-- route declaration, i.e. list all available sources for a given sink -->
             <routes>
                 <!-- Playback routes -->
-                <route type="mix" sink="DummySpeaker"
+                <route type="mix" sink="Speaker"
+                       sources="primary_output"/>
+                <route type="mix" sink="Wired Headset"
+                       sources="primary_output"/>
+                <route type="mix" sink="Wired Headphones"
+                       sources="primary_output"/>
+                <route type="mix" sink="BT SCO"
+                       sources="primary_output"/>
+                <route type="mix" sink="BT SCO Headset"
+                       sources="primary_output"/>
+                <route type="mix" sink="BT SCO Car Kit"
                        sources="primary_output"/>
                 <route type="mix" sink="AUX Digital"
                        sources="primary_output,multichannel,passthrough,hra"/>
                 <route type="mix" sink="Digital Dock HS"
                        sources="primary_output"/>
+
                 <!-- Capture routes -->
                 <route type="mix" sink="primary_input"
-                       sources="Built-In Mic,Digital Dock HS Mic"/>
+                       sources="BT SCO Headset Mic,Digital Dock HS Mic,AudioIP-In"/>
             </routes>
 
         </module>
 
         <!-- A2DP Input Audio HAL -->
-        <xi:include href="a2dp_in_audio_policy_configuration.xml"/>
+        <xi:include href="/vendor/etc/a2dp_in_audio_policy_configuration.xml"/>
 
         <!-- Usb Audio HAL -->
-        <xi:include href="usb_audio_policy_configuration.xml"/>
+        <xi:include href="/vendor/etc/usb_audio_policy_configuration.xml"/>
 
         <!-- Remote Submix Audio HAL -->
-        <xi:include href="r_submix_audio_policy_configuration.xml"/>
+        <xi:include href="/vendor/etc/r_submix_audio_policy_configuration.xml"/>
 
         <!-- Bluetooth Audio HAL -->
-        <xi:include href="bluetooth_audio_policy_configuration.xml"/>
+        <xi:include href="/vendor/etc/bluetooth_audio_policy_configuration.xml"/>
 
         <!-- MSD Audio HAL -->
-        <xi:include href="msd_audio_policy_configuration.xml"/>
+        <xi:include href="/vendor/etc/msd_audio_policy_configuration.xml"/>
     </modules>
     <!-- End of Modules section -->
 
     <!-- Volume section -->
 
-    <xi:include href="audio_policy_volumes.xml"/>
-    <xi:include href="default_volume_tables.xml"/>
+    <xi:include href="/vendor/etc/audio_policy_volumes.xml"/>
+    <xi:include href="/vendor/etc/default_volume_tables.xml"/>
 
     <!-- End of Volume section -->
 

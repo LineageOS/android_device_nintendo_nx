@@ -17,36 +17,8 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := eks2_foster.dat
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := eks2_foster.dat
-LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/app/eks2
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := eks2_darcy.dat
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := eks2_darcy.dat
-LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/app/eks2
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := eks2_mdarcy.dat
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := eks2_mdarcy.dat
-LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/app/eks2
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := eks2_public.dat
 LOCAL_MODULE_CLASS         := ETC
 LOCAL_SRC_FILES            := eks2_public.dat
-LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/app/eks2
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := eks2_sif.dat
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := eks2_sif.dat
 LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/app/eks2
 include $(BUILD_PREBUILT)

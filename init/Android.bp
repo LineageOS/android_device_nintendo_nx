@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2019 The LineageOS Project
+// Copyright (C) 2021 The LineageOS Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,24 +15,24 @@
 //
 
 cc_library_static {
-    name: "libinit_foster",
+    name: "libinit_nx",
     recovery_available: true,
     include_dirs: [
         "device/nvidia/tegra-common/init",
     ],
     whole_static_libs: ["libinit_tegra"],
     srcs: [
-        "init_foster.cpp",
+        "init_nx.cpp",
     ],
 }
 
 cc_library_static {
-    name: "libinit_foster_vendor",
+    name: "libinit_nx_vendor",
     vendor: true,
     include_dirs: [
         "device/nvidia/tegra-common/init",
     ],
     srcs: [
-        "init_foster.cpp",
+        "init_nx.cpp",
     ],
 }

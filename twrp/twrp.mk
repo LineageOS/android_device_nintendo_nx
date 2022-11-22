@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@ TARGET_KERNEL_CONFIG   := tegra_android_recovery_defconfig
 BOARD_KERNEL_CMDLINE   := androidboot.selinux=permissive
 BOARD_RAMDISK_USE_LZMA := true
 
-PRODUCT_COPY_FILES += device/nvidia/foster/twrp/twrp.fstab:recovery/root/system/etc/twrp.fstab
+PRODUCT_COPY_FILES += device/nintendo/nx/twrp/twrp.fstab:recovery/root/system/etc/twrp.fstab
 
 TW_THEME             := landscape_hdpi
 TW_NO_SCREEN_TIMEOUT := true

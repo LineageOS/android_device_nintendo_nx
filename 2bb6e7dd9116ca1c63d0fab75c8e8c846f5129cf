@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a964d7ca_37a615da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-22T18:39:32Z",
+      "side": 1,
+      "message": "aptX",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "2bb6e7dd9116ca1c63d0fab75c8e8c846f5129cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

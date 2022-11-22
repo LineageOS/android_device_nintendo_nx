@@ -19,6 +19,6 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := nvphsd.conf
 LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := nvphsd.foster.conf
+LOCAL_SRC_FILES            := nvphsd.nx.conf
 LOCAL_ODM_MODULE           := true
 include $(BUILD_PREBUILT)

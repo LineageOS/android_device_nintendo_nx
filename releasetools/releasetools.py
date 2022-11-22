@@ -24,7 +24,7 @@ DTB_PART     = '/dev/block/by-name/DTB'
 STAGING_PART = '/dev/block/by-name/USP'
 VBMETA_PART  = '/dev/block/by-name/vbmeta'
 VENDOR_PART  = '/dev/block/by-name/vendor'
-NX_SD        = '/external_sd/switchroot/android/'
+NX_FILES     = '/mnt/vendor/hos_data'
 
 PUBLIC_KEY_PATH     = '/sys/devices/7000f800.efuse/7000f800.efuse:efuse-burn/public_key'
 FUSED_PATH          = '/sys/devices/7000f800.efuse/7000f800.efuse:efuse-burn/odm_production_mode'
@@ -35,7 +35,7 @@ MODE_FUSED          = '0x00000001\n'
 
 NX_ERISTA_PUBLIC_KEY = '0x7e39e100d1135918ceedfe5d66e66496eed21ecb3486d72095cc0b7c60b8bd4f\n'
 NX_MARIKO_PUBLIC_KEY = '0x72b9db116837289e5bfa57bb1c69e2c8fa9697151aa975066381e7efa19fb0c9\n'
-NX_BL_VERSION       = '2020.04-03755-gf4d532d00d-rev3'
+NX_BL_VERSION       = '2020.04-03753-g53ff5d2195-rev6'
 
 def FullOTA_PostValidate(info):
   if 'INSTALL/bin/resize2fs_static' in info.input_zip.namelist():
@@ -43,7 +43,7 @@ def FullOTA_PostValidate(info):
     info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + VENDOR_PART + '");');
 
 def FullOTA_Assertions(info):
-  if 'RADIO/foster_e.blob' in info.input_zip.namelist():
+  if 'RADIO/coreboot.rom' in info.input_zip.namelist():
     CopyBlobs(info.input_zip, info.output_zip)
     AddBootloaderFlash(info, info.input_zip)
   else:
@@ -87,9 +87,14 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('            read_file("' + PUBLIC_KEY_PATH + '") == "' + NX_ERISTA_PUBLIC_KEY + '" || read_file("' + PUBLIC_KEY_PATH + '") == "' + NX_MARIKO_PUBLIC_KEY + '",')
   info.script.AppendExtra('            (')
   info.script.AppendExtra('              ui_print("Flashing updated bootloader for fused " + getprop(ro.hardware));')
-  info.script.AppendExtra('              package_extract_file("firmware-update/coreboot.rom", "' + NX_SD + 'coreboot.rom");')
-  info.script.AppendExtra('              package_extract_file("firmware-update/common.scr", "' + NX_SD + 'common.scr");')
-  info.script.AppendExtra('              package_extract_file("firmware-update/" + getprop(ro.hardware) + ".scr", "' + NX_SD + 'boot.scr");')
+  info.script.AppendExtra('              run_program("/system/bin/mkdir", "-p", "' + NX_FILES + '");')
+  info.script.AppendExtra('              run_program("/system/bin/mount", "/dev/block/by-name/hos_data", "' + NX_FILES + '");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/coreboot.rom", "' + NX_FILES + '/switchroot/android/coreboot.rom");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/boot.scr", "' + NX_FILES + '/switchroot/android/boot.scr");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/bootlogo_android.bmp", "' + NX_FILES + '/switchroot/android/bootlogo_android.bmp");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/icon_android_hue.bmp", "' + NX_FILES + '/switchroot/android/icon_android_hue.bmp");')
+  info.script.AppendExtra('              package_extract_file("firmware-update/00-android.ini", "' + NX_FILES + '/bootloader/ini/00-android.ini");')
+  info.script.AppendExtra('              run_program("/system/bin/umount", "' + NX_FILES + '");')
   info.script.AppendExtra('            ),')
   info.script.AppendExtra('            (')
   info.script.AppendExtra('              ui_print("Unknown public key for nx detected.");')

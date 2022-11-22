@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85aec1af_b563bf12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-22T21:41:34Z",
+      "side": 1,
+      "message": "we should either not restorecon this (why were we? - it\u0027s fat32) or do it, not just move it before the mount (makes no sense)",
+      "revId": "0648c6da6f59741ff8eb5df2ad911ccca733bd73",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

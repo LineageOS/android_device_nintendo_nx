@@ -1,4 +1,4 @@
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,18 @@ import /vendor/etc/init/hw/init.t210.rc
 import /vendor/etc/init/hw/init.loki_e_common.rc
 
 on fs
-    mount_all /vendor/etc/fstab.dragon
-    swapon_all /vendor/etc/fstab.dragon
+    mount_all /vendor/etc/fstab.nx
+    swapon_all /vendor/etc/fstab.nx
+
+on post-fs
+    write /sys/bus/platform/drivers/tegra-reboot2payload/r2p/default_payload_ready 1
+
+on boot
+    write /sys/devices/system/cpu/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/devices/57000000.gpu/submit_boost_freq 460800
+    write /sys/module/input_cfboost/parameters/boost_gpu 460800
+
+    chown system system /sys/bus/serial/devices/serial0-0/wake
+    chmod 0664 /sys/bus/serial/devices/serial0-0/wake
+    chown system system /sys/bus/serial/devices/serial1-0/wake
+    chmod 0664 /sys/bus/serial/devices/serial1-0/wake

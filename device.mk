@@ -15,11 +15,10 @@
 #
 
 # Only include Shield apps for first party targets
-ifneq ($(filter $(word 2,$(subst _, ,$(TARGET_PRODUCT))), foster foster_tab),)
+ifneq ($(filter $(word 2,$(subst _, ,$(TARGET_PRODUCT))), nx),)
 include device/nvidia/shield-common/shield.mk
 endif
 
-TARGET_REFERENCE_DEVICE ?= foster
 TARGET_TEGRA_VARIANT    ?= common
 
 TARGET_TEGRA_APTX     ?= true
@@ -51,83 +50,23 @@ PRODUCT_AAPT_PREF_CONFIG  := xhdpi
 
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
-$(call inherit-product, device/nvidia/foster/vendor/foster-vendor.mk)
+$(call inherit-product, device/nintendo/nx/vendor/nx-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    device/nvidia/foster/overlay
+    device/nintendo/nx/overlay
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += device/nvidia/foster
+PRODUCT_SOONG_NAMESPACES += device/nintendo/nx
 
 # Init related
 PRODUCT_PACKAGES += \
-    fstab.batuu \
-    fstab.darcy \
-    fstab.dragon \
-    fstab.foster \
-    fstab.foster_e \
-    fstab.foster_e_hdd \
-    fstab.icosa \
-    fstab.icosa_emmc \
-    fstab.jetson_cv \
-    fstab.jetson_e \
-    fstab.loki_e_base \
-    fstab.loki_e_lte \
-    fstab.loki_e_wifi \
-    fstab.porg \
-    fstab.porg_sd \
-    fstab.sif \
-    init.batuu.rc \
-    init.darcy.rc \
-    init.dragon.rc \
-    init.foster_e.rc \
-    init.foster_e_hdd.rc \
-    init.foster_e_common.rc \
+    fstab.nx \
     init.loki_e_common.rc \
     init.loki_foster_e_common.rc \
-    init.icosa.rc \
-    init.icosa_common.rc \
-    init.icosa_emmc.rc \
-    init.jetson_cv.rc \
-    init.jetson_e.rc \
-    init.loki_e_base.rc \
-    init.loki_e_lte.rc \
-    init.loki_e_wifi.rc \
-    init.porg.rc \
-    init.porg_sd.rc \
-    init.sif.rc \
-    init.recovery.batuu.rc \
-    init.recovery.darcy.rc \
-    init.recovery.dragon.rc \
-    init.recovery.foster_e.rc \
-    init.recovery.foster_e_hdd.rc \
-    init.recovery.foster_common.rc \
-    init.recovery.icosa.rc \
-    init.recovery.icosa_emmc.rc \
-    init.recovery.jetson_cv.rc \
-    init.recovery.jetson_e.rc \
-    init.recovery.loki_e_base.rc \
-    init.recovery.loki_e_lte.rc \
-    init.recovery.loki_e_wifi.rc \
-    init.recovery.porg.rc \
-    init.recovery.porg_sd.rc \
-    init.recovery.sif.rc \
-    power.batuu.rc \
-    power.darcy.rc \
-    power.dragon.rc \
-    power.foster_e.rc \
-    power.foster_e_hdd.rc \
-    power.icosa.rc \
-    power.icosa_emmc.rc \
-    power.jetson_cv.rc \
-    power.jetson_e.rc \
-    power.loki_e_base.rc \
-    power.loki_e_lte.rc \
-    power.loki_e_wifi.rc \
-    power.porg.rc \
-    power.porg_sd.rc \
-    power.sif.rc
+    init.nx.rc \
+    init.recovery.nx.rc \
+    power.nx.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -145,12 +84,6 @@ ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 PRODUCT_PACKAGES += \
     audio_effects.xml \
     audio_policy_configuration.xml \
-    dragon_nvaudio_conf.xml \
-    loki_e_base_nvaudio_conf.xml \
-    loki_e_lte_nvaudio_conf.xml \
-    loki_e_wifi_nvaudio_conf.xml \
-    icosa_nvaudio_conf.xml \
-    icosa_emmc_nvaudio_conf.xml \
     nvaudio_conf.xml \
     nvaudio_fx.xml
 endif
@@ -159,11 +92,7 @@ endif
 ifeq ($(TARGET_TEGRA_KEYSTORE),nvkeystore)
 PRODUCT_PACKAGES += \
     init.eks2.rc \
-    eks2_darcy.dat \
-    eks2_foster.dat \
-    eks2_mdarcy.dat \
-    eks2_public.dat \
-    eks2_sif.dat
+    eks2_public.dat
 endif
 
 # Kernel
@@ -176,8 +105,7 @@ endif
 
 # Keylayouts
 PRODUCT_PACKAGES += \
-    gpio-keys.kl \
-    gpio-keys-loki.kl
+    gpio-keys.kl
 
 # Light
 PRODUCT_PACKAGES += \
@@ -228,19 +156,7 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia \
-    thermalhal.batuu.xml \
-    thermalhal.darcy.xml \
-    thermalhal.foster_e.xml \
-    thermalhal.foster_e_hdd.xml \
-    thermalhal.icosa.xml \
-    thermalhal.icosa_emmc.xml \
-    thermalhal.jetson_cv.xml \
-    thermalhal.jetson_e.xml \
-    thermalhal.loki_e_lte.xml \
-    thermalhal.loki_e_wifi.xml \
-    thermalhal.porg.xml \
-    thermalhal.porg_sd.xml \
-    thermalhal.sif.xml
+    thermalhal.nx.xml
 
 # Treble workaround
 PRODUCT_PACKAGES += $(PRODUCT_PACKAGES_SHIPPING_API_LEVEL_29)

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97581aaa_761746af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:33:19Z",
+      "side": 1,
+      "message": "Mmmm... Really? Should this be set per device and not left at the platform default?",
+      "revId": "7cb28cc6d733f4fac1b097e693670b9ef087fa04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

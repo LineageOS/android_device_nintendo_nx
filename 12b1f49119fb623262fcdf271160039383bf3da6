@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2c163e_e5780f1b",
+        "filename": "properties.mk",
+        "patchSetId": 23
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:35:50Z",
+      "side": 1,
+      "message": "A v in the middle of p\u0027s is alphabetized?",
+      "revId": "12b1f49119fb623262fcdf271160039383bf3da6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

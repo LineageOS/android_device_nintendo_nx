@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf4ea3d_7b8700ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T05:35:05Z",
+      "side": 1,
+      "message": "The hardware specification would be better set in the bootloader, but I\u0027m not blocking on that.",
+      "revId": "ba122461661bd5357221f26e58ed9a8408ba64cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

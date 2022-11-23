@@ -16,6 +16,40 @@
       "message": "Seamless display my... There\u0027s nothing seamless about this, it\u0027s the exact same as yellowstone or loki k1 was when they had broken regulators and such.",
       "revId": "759e8463d33d96c80973adc8b9a277863984c6f2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28012bd4_83b33772",
+        "filename": "initfiles/init.nx.rc",
+        "patchSetId": 34
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:25:33Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "759e8463d33d96c80973adc8b9a277863984c6f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b2d1a2_5c89a1b1",
+        "filename": "initfiles/init.recovery.nx.rc",
+        "patchSetId": 34
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:25:33Z",
+      "side": 1,
+      "message": "Is this actually needed? I don\u0027t need this for lineage recovery on foster builds.",
+      "revId": "759e8463d33d96c80973adc8b9a277863984c6f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

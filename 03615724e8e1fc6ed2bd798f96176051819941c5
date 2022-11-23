@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "560498f3_0eb04eab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:38:50Z",
+      "side": 1,
+      "message": "Is any of this considered proprietary? Or can it be directly included in the device tree?",
+      "revId": "03615724e8e1fc6ed2bd798f96176051819941c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704b4a16_f163f57d",
+        "filename": "vendor/firmware/Android.mk",
+        "patchSetId": 37
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:38:50Z",
+      "side": 1,
+      "message": "Uh, what? Shouldn\u0027t this be fixed in the commit that moves vendor stuff to the nintendo vendor?",
+      "revId": "03615724e8e1fc6ed2bd798f96176051819941c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc5ae32_f5e070c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T05:31:12Z",
+      "side": 1,
+      "message": "I am still very ugh on this. Since the way it works is killing wifi on sleep, then restarting the service on wake. Iiuc, pulling the kernel device causes the wifi service to crash, then this script starts it back up after wake causes the kernel device to get re-created.",
+      "revId": "597d16613f4ebf642c022e4783b3f89aff2659bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

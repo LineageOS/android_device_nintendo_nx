@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75cf7b9b_41712384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T04:50:29Z",
+      "side": 1,
+      "message": "To the contrary, nvcamera appears to only support usb cameras on rel-shield-r. The reason it\u0027s included in foster is to support usb cameras in atv as required by cts.",
+      "revId": "8166a6afffcb881666977480baf3a8ef4c915650",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

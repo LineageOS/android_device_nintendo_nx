@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f11ef6_a5ccc652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:10:25Z",
+      "side": 1,
+      "message": "joycond should default to aosp style in the first place. Then if the user wishes to change to the nintendo layout, a persist prop can be set. It\u0027s a bad idea to set persist prop defaults in init scripts. Because on later ota\u0027s, if the desired default value changes, there\u0027s no way to know if the user explicitly chose that value or if it was just left at default.",
+      "revId": "712c8d68f7afc234d1cc76645cf6331d0f659bee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

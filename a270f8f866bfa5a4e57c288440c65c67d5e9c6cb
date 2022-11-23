@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c0aff4_398af51b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T17:42:26Z",
+      "side": 1,
+      "message": "If this needs done, it needs done in a more common way. Like if it\u0027s useful for sdcard boot media targets, then it should be in arch or common in a clause specific to sd targets, so the nano and nx devkit targets benefit as well.",
+      "revId": "a270f8f866bfa5a4e57c288440c65c67d5e9c6cb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

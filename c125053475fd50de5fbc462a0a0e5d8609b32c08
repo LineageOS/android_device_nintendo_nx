@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c475ac97_5713ad28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T05:56:29Z",
+      "side": 1,
+      "message": "This is another one I really don\u0027t like the way it works. It directly jacks around the bluedroid config file.",
+      "revId": "c125053475fd50de5fbc462a0a0e5d8609b32c08",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

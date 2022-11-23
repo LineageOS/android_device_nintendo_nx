@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5595cb_c9ee37ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T05:21:45Z",
+      "side": 1,
+      "message": "Maybe a bit better commit description here. 116 is the standard gpio keycode on tegra for the power button. Foster uses the power button to act as the pairing button. NX devices don\u0027t use gpio for the power button, instead wiring it to the max mfd. So it is safe to remove this line.",
+      "revId": "c6a47f59e066c8f181aaa9db8bcb8b1db15a954f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

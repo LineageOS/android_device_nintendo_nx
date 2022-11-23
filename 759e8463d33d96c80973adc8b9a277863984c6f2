@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e39e2e_296862fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:24:11Z",
+      "side": 1,
+      "message": "Seamless display my... There\u0027s nothing seamless about this, it\u0027s the exact same as yellowstone or loki k1 was when they had broken regulators and such.",
+      "revId": "759e8463d33d96c80973adc8b9a277863984c6f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

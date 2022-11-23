@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719d6c4c_bb9fbfa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:31:37Z",
+      "side": 1,
+      "message": "Two changes have nothing to do with what\u0027s described in the commit message plus are already the default.",
+      "revId": "cd2bb0e5b6ba495872c5e3e16a0a62b84809c740",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eec3f00_5b25b8bd",
+        "filename": "initfiles/init.nx.rc",
+        "patchSetId": 34
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:31:37Z",
+      "side": 1,
+      "message": "This is what\u0027s set in tegra-common",
+      "revId": "cd2bb0e5b6ba495872c5e3e16a0a62b84809c740",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4704a820_929d1fd5",
+        "filename": "initfiles/init.nx.rc",
+        "patchSetId": 34
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:31:37Z",
+      "side": 1,
+      "message": "Fairly certain this is the hal default.",
+      "revId": "cd2bb0e5b6ba495872c5e3e16a0a62b84809c740",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

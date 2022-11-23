@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755f69d8_c1a1233b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T17:40:20Z",
+      "side": 1,
+      "message": "For one, if something like this needs done, it should be in the arch init or common. But isn\u0027t the default governor something like performance? Schedutil isn\u0027t set until on boot, see t210-common. So this is effectively a no-op to begin with.",
+      "revId": "41d349a928c7c8a79ad0d2625b4963f57df13686",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

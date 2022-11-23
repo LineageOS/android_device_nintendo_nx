@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba5ac85_87d08dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T04:53:43Z",
+      "side": 1,
+      "message": "The main purpose was actually to allow fastboot boot to work, to ignore the sar ignore initramfs flag. Iiuc, hekate does flash recovery to both recovery and boot, in case the user somehow breaks out of the install flow and tries to boot the normal android target. So this is still useful on the nx target.",
+      "revId": "fefa106b15172a9724298ea348d9da8ca93a4cf1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

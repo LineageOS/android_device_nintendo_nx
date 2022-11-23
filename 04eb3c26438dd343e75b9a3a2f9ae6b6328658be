@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55123457_dbc00341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T06:34:14Z",
+      "side": 1,
+      "message": "Awww, don\u0027t want to set shipped with p and work with split props? The prebuilts do support it.",
+      "revId": "04eb3c26438dd343e75b9a3a2f9ae6b6328658be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

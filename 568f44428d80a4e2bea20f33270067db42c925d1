@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032ee1b1_276fe93a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-23T17:35:29Z",
+      "side": 1,
+      "message": "There\u0027s weird stuff going on here. It was explained a couple times and it still doesn\u0027t make sense. See my comment in the auto-pair commit that originally adds this. Just setting context on mount probably makes more sense.",
+      "revId": "568f44428d80a4e2bea20f33270067db42c925d1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

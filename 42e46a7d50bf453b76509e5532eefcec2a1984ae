@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a2812f_b709aae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-25T23:31:02Z",
+      "side": 1,
+      "message": "That\u0027s a once over. Probably more that aren\u0027t useful, if the modules were tracked down and of_compatibles checked.",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257399cb_30b89a4b",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-25T23:31:02Z",
+      "side": 1,
+      "message": "ahci is sata support, only necessary for foster_e_hdd and devkits",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d094ac2a_87b99945",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-25T23:31:02Z",
+      "side": 1,
+      "message": "rtl8168 is the ethernet adapter in a couple of the shield devices, not used on nx",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea82f5d_e75076ec",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-25T23:31:02Z",
+      "side": 1,
+      "message": "This is only used by smaug, afaik.",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f9c1f8_ebca4db8",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-25T23:31:02Z",
+      "side": 1,
+      "message": "Until smaug stuff is merged, rt5677, max98357a, and nau8825 aren\u0027t needed by the machine driver.",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8481d3e_e965d03e",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-25T23:31:02Z",
+      "side": 1,
+      "message": "Neither raydium nor sharp are used for nx",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7fe9ed_f2185bcb",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-25T23:31:02Z",
+      "side": 1,
+      "message": "Somewhat pointless without a gps",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

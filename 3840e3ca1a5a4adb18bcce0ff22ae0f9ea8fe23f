@@ -16,6 +16,24 @@
       "message": "Gerrit won\u0027t let me comment directly on a line for this change for some reason. What is the autorotate prop here doing?\n\nSTB makes sense for the integrated hwc display on/off and hdmi handling. But I thought nx was going to use a service to force stuff instead of the hwc handling.",
       "revId": "3840e3ca1a5a4adb18bcce0ff22ae0f9ea8fe23f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9985e964_7c202b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-25T20:23:59Z",
+      "side": 1,
+      "message": "done - and service to force comment - yes but that\u0027s much later when device settings stuff comes in. for now, this.",
+      "parentUuid": "7a2803df_ac5bd131",
+      "revId": "3840e3ca1a5a4adb18bcce0ff22ae0f9ea8fe23f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

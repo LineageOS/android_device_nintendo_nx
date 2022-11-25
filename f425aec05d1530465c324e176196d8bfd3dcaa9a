@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6406ea1_d2c719b5",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2022-11-25T23:34:05Z",
+      "side": 0,
+      "message": "trusty stuff doesn\u0027t work iirc?",
+      "revId": "f425aec05d1530465c324e176196d8bfd3dcaa9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4924bc6_8d057646",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2022-11-25T23:34:05Z",
+      "side": 0,
+      "message": "do we really need tv tuners on nx? seems like this is mostly here for stuff like foster. I don\u0027t mind either way though.",
+      "revId": "f425aec05d1530465c324e176196d8bfd3dcaa9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a06708_0ba7ba40",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2022-11-25T23:34:05Z",
+      "side": 0,
+      "message": "Unneeded",
+      "revId": "f425aec05d1530465c324e176196d8bfd3dcaa9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

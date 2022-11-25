@@ -70,6 +70,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76f362b_20b517f0",
+        "filename": "initfiles/init.nx.rc",
+        "patchSetId": 34
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-25T20:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdd3cc7b_db7b6cec",
+      "revId": "cd2bb0e5b6ba495872c5e3e16a0a62b84809c740",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4704a820_929d1fd5",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "confirmed",
       "parentUuid": "4704a820_929d1fd5",
+      "revId": "cd2bb0e5b6ba495872c5e3e16a0a62b84809c740",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3e9391_9a8d0a55",
+        "filename": "initfiles/init.nx.rc",
+        "patchSetId": 34
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-25T20:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9025a2da_6da386cc",
       "revId": "cd2bb0e5b6ba495872c5e3e16a0a62b84809c740",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }

@@ -34,6 +34,24 @@
       "parentUuid": "7a2803df_ac5bd131",
       "revId": "3840e3ca1a5a4adb18bcce0ff22ae0f9ea8fe23f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e72d8c0e_78e35502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2022-11-25T20:24:12Z",
+      "side": 1,
+      "message": "the idea is for nx to (in the future) use a much nicer service to handle this than previous dockservice iterations, hopefully preserving hwc functionality. either way, before this is implemented, this prop is the only way to properly have disp out at all.\nre: autorotate prop, that can be safely nuked (for now). more experimentation required but this will be part of future dockservice iteration.",
+      "parentUuid": "7a2803df_ac5bd131",
+      "revId": "3840e3ca1a5a4adb18bcce0ff22ae0f9ea8fe23f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

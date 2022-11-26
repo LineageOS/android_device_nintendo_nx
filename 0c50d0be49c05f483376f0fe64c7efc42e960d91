@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70c2165_bbb06f47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-26T21:42:12Z",
+      "side": 1,
+      "message": "Upon verification, this changed in the last months.\n\nFun! Already in vendor/lineage",
+      "revId": "0c50d0be49c05f483376f0fe64c7efc42e960d91",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

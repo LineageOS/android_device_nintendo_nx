@@ -70,6 +70,24 @@
       "parentUuid": "7bfce656_3ab7b2ca",
       "revId": "2a0f92e458d725d849b78af5aea48809c9106441",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fe648c_0c2e4ddb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-26T02:42:38Z",
+      "side": 1,
+      "message": "The target file is a dummy anyways, like the nvidia cypress-fmac target outputs a zero byte cypress-fmac.ko, so the upstream repo could use cypress-fmac_upstream.ko, but output the same real kernel objects.",
+      "parentUuid": "57ada239_d5e67c83",
+      "revId": "2a0f92e458d725d849b78af5aea48809c9106441",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

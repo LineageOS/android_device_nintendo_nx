@@ -35,6 +35,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a972d4_b3b9de32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-26T00:11:58Z",
+      "side": 1,
+      "message": "agree - last CR was the vestigial \"Gerrit responses now include pending CR\" bit",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "257399cb_30b89a4b",

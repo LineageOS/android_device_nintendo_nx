@@ -52,6 +52,24 @@
       "parentUuid": "3903aa15_f75f4ee7",
       "revId": "04eb3c26438dd343e75b9a3a2f9ae6b6328658be",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133a9e33_7cfe9c91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-11-26T06:35:07Z",
+      "side": 1,
+      "message": "Blowup? Huh. Well, I\u0027m fixing split prop stuff for quill right now, so the policy and all should be in place before too long. I set launched with p there. Kinda surprised it failed permissive, though.",
+      "parentUuid": "2a93643a_0ccb8446",
+      "revId": "04eb3c26438dd343e75b9a3a2f9ae6b6328658be",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

@@ -62,3 +62,8 @@ service vendor.sensors_calib /vendor/bin/sensors_calib.sh /mnt/vendor/factory/sw
     group root
     disabled
     oneshot
+
+# Override and disable watchdog because nx doesn't enable hw timer
+service watchdogd /system/bin/watchdogd 20 160
+    override
+    disabled

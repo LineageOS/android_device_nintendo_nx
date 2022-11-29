@@ -45,11 +45,9 @@ endif
 # Charger
 WITH_LINEAGE_CHARGER := false
 
-# Kernel Toolchain (>= GCC 6.x needed for U-Boot)
-KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-6.4.1/bin
-KERNEL_TOOLCHAIN_PREFIX        := aarch64-linux-gnu-
-
 # Kernel Source
+KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-9.3/bin
+KERNEL_TOOLCHAIN_PREFIX        := aarch64-buildroot-linux-gnu-
 TARGET_KERNEL_CLANG_COMPILE    := false
 TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)-nx
 TARGET_KERNEL_CONFIG           := tegra_android_defconfig

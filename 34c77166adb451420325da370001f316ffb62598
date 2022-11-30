@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0638719_6114f6d5",
+        "filename": "device.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-11-30T10:47:22Z",
+      "side": 1,
+      "message": "$(TARGET_COPY_OUT_SYSTEM)",
+      "range": {
+        "startLine": 148,
+        "startChar": 73,
+        "endLine": 148,
+        "endChar": 79
+      },
+      "revId": "34c77166adb451420325da370001f316ffb62598",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

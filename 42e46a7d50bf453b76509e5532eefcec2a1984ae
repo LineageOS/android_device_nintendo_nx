@@ -145,6 +145,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad64f18_6a5f5fb2",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-30T19:43:05Z",
+      "side": 1,
+      "message": "follow up commit if anything,",
+      "parentUuid": "498b9507_598a24e1",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 9
+      },
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ea82f5d_e75076ec",

@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "759cc32c_8b58b775",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-30T19:43:05Z",
+      "side": 0,
+      "message": "eh. Let\u0027s leave it for now. We can fully nuke the support later. I just don\u0027t want to go too far and get unexpected behaviors.",
+      "parentUuid": "c6406ea1_d2c719b5",
+      "revId": "f425aec05d1530465c324e176196d8bfd3dcaa9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4924bc6_8d057646",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-25T23:34:05Z",
       "side": 0,
       "message": "do we really need tv tuners on nx? seems like this is mostly here for stuff like foster. I don\u0027t mind either way though.",
+      "revId": "f425aec05d1530465c324e176196d8bfd3dcaa9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15222d1f_65192f80",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-30T19:43:05Z",
+      "side": 0,
+      "message": "lets leave them, zero extra for us to support and people who dock it might enjoy in some edge case lol",
+      "parentUuid": "f4924bc6_8d057646",
       "revId": "f425aec05d1530465c324e176196d8bfd3dcaa9a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },

@@ -162,6 +162,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bf23f6_6a53c9b0",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-11-30T19:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ea82f5d_e75076ec",
+      "revId": "42e46a7d50bf453b76509e5532eefcec2a1984ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f9c1f8_ebca4db8",

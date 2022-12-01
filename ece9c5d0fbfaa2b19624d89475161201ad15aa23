@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b8d62d_3c61b808",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 43
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-01T20:00:07Z",
+      "side": 1,
+      "message": "Remove this compat check. Lines 18-27",
+      "revId": "ece9c5d0fbfaa2b19624d89475161201ad15aa23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff0e278_03bda65f",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 43
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-01T20:00:07Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "ece9c5d0fbfaa2b19624d89475161201ad15aa23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c088d8bc_a052d1ac",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 43
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-01T20:00:07Z",
+      "side": 1,
+      "message": "This should be converted to the direct fdt puts like the newer l4t script does, but that can be in a followup commit.",
+      "revId": "ece9c5d0fbfaa2b19624d89475161201ad15aa23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e0ced2_20c041f6",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 43
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-01T20:00:07Z",
+      "side": 1,
+      "message": "More whitespace",
+      "revId": "ece9c5d0fbfaa2b19624d89475161201ad15aa23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09982d9_2615c452",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 43
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-01T20:00:07Z",
+      "side": 1,
+      "message": "Lots mo whitespace",
+      "revId": "ece9c5d0fbfaa2b19624d89475161201ad15aa23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd915d01_fb50345f",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 43
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-01T20:00:07Z",
+      "side": 1,
+      "message": "Even more whitespace",
+      "revId": "ece9c5d0fbfaa2b19624d89475161201ad15aa23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

@@ -69,6 +69,30 @@
       },
       "revId": "7f5af24561f687ab13fe8b1710ccee5ebda13ff5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c476525a_4e5ed7fb",
+        "filename": "vendor/nx-vendor.mk",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-12-01T19:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c28f825_2d77a058",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "7f5af24561f687ab13fe8b1710ccee5ebda13ff5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

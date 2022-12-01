@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6b40c5_3ae94a8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-12-01T20:17:34Z",
+      "side": 1,
+      "message": "\u003e Is any of this considered proprietary? Or can it be directly included in the device tree?",
+      "parentUuid": "560498f3_0eb04eab",
+      "revId": "03615724e8e1fc6ed2bd798f96176051819941c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "704b4a16_f163f57d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-23T06:38:50Z",
       "side": 1,
       "message": "Uh, what? Shouldn\u0027t this be fixed in the commit that moves vendor stuff to the nintendo vendor?",
+      "revId": "03615724e8e1fc6ed2bd798f96176051819941c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "679ec3bb_1a7ccc47",
+        "filename": "vendor/firmware/Android.mk",
+        "patchSetId": 37
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-12-01T20:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704b4a16_f163f57d",
       "revId": "03615724e8e1fc6ed2bd798f96176051819941c5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }

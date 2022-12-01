@@ -16,6 +16,15 @@ LOCAL_PATH := $(call my-dir)
 NX_VENDOR_PATH := ../../../../../vendor/nintendo
 
 include $(CLEAR_VARS)
+LOCAL_MODULE        := coreboot
+LOCAL_MODULE_SUFFIX := .rom
+LOCAL_SRC_FILES     := $(NX_VENDOR_PATH)/bootloader/coreboot.rom
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+include $(BUILD_PREBUILT)
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/coreboot.rom
+
+include $(CLEAR_VARS)
 LOCAL_MODULE               := reboot_payload
 LOCAL_SRC_FILES            := $(NX_VENDOR_PATH)/bootloader/hekate.bin
 LOCAL_MODULE_SUFFIX        := .bin

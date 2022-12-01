@@ -15,6 +15,7 @@
 #
 
 LOCAL_PATH := $(call my-dir)
+LINEAGE_TOOLS_PATH := $(abspath prebuilts/tools-lineage/$(HOST_PREBUILT_TAG)/bin)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE        := 00-android
@@ -24,6 +25,19 @@ LOCAL_MODULE_CLASS  := ETC
 LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 include $(BUILD_PREBUILT)
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/00-android.ini
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := boot.scr
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+_uscript_input := $(abspath device/nintendo/nx/bootfiles/android_boot.txt)
+_uscript_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
+_uscript_archive := $(_uscript_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+$(_uscript_archive):
+	@mkdir -p $(dir $@)
+	$(LINEAGE_TOOLS_PATH)/mkimage -A arm -T script -O linux -d $(_uscript_input) $(_uscript_intermediates)/boot.scr
+include $(BUILD_SYSTEM)/base_rules.mk
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/boot.scr
 
 include $(CLEAR_VARS)
 LOCAL_MODULE        := bootlogo_android

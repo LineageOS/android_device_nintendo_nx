@@ -34,6 +34,24 @@
       "parentUuid": "8bf4ea3d_7b8700ee",
       "revId": "ba122461661bd5357221f26e58ed9a8408ba64cd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f37d1a_8c5f0bc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2022-12-02T22:43:40Z",
+      "side": 1,
+      "message": "i actually agree with this given one of the Mariko models uses an Invensense IMU instead of stxxxxxx--worth looking into?",
+      "parentUuid": "093877a6_5402e34b",
+      "revId": "ba122461661bd5357221f26e58ed9a8408ba64cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

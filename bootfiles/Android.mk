@@ -26,9 +26,11 @@ LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 include $(BUILD_PREBUILT)
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/00-android.ini
 
+# DEPRECATED IN FAVOR OF INLINE SCRIPT
 include $(CLEAR_VARS)
 LOCAL_MODULE        := boot.scr
 LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_TAGS   := optional
 LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 _uscript_input := $(abspath device/nintendo/nx/bootfiles/android_boot.txt)
 _uscript_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))

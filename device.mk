@@ -26,6 +26,7 @@ TARGET_TEGRA_MEMTRACK ?= nvmemtrack
 TARGET_TEGRA_OMX      ?= nvmm
 TARGET_TEGRA_PHS      ?= nvphs
 TARGET_TEGRA_POWER    ?= aosp
+TARGET_TEGRA_UBOOT    ?= nx
 TARGET_TEGRA_WIDEVINE ?= true
 TARGET_TEGRA_WIFI     ?= bcm
 

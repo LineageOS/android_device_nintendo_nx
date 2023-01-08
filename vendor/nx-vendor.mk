@@ -15,9 +15,14 @@
 $(call inherit-product, device/nvidia/t210-common/vendor/t210.mk)
 $(call inherit-product, device/nvidia/tegra-common/vendor/common-by-flags.mk)
 $(call inherit-product, device/nintendo/nx/vendor/bcm_firmware/bcm.mk)
-$(call inherit-product, device/nintendo/nx/vendor/nx-recovery.mk)
 
 PRODUCT_PACKAGES += public.libraries
 
-# Switch reboot2payload hekate
-PRODUCT_PACKAGES += reboot_payload
+# Switch firmware files
+PRODUCT_PACKAGES += \
+	00-android \
+	bootlogo_android \
+	icon_android_hue \
+	bl31 \
+	bl33 # \
+	boot.scr

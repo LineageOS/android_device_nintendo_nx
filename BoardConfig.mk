@@ -28,7 +28,7 @@ TARGET_COPY_OUT_VENDOR             := vendor
 BOARD_BUILD_SYSTEM_ROOT_IMAGE      := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
+TARGET_OTA_ASSERT_DEVICE := nx,nx_tab,icosa
 
 # Bootloader versions
 TARGET_BOARD_INFO_FILE := device/nintendo/nx/board-info.txt
@@ -45,11 +45,19 @@ endif
 # Charger
 WITH_LINEAGE_CHARGER := false
 
-# Kernel
+# Kernel Toolchain (>= GCC 6.x needed for U-Boot)
+KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-6.4.1/bin
+KERNEL_TOOLCHAIN_PREFIX        := aarch64-linux-gnu-
+
+# Kernel Source
 TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)
 TARGET_KERNEL_CONFIG           := tegra_android_defconfig
-BOARD_KERNEL_IMAGE_NAME        := Image.gz
 TARGET_KERNEL_ADDITIONAL_FLAGS := "NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)"
+
+# Kerbel Image Parameters
+BOARD_KERNEL_IMAGE_NAME        := Image.gz
+BOARD_KERNEL_LOAD_BASE         := 0x88000000
+BOARD_MKBOOTIMG_ARGS           := --base $(BOARD_KERNEL_LOAD_BASE)
 
 # Recovery
 TARGET_RECOVERY_DENSITY      := hdpi

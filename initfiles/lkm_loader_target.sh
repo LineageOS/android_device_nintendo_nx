@@ -1,3 +1,6 @@
 #!/vendor/bin/sh
 
-/vendor/bin/modprobe -a -d /vendor/lib/modules brcmfmac;
+/vendor/bin/insmod /vendor/lib/modules/compat.ko
+/vendor/bin/insmod /vendor/lib/modules/cfg80211.ko
+/vendor/bin/insmod /vendor/lib/modules/brcmutil.ko
+/vendor/bin/insmod /vendor/lib/modules/brcmfmac.ko

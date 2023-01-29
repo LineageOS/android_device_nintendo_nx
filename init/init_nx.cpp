@@ -49,4 +49,8 @@ void vendor_load_properties()
 		ti.property_set("ro.product.vendor.model", ti.property_get("ro.product.model"));
 		ti.property_set("ro.product.vendor.manufacturer", ti.property_get("ro.product.manufacturer"));
 	}
+
+	if (!ti.vendor_context()) {
+		ti.check_safe_mode_adb();
+	}
 }

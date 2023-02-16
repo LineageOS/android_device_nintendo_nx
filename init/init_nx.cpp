@@ -37,11 +37,14 @@ void vendor_load_properties()
                                                  { "nx",     "vali",  "Switch Lite", 0x4C49, 2, 27, 240 },
                                                  { "nx",     "frig",  "Switch OLED", 0x4947, 3, 27, 240 } };
 
-        // NOTE: modin has same board id as odin, but we bumped by 0x00000001 to keep id's unique for dtimg entry indexing
+    // NOTE: modin has same board id as odin, but we bumped by 0x00000001 to keep id's unique for dtimg entry indexing
+
+    tegra_init::build_version tav = { "11", "RQ1A.210105.003", "7825230_3167.5736" };
 
 	tegra_init ti(devices);
 
 	ti.set_properties();
+    ti.set_fingerprints(tav);
 
 	if (ti.recovery_context()) {
 		ti.property_set("ro.product.vendor.model", ti.property_get("ro.product.model"));

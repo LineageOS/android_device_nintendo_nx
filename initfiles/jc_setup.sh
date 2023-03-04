@@ -61,9 +61,15 @@ for jc_section in ${jc_sections[@]}; do
         echo "LinkKey = ${jc_ltk}" >> ${bdroid_ini}
         echo "LinkKeyType = 4" >> ${bdroid_ini}
         if [ ${jc_type} = "1" ]; then
-                echo "Name = Joy-Con (L)" >> ${bdroid_ini}
+                echo "Name = Joy-Con (L)"  >> ${bdroid_ini}
+                echo "MetricsId = 1"       >> ${bdroid_ini}
+                echo "SdpDiModel = 8198"   >> ${bdroid_ini}
+                echo "HidProductId = 8198" >> ${bdroid_ini}
         else
-                echo "Name = Joy-Con (R)" >> ${bdroid_ini}
+                echo "Name = Joy-Con (R)"  >> ${bdroid_ini}
+                echo "MetricsId = 2"       >> ${bdroid_ini}
+                echo "SdpDiModel = 8199"   >> ${bdroid_ini}
+                echo "HidProductId = 8199" >> ${bdroid_ini}
         fi
     fi
 done

@@ -20,7 +20,9 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
@@ -38,14 +40,14 @@ public class DisplayUtils {
     public static void setInternalDisplayState(boolean state) {
         Log.d(TAG, "setInternalDisplayState: " + String.valueOf(state));
         try {
-            FileOutputStream enableFile = new FileOutputStream("/sys/bus/platform/devices/tegradc.0/enable");
+            FileOutputStream colorModeFile = new FileOutputStream("/sys/bus/platform/devices/tegradc.0/enable");
             byte[] buf = new byte[2];
 
             buf[0] = (byte) (state ? '1' : '0');
             buf[1] = '\n';
 
-            enableFile.write(buf);
-            enableFile.close();
+            colorModeFile.write(buf);
+            colorModeFile.close();
         } catch (IOException e) {
             Log.w(TAG, "Failed to write display state");
         }
@@ -103,5 +105,39 @@ public class DisplayUtils {
             colorimetryStr = "Rec. 2020";
 
         return String.format("%s %d-bit %s", encodingStr, mode.bpc, colorimetryStr);
+    }
+
+    public static void setPanelColorMode(String mode) {
+        Log.d(TAG, "OLED panel mode set: " + mode);
+        try {
+            FileOutputStream colorModeFile = new FileOutputStream("/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
+            byte[] buf = new byte[4];
+
+            buf = mode.getBytes(StandardCharsets.US_ASCII);
+
+            colorModeFile.write(buf);
+            colorModeFile.close();
+        } catch (IOException e) {
+            Log.w(TAG, "Failed to write color mode");
+        }
+    }
+
+    public static String getPanelColorMode() {
+        byte[] buf = new byte[4];
+        String out;
+
+        try {
+            FileInputStream colorModeFile = new FileInputStream("/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
+
+            colorModeFile.read(buf);
+            out = new String(buf, StandardCharsets.US_ASCII);
+            Log.w(TAG, "OLED mode read color mode: " + out);
+            colorModeFile.close();
+        } catch (IOException e) {
+            Log.w(TAG, "Failed to read color mode");
+            out = new String("");
+        }
+
+        return out;
     }
 }

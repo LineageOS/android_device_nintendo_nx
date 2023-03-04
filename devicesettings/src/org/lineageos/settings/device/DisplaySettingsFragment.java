@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -36,6 +37,7 @@ import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -52,6 +54,28 @@ import com.nvidia.NvConstants;
 
 public class DisplaySettingsFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+    public static String[] modes = {
+        "0x03", /* DCS_SM_COLOR_MODE_BASIC */
+        "0x45", /* DCS_SM_COLOR_MODE_WASHED */
+        "0x23", /* DCS_SM_COLOR_MODE_NATURAL */
+        "0x65", /* DCS_SM_COLOR_MODE_VIVID */
+        "0x43", /* DCS_SM_COLOR_MODE_NIGHT0 */
+        "0x15", /* DCS_SM_COLOR_MODE_NIGHT1 */
+        "0x35", /* DCS_SM_COLOR_MODE_NIGHT2 */
+        "0x75" /* DCS_SM_COLOR_MODE_NIGHT3 */
+    };
+
+    public static String[] modeMap = {
+        "Basic",
+        "Washed",
+        "Natural",
+        "Vivid",
+        "Night 0",
+        "Night 1",
+        "Night 2",
+        "Night 3"
+    };
 
     private static final String TAG = DisplaySettingsFragment.class.getSimpleName();
     public boolean mInModeChange = false;
@@ -244,6 +268,52 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
         preferenceScreen.addPreference(perfCategory);
         perfCategory.addPreference(perfPreference);
+
+        if(SystemProperties.get("ro.product.name", "").equals("frig")) {
+            ListPreference panelColorPref = new ListPreference(perfCategory.getContext());
+            String current = DisplayUtils.getPanelColorMode();
+            int index;
+
+            for(index = 0; index < modes.length; index++) {
+                if(current.equals(modes[index]))
+                    break;
+            }
+
+            if(index == modes.length) {
+                Log.e(TAG, "Unsupported OLED panel mode! ID: " + current);
+            } else {
+
+                Log.w(TAG, "OLED Panel Mode Index: " + String.valueOf(index));
+            
+                panelColorPref.setKey("panel_color_mode");                       // matches sysfs node for consistency
+                panelColorPref.setTitle(R.string.panel_color_setting_title);
+                panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[index]));
+                panelColorPref.setEntries(modeMap);
+                panelColorPref.setEntryValues(modes);
+                panelColorPref.setValue(current);
+
+                panelColorPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        int newIndex;
+
+                        DisplayUtils.setPanelColorMode((String)newValue);
+
+                        for(newIndex = 0; newIndex < modes.length; newIndex++) {
+                            if(((String)newValue).equals(modes[newIndex]))
+                                break;
+                        }
+
+                        panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[newIndex]));
+
+                        return true;
+                    }
+                });
+
+                perfCategory.addPreference(panelColorPref);
+            }
+        }
+
     }
 
     private void createDisplaySettings(PreferenceScreen preferenceScreen) {

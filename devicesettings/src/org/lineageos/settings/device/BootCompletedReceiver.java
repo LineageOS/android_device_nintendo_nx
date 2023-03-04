@@ -19,6 +19,7 @@ package org.lineageos.settings.device;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.SystemProperties;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
@@ -26,6 +27,14 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (SystemProperties.get("ro.product.device", "").equals("nx")) {
             context.startService(new Intent(context, DockService.class));
+        }
+
+        // Set preferred OLED panel mode
+        if(SystemProperties.get("ro.boot.hardware.sku", "").equals("frig")) {
+            final SharedPreferences sharedPrefs = context.getSharedPreferences("org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
+            final String panelMode = sharedPrefs.getString("panel_color_mode", "0x23");
+
+            DisplayUtils.setPanelColorMode(panelMode);
         }
     }
 }

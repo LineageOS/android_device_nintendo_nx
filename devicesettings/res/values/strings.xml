@@ -25,4 +25,6 @@
     <string name="mode_selection_title">Select Mode</string>
     <string name="mode_confirmation_title">Confirmation</string>
     <string name="mode_confirmation_summary">Are you sure you want to keep these display settings?\n\nWill revert in %1$d seconds</string>
+    <string name="panel_color_setting_title">Select OLED Panel Color Mode</string>
+    <string name="panel_color_setting_summary">Current mode: %s</string>
 </resources>

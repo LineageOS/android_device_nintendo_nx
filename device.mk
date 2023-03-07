@@ -155,6 +155,10 @@ PRODUCT_PACKAGES += \
     nvphsd.conf
 endif
 
+# Releasetools Helper
+PRODUCT_PACKAGES += \
+	nx-migration.sh
+
 # Shipping API
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)
 

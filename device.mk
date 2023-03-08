@@ -67,8 +67,7 @@ PRODUCT_PACKAGES += \
 	init.frig.rc \
     init.loki_foster_e_common.rc \
     init.nx.rc \
-    init.recovery.nx.rc \
-    power.nx.rc
+    init.recovery.nx.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -108,6 +107,10 @@ PRODUCT_PACKAGES += \
     nx_cec.rc \
     cec_disable.xml \
     RC_for_stdp2550_cec
+
+# CPL
+PRODUCT_PACKAGES += \
+    nx_power
 
 # Device Settings
 PRODUCT_PACKAGES += \

@@ -34,6 +34,12 @@ $(INSTALLED_DTBIMAGE_TARGET): $(INSTALLED_KERNEL_TARGET) | mkdtimg
 ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_DTBIMAGE_TARGET)
 endif
 
+POWER_RC_SYMLINK := $(TARGET_OUT_VENDOR)/odm/etc/power.nx.rc
+$(POWER_RC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	$(hide) ln -sf /data/vendor/nvcpl/power.nx.rc $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(POWER_RC_SYMLINK)
+
 CEC_XML_SYMLINK := $(TARGET_OUT_VENDOR)/etc/permissions/android.hardware.hdmi.cec.xml
 $(CEC_XML_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /data/vendor/permissions/android.hardware.hdmi.cec.xml $@

@@ -53,13 +53,6 @@ LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := power.nx.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_ODM_MODULE   := true
-LOCAL_SRC_FILES    := power.nx.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE        := lkm_loader
 LOCAL_SRC_FILES     := lkm_loader.sh
 LOCAL_MODULE_SUFFIX := .sh
@@ -90,6 +83,15 @@ LOCAL_SRC_FILES     := wifi_reset.sh
 LOCAL_MODULE_SUFFIX := .sh
 LOCAL_INIT_RC       := wifi_reset.rc
 LOCAL_MODULE_CLASS  := EXECUTABLES
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := nx_power
+LOCAL_SRC_FILES            := nx_power.sh
+LOCAL_MODULE_SUFFIX        := .sh
+LOCAL_INIT_RC              := nx_power.rc
+LOCAL_MODULE_CLASS         := EXECUTABLES
+LOCAL_VENDOR_MODULE        := true
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)

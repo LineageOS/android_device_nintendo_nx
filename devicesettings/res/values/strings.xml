@@ -27,4 +27,8 @@
     <string name="mode_confirmation_summary">Are you sure you want to keep these display settings?\n\nWill revert in %1$d seconds</string>
     <string name="panel_color_setting_title">Select OLED Panel Color Mode</string>
     <string name="panel_color_setting_summary">Current mode: %s</string>
+    <string name="analog_title">Toggle Analog Trigger Emulation</string>
+    <string name="analog_summary">If enabled, pressing triggers of Nintendo controllers will result in a simulated 100% trigger axis input</string>
+    <string name="xbox_title">Toggle Nintendo Controller Xbox Layout</string>
+    <string name="xbox_summary">If enabled, Nintendo controllers will use an Xbox-style ABXY layout</string>
 </resources>

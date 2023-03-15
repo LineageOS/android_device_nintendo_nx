@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.util.Log;
@@ -38,6 +39,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
 import java.util.Arrays;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -269,51 +271,118 @@ public class DisplaySettingsFragment extends PreferenceFragment
         preferenceScreen.addPreference(perfCategory);
         perfCategory.addPreference(perfPreference);
 
+        createJoyConSettings(perfCategory);
+
         if(SystemProperties.get("ro.product.name", "").equals("frig")) {
-            ListPreference panelColorPref = new ListPreference(perfCategory.getContext());
-            String current = DisplayUtils.getPanelColorMode();
-            int index;
-
-            for(index = 0; index < modes.length; index++) {
-                if(current.equals(modes[index]))
-                    break;
-            }
-
-            if(index == modes.length) {
-                Log.e(TAG, "Unsupported OLED panel mode! ID: " + current);
-            } else {
-
-                Log.w(TAG, "OLED Panel Mode Index: " + String.valueOf(index));
-            
-                panelColorPref.setKey("panel_color_mode");                       // matches sysfs node for consistency
-                panelColorPref.setTitle(R.string.panel_color_setting_title);
-                panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[index]));
-                panelColorPref.setEntries(modeMap);
-                panelColorPref.setEntryValues(modes);
-                panelColorPref.setValue(current);
-
-                panelColorPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        int newIndex;
-
-                        DisplayUtils.setPanelColorMode((String)newValue);
-
-                        for(newIndex = 0; newIndex < modes.length; newIndex++) {
-                            if(((String)newValue).equals(modes[newIndex]))
-                                break;
-                        }
-
-                        panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[newIndex]));
-
-                        return true;
-                    }
-                });
-
-                perfCategory.addPreference(panelColorPref);
-            }
+            createPanelModeSettings(perfCategory);
         }
 
+    }
+
+    private void createPanelModeSettings(PreferenceCategory perfCategory) {
+        ListPreference panelColorPref = new ListPreference(perfCategory.getContext());
+        String current = DisplayUtils.getPanelColorMode();
+        int index;
+
+        for(index = 0; index < modes.length; index++) {
+            if(current.equals(modes[index]))
+                break;
+        }
+
+        if(index == modes.length) {
+            Log.e(TAG, "Unsupported OLED panel mode! ID: " + current);
+        } else {
+
+            Log.i(TAG, "OLED Panel Mode Index: " + String.valueOf(index));
+        
+            panelColorPref.setKey("panel_color_mode");                       // matches sysfs node for consistency
+            panelColorPref.setTitle(R.string.panel_color_setting_title);
+            panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[index]));
+            panelColorPref.setEntries(modeMap);
+            panelColorPref.setEntryValues(modes);
+            panelColorPref.setValue(current);
+
+            panelColorPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    int newIndex;
+
+                    DisplayUtils.setPanelColorMode((String)newValue);
+
+                    for(newIndex = 0; newIndex < modes.length; newIndex++) {
+                        if(((String)newValue).equals(modes[newIndex]))
+                            break;
+                    }
+
+                    panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[newIndex]));
+
+                    return true;
+                }
+            });
+
+            perfCategory.addPreference(panelColorPref);
+        }
+    }
+
+    private void createJoyConSettings(PreferenceCategory perfCategory) {
+        // Analog trigger preference
+        SwitchPreference analogPref = new SwitchPreference(perfCategory.getContext());
+        boolean analog = (SystemProperties.getInt("persist.joycond.analogtriggers", 0) == 1);
+
+        Log.i(TAG, "JoyCon current analog value: " + String.valueOf(analog));
+    
+        analogPref.setKey("joycon_analog");
+        analogPref.setTitle(R.string.analog_title);
+        analogPref.setSummary(R.string.analog_summary);
+        analogPref.setChecked(analog);
+
+        analogPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                SystemProperties.set("persist.joycond.analogtriggers", (boolean)newValue ? "1" : "0");
+                killJoycond();
+                return true;
+            }
+        });
+
+        perfCategory.addPreference(analogPref);
+
+        // Xbox layout preference
+        SwitchPreference xboxPref = new SwitchPreference(perfCategory.getContext());
+        boolean xbox = (SystemProperties.getInt("persist.joycond.layout", 0) == 1);
+
+        Log.i(TAG, "JoyCon Xbox layout value: " + String.valueOf(xbox));
+    
+        xboxPref.setKey("joycon_xbox");
+        xboxPref.setTitle(R.string.xbox_title);
+        xboxPref.setSummary(R.string.xbox_summary);
+        xboxPref.setChecked(xbox);
+
+        xboxPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                SystemProperties.set("persist.joycond.layout", (boolean)newValue ? "1" : "0");
+                killJoycond();
+                return true;
+            }
+        });
+
+        perfCategory.addPreference(xboxPref);
+    }
+
+    private int killJoycond() {
+        int pid = SystemProperties.getInt("init.svc_debug_pid.joycond", 0);
+        String command = "kill " + String.valueOf(pid);
+
+        if(pid > 0) {
+            try {
+                Runtime.getRuntime().exec(command);
+            } catch(IOException e) {
+                Log.e(TAG, "Failed to restart joycond");
+            }   
+        }
+
+        return pid;
     }
 
     private void createDisplaySettings(PreferenceScreen preferenceScreen) {

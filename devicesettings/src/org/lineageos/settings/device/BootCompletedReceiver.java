@@ -25,7 +25,7 @@ import android.os.SystemProperties;
 public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (SystemProperties.get("ro.product.device", "").equals("nx")) {
+        if (SystemProperties.get("ro.product.device", "").equals("nx") && !SystemProperties.get("ro.boot.hardware.sku", "").equals("vali")) {
             context.startService(new Intent(context, DockService.class));
         }
 

@@ -21,14 +21,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.PreferenceActivity;
 import android.view.WindowManagerPolicyConstants;
-
 
 public class DisplaySettingsActivity extends PreferenceActivity {
     public final Receiver mReceiver = new Receiver();
     public boolean mExternalDisplayConnected;
     private DisplaySettingsFragment mFragment;
+    private String sku = SystemProperties.get("ro.product.name", "");
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +42,14 @@ public class DisplaySettingsActivity extends PreferenceActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(mReceiver);
+        if(!sku.equals("vali"))
+            unregisterReceiver(mReceiver);
     }
 
     protected void onResume() {
         super.onResume();
-        mReceiver.init(this);
+        if(!sku.equals("vali"))
+            mReceiver.init(this);
     }
 
     final class Receiver extends BroadcastReceiver {

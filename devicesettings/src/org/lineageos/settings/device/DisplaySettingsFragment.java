@@ -83,13 +83,16 @@ public class DisplaySettingsFragment extends PreferenceFragment
     public boolean mInModeChange = false;
     private INvDisplay mDisplayService;
     private NvAppProfiles mAppProfiles = null;
+    private String sku = SystemProperties.get("ro.product.name", "");
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        try {
-            mDisplayService = INvDisplay.getService(true /* retry */);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
+        if(!sku.equals("vali")) {
+            try {
+                mDisplayService = INvDisplay.getService(true /* retry */);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         mAppProfiles = new NvAppProfiles(getActivity());
@@ -98,7 +101,9 @@ public class DisplaySettingsFragment extends PreferenceFragment
         PreferenceScreen preferenceScreen = this.getPreferenceScreen();
 
         createPerfSettings(preferenceScreen);
-        createDisplaySettings(preferenceScreen);
+
+        if(!sku.equals("vali"))
+            createDisplaySettings(preferenceScreen);
 
         final ActionBar actionBar = getActivity().getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -129,17 +134,19 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPrefs, String key) {
-        HashMap<String, Integer> uidMap = DisplayUtils.makeUidMap(mDisplayService);
-        if (key.startsWith("mode_")) {
-            String hash = key.substring(5);
-            int display = uidMap.getOrDefault(hash, -1);
+        if(!sku.equals("vali")) {
+            HashMap<String, Integer> uidMap = DisplayUtils.makeUidMap(mDisplayService);
+            if (key.startsWith("mode_")) {
+                String hash = key.substring(5);
+                int display = uidMap.getOrDefault(hash, -1);
 
-            if (display >= 0) {
-                int modeIndex = Integer.valueOf(sharedPrefs.getString(key, ""));
-                ((DisplaySettingsActivity) getActivity()).mReceiver.mBlocked = true;
-                performModeChange(sharedPrefs, key, modeIndex, display);
+                if (display >= 0) {
+                    int modeIndex = Integer.valueOf(sharedPrefs.getString(key, ""));
+                    ((DisplaySettingsActivity) getActivity()).mReceiver.mBlocked = true;
+                    performModeChange(sharedPrefs, key, modeIndex, display);
+                }
+
             }
-
         }
     }
 
@@ -274,7 +281,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
         createJoyConSettings(perfCategory);
 
-        if(SystemProperties.get("ro.product.name", "").equals("frig")) {
+        if(sku.equals("frig")) {
             createPanelModeSettings(perfCategory);
         }
 

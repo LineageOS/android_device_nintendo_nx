@@ -66,6 +66,7 @@ PRODUCT_PACKAGES += \
     init.loki_foster_e_common.rc \
     init.nx.rc \
     init.recovery.nx.rc \
+    init.vali.rc \
     power.nx.rc
 
 # Permissions
@@ -94,6 +95,16 @@ PRODUCT_PACKAGES += \
     audio_policy_configuration.xml \
     nvaudio_conf.xml
 endif
+
+# CEC
+PRODUCT_COPY_FILES := $(filter-out frameworks/native/data/etc/android.hardware.hdmi.cec.xml%android.hardware.hdmi.cec.xml,$(PRODUCT_COPY_FILES))
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.hdmi.cec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/staging/android.hardware.hdmi.cec.xml
+
+PRODUCT_PACKAGES += \
+    nx_cec.rc \
+    cec_disable.xml
 
 # Device Settings
 PRODUCT_PACKAGES += \

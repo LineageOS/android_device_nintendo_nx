@@ -63,6 +63,7 @@ PRODUCT_SOONG_NAMESPACES += device/nintendo/nx
 # Init related
 PRODUCT_PACKAGES += \
     fstab.nx \
+	init.vali.rc \
 	init.frig.rc \
     init.loki_foster_e_common.rc \
     init.nx.rc \
@@ -96,6 +97,16 @@ PRODUCT_PACKAGES += \
     nvaudio_conf.xml \
     nvaudio_fx.xml
 endif
+
+# CEC
+PRODUCT_COPY_FILES := $(filter-out frameworks/native/data/etc/android.hardware.hdmi.cec.xml%android.hardware.hdmi.cec.xml,$(PRODUCT_COPY_FILES))
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.hdmi.cec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/staging/android.hardware.hdmi.cec.xml
+
+PRODUCT_PACKAGES += \
+    nx_cec.rc \
+    cec_disable.xml
 
 # Device Settings
 PRODUCT_PACKAGES += \

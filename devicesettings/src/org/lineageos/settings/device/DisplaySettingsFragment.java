@@ -112,14 +112,14 @@ public class DisplaySettingsFragment extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         prefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
@@ -146,6 +146,12 @@ public class DisplaySettingsFragment extends PreferenceFragment
                     performModeChange(sharedPrefs, key, modeIndex, display);
                 }
 
+                return;
+            }
+
+            if (key.equals("disable_internal_on_external_connected")) {
+                DisplayUtils.setInternalDisplayState(!(((DisplaySettingsActivity)getActivity()).mExternalDisplayConnected && sharedPrefs.getBoolean(key, false)));
+                return;
             }
         }
     }
@@ -478,5 +484,16 @@ public class DisplaySettingsFragment extends PreferenceFragment
         modesPreference.setValue(String.valueOf(currentMode.index));
 
         category.addPreference(modesPreference);
+
+        // Show checkbox to disable internal panel when an external display is connected
+        if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL) {
+            SwitchPreference disableInternalOnExternalConnectedPreference = new SwitchPreference(category.getContext());
+            disableInternalOnExternalConnectedPreference.setTitle(R.string.disable_internal_on_external_connected_title);
+            disableInternalOnExternalConnectedPreference.setSummaryOn(R.string.disable_internal_on_external_connected_summary_on);
+            disableInternalOnExternalConnectedPreference.setSummaryOff(R.string.disable_internal_on_external_connected_summary_off);
+            disableInternalOnExternalConnectedPreference.setKey("disable_internal_on_external_connected");
+
+            category.addPreference(disableInternalOnExternalConnectedPreference);
+        }
     }
 }

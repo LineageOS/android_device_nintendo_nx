@@ -29,6 +29,7 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
@@ -40,6 +41,8 @@ import java.io.IOException;
 import com.nvidia.NvAppProfiles;
 import com.nvidia.NvConstants;
 
+import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
+
 public class DockService extends Service {
     private static final String TAG = DockService.class.getSimpleName();
     private static final String NVCPL_SERVICE_KEY = "nvcpl";
@@ -49,6 +52,7 @@ public class DockService extends Service {
     final private Receiver mReceiver = new Receiver();
     final private NvAppProfiles mAppProfiles = new NvAppProfiles(this);
     private DisplayManager mDisplayManager;
+    private INvDisplay mDisplayService;
     private IWindowManager mWindowManager;
     private boolean isTv;
 
@@ -63,6 +67,13 @@ public class DockService extends Service {
         mDisplayManager = (DisplayManager) getSystemService(Context.DISPLAY_SERVICE);
         mWindowManager = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         isTv = getPackageManager().hasSystemFeature(PackageManager.FEATURE_LEANBACK);
+
+        try {
+            mDisplayService = INvDisplay.getService(true /* retry */);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
         mReceiver.init();
 
         return super.onStartCommand(intent, flags, startId);
@@ -70,8 +81,6 @@ public class DockService extends Service {
 
     final class Receiver extends BroadcastReceiver {
         private boolean mExternalDisplayConnected = false;
-        private int oldDisplayWidth = 1280;
-        private int oldDisplayHeight = 720;
 
         private void setFanProfile(String profile) {
             try {
@@ -136,67 +145,16 @@ public class DockService extends Service {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            SharedPreferences sharedPrefs = context.getSharedPreferences("org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
             final String action = intent.getAction();
+            final boolean connected = intent.getBooleanExtra(WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
 
             switch (action) {
                 case WindowManagerPolicyConstants.ACTION_HDMI_PLUGGED:
-                    Log.i(TAG, "HDMI state update");
-
-                    final boolean connected = intent.getBooleanExtra(WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
-
-                    // Force docked display size to avoid apps being forced to the resolution of the internal panel
-                    try {
-                        if (connected) {
-                            if (isTv) {
-                                // On ATV always force 1080p for UI when docked, external display also always uses id 0
-                                mWindowManager.setForcedDisplaySize(0, 1920, 1080);
-                                mWindowManager.setForcedDisplayDensityForUser(0, 320, UserHandle.USER_CURRENT);
-                            } else {
-                                android.view.Display[] displays = mDisplayManager.getDisplays(DisplayManager.DISPLAY_CATEGORY_PRESENTATION);
-                                if (displays == null || displays.length == 0) {
-                                    Log.e(TAG, "Failed to get available displays");
-                                    return;
-                                }
-                                final int externalDisplayId = displays[0].getDisplayId();
-                                final Point displaySize = new Point();
-
-                                for (int i = 0; i < displays.length; i++)
-                                    Log.i(TAG, "Display idx: " + String.valueOf(i) + " id: " + String.valueOf(displays[i].getDisplayId()));
-
-                                // Preserve user/default set built-in display resolution.
-                                mWindowManager.getBaseDisplaySize(0, displaySize);
-                                oldDisplayWidth = displaySize.x;
-                                oldDisplayHeight = displaySize.y;
-
-                                // Scale built-in display to new resolution for smooth transition
-                                mWindowManager.getInitialDisplaySize(externalDisplayId, displaySize);
-                                mWindowManager.setForcedDisplaySize(0, displaySize.x, displaySize.y);
-
-                                // Set new resolution to external display also.
-                                mWindowManager.setForcedDisplaySize(externalDisplayId, displaySize.x, displaySize.y);
-
-                                // Set density based off standard 32" TV (1920x1080 @ 160dpi)
-                                mWindowManager.setForcedDisplayDensityForUser(externalDisplayId, 160, UserHandle.USER_CURRENT);
-                            }
-                        } else {
-                            Log.i(TAG, "HDMI disconnected");
-                            if (mExternalDisplayConnected) {
-                                if (isTv) {
-                                    // Restore default resolution and density for built-in display
-                                    mWindowManager.clearForcedDisplaySize(0);
-                                    mWindowManager.clearForcedDisplayDensityForUser(0, UserHandle.USER_CURRENT);
-                                } else {
-                                    // Restore user/default resolution back to built-in display
-                                    mWindowManager.setForcedDisplaySize(0, oldDisplayWidth, oldDisplayHeight);
-                                }
-                            } else {
-                                // Restore user/default resolution back to built-in display
-                                mWindowManager.setForcedDisplaySize(0, oldDisplayWidth, oldDisplayHeight);
-                            }
-                        }
-                    } catch (RemoteException ex) {
-                        Log.w(TAG, "Failed to set display resolution");
-                    }
+                    if(mExternalDisplayConnected)
+                        DisplayUtils.setDisplayMode(1, mDisplayService, mWindowManager, sharedPrefs);
+                    else
+                        DisplayUtils.setDisplayMode(0, mDisplayService, mWindowManager, sharedPrefs);
 
                     mExternalDisplayConnected = connected;
 
@@ -205,19 +163,19 @@ public class DockService extends Service {
                 case Intent.ACTION_SCREEN_ON:
                     Log.i(TAG, "Screen on");
 
-                    DisplayUtils.setInternalDisplayState(!mExternalDisplayConnected);
+                    DisplayUtils.setInternalDisplayState(!(mExternalDisplayConnected && sharedPrefs.getBoolean("disable_internal_on_external_connected", false)));
 
                     // Unlock device automatically if docked and reset res otherwise to work around broken HWC rotation
                     try {
                         if (mExternalDisplayConnected) {
                             mWindowManager.dismissKeyguard(null, null);
-                        } else {
-                            mWindowManager.clearForcedDisplaySize(0);
                         }
                     } catch (Exception ex) {
                         Log.w(TAG, "Failed to dismiss keyguard and reset resolution");
                     }
+                    
                     break;
+
                 case DisplayUtils.POWER_UPDATE_INTENT:
                 case Intent.ACTION_USER_PRESENT:
                     updatePowerState(context, mExternalDisplayConnected);

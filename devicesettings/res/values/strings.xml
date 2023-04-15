@@ -31,4 +31,7 @@
     <string name="analog_summary">If enabled, pressing triggers of Nintendo controllers will result in a simulated 100% trigger axis input</string>
     <string name="xbox_title">Toggle Nintendo Controller Xbox Layout</string>
     <string name="xbox_summary">If enabled, Nintendo controllers will use an Xbox-style ABXY layout</string>
+    <string name="disable_internal_on_external_connected_title">Turn off when an external display is connected</string>
+    <string name="disable_internal_on_external_connected_summary_on">The internal panel will be turned off when an external display is connected</string>
+    <string name="disable_internal_on_external_connected_summary_off">Both the internal panel and external display will show the same image</string>
 </resources>

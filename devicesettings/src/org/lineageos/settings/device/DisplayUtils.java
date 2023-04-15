@@ -16,8 +16,11 @@
 
 package org.lineageos.settings.device;
 
+import android.content.SharedPreferences;
+import android.hardware.display.DisplayManager;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.IWindowManager;
 
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -50,6 +53,24 @@ public class DisplayUtils {
             colorModeFile.close();
         } catch (IOException e) {
             Log.w(TAG, "Failed to write display state");
+        }
+    }
+
+    public static void setDisplayMode(int display, INvDisplay displayService, IWindowManager windowManager, SharedPreferences sharedPrefs) {
+        int index = 0; // default 0 for internal
+
+        try {
+            // grab pref for external displays
+            if(display > 0) {
+                String displayUid = String.valueOf(DisplayUtils.makeDisplayLabel(displayService.edidGetInfo(display), display).hashCode());
+                index = Integer.parseInt(sharedPrefs.getString(("mode_" + displayUid), "0"));
+            }
+            
+            // manually set hwc mode and force android to update rotation
+            displayService.modeSetIndex(display, index);
+            windowManager.updateRotation(true, true);
+        } catch(RemoteException e) {
+            Log.e(TAG, "Failed to set mode!");
         }
     }
 

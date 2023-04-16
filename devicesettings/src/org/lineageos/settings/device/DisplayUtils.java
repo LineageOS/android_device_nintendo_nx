@@ -161,4 +161,18 @@ public class DisplayUtils {
 
         return out;
     }
+
+    public static void setFanProfile(String profile) {
+        Log.i(TAG, "Setting fan profile: " + profile);
+        try {
+            final FileOutputStream pwmProfile = new FileOutputStream("/sys/devices/pwm-fan/fan_profile");
+            pwmProfile.write(profile.getBytes());
+            pwmProfile.close();
+            final FileOutputStream estProfile = new FileOutputStream("/sys/devices/thermal-fan-est/fan_profile");
+            estProfile.write(profile.getBytes());
+            estProfile.close();
+        } catch (IOException e) {
+            Log.w(TAG, "Failed to update fan profile");
+        }
+    }
 }

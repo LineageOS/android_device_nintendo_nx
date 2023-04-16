@@ -28,6 +28,7 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -82,37 +83,13 @@ public class DockService extends Service {
     final class Receiver extends BroadcastReceiver {
         private boolean mExternalDisplayConnected = false;
 
-        private void setFanProfile(String profile) {
-            try {
-                final FileOutputStream pwmProfile = new FileOutputStream("/sys/devices/pwm-fan/fan_profile");
-                pwmProfile.write(profile.getBytes());
-                pwmProfile.close();
-                final FileOutputStream estProfile = new FileOutputStream("/sys/devices/thermal-fan-est/fan_profile");
-                estProfile.write(profile.getBytes());
-                estProfile.close();
-            } catch (IOException e) {
-                Log.w(TAG, "Failed to update fan profile");
-            }
-        }
-
-        private void setFanCoeffs(int dev1, int dev2) {
-            try {
-                final FileOutputStream coeffFile = new FileOutputStream("/sys/devices/thermal-fan-est/coeff");
-                coeffFile.write(String.format("[0] %d 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n", dev1).getBytes());
-                coeffFile.write(String.format("[1] %d 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n", dev2).getBytes());
-                coeffFile.close();
-            } catch (IOException e) {
-                Log.w(TAG, "Failed to update fan profile");
-            }
-        }
-
         private void updatePowerState(Context context, boolean connected) {
             final SharedPreferences sharedPrefs = context.getSharedPreferences("org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
             final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
+            final boolean oc = (SystemProperties.getInt("ro.boot.oc", 0) == 1) || (SystemProperties.getInt("ro.boot.dvfsb", 0) == 1);
 
             if (perfMode) {
-                setFanProfile("docked");
-                setFanCoeffs(95, 100);
+                DisplayUtils.setFanProfile(oc ? "Cool" : "Console");
 
                 if (connected) {
                     mAppProfiles.setPowerMode(NvConstants.NV_POWER_MODE_MAX_PERF);
@@ -121,12 +98,10 @@ public class DockService extends Service {
                 }
             } else {
                 if (connected) {
-                    setFanProfile("docked");
-                    setFanCoeffs(95, 100);
+                    DisplayUtils.setFanProfile(oc ? "Cool" : "Console");
                     mAppProfiles.setPowerMode(NvConstants.NV_POWER_MODE_OPTIMIZED);
                 } else {
-                    setFanProfile("handheld");
-                    setFanCoeffs(100, 92);
+                    DisplayUtils.setFanProfile(oc ? "Console" : "Handheld");
                     mAppProfiles.setPowerMode(NvConstants.NV_POWER_MODE_BATTERY_SAVER);
                 }
             }

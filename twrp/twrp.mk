@@ -16,7 +16,9 @@ TARGET_KERNEL_CONFIG   := tegra_android_defconfig
 BOARD_KERNEL_CMDLINE   := androidboot.selinux=permissive
 BOARD_RAMDISK_USE_LZMA := true
 
-PRODUCT_COPY_FILES += device/nintendo/nx/twrp/twrp.fstab:recovery/root/system/etc/twrp.fstab
+PRODUCT_COPY_FILES += \
+	device/nintendo/nx/twrp/twrp.fstab:recovery/root/system/etc/twrp.fstab \
+	device/nintendo/nx/twrp/twrp.flags:recovery/root/system/etc/twrp.flags
 
 TW_THEME             := landscape_hdpi
 TW_NO_SCREEN_TIMEOUT := true

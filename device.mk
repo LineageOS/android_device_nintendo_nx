@@ -36,13 +36,14 @@ include device/nvidia/t210-common/t210.mk
 # Properties
 include $(LOCAL_PATH)/properties.mk
 
-PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi mdpi hdpi
-PRODUCT_AAPT_PREF_CONFIG  := xhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi tvdpi mdpi
+PRODUCT_AAPT_CONFIG := normal large xlarge tvdpi hdpi xhdpi xxhdpi
 ifeq ($(PRODUCT_IS_ATV),true)
 PRODUCT_CHARACTERISTICS   := tv
-PRODUCT_AAPT_PREBUILT_DPI += tvdpi
+PRODUCT_AAPT_PREF_CONFIG  := tvdpi
 else
 PRODUCT_CHARACTERISTICS   := tablet
+PRODUCT_AAPT_PREF_CONFIG  := xhdpi
 endif
 
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)

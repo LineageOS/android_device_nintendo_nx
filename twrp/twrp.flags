@@ -1,0 +1,7 @@
+# TWRP fstab flags
+#mnt pt         format  device                      device2         flags
+/system_root    ext4    /dev/block/by-name/APP                      flags=wait;wipeingui
+/vendor         ext4    /dev/block/by-name/vendor                   flags=wait;wipeingui
+
+/external_sd    vfat    /dev/block/by-name/hos_data                 flags=display="Micro SDcard"
+/usb_otg        auto    /dev/block/sda1             /dev/block/sda  flags=display="USB-OTG";storage;wipeingui;removable

@@ -9,14 +9,14 @@
                 period_size="256"
                 period_count="8"
                 start_threshold="2047"
-                stop_threshold="4294967295"
+                stop_threshold="-1"
                 silence_threshold="0"
-                silence_size="4294967295"
+                silence_size="-1"
                 avail_min="1"
                 devices="hdmi"/>
 
-  <param name="HDMI HW Latency" val="50"/>
-  <param name="DP DEVICE ID" val="3"/>
+    <param name="HDMI HW Latency" val="50"/>
+    <param name="DP DEVICE ID" val="3"/>
   </card>
   <card name="Nintendo Switch APE">
     <pcm_config name="music-playback"
@@ -27,11 +27,24 @@
                 period_size="1024"
                 period_count="4"
                 start_threshold="4095"
-                stop_threshold="4294967295"
+                stop_threshold="-1"
                 silence_threshold="0"
-                silence_size="4294967295"
+                silence_size="-1"
                 avail_min="1"
                 devices="speaker|headphone|headset"/>
+
+    <pcm_config name="music-capture"
+                device_id="0"
+                rate="48000"
+                channels="2"
+                bps="16"
+                period_size="128"
+                period_count="4"
+                start_threshold="1"
+                stop_threshold="512"
+                silence_threshold="0"
+                avail_min="1"
+                devices="headset-mic|headset"/>
 
     <pcm_config name="fast-playback"
                 device_id="5"
@@ -41,9 +54,9 @@
                 period_size="128"
                 period_count="2"
                 start_threshold="255"
-                stop_threshold="4294967295"
+                stop_threshold="-1"
                 silence_threshold="0"
-                silence_size="4294967295"
+                silence_size="-1"
                 avail_min="1"
                 devices="speaker|headphone|headset"/>
 
@@ -71,67 +84,98 @@
     <ctl name="x Speaker R Playback Switch" val="0"/>
     <ctl name="x SPOL MIX SPKVOL L Switch" val="0"/>
     <ctl name="x SPOR MIX SPKVOL R Switch" val="0"/>
-    <ctl name="x Speaker Playback Volume" val="0,0"/>
-    <ctl name="x Speaker Channel Switch" val="0,0"/>
+    <ctl name="x Speaker Playback Volume" val="0 0"/>
+    <ctl name="x Speaker Channel Switch" val="0 0"/>
     <ctl name="x OUT MIXL DAC L1 Switch" val="0"/>
     <ctl name="x OUT MIXR DAC R1 Switch" val="0"/>
     <ctl name="x HPO MIX HPVOL Switch" val="0"/>
     <ctl name="x HP L Playback Switch" val="0"/>
     <ctl name="x HP R Playback Switch" val="0"/>
-    <ctl name="x HP Playback Volume" val="0,0"/>
-    <ctl name="x HP Channel Switch" val="0,0"/>
+    <ctl name="x DAC1 Playback Volume" val="0 0"/>
+    <ctl name="x HP Playback Volume" val="0 0"/>
+    <ctl name="x HP Channel Switch" val="0 0"/>
+    <ctl name="x RECMIXL BST1 Switch" val="0"/>
+    <ctl name="x Stereo ADC MIXL ADC1 Switch" val="0"/>
+    <ctl name="x ADC MIC Capture Volume" val="0 0"/>
+    <ctl name="x ADC Capture Switch" val="0"/>
+    <ctl name="x ADC IF1 Data Switch" val="Normal"/>
 
     <path name="adsp-bypass">
       <!-- No specifc controls now -->
     </path>
 
+    <!-- Enable Sequence Speakers -->
     <path name="rt5640-speaker">
-      <ctl name="x Stereo DAC MIXL DAC L1 Switch" val="1"/>
-      <ctl name="x Stereo DAC MIXR DAC R1 Switch" val="1"/>
       <ctl name="x SPK MIXL DAC L1 Switch" val="1"/>
       <ctl name="x SPK MIXR DAC R1 Switch" val="1"/>
-      <ctl name="x Speaker L Playback Switch" val="1"/>
-      <ctl name="x Speaker R Playback Switch" val="1"/>
+      <ctl name="x Speaker Channel Switch" val="1 1"/>
       <ctl name="x SPOL MIX SPKVOL L Switch" val="1"/>
       <ctl name="x SPOR MIX SPKVOL R Switch" val="1"/>
-      <ctl name="x Speaker Playback Volume" val="30,30"/>
-      <ctl name="x Speaker Channel Switch" val="1,1"/>
+      <ctl name="x Stereo DAC MIXL DAC L1 Switch" val="1"/>
+      <ctl name="x Stereo DAC MIXR DAC R1 Switch" val="1"/>
+      <ctl name="x DAC1 Speaker Playback Volume" val="148 148"/>
+      <ctl name="x Speaker Playback Volume" val="35 35"/>
+      <ctl name="x Speaker L Playback Switch" val="1"/>
+      <ctl name="x Speaker R Playback Switch" val="1"/>
     </path>
 
+    <!-- Enable Sequence Headphones -->
     <path name="rt5640-headphone">
       <ctl name="x HPO MIX HPVOL Switch" val="1"/>
       <ctl name="x HP L Playback Switch" val="1"/>
       <ctl name="x HP R Playback Switch" val="1"/>
+      <ctl name="x OUT MIXL DAC L1 Switch" val="1"/>
+      <ctl name="x OUT MIXR DAC R1 Switch" val="1"/>
       <ctl name="x Stereo DAC MIXL DAC L1 Switch" val="1"/>
       <ctl name="x Stereo DAC MIXR DAC R1 Switch" val="1"/>
-      <ctl name="x HP Playback Volume" val="38,38"/>
-      <ctl name="x HP Channel Switch" val="1,1"/>
-      <ctl name="x OUT MIXR DAC R1 Switch" val="1"/>
-      <ctl name="x OUT MIXL DAC L1 Switch" val="1"/>
+      <ctl name="x DAC1 Playback Volume" val="170 170"/>
+      <ctl name="x HP Playback Volume" val="31 31"/>
+      <ctl name="x HP Channel Switch" val="1 1"/>
     </path>
 
+    <!-- Enable Sequence Headset Mic -->
+    <path name="rt5640-headset">
+      <ctl name="x ADC MIC Capture Volume" val="47 0"/>
+      <ctl name="x ADC Capture Switch" val="1 0"/>
+      <ctl name="x Stereo ADC MIXL ADC1 Switch" val="1"/>
+      <ctl name="x RECMIXL BST1 Switch" val="1"/>
+      <ctl name="x IN1 Boost" val="5"/>
+      <ctl name="x ADC IF1 Data Switch" val="left copy to right"/>
+    </path>
+
+    <!-- Enable Speaker -->
     <path name="speaker">
       <path name="rt5640-speaker"/>
       <path name="adsp-bypass"/>
     </path>
 
+    <!-- Enable Headphones -->
     <path name="headphone">
       <path name="rt5640-headphone"/>
       <path name="adsp-bypass"/>
     </path>
 
+    <!-- Enable Headphones + Headset Mic -->
     <path name="headset">
       <path name="headphone"/>
+      <path name="rt5640-headset"/>
     </path>
 
-    <path name="speaker-and-headphone">
-      <path name="rt5640-speaker"/>
-      <path name="rt5640-headphone"/>
+    <path name="headset-mic">
+      <path name="rt5640-headset"/>
       <path name="adsp-bypass"/>
     </path>
 
+   <!-- Enable Headphones + Speakers -->
+    <path name="speaker-and-headphone">
+      <path name="speaker"/>
+      <path name="headphone"/>
+    </path>
+
+    <!-- Enable Speakers + Headphones + Headset Mic -->
     <path name="speaker-and-headset">
-      <path name="speaker-and-headphone"/>
+      <path name="speaker"/>
+      <path name="headset"/>
     </path>
   </card>
 </AudioConfigs>

@@ -23,6 +23,9 @@
         <item name="preferenceStyle">@style/Theme.Main.PreferenceStyle</item>
         <item name="preferenceTheme">@style/Theme.Main.PreferenceTheme</item>
         <item name="switchPreferenceStyle">@style/Theme.Main.SwitchPreferenceStyle</item>
+        <item name="android:colorPrimary">#3E0E2F</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
     </style>
 
     <style name="Theme.Main.DialogPreferenceStyle" parent="@*android:style/Preference.DeviceDefault.DialogPreference">

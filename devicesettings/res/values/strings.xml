@@ -15,8 +15,8 @@
      limitations under the License.
 -->
 <resources>
-    <string name="display_panel_title">Display and Performance Configuration</string>
-    <string name="display_panel_summary">Adjust display and performance settings</string>
+    <string name="display_panel_title">Switch Configuration</string>
+    <string name="display_panel_summary">Adjust docking, performance, and controller settings</string>
     <string name="perf_category_title">Customization</string>
     <string name="perf_setting_title">Performance Mode</string>
     <string name="perf_setting_summary">Modifies CPU and GPU clocks in order to get the best possible performance at the cost of higher battery wear and usage</string>

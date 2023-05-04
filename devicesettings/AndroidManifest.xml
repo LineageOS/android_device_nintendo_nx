@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CONTROL_KEYGUARD" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
 
     <uses-sdk
         android:minSdkVersion="28"
@@ -15,6 +18,8 @@
 
     <application
         android:label="@string/device_settings_app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@mipmap/ic_banner"
         android:persistent="true">
 
         <service android:name=".DockService"
@@ -42,11 +47,11 @@
         <activity
             android:name=".DisplaySettingsActivity"
             android:label="@string/display_panel_title"
-            android:icon="@drawable/ic_settings_additional_buttons"
             android:theme="@style/Theme.Main">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
             <meta-data
@@ -55,6 +60,9 @@
             <meta-data
                 android:name="com.android.settings.summary"
                 android:resource="@string/display_panel_summary" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_settings_additional_buttons" />
         </activity>
     </application>
 </manifest>

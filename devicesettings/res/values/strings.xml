@@ -15,8 +15,8 @@
      limitations under the License.
 -->
 <resources>
-    <string name="display_panel_title">Display and Performance Configuration</string>
-    <string name="display_panel_summary">Adjust display and performance settings</string>
+    <string name="display_panel_title">Switch Configuration</string>
+    <string name="display_panel_summary">Adjust docking, performance, and controller settings</string>
     <string name="perf_category_title">Customization</string>
     <string name="perf_setting_title">Performance Mode</string>
     <string name="perf_setting_summary">Modifies CPU and GPU clocks in order to get the best possible performance at the cost of higher battery wear and usage</string>
@@ -27,11 +27,11 @@
     <string name="mode_confirmation_summary">Are you sure you want to keep these display settings?\n\nWill revert in %1$d seconds</string>
     <string name="panel_color_setting_title">Select OLED Panel Color Mode</string>
     <string name="panel_color_setting_summary">Current mode: %s</string>
-    <string name="analog_title">Toggle Analog Trigger Emulation</string>
-    <string name="analog_summary">If enabled, pressing triggers of Nintendo controllers will result in a simulated 100% trigger axis input</string>
-    <string name="xbox_title">Toggle Nintendo Controller Xbox Layout</string>
-    <string name="xbox_summary">If enabled, Nintendo controllers will use an Xbox-style ABXY layout</string>
-    <string name="disable_internal_on_external_connected_title">Turn off when an external display is connected</string>
+    <string name="analog_title">Analog Trigger Emulation</string>
+    <string name="analog_summary">If enabled, pressing triggers of JoyCons and Pro Controllers will simulate 100% trigger axis inputs</string>
+    <string name="xbox_title">Xbox Layout</string>
+    <string name="xbox_summary">If enabled, JoyCons and Pro Controllers will use an Xbox-style ABXY layout</string>
+    <string name="disable_internal_on_external_connected_title">Disable Console Screen When Docked</string>
     <string name="disable_internal_on_external_connected_summary_on">The internal panel will be turned off when an external display is connected</string>
     <string name="disable_internal_on_external_connected_summary_off">Both the internal panel and external display will show the same image</string>
 </resources>

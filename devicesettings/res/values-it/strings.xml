@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="display_panel_title">Configurazione Switch</string>
+    <string name="display_panel_summary">Configura dock, prestazioni e controller</string>
+    <string name="perf_category_title">Personalizzazione</string>
+    <string name="perf_setting_title">Modalità prestazioni</string>
+    <string name="perf_setting_summary">Modifica la frequenza di CPU e GPU per ottenere le migliori prestazioni possibli al costo di un maggiore consumo e usura della batteria</string>
+    <string name="perf_warning_title">ATTENZIONE</string>
+    <string name="perf_warning_summary">Questo diminuirà la vita della console e della batteria, con possibli instabilità.\n\nVuoi continuare?</string>
+    <string name="mode_selection_title">Seleziona modalità</string>
+    <string name="mode_confirmation_title">Conferma</string>
+    <string name="mode_confirmation_summary">Vuoi mantenere queste impostazioni del display?\n\nVerranno ripristinate in %1$d secondi</string>
+    <string name="panel_color_setting_title">Modalità colore pannello OLED</string>
+    <string name="panel_color_setting_summary">Modalità attuale: %s</string>
+    <string name="analog_title">Emulazione trigger analogici</string>
+    <string name="analog_summary">Se attivata, la pressione dei trigger dei JoyCon e Pro Controller simulerà la pressione al 100% del trigger analogico</string>
+    <string name="xbox_title">Layout Xbox</string>
+    <string name="xbox_summary">Se attivato, i JoyCon e Pro Controller useranno il layout ABXY stile Xbox</string>
+    <string name="disable_internal_on_external_connected_title">Disattiva schermo console mentre è nella dock</string>
+    <string name="disable_internal_on_external_connected_summary_on">Il display integrato verrà spento mentre è connesso un display esterno</string>
+    <string name="disable_internal_on_external_connected_summary_off">Sia il display integrato che quello esterno mostreranno la stessa immagine</string>
+</resources>

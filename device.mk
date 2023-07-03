@@ -107,7 +107,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     nx_cec.rc \
-    cec_disable.xml
+    cec_disable.xml \
+    RC_for_stdp2550_cec
 
 # Device Settings
 PRODUCT_PACKAGES += \

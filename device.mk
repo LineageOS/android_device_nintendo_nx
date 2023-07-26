@@ -33,7 +33,7 @@ TARGET_TEGRA_WIREGUARD ?= compat
 include device/nvidia/t210-common/t210.mk
 
 # Properties
-include $(LOCAL_PATH)/properties.mk
+include device/nintendo/nx/properties.mk
 
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi tvdpi mdpi
 PRODUCT_AAPT_CONFIG := normal large xlarge
@@ -47,7 +47,7 @@ endif
 
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
 
-$(call inherit-product, device/nintendo/nx/vendor/nx-vendor.mk)
+include device/nintendo/nx/vendor/nx-vendor.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \

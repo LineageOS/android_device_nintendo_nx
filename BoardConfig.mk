@@ -78,9 +78,4 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 BOARD_VNDK_VERSION                     := current
 PRODUCT_FULL_TREBLE_OVERRIDE           := true
 
-# TWRP Support
-ifeq ($(WITH_TWRP),true)
-include device/nintendo/nx/twrp/twrp.mk
-endif
-
 include device/nvidia/t210-common/BoardConfigCommon.mk

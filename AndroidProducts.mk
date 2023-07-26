@@ -15,12 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_nx.mk \
-    $(LOCAL_DIR)/twrp_nx.mk
+    $(LOCAL_DIR)/lineage_nx.mk
 
 COMMON_LUNCH_CHOICES := \
     lineage_nx-eng \
     lineage_nx-user \
-    lineage_nx-userdebug \
-    twrp_nx-eng \
-    twrp_nx-userdebug
+    lineage_nx-userdebug

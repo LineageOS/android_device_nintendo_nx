@@ -77,3 +77,8 @@ if [ -z "$(getprop persist.joycond.layout)" ]; then
     echo "JoyCon layout prefs not set--setting AOSP default (Xbox)"
     setprop persist.joycond.layout 1
 fi
+
+if [ -z "$(getprop persist.joycond.combined)" ]; then
+    echo "JoyCon combined pref not set--setting default (combined)"
+    setprop persist.joycond.combined 1
+fi

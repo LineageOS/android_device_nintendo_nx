@@ -17,7 +17,7 @@ on property:vold.post_fs_data_done=1
     chown system system /data/vendor/permissions/android.hardware.hdmi.cec.xml
     rm /data/vendor/permissions/android.hardware.hdmi.cec.xml
 
-on property:vold.post_fs_data_done=1 && property:ro.boot.hardware.sku=vali
+on property:vold.post_fs_data_done=1 && property:ro.boot.cec_disable=1
     symlink /vendor/etc/staging/cec_disable.xml /data/vendor/permissions/android.hardware.hdmi.cec.xml
 
 on property:vold.post_fs_data_done=1

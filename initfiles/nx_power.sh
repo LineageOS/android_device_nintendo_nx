@@ -30,8 +30,12 @@ touch $outfile
 # Set default clocks (based on HOS T210 limits)
 max_cpu="1785000 1785000 1428000"
 max_gpu="921600 768000 460800"
+min_gpu="0 0 0"
+min_cpu="0 0 0"
 
-if [ "$sku" = "vali" ]; then
+if [ "$sku" = "odin" ]; then
+    min_gpu="153600 153600 153600"
+elif [ "$sku" = "vali" ]; then
     max_gpu="768000 768000 460800"
 
     # Set Vali CPU clocks
@@ -59,7 +63,7 @@ echo "# Key   Docked Perf   Docked Opt / Undocked Perf   Undocked Opt"  >> $outf
 echo "NV_DEFAULT_MODE 0"                                                >> $outfile
 echo "panelresolution=-1X-1"                                            >> $outfile
 echo "NV_MAX_FREQ $max_cpu"                                             >> $outfile
-echo "NV_MIN_FREQ 0 0 0"                                                >> $outfile
+echo "NV_MIN_FREQ $min_cpu"                                             >> $outfile
 echo "NV_MAX_GPU_FREQ $max_gpu"                                         >> $outfile
 echo "NV_MIN_GPU_FREQ 0 0 0"                                            >> $outfile
 echo "NV_APM_CPU_BOOST 5 5 0"                                           >> $outfile

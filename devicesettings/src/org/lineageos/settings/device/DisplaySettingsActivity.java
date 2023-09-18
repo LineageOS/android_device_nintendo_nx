@@ -25,7 +25,6 @@ import android.os.SystemProperties;
 import android.view.WindowManagerPolicyConstants;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
-import com.android.settingslib.widget.R;
 
 public class DisplaySettingsActivity extends CollapsingToolbarBaseActivity {
     public final Receiver mReceiver = new Receiver();
@@ -36,7 +35,8 @@ public class DisplaySettingsActivity extends CollapsingToolbarBaseActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction().replace(R.id.content_frame,
+            getFragmentManager().beginTransaction().replace(
+                    com.android.settingslib.collapsingtoolbar.R.id.content_frame,
                     new DisplaySettingsFragment()).commit();
         }
     }

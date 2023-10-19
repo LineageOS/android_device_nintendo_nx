@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f09193_9f82864a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-19T20:02:44Z",
+      "side": 1,
+      "message": "refactors fstab to actually mount everything properly and conform to new twrp spec",
+      "revId": "7f11931f6cad0d8e79740acb528debc187081cf3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "squash with later init decruft?",
       "revId": "1f60e6acdd55d32b7e51440a40e61eb347a58e6c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5befb1f_a523db9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2023-10-19T20:01:38Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "2d1f4391_86c412c4",
+      "revId": "1f60e6acdd55d32b7e51440a40e61eb347a58e6c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11c1654_27cc22be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-19T20:00:45Z",
+      "side": 1,
+      "message": "verified on nx (odin, frig)\nnotes:\n- base with no props set will yield stockish nintendo freqs with perf mode being highest stock nintendo clock\n- boost prop allows clock boost to closer to what nv has set in their cpl config--0 0 0 on mariko non-lite (lite is constrained by power system and inability to dock) and modest clock limits on lite. No boost for v1 due to soc limits.\n- kernel does most of the governing regardless, this just sets limits not targets",
+      "revId": "e345da63c0f80d3135164c746519f08a0385675f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "Random suggestion, how about switching to libperfmgr? It even supports selecting different profiles based on props",
       "revId": "a5233ff6a48e173ec9491e825b77a881091d8873",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1514fdb_b571dd47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-19T19:56:15Z",
+      "side": 1,
+      "message": "cpl is hooked into a ton of other crap like the hwcomposer\nand fwiw this already supports multiple profiles to some extent\none day maybe (esp given cpl will likely have to die soon)",
+      "parentUuid": "3c066dfc_9aa1f766",
+      "revId": "a5233ff6a48e173ec9491e825b77a881091d8873",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

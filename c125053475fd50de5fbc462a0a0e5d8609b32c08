@@ -33,6 +33,24 @@
       "message": "Oh, in terms of code review. The factory mount would be nicer to have a context given in the mount command, then the restorecon wouldn\u0027t be needed. Reference roth.",
       "revId": "c125053475fd50de5fbc462a0a0e5d8609b32c08",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6d50ab_851c38a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-19T19:48:25Z",
+      "side": 1,
+      "message": "fwiw they do this on stock\nhttps://dumps.tadiphone.dev/dumps/nvidia/foster/-/blob/foster_e_hdd-user-11-RQ1A.210105.003-7825230_3062.3935-release-keys/vendor/etc/init/hw/init.tegra_emmc.rc#L13",
+      "parentUuid": "d1310527_5b9991e9",
+      "revId": "c125053475fd50de5fbc462a0a0e5d8609b32c08",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

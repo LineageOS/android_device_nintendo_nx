@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3c609f_7cf2fe4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 46
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-19T19:42:54Z",
+      "side": 1,
+      "message": "verified on nx (odin, frig)\nrequired for wifi to work after sleep sadly",
+      "revId": "b993343a7a86aa73462c4c6611d5a00ed02ab01a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

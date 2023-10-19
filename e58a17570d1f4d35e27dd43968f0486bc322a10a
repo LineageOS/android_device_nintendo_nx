@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f2eaf09_9a06878b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-19T20:09:58Z",
+      "side": 1,
+      "message": "prolly not needed cuz we dont wanna encourage non-clean migration and options will not be the same",
+      "revId": "e58a17570d1f4d35e27dd43968f0486bc322a10a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

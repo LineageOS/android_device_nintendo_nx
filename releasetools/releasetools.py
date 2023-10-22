@@ -90,4 +90,7 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('      run_program("/system/bin/umount", "' + NX_FILES + '");')
   info.script.AppendExtra('    )')
   info.script.AppendExtra('  );')
-  info.script.AppendExtra('  package_extract_file("install/" + tegra_get_dtbname(), "' + DTB_PART + '");')
+
+
+  """ flash dtb """
+  info.script.AppendExtra('  package_extract_file("install/nx-plat.dtimg", "' + DTB_PART + '");')

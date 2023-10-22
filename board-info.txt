@@ -1,1 +1,1 @@
-require version-bootloader=2020.04-03753-g53ff5d2195-rev6
+require version-bootloader=2022.10-g4f111ee6dc

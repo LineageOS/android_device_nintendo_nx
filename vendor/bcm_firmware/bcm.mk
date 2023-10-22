@@ -18,6 +18,5 @@ COMMON_BCM_PATH := device/nvidia/tegra-common/vendor/bcm_firmware
 $(call inherit-product, $(COMMON_BCM_PATH)/bcm4354/device-bcm.mk)
 
 PRODUCT_PACKAGES += \
-    bcm4356 \
-    brcmfmac4356-pcie \
-    brcmfmac4356-pcie.clm_blob
+    BCM4356A3 \
+    brcmfmac4356A3-pcie

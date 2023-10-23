@@ -72,6 +72,58 @@
                 silence_threshold="0"
                 avail_min="1"
                 devices="headset-mic"/>
+                
+    <pcm_config name="bt-sco-playback"
+                device_id="1"
+                rate="8000"
+                channels="1"
+                bps="16"
+                period_size="128"
+                period_count="4"
+                start_threshold="511"
+                stop_threshold="512"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco"/>
+
+    <pcm_config name="bt-sco-capture"
+                device_id="1"
+                rate="8000"
+                channels="1"
+                bps="16"
+                period_size="128"
+                period_count="4"
+                start_threshold="1"
+                stop_threshold="512"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco-mic"/>
+
+    <pcm_config name="bt-sco-wb-playback"
+                device_id="1"
+                rate="16000"
+                channels="1"
+                bps="16"
+                period_size="256"
+                period_count="4"
+                start_threshold="1023"
+                stop_threshold="1024"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco"/>
+
+    <pcm_config name="bt-sco-wb-capture"
+                device_id="1"
+                rate="16000"
+                channels="1"
+                bps="16"
+                period_size="256"
+                period_count="4"
+                start_threshold="1"
+                stop_threshold="1024"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco-mic"/>
 
     <param name="nvoice" val="0"/>
     <param name="builtin speaker" val="1"/>
@@ -111,6 +163,10 @@
     <ctl name="x HP R Playback Switch" val="0"/>
     <ctl name="x HP Playback Volume" val="0,0"/>
     <ctl name="x HP Channel Switch" val="0,0"/>
+
+    <!-- BT-SCO path -->
+    <ctl name="I2S2 Mux" val="ADMAIF2"/>
+    <ctl name="ADMAIF2 Mux" val="I2S2"/>
 
     <path name="adsp-bypass">
       <!-- No specifc controls now -->

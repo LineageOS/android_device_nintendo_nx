@@ -55,7 +55,7 @@ include $(BUILD_SYSTEM)/base_rules.mk
 # mdarcy clm target
 include $(CLEAR_VARS)
 LOCAL_MODULE        := brcmfmac4356-pcie.clm_blob
-LOCAL_SRC_FILES     := $(NX_BCM_PATH)/bcm4356/brcmfmac4356-pcie.clm_blob
+LOCAL_SRC_FILES     := $(NX_BCM_PATH)/brcmfmac4356-pcie.clm_blob
 LOCAL_MODULE_CLASS  := ETC
 LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/firmware
 LOCAL_MODULE_TAGS   := optional

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf366fac_46b0327c",
+        "filename": "vendor/bcm_firmware/Android.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-10-23T20:18:13Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the path you want.",
+      "revId": "21b1f0c8e8a3973d31c8de303637125ea996059b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

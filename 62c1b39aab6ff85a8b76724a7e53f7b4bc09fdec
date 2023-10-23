@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9391a033_a891009d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-10-23T23:08:22Z",
+      "side": 1,
+      "message": "Works, but commit message isn\u0027t a real fixup.",
+      "revId": "62c1b39aab6ff85a8b76724a7e53f7b4bc09fdec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

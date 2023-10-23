@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b60f6ff_29291734",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-23T03:34:52Z",
+      "side": 1,
+      "message": "NOTE: will need coinciding vendor change to add the mdarcy clm_blob",
+      "revId": "4cf04beb76fd031768c8a8cebe7fbf0958bc8981",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

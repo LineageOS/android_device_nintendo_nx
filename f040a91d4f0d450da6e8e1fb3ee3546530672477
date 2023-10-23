@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ab7110c4_3e8ef84f",
+        "filename": "vendor/bcm_firmware/Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2023-10-23T20:19:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60a2bc0_5f72450f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "f040a91d4f0d450da6e8e1fb3ee3546530672477",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "450944f9_f130856b",
         "filename": "vendor/bcm_firmware/Android.mk",
         "patchSetId": 7

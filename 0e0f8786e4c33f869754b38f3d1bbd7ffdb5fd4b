@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d234eb_cdaea7ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-10-23T03:20:42Z",
+      "side": 1,
+      "message": "verified nx (odin and frig)\nfixes build error",
+      "revId": "0e0f8786e4c33f869754b38f3d1bbd7ffdb5fd4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

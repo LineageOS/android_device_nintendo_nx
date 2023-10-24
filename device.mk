@@ -19,7 +19,7 @@ TARGET_TEGRA_VARIANT    ?= common
 TARGET_TEGRA_AUDIO    ?= nvaudio
 TARGET_TEGRA_BT       ?= bcm
 TARGET_TEGRA_CAMERA   ?= nvcamera
-TARGET_TEGRA_CEC      ?= nvhdmi
+TARGET_TEGRA_CEC      ?= aosp
 TARGET_TEGRA_KERNEL   ?= 4.9
 TARGET_TEGRA_KEYSTORE ?= software
 TARGET_TEGRA_MEMTRACK ?= nvmemtrack
@@ -36,11 +36,10 @@ include device/nvidia/t210-common/t210.mk
 # Properties
 include $(LOCAL_PATH)/properties.mk
 
-PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi mdpi hdpi
-PRODUCT_AAPT_PREF_CONFIG  := xhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi tvdpi mdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG  := tvdpi
 ifeq ($(PRODUCT_IS_ATV),true)
 PRODUCT_CHARACTERISTICS   := tv
-PRODUCT_AAPT_PREBUILT_DPI += tvdpi
 else
 PRODUCT_CHARACTERISTICS   := tablet
 endif
@@ -156,6 +155,18 @@ endif
 
 # Shipping API
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)
+
+# STMicroElectronics IMU
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0-impl \
+    sensors.stmicro \
+    sensors_calib
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml
 
 # Thermal
 PRODUCT_PACKAGES += \

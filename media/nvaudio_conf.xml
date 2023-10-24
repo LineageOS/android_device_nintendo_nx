@@ -47,6 +47,84 @@
                 avail_min="1"
                 devices="speaker|headphone|headset"/>
 
+    <pcm_config name="music-capture"
+                device_id="0"
+                rate="48000"
+                channels="2"
+                bps="16"
+                period_size="128"
+                period_count="4"
+                start_threshold="1"
+                stop_threshold="512"
+                silence_threshold="0"
+                avail_min="1"
+                devices="headset-mic"/>
+
+    <pcm_config name="fast-capture"
+                device_id="0"
+                rate="48000"
+                channels="2"
+                bps="16"
+                period_size="128"
+                period_count="4"
+                start_threshold="1"
+                stop_threshold="512"
+                silence_threshold="0"
+                avail_min="1"
+                devices="headset-mic"/>
+                
+    <pcm_config name="bt-sco-playback"
+                device_id="1"
+                rate="8000"
+                channels="1"
+                bps="16"
+                period_size="128"
+                period_count="4"
+                start_threshold="511"
+                stop_threshold="512"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco"/>
+
+    <pcm_config name="bt-sco-capture"
+                device_id="1"
+                rate="8000"
+                channels="1"
+                bps="16"
+                period_size="128"
+                period_count="4"
+                start_threshold="1"
+                stop_threshold="512"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco-mic"/>
+
+    <pcm_config name="bt-sco-wb-playback"
+                device_id="1"
+                rate="16000"
+                channels="1"
+                bps="16"
+                period_size="256"
+                period_count="4"
+                start_threshold="1023"
+                stop_threshold="1024"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco"/>
+
+    <pcm_config name="bt-sco-wb-capture"
+                device_id="1"
+                rate="16000"
+                channels="1"
+                bps="16"
+                period_size="256"
+                period_count="4"
+                start_threshold="1"
+                stop_threshold="1024"
+                silence_threshold="0"
+                avail_min="1"
+                devices="bt-sco-mic"/>
+
     <param name="nvoice" val="0"/>
     <param name="builtin speaker" val="1"/>
     <param name="safe-routing" val="1"/>
@@ -72,7 +150,12 @@
     <ctl name="x SPOL MIX SPKVOL L Switch" val="0"/>
     <ctl name="x SPOR MIX SPKVOL R Switch" val="0"/>
     <ctl name="x Speaker Playback Volume" val="0,0"/>
+    <ctl name="x ADC MIC Capture Volume" val="0 0"/>
     <ctl name="x Speaker Channel Switch" val="0,0"/>
+    <ctl name="x ADC Capture Switch" val="0"/>
+    <ctl name="x ADC IF1 Data Switch" val="Normal"/>
+    <ctl name="x RECMIXL BST1 Switch" val="0"/>
+    <ctl name="x Stereo ADC MIXL ADC1 Switch" val="0"/>
     <ctl name="x OUT MIXL DAC L1 Switch" val="0"/>
     <ctl name="x OUT MIXR DAC R1 Switch" val="0"/>
     <ctl name="x HPO MIX HPVOL Switch" val="0"/>
@@ -80,6 +163,10 @@
     <ctl name="x HP R Playback Switch" val="0"/>
     <ctl name="x HP Playback Volume" val="0,0"/>
     <ctl name="x HP Channel Switch" val="0,0"/>
+
+    <!-- BT-SCO path -->
+    <ctl name="I2S2 Mux" val="ADMAIF2"/>
+    <ctl name="ADMAIF2 Mux" val="I2S2"/>
 
     <path name="adsp-bypass">
       <!-- No specifc controls now -->
@@ -110,6 +197,15 @@
       <ctl name="x OUT MIXL DAC L1 Switch" val="1"/>
     </path>
 
+    <path name="rt5640-headset">
+      <ctl name="x ADC MIC Capture Volume" val="47,0"/>
+      <ctl name="x ADC Capture Switch" val="1,0"/>
+      <ctl name="x Stereo ADC MIXL ADC1 Switch" val="1"/>
+      <ctl name="x RECMIXL BST1 Switch" val="1"/>
+      <ctl name="x IN1 Boost" val="5"/>
+      <ctl name="x ADC IF1 Data Switch" val="left copy to right"/>
+    </path>
+
     <path name="speaker">
       <path name="rt5640-speaker"/>
       <path name="adsp-bypass"/>
@@ -122,16 +218,22 @@
 
     <path name="headset">
       <path name="headphone"/>
+      <path name="rt5640-headset"/>
     </path>
 
-    <path name="speaker-and-headphone">
-      <path name="rt5640-speaker"/>
-      <path name="rt5640-headphone"/>
+    <path name="headset-mic">
+      <path name="rt5640-headset"/>
       <path name="adsp-bypass"/>
     </path>
 
+    <path name="speaker-and-headphone">
+      <path name="speaker"/>
+      <path name="headphone"/>
+    </path>
+
     <path name="speaker-and-headset">
-      <path name="speaker-and-headphone"/>
+      <path name="speaker"/>
+      <path name="headset"/>
     </path>
   </card>
 </AudioConfigs>

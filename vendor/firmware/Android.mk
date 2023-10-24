@@ -66,7 +66,7 @@ $(_uboot_bin):
 	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) \
 		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
 		YACC=$(BUILD_TOOLS_BINS)/bison LEX=$(BUILD_TOOLS_BINS)/flex M4=$(BUILD_TOOLS_BINS)/m4 \
-		-C $(UBOOT_PATH) O=$(abspath $(_uboot_intermediates)) $(TARGET_TEGRA_UBOOT)_defconfig
+		-C $(UBOOT_PATH) O=$(abspath $(_uboot_intermediates)) nx_defconfig
 	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) \
 		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
 		YACC=$(BUILD_TOOLS_BINS)/bison LEX=$(BUILD_TOOLS_BINS)/flex M4=$(BUILD_TOOLS_BINS)/m4 \

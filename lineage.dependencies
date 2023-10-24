@@ -20,13 +20,12 @@
    "target_path": "kernel/nvidia/cypress-fmac-upstream"
  },
  {
-   "repository": "android_kernel_nvidia_kernel",
-   "target_path": "kernel/nvidia/kernel-4.9",
-   "branch": "lineage-18.1_4.9"
+   "repository": "android_kernel_nvidia_kernel-nx",
+   "target_path": "kernel/nvidia/kernel-4.9-nx"
  },
  {
-   "repository": "android_kernel_nvidia_nvidia",
-   "target_path": "kernel/nvidia/nvidia"
+   "repository": "android_kernel_nvidia_nvidia-nx",
+   "target_path": "kernel/nvidia/nvidia-nx"
  },
  {
    "repository": "android_kernel_nvidia_nvgpu",

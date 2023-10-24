@@ -13,7 +13,6 @@
 # limitations under the License.
 
 LOCAL_PATH := $(call my-dir)
-NX_VENDOR_PATH := ../../../../../vendor/nintendo
 
 ATF_PATH   := $(BUILD_TOP)/external/switch-atf
 UBOOT_PATH := $(BUILD_TOP)/external/switch-uboot

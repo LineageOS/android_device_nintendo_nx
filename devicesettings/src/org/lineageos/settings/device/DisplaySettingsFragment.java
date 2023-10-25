@@ -281,51 +281,51 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
         preferenceScreen.addPreference(perfCategory);
         perfCategory.addPreference(perfPreference);
+    }
 
-        if(sku.equals("frig")) {
-            createPanelModeSettings(perfCategory);
+    private void createPanelModeSettings(PreferenceCategory perfCategory) {
+        ListPreference panelColorPref = new ListPreference(perfCategory.getContext());
+        String current = DisplayUtils.getPanelColorMode();
+        int index;    
+
+        for(index = 0; index < modes.length; index++) {
+            if(current.equals(modes[index]))
+                break;
         }
 
-            for(index = 0; index < modes.length; index++) {
-                if(current.equals(modes[index]))
-                    break;
-            }
+        if(index == modes.length) {
+            Log.e(TAG, "Unsupported OLED panel mode! ID: " + current);
+        } else {
 
-            if(index == modes.length) {
-                Log.e(TAG, "Unsupported OLED panel mode! ID: " + current);
-            } else {
+            Log.w(TAG, "OLED Panel Mode Index: " + String.valueOf(index));
 
-                Log.w(TAG, "OLED Panel Mode Index: " + String.valueOf(index));
+            panelColorPref.setKey("panel_color_mode");                       // matches sysfs node for consistency
+            panelColorPref.setTitle(R.string.panel_color_setting_title);
+            panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[index]));
+            panelColorPref.setEntries(modeMap);
+            panelColorPref.setEntryValues(modes);
+            panelColorPref.setValue(current);
 
-                panelColorPref.setKey("panel_color_mode");                       // matches sysfs node for consistency
-                panelColorPref.setTitle(R.string.panel_color_setting_title);
-                panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[index]));
-                panelColorPref.setEntries(modeMap);
-                panelColorPref.setEntryValues(modes);
-                panelColorPref.setValue(current);
+            panelColorPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    int newIndex;
 
-                panelColorPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        int newIndex;
+                    DisplayUtils.setPanelColorMode((String)newValue);
 
-                        DisplayUtils.setPanelColorMode((String)newValue);
-
-                        for(newIndex = 0; newIndex < modes.length; newIndex++) {
-                            if(((String)newValue).equals(modes[newIndex]))
-                                break;
-                        }
-
-                        panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[newIndex]));
-
-                        return true;
+                    for(newIndex = 0; newIndex < modes.length; newIndex++) {
+                        if(((String)newValue).equals(modes[newIndex]))
+                            break;
                     }
-                });
 
-                perfCategory.addPreference(panelColorPref);
-            }
+                    panelColorPref.setSummary(String.format(getString(R.string.panel_color_setting_summary), modeMap[newIndex]));
+
+                    return true;
+                }
+            });
+
+            perfCategory.addPreference(panelColorPref);
         }
-
     }
 
     private void createDisplaySettings(PreferenceScreen preferenceScreen) {
@@ -423,6 +423,10 @@ public class DisplaySettingsFragment extends PreferenceFragment
             disableInternalOnExternalConnectedPreference.setKey("disable_internal_on_external_connected");
 
             category.addPreference(disableInternalOnExternalConnectedPreference);
+
+            if(sku.equals("frig")) {
+                createPanelModeSettings(category);
+            }
         }
     }
 }

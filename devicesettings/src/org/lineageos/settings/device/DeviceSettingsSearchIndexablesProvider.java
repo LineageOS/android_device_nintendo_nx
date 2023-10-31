@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2023 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,12 @@ import android.provider.SearchIndexablesProvider;
 
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_CLASS_NAME;
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_ICON_RESID;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_ACTION;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE;
+import static android.provider.SearchIndexablesContract
+                                                    .COLUMN_INDEX_XML_RES_INTENT_ACTION;
+import static android.provider.SearchIndexablesContract
+                                            .COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS;
+import static android.provider.SearchIndexablesContract
+                                            .COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE;
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_RANK;
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_XML_RES_RESID;
 import static android.provider.SearchIndexablesContract.INDEXABLES_RAW_COLUMNS;
@@ -35,11 +38,12 @@ import static android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLU
 public class DeviceSettingsSearchIndexablesProvider extends SearchIndexablesProvider {
     public static final int SEARCH_IDX_BUTTON_PANEL = 0;
     private static final String TAG = "ConfigPanelSearchIndexablesProvider";
-    private static SearchIndexableResource[] INDEXABLE_RES = new SearchIndexableResource[]{
+    private static SearchIndexableResource[] INDEXABLE_RES =
+        new SearchIndexableResource[]{
             new SearchIndexableResource(1, R.xml.display_panel,
                     DisplaySettingsActivity.class.getName(),
                     R.drawable.ic_settings_additional_buttons),
-    };
+        };
 
     private static Object[] generateResourceRef(SearchIndexableResource sir) {
         Object[] ref = new Object[7];
@@ -47,8 +51,10 @@ public class DeviceSettingsSearchIndexablesProvider extends SearchIndexablesProv
         ref[COLUMN_INDEX_XML_RES_RESID] = sir.xmlResId;
         ref[COLUMN_INDEX_XML_RES_CLASS_NAME] = null;
         ref[COLUMN_INDEX_XML_RES_ICON_RESID] = sir.iconResId;
-        ref[COLUMN_INDEX_XML_RES_INTENT_ACTION] = "com.android.settings.action.EXTRA_SETTINGS";
-        ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] = "org.lineageos.settings.device";
+        ref[COLUMN_INDEX_XML_RES_INTENT_ACTION] =
+                                        "com.android.settings.action.EXTRA_SETTINGS";
+        ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] =
+                                                    "org.lineageos.settings.device";
         ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS] = sir.className;
         return ref;
     }

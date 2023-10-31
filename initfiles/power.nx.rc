@@ -1,7 +1,7 @@
-# Key   Docked Perf   Docked Opt / Undocked Perf   Undocked Opt
-NV_DEFAULT_MODE 0
+# Key   modin/frig Docked Perf  odin Docked Perf  modin/frig Undocked Perf  odin/vali Undocked Perf  Docked Norm  Undocked Norm
+NV_DEFAULT_MODE 5
 panelresolution=-1X-1
-NV_MAX_FREQ 1785000 1785000 1428000
-NV_MIN_FREQ 0 0 0
-NV_MAX_GPU_FREQ 921600 768000 460800
-NV_MIN_GPU_FREQ 0 0 0
+NV_MAX_FREQ 1963500 1785000 1785000 1785000 1785000 1428000
+NV_MIN_FREQ 0 0 0 0 0 0
+NV_MAX_GPU_FREQ 1267200 921600 1075000 844000 768000 460800
+NV_MIN_GPU_FREQ 0 0 0 0 0 0

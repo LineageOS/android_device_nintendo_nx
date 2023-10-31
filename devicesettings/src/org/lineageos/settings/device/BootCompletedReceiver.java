@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The LineageOS Project
+ * Copyright (C) 2023 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,15 @@ import android.os.SystemProperties;
 public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (SystemProperties.get("ro.product.device", "").equals("nx") && !SystemProperties.get("ro.boot.hardware.sku", "").equals("vali")) {
+        if (SystemProperties.get("ro.product.device", "").equals("nx") &&
+            !SystemProperties.get("ro.boot.hardware.sku", "").equals("vali")) {
             context.startService(new Intent(context, DockService.class));
         }
 
         // Set preferred OLED panel mode
         if(SystemProperties.get("ro.boot.hardware.sku", "").equals("frig")) {
-            final SharedPreferences sharedPrefs = context.getSharedPreferences("org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
+            final SharedPreferences sharedPrefs = context.getSharedPreferences(
+                "org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
             final String panelMode = sharedPrefs.getString("panel_color_mode", "0x23");
 
             DisplayUtils.setPanelColorMode(panelMode);

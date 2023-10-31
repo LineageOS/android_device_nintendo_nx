@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2023 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package org.lineageos.settings.device;
 
 import android.content.SharedPreferences;
-import android.hardware.display.DisplayManager;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.IWindowManager;
@@ -37,13 +36,13 @@ import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DisplayUtils {
     private static final String TAG = DisplayUtils.class.getSimpleName();
-
     public static final String POWER_UPDATE_INTENT = "com.lineage.devicesettings.UPDATE_POWER";
- 
+
     public static void setInternalDisplayState(boolean state) {
         Log.d(TAG, "setInternalDisplayState: " + String.valueOf(state));
         try {
-            FileOutputStream colorModeFile = new FileOutputStream("/sys/bus/platform/devices/tegradc.0/enable");
+            FileOutputStream colorModeFile =
+                new FileOutputStream("/sys/bus/platform/devices/tegradc.0/enable");
             byte[] buf = new byte[2];
 
             buf[0] = (byte) (state ? '1' : '0');
@@ -56,29 +55,35 @@ public class DisplayUtils {
         }
     }
 
-    public static void setDisplayMode(int display, INvDisplay displayService, IWindowManager windowManager, SharedPreferences sharedPrefs) {
+    public static void setDisplayMode(int display, INvDisplay displayService,
+                IWindowManager windowManager, SharedPreferences sharedPrefs) {
         int index = 0; // default 0 for internal
 
         try {
             // grab pref for external displays
-            if(display > 0) {
-                String displayUid = String.valueOf(DisplayUtils.makeDisplayLabel(displayService.edidGetInfo(display), display).hashCode());
-                index = Integer.parseInt(sharedPrefs.getString(("mode_" + displayUid), "0"));
+            if (display > 0) {
+                String displayUid = String.valueOf(
+                        DisplayUtils.makeDisplayLabel(
+                            displayService.edidGetInfo(display), display).hashCode());
+                index = Integer.parseInt(
+                            sharedPrefs.getString(("mode_" + displayUid), "0"));
             }
 
             // manually set hwc mode and force android to update rotation
             displayService.modeSetIndex(display, index);
             windowManager.updateRotation(true, true);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(TAG, "Failed to set mode!");
         }
     }
 
     public static HashMap<String, Integer> makeUidMap(INvDisplay displayService) {
         HashMap<String, Integer> uidMap = new HashMap<String, Integer>();
-        for (int i = HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL; i <= HwcSvcDisplay.HWC_SVC_DISPLAY_HDMI2; i++) {
+        for (int i = HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL;
+                        i <= HwcSvcDisplay.HWC_SVC_DISPLAY_HDMI2; i++) {
             try {
-                String displayUid = String.valueOf(makeDisplayLabel(displayService.edidGetInfo(i), i).hashCode()); // A unique id we can use to identify the display
+                String displayUid = String.valueOf(makeDisplayLabel(
+                    displayService.edidGetInfo(i), i).hashCode()); // Unique id for disp
                 uidMap.put(displayUid, i);
             } catch (RemoteException e) {
                 continue;
@@ -90,7 +95,9 @@ public class DisplayUtils {
 
     public static String makeDisplayLabel(HwcSvcEdidInfo edid, int display) {
         if (!edid.monitor_name.isEmpty())
-            return (edid.manufacturer_id.isEmpty() ? "" : (edid.manufacturer_id + " - ")) + edid.monitor_name; // Report name from edid if present
+            // report name from edid if present
+            return (edid.manufacturer_id.isEmpty() ? "" :
+                (edid.manufacturer_id + " - ")) + edid.monitor_name;
         if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL)
             return "Internal Panel"; // Most internal panels do not have an edid
 
@@ -98,7 +105,8 @@ public class DisplayUtils {
     }
 
     public static String makeModeInfoString(HwcSvcDisplayMode mode) {
-        return String.format("%dx%d %sHz", mode.xres, mode.yres, new DecimalFormat("###.##").format(mode.refresh));
+        return String.format("%dx%d %sHz", mode.xres, mode.yres,
+                new DecimalFormat("###.##").format(mode.refresh));
     }
 
     public static String makeColorInfoString(HwcSvcDisplayMode mode) {
@@ -131,7 +139,8 @@ public class DisplayUtils {
     public static void setPanelColorMode(String mode) {
         Log.d(TAG, "OLED panel mode set: " + mode);
         try {
-            FileOutputStream colorModeFile = new FileOutputStream("/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
+            FileOutputStream colorModeFile = new FileOutputStream(
+                    "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
             byte[] buf = new byte[4];
 
             buf = mode.getBytes(StandardCharsets.US_ASCII);
@@ -148,7 +157,8 @@ public class DisplayUtils {
         String out;
 
         try {
-            FileInputStream colorModeFile = new FileInputStream("/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
+            FileInputStream colorModeFile = new FileInputStream(
+                    "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
 
             colorModeFile.read(buf);
             out = new String(buf, StandardCharsets.US_ASCII);
@@ -165,10 +175,12 @@ public class DisplayUtils {
     public static void setFanProfile(String profile) {
         Log.i(TAG, "Setting fan profile: " + profile);
         try {
-            final FileOutputStream pwmProfile = new FileOutputStream("/sys/devices/pwm-fan/fan_profile");
+            final FileOutputStream pwmProfile = new FileOutputStream(
+                                        "/sys/devices/pwm-fan/fan_profile");
             pwmProfile.write(profile.getBytes());
             pwmProfile.close();
-            final FileOutputStream estProfile = new FileOutputStream("/sys/devices/thermal-fan-est/fan_profile");
+            final FileOutputStream estProfile = new FileOutputStream(
+                                "/sys/devices/thermal-fan-est/fan_profile");
             estProfile.write(profile.getBytes());
             estProfile.close();
         } catch (IOException e) {

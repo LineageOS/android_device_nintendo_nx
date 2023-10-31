@@ -30,12 +30,18 @@ import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
 
 import com.nvidia.NvAppProfiles;
-import com.nvidia.NvConstants;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DockService extends Service {
     private static final String TAG = DockService.class.getSimpleName();
+
+    private static final int MODE_UNDOCKED = 0;
+    private static final int MODE_DOCKED = 1;
+    private static final int MODE_ODIN_VALI_UNDOCKED_PERF = 2;
+    private static final int MODE_MODIN_FRIG_UNDOCKED_PERF = 3;
+    private static final int MODE_ODIN_DOCKED_PERF = 4;
+    private static final int MODE_MODIN_FRIG_DOCKED_PERF = 5;
 
     final private Receiver mReceiver = new Receiver();
     final private NvAppProfiles mAppProfiles = new NvAppProfiles(this);
@@ -72,23 +78,27 @@ public class DockService extends Service {
                     .getSharedPreferences("org.lineageos.settings.device_preferences",
                                             context.MODE_PRIVATE);
             final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
-            final boolean oc = (SystemProperties.getInt("ro.boot.oc", 0) == 1) || (SystemProperties.getInt("ro.boot.dvfsb", 0) == 1);
+            final String sku = SystemProperties.get("ro.boot.hardware.sku", "");
 
             if (perfMode) {
-                DisplayUtils.setFanProfile(oc ? "Cool" : "Console");
-
                 if (connected) {
-                    mAppProfiles.setPowerMode(NvConstants.NV_POWER_MODE_MAX_PERF);
+                    DisplayUtils.setFanProfile("Cool");
+                    mAppProfiles.setPowerMode(sku.equals("odin")
+                                ? MODE_ODIN_DOCKED_PERF
+                                : MODE_MODIN_FRIG_DOCKED_PERF);
                 } else {
-                    mAppProfiles.setPowerMode(NvConstants.NV_POWER_MODE_OPTIMIZED);
+                    DisplayUtils.setFanProfile("Console");
+                    mAppProfiles.setPowerMode((sku.equals("odin") || sku.equals("vali"))
+                            ? MODE_ODIN_VALI_UNDOCKED_PERF
+                            : MODE_MODIN_FRIG_UNDOCKED_PERF);
                 }
             } else {
                 if (connected) {
-                    DisplayUtils.setFanProfile(oc ? "Cool" : "Console");
-                    mAppProfiles.setPowerMode(NvConstants.NV_POWER_MODE_OPTIMIZED);
+                    DisplayUtils.setFanProfile("Console");
+                    mAppProfiles.setPowerMode(MODE_DOCKED);
                 } else {
-                    DisplayUtils.setFanProfile(oc ? "Console" : "Handheld");
-                    mAppProfiles.setPowerMode(NvConstants.NV_POWER_MODE_BATTERY_SAVER);
+                    DisplayUtils.setFanProfile("Handheld");
+                    mAppProfiles.setPowerMode(MODE_UNDOCKED);
                 }
             }
         }

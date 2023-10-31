@@ -154,6 +154,10 @@ PRODUCT_PACKAGES += \
     enctune.conf
 endif
 
+# Power
+PRODUCT_PACKAGES += \
+    powerhal.nx.xml
+
 # PHS
 ifeq ($(TARGET_TEGRA_PHS),nvphs)
 PRODUCT_PACKAGES += \

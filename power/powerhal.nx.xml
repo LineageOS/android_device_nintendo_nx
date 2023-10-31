@@ -10,4 +10,7 @@
         <input name="joyconl"/>
         <input name="joyconr"/>
     </input_devices>
+
+    <!-- set boot clk boost for 100 ms -->
+    <boot_boost time="100"/>
 </powerhal>

@@ -96,3 +96,11 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     hid-xinmo \
     hid-betopff
+
+# Copy to recovery
+BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
+    hid_nvidia_blake \
+    hid_jarvis_remote \
+    usb_storage
+
+RECOVERY_KERNEL_MODULES := $(addsuffix .ko,$(BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD))

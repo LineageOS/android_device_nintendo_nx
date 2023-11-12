@@ -37,6 +37,10 @@
    "target_path": "kernel/nvidia/wireguard"
  },
  {
+   "repository": "android_hardware_intel_sensors-iio",
+   "target_path": "hardware/intel/sensors-iio"
+ },
+ {
    "repository": "android_hardware_nvidia_interfaces",
    "target_path": "hardware/nvidia/interfaces"
  },

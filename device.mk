@@ -69,6 +69,7 @@ PRODUCT_PACKAGES += \
     init.loki_foster_e_common.rc \
     init.nx.rc \
     init.recovery.nx.rc \
+	init.sensors.nx.rc \
     power.nx.rc
 
 # Permissions
@@ -158,6 +159,17 @@ ifeq ($(TARGET_TEGRA_PHS),nvphs)
 PRODUCT_PACKAGES += \
     nvphsd.conf
 endif
+
+# Sensors
+PRODUCT_PACKAGES += \
+	sensors.iio \
+	android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0-impl
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml
 
 # Shipping API
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)

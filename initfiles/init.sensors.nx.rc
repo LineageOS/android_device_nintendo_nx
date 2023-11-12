@@ -1,0 +1,60 @@
+# Copyright (C) 2023 The LineageOS Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# NOTE: some stuff might look like a typo--it is likely not. cutils properties can only
+#       handle <32 chars per property so they get cut. Device names are cut to 7 and
+#       props are cut to 31.
+
+on init
+    setprop ro.hardware.sensors iio
+
+    # Force polling mode for accel and gyro
+    setprop ro.iio.accel.quirks no-trig,no-event
+    setprop ro.iio.anglvel.quirks no-trig,no-event
+
+    # LSM6DS3H
+    setprop ro.iio.anglvel.lsm6ds3.name "LSM6DS3H Gyroscope"
+    setprop ro.iio.anglvel.lsm6ds3.vendor STMicroelectronics
+    setprop ro.iio.anglvel.lsm6ds3.max_rang 35
+    setprop ro.iio.accel.lsm6ds3.name "LSM6DS3H Accelerometer"
+    setprop ro.iio.accel.lsm6ds3.vendor STMicroelectronics
+    setprop ro.iio.accel.lsm6ds3.max_range 79
+
+    # LSM6DSE
+    setprop ro.iio.anglvel.lsm6dse.name "LSM6DSE Gyroscope"
+    setprop ro.iio.anglvel.lsm6dse.vendor STMicroelectronics
+    setprop ro.iio.anglvel.lsm6dse.max_rang 35
+    setprop ro.iio.accel.lsm6dse.name "LSM6DSE Accelerometer"
+    setprop ro.iio.accel.lsm6dse.vendor STMicroelectronics
+    setprop ro.iio.accel.lsm6dse.max_range 79
+
+    # LSM6DS0
+    setprop ro.iio.anglvel.lsm6ds0.name "LSM6DS0 Gyroscope"
+    setprop ro.iio.anglvel.lsm6ds0.vendor STMicroelectronics
+    setprop ro.iio.anglvel.lsm6ds0.max_rang 35
+    setprop ro.iio.accel.lsm6ds0.name "LSM6DSE Accelerometer"
+    setprop ro.iio.accel.lsm6ds0.vendor STMicroelectronics
+    setprop ro.iio.accel.lsm6ds0.max_range 79
+
+    # ICM40607
+    setprop ro.iio.anglvel.icm4060.name "ICM40607 Gyroscope"
+    setprop ro.iio.anglvel.icm4060.vendor Invensense
+    setprop ro.iio.anglvel.icm4060.max_rang 18
+    setprop ro.iio.accel.icm4060.name "ICM40607 Accelerometer"
+    setprop ro.iio.accel.icm4060.vendor Invensense
+    setprop ro.iio.accel.icm4060.max_range 11
+
+    # BH1730FVC
+    setprop ro.iio.illuminance.bh1730.name "BH1730FVC Ambient Light Sensor"
+    setprop ro.iio.illuminance.bh1730.vendor ROHM

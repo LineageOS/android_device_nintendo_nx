@@ -32,6 +32,7 @@ import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayMode;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayModePixEnc;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcEdidInfo;
+import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcModeType;
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DisplayUtils {
@@ -65,8 +66,10 @@ public class DisplayUtils {
                 String displayUid = String.valueOf(
                         DisplayUtils.makeDisplayLabel(
                             displayService.edidGetInfo(display), display).hashCode());
-                index = Integer.parseInt(
-                            sharedPrefs.getString(("mode_" + displayUid), "0"));
+                HwcSvcDisplayMode defMode = displayService.modeGet(display,
+                                            HwcSvcModeType.HWC_SVC_MODE_TYPE_MAX_60HZ);
+                index = Integer.parseInt(sharedPrefs.getString(("mode_" + displayUid),
+                                                        String.valueOf(defMode.index)));
             }
 
             // manually set hwc mode and force android to update rotation

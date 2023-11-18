@@ -140,6 +140,16 @@ public class DisplayUtils {
         else
             colorimetryStr = "Rec. 2020";
 
+        if ((mode.flags & 1) == 1)
+            colorimetryStr += " VRR";
+
+        if ((mode.flags & 2) == 1)
+            colorimetryStr += " HDR10";
+
+        // Unsupported
+        if ((mode.flags & 4) == 1)
+            colorimetryStr += " DOVI";
+
         return String.format("%s %d-bit %s", encodingStr, mode.bpc, colorimetryStr);
     }
 

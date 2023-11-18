@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db390370_3b19ff94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-11-18T23:25:02Z",
+      "side": 1,
+      "message": "need to fork hal and add kernel sensor stuff",
+      "revId": "d413647fc96c8997e5949c4ab91885d9649dd554",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

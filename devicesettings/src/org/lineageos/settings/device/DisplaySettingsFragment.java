@@ -406,14 +406,20 @@ public class DisplaySettingsFragment extends PreferenceFragment
         }
 
         // Sort by resolution and refresh rate
-        Collections.sort(availableModes, (Comparator) (a, b) -> {
+        Collections.sort(availableModes, (Comparator<HwcSvcDisplayMode>) (a, b) -> {
             HwcSvcDisplayMode modeA = (HwcSvcDisplayMode) a;
             HwcSvcDisplayMode modeB = (HwcSvcDisplayMode) b;
 
             if (modeA.xres == modeB.xres) {
                 if (modeA.yres == modeB.yres) {
-                    if (modeA.refresh == modeB.refresh)
-                        return 0;
+                    if (modeA.refresh == modeB.refresh) {
+                        if (modeA.flags > modeB.flags)
+                            return -1;
+                        else if (modeA.flags < modeB.flags)
+                            return 1;
+                        else
+                            return 0;
+                    }
                     else if (modeA.refresh > modeB.refresh)
                         return -1;
                     else

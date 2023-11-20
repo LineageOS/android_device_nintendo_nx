@@ -3,7 +3,15 @@
    "repository": "android_device_nvidia_t210-common",
    "target_path": "device/nvidia/t210-common"
  },
-  {
+ {
+   "repository": "android_hardware_nintendo_u-boot",
+   "target_path": "hardware/nintendo/u-boot"
+ },
+ {
+   "repository": "android_hardware_nintendo_arm-trusted-firmware"
+   "target_path": "hardware/nintendo/arm-trusted-firmware"
+ },
+ {
    "repository": "android_hardware_nintendo_joycond",
    "target_path": "hardware/nintendo/joycond"
  },

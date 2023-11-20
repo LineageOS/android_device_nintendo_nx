@@ -14,8 +14,8 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ATF_PATH   := $(BUILD_TOP)/external/switch-atf
-UBOOT_PATH := $(BUILD_TOP)/external/switch-uboot
+ATF_PATH   := $(BUILD_TOP)/hardware/nintendo/arm-trusted-firmware
+UBOOT_PATH := $(BUILD_TOP)/hardware/nintendo/u-boot
 
 BUILD_TOOLS_BINS         := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin
 LINEAGE_TOOLS_PATH       := $(BUILD_TOP)/prebuilts/tools-lineage/$(HOST_PREBUILT_TAG)/bin

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "732a6877_0f6b4587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 99
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-11-21T05:13:18Z",
+      "side": 1,
+      "message": "This looks better. Needs verified on a device that the label applies as expected.",
+      "revId": "567c6dbf7d73974f4c5a9b0d63f08cf3f9378a7b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

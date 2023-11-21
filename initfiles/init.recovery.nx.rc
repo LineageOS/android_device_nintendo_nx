@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import init.recovery.usb.rc
+
 on init
     setprop persist.twrp.rotation 270
     setprop ro.minui.default_rotation "ROTATION_LEFT"

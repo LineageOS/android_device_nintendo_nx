@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fe2074_d57cbfd8",
+        "filename": "initfiles/init.sensors.nx.rc",
+        "patchSetId": 24
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2023-11-26T17:43:02Z",
+      "side": 1,
+      "message": "fyi you can use multihal and have a .conf to let you load multiple .so\nuseful if you want to add self-contained sensors :)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "c5f38c470dca1173597a67b41cad5fc21014bfdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

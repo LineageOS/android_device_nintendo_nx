@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="panel_mode_map">
+        <item>Basic</item>
+        <item>Washed</item>
+        <item>Natural</item>
+        <item>Vivid</item>
+        <item>Night 0</item>
+        <item>Night 1</item>
+        <item>Night 2</item>
+        <item>Night </item>
+    </string-array>
+
+    <string-array name="panel_modes">
+        <item>0x03</item> <!-- DCS_SM_COLOR_MODE_BASIC -->
+        <item>0x45</item> <!-- DCS_SM_COLOR_MODE_WASHED -->
+        <item>0x23</item> <!-- DCS_SM_COLOR_MODE_NATURAL -->
+        <item>0x65</item> <!-- DCS_SM_COLOR_MODE_VIVID -->
+        <item>0x43</item> <!-- DCS_SM_COLOR_MODE_NIGHT0 -->
+        <item>0x15</item> <!-- DCS_SM_COLOR_MODE_NIGHT1 -->
+        <item>0x35</item> <!-- DCS_SM_COLOR_MODE_NIGHT2 -->
+        <item>0x75</item> <!-- DCS_SM_COLOR_MODE_NIGHT3 -->
+    </string-array>
+
+</resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2020 The LineageOS Project
+     Copyright (C) 2023 The LineageOS Project
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -11,5 +11,25 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="customization_category"
+        android:title="@string/cust_category_title">
+
+        <SwitchPreferenceCompat
+            android:key="perf_mode"
+            android:title="@string/perf_setting_title"
+            android:summary="@string/perf_setting_summary" />
+        
+        <ListPreference
+            android:key="panel_color_mode"
+            android:title="@string/panel_color_setting_title"
+            android:entries="@array/panel_mode_map"
+            app:useSimpleSummaryProvider="false"
+            android:entryValues="@array/panel_modes" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

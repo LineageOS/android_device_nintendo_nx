@@ -37,20 +37,29 @@ import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DisplayUtils {
     private static final String TAG = DisplayUtils.class.getSimpleName();
-    public static final String POWER_UPDATE_INTENT = "com.lineage.devicesettings.UPDATE_POWER";
+    public static final String POWER_UPDATE_INTENT =
+                                            "com.lineage.devicesettings.UPDATE_POWER";
+    public static final String PANEL_MODE_SYSFS =
+                            "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode";
+    public static final String PWM_FAN_PROFILE_SYSFS =
+                                                    "/sys/devices/pwm-fan/fan_profile";
+    public static final String EST_FAN_PROFILE_SYSFS =
+                                            "/sys/devices/thermal-fan-est/fan_profile";
+    public static final String INT_DISPLAY_MODE_SYSFS =
+                                            "/sys/bus/platform/devices/tegradc.0/enable";
 
     public static void setInternalDisplayState(boolean state) {
         Log.d(TAG, "setInternalDisplayState: " + String.valueOf(state));
         try {
-            FileOutputStream colorModeFile =
-                new FileOutputStream("/sys/bus/platform/devices/tegradc.0/enable");
+            FileOutputStream intModeFile =
+                            new FileOutputStream(INT_DISPLAY_MODE_SYSFS);
             byte[] buf = new byte[2];
 
             buf[0] = (byte) (state ? '1' : '0');
             buf[1] = '\n';
 
-            colorModeFile.write(buf);
-            colorModeFile.close();
+            intModeFile.write(buf);
+            intModeFile.close();
         } catch (IOException e) {
             Log.w(TAG, "Failed to write display state");
         }
@@ -156,8 +165,7 @@ public class DisplayUtils {
     public static void setPanelColorMode(String mode) {
         Log.d(TAG, "OLED panel mode set: " + mode);
         try {
-            FileOutputStream colorModeFile = new FileOutputStream(
-                    "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
+            FileOutputStream colorModeFile = new FileOutputStream(PANEL_MODE_SYSFS);
             byte[] buf = new byte[4];
 
             buf = mode.getBytes(StandardCharsets.US_ASCII);
@@ -174,8 +182,7 @@ public class DisplayUtils {
         String out;
 
         try {
-            FileInputStream colorModeFile = new FileInputStream(
-                    "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode");
+            FileInputStream colorModeFile = new FileInputStream(PANEL_MODE_SYSFS);
 
             colorModeFile.read(buf);
             out = new String(buf, StandardCharsets.US_ASCII);
@@ -192,12 +199,12 @@ public class DisplayUtils {
     public static void setFanProfile(String profile) {
         Log.i(TAG, "Setting fan profile: " + profile);
         try {
-            final FileOutputStream pwmProfile = new FileOutputStream(
-                                        "/sys/devices/pwm-fan/fan_profile");
+            final FileOutputStream pwmProfile =
+                                new FileOutputStream(PWM_FAN_PROFILE_SYSFS);
             pwmProfile.write(profile.getBytes());
             pwmProfile.close();
-            final FileOutputStream estProfile = new FileOutputStream(
-                                "/sys/devices/thermal-fan-est/fan_profile");
+            final FileOutputStream estProfile =
+                                new FileOutputStream(EST_FAN_PROFILE_SYSFS);
             estProfile.write(profile.getBytes());
             estProfile.close();
         } catch (IOException e) {

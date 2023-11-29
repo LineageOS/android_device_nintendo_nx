@@ -76,7 +76,7 @@ public class DockService extends Service {
         private void updatePowerState(Context context, boolean connected) {
             final SharedPreferences sharedPrefs = context
                     .getSharedPreferences("org.lineageos.settings.device_preferences",
-                                            context.MODE_PRIVATE);
+                            Context.MODE_PRIVATE);
             final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
             final String sku = SystemProperties.get("ro.boot.hardware.sku", "");
 
@@ -117,10 +117,10 @@ public class DockService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             SharedPreferences sharedPrefs = context.getSharedPreferences(
-                "org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
+                    "org.lineageos.settings.device_preferences", Context.MODE_PRIVATE);
             final String action = intent.getAction();
             final boolean connected = intent.getBooleanExtra(
-                WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
+                    WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
 
             switch (action) {
                 case WindowManagerPolicyConstants.ACTION_HDMI_PLUGGED:
@@ -138,9 +138,9 @@ public class DockService extends Service {
                 case Intent.ACTION_SCREEN_ON:
                     Log.i(TAG, "Screen on");
 
-                    DisplayUtils.setInternalDisplayState(!(mExternalDisplayConnected
-                        && sharedPrefs.getBoolean(
-                        "disable_internal_on_external_connected", false)));
+                    DisplayUtils.setInternalDisplayState(!(mExternalDisplayConnected &&
+                            sharedPrefs.getBoolean("disable_internal_on_external_connected",
+                                    false)));
 
                     // Unlock device automatically if docked and reset res otherwise to
                     // work around broken HWC rotation

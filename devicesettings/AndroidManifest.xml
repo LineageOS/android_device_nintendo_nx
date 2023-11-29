@@ -11,8 +11,8 @@
         android:required="false" />
 
     <uses-sdk
-        android:minSdkVersion="28"
-        android:targetSdkVersion="28" />
+        android:minSdkVersion="30"
+        android:targetSdkVersion="30" />
 
     <protected-broadcast android:name="com.lineage.devicesettings.UPDATE_POWER" />
 
@@ -47,7 +47,7 @@
         <activity
             android:name=".DisplaySettingsActivity"
             android:label="@string/display_panel_title"
-            android:theme="@style/Theme.Main">
+            android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
                 <action android:name="android.intent.action.MAIN" />

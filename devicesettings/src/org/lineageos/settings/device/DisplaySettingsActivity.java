@@ -22,34 +22,36 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.SystemProperties;
-import android.preference.PreferenceActivity;
 import android.view.WindowManagerPolicyConstants;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class DisplaySettingsActivity extends PreferenceActivity {
+public class DisplaySettingsActivity extends AppCompatActivity {
     public final Receiver mReceiver = new Receiver();
     public boolean mExternalDisplayConnected;
-    private DisplaySettingsFragment mFragment;
     private String sku = SystemProperties.get("ro.product.name", "");
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mFragment = new DisplaySettingsFragment();
-
-        getFragmentManager().beginTransaction().replace(android.R.id.content, mFragment)
-                                                .commit();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(android.R.id.content, DisplaySettingsFragment.class, null)
+                    .commit();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if(!sku.equals("vali"))
+        if (!sku.equals("vali"))
             unregisterReceiver(mReceiver);
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
-        if(!sku.equals("vali"))
+        if (!sku.equals("vali"))
             mReceiver.init(this);
     }
 
@@ -68,11 +70,13 @@ public class DisplaySettingsActivity extends PreferenceActivity {
 
         public void onReceive(Context context, Intent intent) {
             mExternalDisplayConnected = intent.getBooleanExtra(
-                WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
+                    WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
 
-            if (mBlocked) return;
+            if (mBlocked)
+                return;
 
-            if (mReceivedInitialIntent) recreate();
+            if (mReceivedInitialIntent)
+                recreate();
 
             mReceivedInitialIntent = true;
         }

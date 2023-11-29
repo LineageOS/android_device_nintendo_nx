@@ -16,11 +16,10 @@
 
 package org.lineageos.settings.device;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,10 +31,10 @@ import android.view.MenuItem;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,35 +47,13 @@ import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayType;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcModeType;
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
-public class DisplaySettingsFragment extends PreferenceFragment
+public class DisplaySettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    public static String[] modes = {
-        "0x03", /* DCS_SM_COLOR_MODE_BASIC */
-        "0x45", /* DCS_SM_COLOR_MODE_WASHED */
-        "0x23", /* DCS_SM_COLOR_MODE_NATURAL */
-        "0x65", /* DCS_SM_COLOR_MODE_VIVID */
-        "0x43", /* DCS_SM_COLOR_MODE_NIGHT0 */
-        "0x15", /* DCS_SM_COLOR_MODE_NIGHT1 */
-        "0x35", /* DCS_SM_COLOR_MODE_NIGHT2 */
-        "0x75" /* DCS_SM_COLOR_MODE_NIGHT3 */
-    };
-
-    public static String[] modeMap = {
-        "Basic",
-        "Washed",
-        "Natural",
-        "Vivid",
-        "Night 0",
-        "Night 1",
-        "Night 2",
-        "Night 3"
-    };
-
     private static final String TAG = DisplaySettingsFragment.class.getSimpleName();
+    private final String sku = SystemProperties.get("ro.product.name", "");
     public boolean mInModeChange = false;
     private INvDisplay mDisplayService;
-    private String sku = SystemProperties.get("ro.product.name", "");
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -91,13 +68,10 @@ public class DisplaySettingsFragment extends PreferenceFragment
         addPreferencesFromResource(R.xml.display_panel);
         PreferenceScreen preferenceScreen = this.getPreferenceScreen();
 
-        createPerfSettings(preferenceScreen);
+        createPerfSettings();
 
         if(!sku.equals("vali"))
             createDisplaySettings(preferenceScreen);
-
-        final ActionBar actionBar = getActivity().getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -234,16 +208,8 @@ public class DisplaySettingsFragment extends PreferenceFragment
         }.start();
     }
 
-    private void createPerfSettings(PreferenceScreen preferenceScreen) {
-        PreferenceCategory perfCategory = new PreferenceCategory(preferenceScreen
-                                                                    .getContext());
-        perfCategory.setTitle(R.string.perf_category_title);
-
-        SwitchPreference perfPreference = new SwitchPreference(perfCategory
-                                                                    .getContext());
-        perfPreference.setTitle(R.string.perf_setting_title);
-        perfPreference.setSummary(R.string.perf_setting_summary);
-        perfPreference.setKey("perf_mode");
+    private void createPerfSettings() {
+        SwitchPreferenceCompat perfPreference = findPreference("perf_mode");
 
         perfPreference.setOnPreferenceChangeListener(
             new Preference.OnPreferenceChangeListener() {
@@ -297,15 +263,16 @@ public class DisplaySettingsFragment extends PreferenceFragment
                 return true;
             }
         });
-
-        preferenceScreen.addPreference(perfCategory);
-        perfCategory.addPreference(perfPreference);
     }
 
-    private void createPanelModeSettings(PreferenceCategory perfCategory) {
-        ListPreference panelColorPref = new ListPreference(perfCategory.getContext());
+    private void createPanelModeSettings() {
+        ListPreference panelColorPref = findPreference("panel_color_mode");
         String current = DisplayUtils.getPanelColorMode();
         int index;
+
+        Resources res = getResources();
+        String[] modes = res.getStringArray(R.array.panel_modes);
+        String[] modeMap = res.getStringArray(R.array.panel_mode_map);
 
         for(index = 0; index < modes.length; index++) {
             if(current.equals(modes[index]))
@@ -318,38 +285,27 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
             Log.w(TAG, "OLED Panel Mode Index: " + String.valueOf(index));
 
-            // matches sysfs node for consistency
-            panelColorPref.setKey("panel_color_mode");
-            panelColorPref.setTitle(R.string.panel_color_setting_title);
-            panelColorPref.setSummary(String.format(
-                getString(R.string.panel_color_setting_summary), modeMap[index]));
-            panelColorPref.setEntries(modeMap);
-            panelColorPref.setEntryValues(modes);
             panelColorPref.setValue(current);
+            panelColorPref.setSummary(modeMap[index]);
 
             panelColorPref.setOnPreferenceChangeListener(
-                new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference,
-                                                        Object newValue) {
-                    int newIndex;
+                    new Preference.OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference,
+                                Object newValue) {
+                            int newIndex;
 
-                    DisplayUtils.setPanelColorMode((String)newValue);
+                            DisplayUtils.setPanelColorMode((String) newValue);
 
-                    for(newIndex = 0; newIndex < modes.length; newIndex++) {
-                        if(((String)newValue).equals(modes[newIndex]))
-                            break;
-                    }
-
-                    panelColorPref.setSummary(String.format(
-                        getString(R.string.panel_color_setting_summary),
-                                    modeMap[newIndex]));
-
-                    return true;
-                }
-            });
-
-            perfCategory.addPreference(panelColorPref);
+                            for (newIndex = 0; newIndex < modes.length; newIndex++) {
+                                if (((String) newValue).equals(modes[newIndex])) {
+                                    panelColorPref.setSummary(modeMap[newIndex]);
+                                    break;
+                                }
+                            }
+                            return true;
+                        }
+                    });
         }
     }
 
@@ -458,8 +414,8 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
         // Show checkbox to disable internal panel when an external display is connected
         if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL) {
-            SwitchPreference disableInternalOnExternalConnectedPreference =
-                                            new SwitchPreference(category.getContext());
+            SwitchPreferenceCompat disableInternalOnExternalConnectedPreference =
+                                            new SwitchPreferenceCompat(category.getContext());
             disableInternalOnExternalConnectedPreference
                 .setTitle(R.string.disable_internal_on_external_connected_title);
             disableInternalOnExternalConnectedPreference
@@ -474,7 +430,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
             category.addPreference(disableInternalOnExternalConnectedPreference);
 
             if(sku.equals("frig")) {
-                createPanelModeSettings(category);
+                createPanelModeSettings();
             }
         }
     }

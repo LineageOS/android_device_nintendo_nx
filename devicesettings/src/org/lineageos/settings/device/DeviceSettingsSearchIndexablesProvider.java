@@ -37,7 +37,6 @@ import static android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLU
 
 public class DeviceSettingsSearchIndexablesProvider extends SearchIndexablesProvider {
     public static final int SEARCH_IDX_BUTTON_PANEL = 0;
-    private static final String TAG = "ConfigPanelSearchIndexablesProvider";
     private static SearchIndexableResource[] INDEXABLE_RES =
         new SearchIndexableResource[]{
             new SearchIndexableResource(1, R.xml.display_panel,

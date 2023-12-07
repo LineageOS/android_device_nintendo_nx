@@ -20,6 +20,12 @@
         android:key="customization_category"
         android:title="@string/cust_category_title">
 
+        <SeekBarPreference
+            android:key="bright_pref"
+            android:title="@string/bright_pref_title"
+            android:max="@integer/max_brightness"
+            android:min="@integer/min_brightness" />
+
         <SwitchPreference
             android:key="perf_mode"
             android:title="@string/perf_setting_title"

@@ -34,7 +34,7 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreferenceCompat;
+import androidx.preference.SwitchPreference;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -209,7 +209,7 @@ public class DisplaySettingsFragment extends PreferenceFragmentCompat
     }
 
     private void createPerfSettings() {
-        SwitchPreferenceCompat perfPreference = findPreference("perf_mode");
+        SwitchPreference perfPreference = findPreference("perf_mode");
 
         perfPreference.setOnPreferenceChangeListener(
             new Preference.OnPreferenceChangeListener() {
@@ -414,8 +414,8 @@ public class DisplaySettingsFragment extends PreferenceFragmentCompat
 
         // Show checkbox to disable internal panel when an external display is connected
         if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL) {
-            SwitchPreferenceCompat disableInternalOnExternalConnectedPreference =
-                                            new SwitchPreferenceCompat(category.getContext());
+            SwitchPreference disableInternalOnExternalConnectedPreference =
+                                            new SwitchPreference(category.getContext());
             disableInternalOnExternalConnectedPreference
                 .setTitle(R.string.disable_internal_on_external_connected_title);
             disableInternalOnExternalConnectedPreference

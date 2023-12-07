@@ -41,6 +41,8 @@ public class DisplayUtils {
                                             "com.lineage.devicesettings.UPDATE_POWER";
     public static final String PANEL_MODE_SYSFS =
                             "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode";
+    public static final String PANEL_BRIGHTNESS_SYSFS =
+                            "/sys/class/backlight/backlight/brightness";
     public static final String PWM_FAN_PROFILE_SYSFS =
                                                     "/sys/devices/pwm-fan/fan_profile";
     public static final String EST_FAN_PROFILE_SYSFS =
@@ -191,6 +193,40 @@ public class DisplayUtils {
         } catch (IOException e) {
             Log.w(TAG, "Failed to read color mode");
             out = new String("");
+        }
+
+        return out;
+    }
+
+    public static void setPanelBrightness(int brightness) {
+        Log.d(TAG, "Setting brightness: " + brightness);
+        try {
+            FileOutputStream brightnessFile = new FileOutputStream(PANEL_BRIGHTNESS_SYSFS);
+            byte[] buf = new byte[4];
+
+            buf = String.valueOf(brightness).getBytes(StandardCharsets.US_ASCII);
+
+            brightnessFile.write(buf);
+            brightnessFile.close();
+        } catch (IOException | NumberFormatException e) {
+            Log.i(TAG, "Failed to set brightness");
+        }
+    }
+
+    public static Integer getPanelBrightness() {
+        byte[] buf = new byte[4];
+        int out;
+
+        try {
+            FileInputStream brightnessFile = new FileInputStream(PANEL_BRIGHTNESS_SYSFS);
+
+            brightnessFile.read(buf);
+            out = Integer.parseInt(new String(buf, StandardCharsets.US_ASCII));
+            Log.i(TAG, "Current brightness: " + out);
+            brightnessFile.close();
+        } catch (IOException | NumberFormatException e) {
+            Log.i(TAG, "Failed to read brightness");
+            out = 128;
         }
 
         return out;

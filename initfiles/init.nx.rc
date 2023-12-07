@@ -24,6 +24,8 @@ on init
     # Workaround broke HWC rotation
     setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270
 
+    chown system /sys/class/backlight/backlight/brightness
+
 on fs
     mount_all /vendor/etc/fstab.nx
     swapon_all /vendor/etc/fstab.nx

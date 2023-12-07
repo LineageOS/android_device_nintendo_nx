@@ -18,6 +18,7 @@
     <string name="display_panel_title">Switch Configuration</string>
     <string name="display_panel_summary">Adjust docking, performance, and controller settings</string>
     <string name="cust_category_title">Customization</string>
+    <string name="bright_pref_title">Adjust System Brightness</string>
     <string name="perf_setting_title">Performance Mode</string>
     <string name="perf_setting_summary">Modifies CPU and GPU clocks in order to get the best possible performance at the cost of higher battery wear and usage</string>
     <string name="perf_warning_title">WARNING</string>

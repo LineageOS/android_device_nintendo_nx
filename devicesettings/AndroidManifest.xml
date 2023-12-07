@@ -52,7 +52,6 @@
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.category"
@@ -63,6 +62,16 @@
             <meta-data
                 android:name="com.android.settings.icon"
                 android:resource="@drawable/ic_settings_additional_buttons" />
+        </activity>
+
+        <activity
+            android:name=".DisplaySettingsLeanbackActivity"
+            android:label="@string/display_panel_title"
+            android:theme="@style/LeanbackPreferences">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>

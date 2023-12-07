@@ -16,8 +16,10 @@
 
 package org.lineageos.settings.device;
 
+import android.content.ContentResolver;
 import android.content.SharedPreferences;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.IWindowManager;
 
@@ -38,6 +40,8 @@ import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 public class DisplayUtils {
     private static final String TAG = DisplayUtils.class.getSimpleName();
     public static final String POWER_UPDATE_INTENT = "com.lineage.devicesettings.UPDATE_POWER";
+    public static final String PANEL_BRIGHTNESS_SYSFS =
+            "/sys/class/backlight/backlight/brightness";
     public static final String PANEL_MODE_SYSFS =
             "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode";
     public static final String PWM_FAN_PROFILE_SYSFS = "/sys/devices/pwm-fan/fan_profile";
@@ -191,6 +195,15 @@ public class DisplayUtils {
 
         return out;
     }
+
+    public static void setPanelBrightness(ContentResolver resolver, int brightness) {
+        Settings.System.putInt(resolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+    }
+
+    public static Integer getPanelBrightness(ContentResolver resolver) {
+        return Settings.System.getInt(resolver, Settings.System.SCREEN_BRIGHTNESS, 0);
+    }
+
 
     public static void setFanProfile(String profile) {
         Log.i(TAG, "Setting fan profile: " + profile);

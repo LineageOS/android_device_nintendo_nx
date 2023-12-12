@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33da4b9_28e3d83b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-12-12T05:24:07Z",
+      "side": 1,
+      "message": "appears to work (joycons suspend when system does)",
+      "revId": "9e10a5b3e84089d491826ce4291f00076e91b88e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c501f620_181eedb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-12-12T20:09:57Z",
+      "side": 1,
+      "message": "will swap to using settings as per webgeek1234 suggestion",
+      "revId": "4f5f1ef3a08b9aab5162609415098307395c530f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

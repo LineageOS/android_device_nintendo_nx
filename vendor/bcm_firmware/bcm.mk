@@ -13,7 +13,7 @@
 # limitations under the License.
 
 LOCAL_PATH := device/nintendo/nx/vendor/bcm_firmware
-COMMON_BCM_PATH := device/nvidia/tegra-common/vendor/bcm_firmware
+COMMON_BCM_PATH := device/nvidia/tegra-common/vendor/rel-shield-r/bcm_firmware
 
 PRODUCT_PACKAGES += \
     BCM4356A3 \

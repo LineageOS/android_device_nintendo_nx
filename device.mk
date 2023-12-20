@@ -16,16 +16,11 @@
 
 TARGET_TEGRA_VARIANT    ?= common
 
-TARGET_TEGRA_AUDIO    ?= nvaudio
 TARGET_TEGRA_BT       ?= bcm
-TARGET_TEGRA_CEC      ?= aosp
+TARGET_TEGRA_CEC      := aosp
 TARGET_TEGRA_KERNEL   ?= 4.9
 TARGET_TEGRA_KEYSTORE := software
-TARGET_TEGRA_MEMTRACK ?= nvmemtrack
-TARGET_TEGRA_OMX      ?= nvmm
-TARGET_TEGRA_PHS      ?= nvphs
-TARGET_TEGRA_POWER    ?= aosp
-TARGET_TEGRA_WIDEVINE ?= true
+TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
 
 TARGET_TEGRA_WIREGUARD ?= compat
@@ -91,12 +86,10 @@ ifeq ($(PRODUCT_IS_ATV),true)
 endif
 
 # Audio
-ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 PRODUCT_PACKAGES += \
     audio_effects.xml \
     audio_policy_configuration.xml \
     nvaudio_conf.xml
-endif
 
 # CEC
 PRODUCT_COPY_FILES := $(filter-out frameworks/native/data/etc/android.hardware.hdmi.cec.xml%android.hardware.hdmi.cec.xml,$(PRODUCT_COPY_FILES))
@@ -147,13 +140,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_ODM)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_ODM)/etc/media_codecs_google_video.xml
 PRODUCT_PACKAGES += \
-    media_codecs.xml
-ifneq (,$(findstring nvmm,$(TARGET_TEGRA_OMX)))
-PRODUCT_PACKAGES += \
+    media_codecs.xml \
     media_codecs_performance.xml \
     media_profiles_V1_0.xml \
     enctune.conf
-endif
 
 # Power
 PRODUCT_PACKAGES += \
@@ -164,10 +154,8 @@ PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/task_profiles_28.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 # PHS
-ifeq ($(TARGET_TEGRA_PHS),nvphs)
 PRODUCT_PACKAGES += \
     nvphsd.conf
-endif
 
 # Sensors
 PRODUCT_PACKAGES += \

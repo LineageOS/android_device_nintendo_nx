@@ -39,10 +39,8 @@ DEVICE_MANIFEST_FILE := device/nintendo/nx/manifest.xml
 
 # Bluetooth
 TARGET_VENDOR_PROP += device/nintendo/nx/bluetooth.prop
-ifeq ($(TARGET_TEGRA_BT),bcm)
 BOARD_CUSTOM_BT_CONFIG := device/nintendo/nx/comms/vnd_nx.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nintendo/nx/comms
-endif
 
 # Charger
 WITH_LINEAGE_CHARGER := false

@@ -90,6 +90,7 @@ LOCAL_MODULE_SUFFIX := .sh
 LOCAL_INIT_RC       := nx_jc.rc
 LOCAL_MODULE_CLASS  := EXECUTABLES
 LOCAL_VENDOR_MODULE := true
+include $(BUILD_PREBUILT)
 
 # Goes on system due to needing `settings` and `svc`
 include $(CLEAR_VARS)

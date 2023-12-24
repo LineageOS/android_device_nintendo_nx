@@ -17,7 +17,7 @@
     <protected-broadcast android:name="com.lineage.devicesettings.UPDATE_POWER" />
 
     <application
-        android:label="@string/device_settings_app_name"
+        android:label="@string/display_panel_title"
         android:icon="@mipmap/ic_launcher"
         android:banner="@mipmap/ic_banner"
         android:persistent="true">

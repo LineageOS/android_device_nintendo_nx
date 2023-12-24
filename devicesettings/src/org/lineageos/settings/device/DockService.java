@@ -126,10 +126,10 @@ public class DockService extends Service {
                 case WindowManagerPolicyConstants.ACTION_HDMI_PLUGGED:
                     if (mExternalDisplayConnected)
                         DisplayUtils.setDisplayMode(1, mDisplayService,
-                            mWindowManager, sharedPrefs);
+                            sharedPrefs);
                     else
                         DisplayUtils.setDisplayMode(0, mDisplayService,
-                            mWindowManager, sharedPrefs);
+                            sharedPrefs);
 
                     mExternalDisplayConnected = connected;
 

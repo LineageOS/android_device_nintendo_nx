@@ -23,8 +23,6 @@ TARGET_TEGRA_CPL      := none
 TARGET_KERNEL_VERSION ?= 4.9
 TARGET_TEGRA_KEYSTORE := software
 TARGET_TEGRA_LIGHT    ?= lineage
-TARGET_TEGRA_MAN_LVL  := 5
-TARGET_TEGRA_MEMTRACK ?= rel-shield-r
 TARGET_TEGRA_POWER    := perfmgr
 TARGET_TEGRA_SENSORS  := iio
 TARGET_TEGRA_SENSOR_FEATURES := accelerometer gyroscope light
@@ -32,9 +30,12 @@ TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_UBOOT    := prebuilt
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
-TARGET_TEGRA_WIREGUARD ?= compat
 
 TARGET_ATV_FORCE_1080_SCALING := false
+
+ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
+TARGET_TEGRA_MEMTRACK ?= rel-shield-r
+endif
 
 include device/nvidia/t210-common/t210.mk
 
@@ -122,8 +123,11 @@ PRODUCT_PACKAGES += \
     cec_disable.xml
 
 # Device Settings
+# TEMP
+ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
 PRODUCT_PACKAGES += \
     DeviceSettingsNX
+endif
 
 # DocumentsUI
 # We are the exception, being an ATV device with touch
@@ -149,8 +153,10 @@ PRODUCT_PACKAGES += \
     jc_setup
 
 # Kernel Modules
+ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
 PRODUCT_PACKAGES += \
     cypress-fmac-upstream
+endif
 
 # Keylayouts
 PRODUCT_PACKAGES += \
@@ -158,11 +164,17 @@ PRODUCT_PACKAGES += \
 
 # Loadable kernel modules
 PRODUCT_PACKAGES += \
-    lkm_loader \
-    lkm_loader_target
+    lkm_loader
 
 PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/initfiles/init.lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lkm.rc
+ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
+PRODUCT_PACKAGES += \
+    lkm_loader_target
+else
+PRODUCT_COPY_FILES += \
+    device/nintendo/nx/initfiles/lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/lkm.rc
+endif
 
 # Media config
 PRODUCT_PACKAGES += \

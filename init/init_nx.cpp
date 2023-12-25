@@ -31,11 +31,14 @@
 
 void vendor_load_properties()
 {
-       //                                             device    name     model          id     sku api dpi
-       std::vector<tegra_init::devices> devices = { { "nx",     "odin",  "Switch",      0x494E, 0, 27, 214 },
-                                                    { "nx",     "modin", "Switch v2",   0x494F, 1, 27, 214 },
-                                                    { "nx",     "vali",  "Switch Lite", 0x4C49, 2, 27, 214 },
-                                                    { "nx",     "frig",  "Switch OLED", 0x4947, 3, 27, 214 } };
+
+		// device    name            hardware        model               id      sku api dpi
+	std::vector<tegra_init::devices> devices = {
+                { "nx",     "odin",         "odin",         "Switch",            0x494E, 0,  27, 214 },
+                { "nx",     "modin",        "modin",        "Switch v2",         0x494F, 1,  27, 214 },
+                { "nx",     "vali",         "vali",         "Switch Lite",       0x4C49, 2,  27, 214 },
+                { "nx",     "frig",         "frig",         "Switch OLED",       0x4947, 3,  27, 214 }
+        };
         // NOTE: modin has same board id as odin, but we bumped by 0x00000001 to keep id's unique for dtimg entry indexing
 
 	tegra_init ti(devices);

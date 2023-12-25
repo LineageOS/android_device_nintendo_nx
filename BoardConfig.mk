@@ -58,6 +58,8 @@ WITH_LINEAGE_CHARGER := false
 TARGET_SCREEN_DENSITY := 186
 
 # Kernel Source
+ifeq ($(TARGET_KERNEL_VERSION),4.9)
+TARGET_KERNEL_CLANG_COMPILE    := false
 KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-9.3/bin
 KERNEL_TOOLCHAIN_PREFIX        := aarch64-buildroot-linux-gnu-
 TARGET_KERNEL_CLANG_COMPILE    := false
@@ -74,8 +76,23 @@ TARGET_KERNEL_EXT_MODULES := \
     nvgpu/drivers/gpu/nvgpu:kbuild
 include device/nintendo/nx/modules.mk
 
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+MODDIR := $(dir $(TARGET_PREBUILT_KERNEL))
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(MODDIR)/*.ko)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(MODDIR)/,$(BOOT_KERNEL_MODULES))
+BOARD_RECOVERY_KERNEL_MODULES := $(addprefix $(MODDIR)/,$(RECOVERY_KERNEL_MODULES))
+endif
+else # not 4.9
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+TARGET_KERNEL_PLATFORM_TARGET := tegra
+TARGET_KERNEL_SOURCE          := vendor/nvidia/$(TARGET_KERNEL_PLATFORM_TARGET)
+BOARD_KERNEL_IMAGE_NAME       := Image.gz
+endif
+BOARD_KERNEL_CMDLINE          := firmware_class.path=/vendor/firmware cpufreq.default_governor=performance cma=512MB nouveau.atomic=1
+include device/nintendo/nx/modules-ack.mk
+endif
+
 # Kernel Image Parameters
-BOARD_KERNEL_IMAGE_NAME        := Image.gz
 BOARD_MKBOOTIMG_ARGS           := \
     --base 0x80000000 \
     --kernel_offset 0x200000 \

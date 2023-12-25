@@ -153,11 +153,18 @@ PRODUCT_PACKAGES += \
 
 # Loadable kernel modules
 PRODUCT_PACKAGES += \
-    lkm_loader \
-    lkm_loader_target
+    lkm_loader
 
 PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/initfiles/init.lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lkm.rc
+
+ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
+PRODUCT_PACKAGES += \
+    lkm_loader_target
+else
+PRODUCT_COPY_FILES += \
+    device/nintendo/nx/initfiles/lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/lkm.rc
+endif
 
 # Media config
 PRODUCT_PACKAGES += \

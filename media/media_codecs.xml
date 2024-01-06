@@ -105,7 +105,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="performance-point-3840x2160" value="60" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
-        <MediaCodec name="OMX.Nvidia.h264.decode.secure" type="video/avc" >
+        <!-- <MediaCodec name="OMX.Nvidia.h264.decode.secure" type="video/avc" >
             <Limit name="size" min="48x48" max="3840x2176" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
@@ -115,7 +115,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="performance-point-3840x2160" value="60" />
             <Feature name="adaptive-playback" />
             <Feature name="secure-playback" required="true" />
-        </MediaCodec>
+        </MediaCodec> -->
         <MediaCodec name="OMX.Nvidia.vp8.decode" type="video/x-vnd.on2.vp8" >
             <Limit name="size" min="48x48" max="3840x2176" />
             <Limit name="alignment" value="2x2" />
@@ -135,7 +135,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="performance-point-3840x2160" value="60" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
-        <MediaCodec name="OMX.Nvidia.vp9.decode.secure" type="video/x-vnd.on2.vp9" >
+        <!-- <MediaCodec name="OMX.Nvidia.vp9.decode.secure" type="video/x-vnd.on2.vp9" >
             <Limit name="size" min="144x144" max="3840x2176" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
@@ -144,7 +144,7 @@ Only the three quirks included above are recognized at this point:
             <Feature name="adaptive-playback" />
             <Limit name="performance-point-3840x2160" value="60" />
             <Feature name="secure-playback" required="true" />
-        </MediaCodec>
+        </MediaCodec> -->
         <MediaCodec name="OMX.Nvidia.h265.decode" type="video/hevc" >
             <Limit name="size" min="144x144" max="3840x2176" />
             <Limit name="alignment" value="2x2" />
@@ -201,7 +201,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="performance-point-1920x1080" value="30" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
-        <MediaCodec name="OMX.Nvidia.DOVI.decode" type="video/dolby-vision" >
+        <!-- <MediaCodec name="OMX.Nvidia.DOVI.decode" type="video/dolby-vision" >
             <Limit name="size" min="144x144" max="3840x2176" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
@@ -219,7 +219,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="performance-point-3840x2160" value="60" />
             <Feature name="adaptive-playback" />
             <Feature name="secure-playback" required="true" />
-        </MediaCodec>
+        </MediaCodec> -->
     </Decoders>
 
     <Encoders>

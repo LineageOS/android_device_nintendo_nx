@@ -66,6 +66,10 @@ TARGET_KERNEL_CONFIG           := tegra_android_defconfig
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/nvidia
+TARGET_KERNEL_EXT_MODULES := \
+    nvgpu/drivers/gpu/nvgpu:kbuild
 include device/nintendo/nx/modules.mk
 
 # Kernel Image Parameters

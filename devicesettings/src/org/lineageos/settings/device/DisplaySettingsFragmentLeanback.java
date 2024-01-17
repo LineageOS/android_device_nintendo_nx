@@ -197,6 +197,7 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
                             try {
                                 mDisplayService.modeDefaultCommit(display);
                                 mDisplayService.modeDefaultStore(display);
+                                mDisplayService.modeUpdate(display);
                             } catch (RemoteException e) {
                                 Log.e(TAG, "Failed to save default display mode");
                             }

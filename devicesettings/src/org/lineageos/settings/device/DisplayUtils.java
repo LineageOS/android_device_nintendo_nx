@@ -87,9 +87,13 @@ public class DisplayUtils {
                 index = Integer.parseInt(modeString);
             }
 
-            // manually set hwc mode and force android to update rotation
-            displayService.modeSetIndex(display, index);
+            // manually set hwc mode
+            displayService.modeDefaultSetIndex(display, index);
+            displayService.modeDefaultCommit(display);
+            displayService.modeDefaultStore(display);
+            displayService.modeUpdate(display);
             windowManager.updateRotation(true, true);
+
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to set mode!");
         }

@@ -11,7 +11,7 @@
 /dev/block/by-name/LNX                                  /boot               emmc      defaults                                                            defaults
 /dev/block/by-name/MSC                                  /misc               emmc      defaults                                                            defaults
 /dev/block/by-name/UDA                                  /data               ext4      noatime,nosuid,nodev,data=ordered,barrier=0,noauto_da_alloc         wait,check,formattable,quota,reservedsize=128M
-/dev/block/by-name/MDA                                  /metadata           emmc      defaults                                                            defaults
+/dev/block/by-name/MDA                                  /metadata           ext4      noatime,nosuid,nodev,discard                                        wait,check,formattable
 /dev/block/by-name/SOS                                  /recovery           emmc      defaults                                                            defaults
 /devices/sdhci-tegra.0/mmc_host*                        auto                vfat      defaults                                                            voldmanaged=sdcard1:1
 /devices/70090000.xusb/usb*                             auto                vfat      defaults                                                            voldmanaged=usbdrive:auto

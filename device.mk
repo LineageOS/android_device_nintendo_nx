@@ -148,8 +148,7 @@ PRODUCT_PACKAGES += \
     loki_e_lte_nvaudio_conf.xml \
     loki_e_wifi_nvaudio_conf.xml \
     nx_nvaudio_conf.xml \
-    nvaudio_conf.xml \
-    nvaudio_fx.xml
+    nvaudio_conf.xml
 endif
 
 # EKS

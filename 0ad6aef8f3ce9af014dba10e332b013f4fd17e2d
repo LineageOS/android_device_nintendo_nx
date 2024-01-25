@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82a3ad5_e68d2dbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-01-25T21:42:07Z",
+      "side": 1,
+      "message": "Uhhhh... what? This isn\u0027t plumbed on u-boot and probably shouldn\u0027t be.",
+      "revId": "0ad6aef8f3ce9af014dba10e332b013f4fd17e2d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

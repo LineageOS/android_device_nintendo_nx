@@ -20,7 +20,7 @@ PRODUCT_PACKAGES += public.libraries
 
 # Switch firmware files
 PRODUCT_PACKAGES += \
-	00-android \
+	android.ini \
 	bootlogo_android \
 	icon_android_hue \
 	bl31 \

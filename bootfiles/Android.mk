@@ -18,13 +18,12 @@ LOCAL_PATH := $(call my-dir)
 LINEAGE_TOOLS_PATH := $(abspath prebuilts/tools-lineage/$(HOST_PREBUILT_TAG)/bin)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE        := 00-android
-LOCAL_MODULE_SUFFIX := .ini
-LOCAL_SRC_FILES     := 00-android.ini
+LOCAL_MODULE        := android.ini
+LOCAL_SRC_FILES     := android.ini
 LOCAL_MODULE_CLASS  := ETC
 LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 include $(BUILD_PREBUILT)
-INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/00-android.ini
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/android.ini
 
 include $(CLEAR_VARS)
 LOCAL_MODULE        := bootlogo_android

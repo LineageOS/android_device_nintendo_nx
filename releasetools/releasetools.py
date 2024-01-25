@@ -76,12 +76,15 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('          ui_print("Your bootloader is already compatible with L4T-Loader");')
   info.script.AppendExtra('        ),')
   info.script.AppendExtra('        (')
-  info.script.AppendExtra('          ui_print("Removing coreboot, as it is unused by L4T-Loader");')
+  info.script.AppendExtra('          ui_print("Updating bootloader for L4T-Loader");')
   info.script.AppendExtra('          run_program("/system/bin/rm", "-f", "' + NX_FILES + '/switchroot/android/coreboot.rom");')
+  info.script.AppendExtra('          run_program("/system/bin/rm", "-f", "' + NX_FILES + '/bootloader/ini/00-android.ini");')
+  info.script.AppendExtra('          package_extract_file("firmware-update/android.ini", "' + NX_FILES + '/bootloader/ini/android.ini");')
   info.script.AppendExtra('        )')
   info.script.AppendExtra('      );')
 
   """ flash uploaded bl files """
+  info.script.AppendExtra('      run_program("/system/bin/sed", "-i", "s/LineageOS.*\]/LineageOS]/g", "' + NX_FILES + '/bootloader/ini/android.ini");')
   info.script.AppendExtra('      package_extract_file("firmware-update/bl31.bin", "' + NX_FILES + '/switchroot/android/bl31.bin");')
   info.script.AppendExtra('      package_extract_file("firmware-update/bl33.bin", "' + NX_FILES + '/switchroot/android/bl33.bin");')
   info.script.AppendExtra('      package_extract_file("firmware-update/bootlogo_android.bmp", "' + NX_FILES + '/switchroot/android/bootlogo_android.bmp");')

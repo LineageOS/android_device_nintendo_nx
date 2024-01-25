@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d757dc8_3688cca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-01-25T23:08:11Z",
+      "side": 1,
+      "message": "Before submitting please check the comments in https://review.lineageos.org/c/LineageOS/android_device_nintendo_nx/+/376632 and see if you addressed them all.",
+      "revId": "b4b729bf7e9198d544738e84cc2e124ca5c32309",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

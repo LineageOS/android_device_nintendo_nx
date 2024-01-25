@@ -10,9 +10,6 @@
     <!-- Boolean indicating whether the wifi chipset has 5GHz frequency band support -->
     <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
 
-    <!-- Boolean indicating associated network selection is allowed -->
-    <bool translatable="false" name="config_wifi_framework_enable_associated_network_selection">false</bool>
-
     <!-- Enable WPA2 to WPA3 auto-upgrade -->
     <bool translatable="false" name="config_wifiSaeUpgradeEnabled">false</bool>
 </resources>

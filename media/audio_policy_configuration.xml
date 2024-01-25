@@ -95,7 +95,7 @@
         <xi:include href="/vendor/etc/bluetooth_audio_policy_configuration.xml"/>
 
         <!-- MSD Audio HAL -->
-        <xi:include href="/vendor/etc/msd_audio_policy_configuration.xml"/>
+        <!-- <xi:include href="/vendor/etc/msd_audio_policy_configuration.xml"/> -->
     </modules>
     <!-- End of Modules section -->
 

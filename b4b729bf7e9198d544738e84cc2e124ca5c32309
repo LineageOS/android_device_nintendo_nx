@@ -16,6 +16,23 @@
       "message": "Before submitting please check the comments in https://review.lineageos.org/c/LineageOS/android_device_nintendo_nx/+/376632 and see if you addressed them all.",
       "revId": "b4b729bf7e9198d544738e84cc2e124ca5c32309",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f55025d_14d6a7c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-01-25T23:09:02Z",
+      "side": 1,
+      "message": "pending review of 18.1 branch comments.",
+      "revId": "b4b729bf7e9198d544738e84cc2e124ca5c32309",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

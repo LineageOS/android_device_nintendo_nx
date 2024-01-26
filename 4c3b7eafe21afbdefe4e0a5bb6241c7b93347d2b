@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbfb124_1e84e16d",
+        "filename": "devicesettings/res/values/arrays.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5689cf1_6c570040",
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4fedf1b_1e407b4b",
@@ -35,6 +53,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d87b8c7d_2e278cc4",
+        "filename": "devicesettings/res/values/arrays.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4fedf1b_1e407b4b",
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74cce7bb_f28fa1af",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-12-12T21:28:51Z",
       "side": 1,
       "message": "2020-2023 or 2020,2023.",
+      "range": {
+        "startLine": 3,
+        "startChar": 19,
+        "endLine": 3,
+        "endChar": 23
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae12b068_54f2744d",
+        "filename": "devicesettings/res/xml/display_panel.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74cce7bb_f28fa1af",
       "range": {
         "startLine": 3,
         "startChar": 19,
@@ -81,6 +141,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46c6b98_a62dbabd",
+        "filename": "devicesettings/res/xml/display_panel.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10be1cac_bbcb5200",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c1b899b_a892e935",
@@ -94,6 +178,30 @@
       "writtenOn": "2023-12-12T21:28:51Z",
       "side": 1,
       "message": "stray spaces",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 8
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5847dc61_3a182b84",
+        "filename": "devicesettings/res/xml/display_panel.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c1b899b_a892e935",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -121,6 +229,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1febfc51_3d128e8e",
+        "filename": "devicesettings/res/xml/display_panel.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0912637_71da46d9",
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dffe6d77_bc5afc2a",
@@ -138,6 +264,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ea4f96_a64d54fa",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dffe6d77_bc5afc2a",
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ad3cf5_7cbc4d44",
@@ -151,6 +295,30 @@
       "writtenOn": "2023-12-12T21:28:51Z",
       "side": 1,
       "message": "Add { }",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e00c54_85f96271",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ad3cf5_7cbc4d44",
       "range": {
         "startLine": 47,
         "startChar": 8,
@@ -184,6 +352,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7979987_d8a279ea",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b8eb819_df909937",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4a40422_71b0ae9e",
@@ -197,6 +389,30 @@
       "writtenOn": "2023-12-12T21:28:51Z",
       "side": 1,
       "message": "Add { }",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85320f4d_e2aa8b41",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a40422_71b0ae9e",
       "range": {
         "startLine": 75,
         "startChar": 12,
@@ -230,6 +446,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b00d55_0a944d54",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0a57e7f_44a8f846",
+      "range": {
+        "startLine": 78,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3253bd36_f5ab5fdf",
@@ -243,6 +483,30 @@
       "writtenOn": "2023-12-12T21:28:51Z",
       "side": 1,
       "message": "What kind of indentation is this?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 89
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "841e8fa8_28b815aa",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3253bd36_f5ab5fdf",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -276,6 +540,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5b49ba_480ce69a",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f739605c_a5aa1b0a",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 73
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9e8e3a8_fae6ddd9",
@@ -289,6 +577,30 @@
       "writtenOn": "2023-12-12T21:28:51Z",
       "side": 1,
       "message": "Fits in a single line",
+      "range": {
+        "startLine": 202,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 76
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18aeb91c_554855c9",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e8e3a8_fae6ddd9",
       "range": {
         "startLine": 202,
         "startChar": 12,
@@ -322,6 +634,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf04d25e_6dc7f887",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8cfd6ca_15d13990",
+      "range": {
+        "startLine": 206,
+        "startChar": 12,
+        "endLine": 207,
+        "endChar": 76
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3868b3d7_9fa5a8e3",
@@ -345,6 +681,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6923831a_a851e763",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DockService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3868b3d7_9fa5a8e3",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 44
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2769bb2_c347246d",
@@ -358,6 +718,30 @@
       "writtenOn": "2023-12-12T21:28:51Z",
       "side": 1,
       "message": "Wrong indentation, 4 spaces more",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "4c3b7eafe21afbdefe4e0a5bb6241c7b93347d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02b6e60_6817c7b4",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DockService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-01-26T16:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2769bb2_c347246d",
       "range": {
         "startLine": 120,
         "startChar": 12,

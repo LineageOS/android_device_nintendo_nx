@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41611f9_e3c405ca",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsFragment.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-01-26T16:49:19Z",
+      "side": 1,
+      "message": "You missed the opening and closing { }",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 52
+      },
+      "revId": "61c6f8900df55f9081f693b0331262b7e0c267c0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

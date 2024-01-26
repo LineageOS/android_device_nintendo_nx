@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10bf4016_57a0e27f",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-01-26T16:33:57Z",
+      "side": 1,
+      "message": "Also 8 spaces here.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "bc4a540d87bd70b5e5579f9fff452b4f62a0e007",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b11c2971_6822defa",
         "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsFragment.java",
         "patchSetId": 9

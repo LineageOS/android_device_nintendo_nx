@@ -20,6 +20,7 @@ import re
 import os
 
 DTB_PART     = '/dev/block/by-name/dtb'
+SUPER_PART   = '/dev/block/by-name/super'
 NX_FILES     = '/mnt/vendor/hos_data'
 
 NX_BL_VERSION = '2022.10-g4f111ee6dc'

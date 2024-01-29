@@ -19,17 +19,9 @@ import common
 import re
 import os
 
-APP_PART     = '/dev/block/by-name/APP'
-DTB_PART     = '/dev/block/by-name/DTB'
-VENDOR_PART  = '/dev/block/by-name/vendor'
 NX_FILES     = '/mnt/vendor/hos_data'
 
 NX_BL_VERSION = '2022.10-g4f111ee6dc'
-
-def FullOTA_PostValidate(info):
-  if 'INSTALL/bin/resize2fs_static' in info.input_zip.namelist():
-    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + APP_PART + '");');
-    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + VENDOR_PART + '");');
 
 def FullOTA_Assertions(info):
   if 'RADIO/bl33.bin' in info.input_zip.namelist():
@@ -88,9 +80,9 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('      package_extract_file("firmware-update/bl33.bin", "' + NX_FILES + '/switchroot/android/bl33.bin");')
   info.script.AppendExtra('      package_extract_file("firmware-update/bootlogo_android.bmp", "' + NX_FILES + '/switchroot/android/bootlogo_android.bmp");')
   info.script.AppendExtra('      package_extract_file("firmware-update/icon_android_hue.bmp", "' + NX_FILES + '/switchroot/android/icon_android_hue.bmp");')
+
+  """ flash dtb """
+  info.script.AppendExtra('      package_extract_file("install/nx-plat.dtimg", "' + NX_FILES + '/switchroot/android/nx-plat.dtimg");')
   info.script.AppendExtra('      run_program("/system/bin/umount", "' + NX_FILES + '");')
   info.script.AppendExtra('    )')
   info.script.AppendExtra('  );')
-
-  """ flash dtb """
-  info.script.AppendExtra('  package_extract_file("install/nx-plat.dtimg", "' + DTB_PART + '");')

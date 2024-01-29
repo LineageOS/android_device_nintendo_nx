@@ -15,10 +15,19 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE        := fstab.nx
+LOCAL_MODULE           := fstab.nx
+LOCAL_MODULE_CLASS     := ETC
+LOCAL_SRC_FILES        := fstab.nx
+LOCAL_VENDOR_MODULE    := true
+LOCAL_REQUIRED_MODULES := fstab.nx_ramdisk
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := fstab.nx_ramdisk
+LOCAL_MODULE_STEM   := fstab.nx
 LOCAL_MODULE_CLASS  := ETC
 LOCAL_SRC_FILES     := fstab.nx
-LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_PATH   := $(TARGET_RAMDISK_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)

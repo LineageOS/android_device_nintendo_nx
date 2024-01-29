@@ -42,6 +42,8 @@ endif
 
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
 
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 include device/nintendo/nx/vendor/nx-vendor.mk
 
 # Overlays

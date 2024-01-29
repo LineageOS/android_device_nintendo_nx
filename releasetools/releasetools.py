@@ -19,17 +19,10 @@ import common
 import re
 import os
 
-APP_PART     = '/dev/block/by-name/APP'
 DTB_PART     = '/dev/block/by-name/DTB'
-VENDOR_PART  = '/dev/block/by-name/vendor'
 NX_FILES     = '/mnt/vendor/hos_data'
 
 NX_BL_VERSION = '2022.10-g4f111ee6dc'
-
-def FullOTA_PostValidate(info):
-  if 'INSTALL/bin/resize2fs_static' in info.input_zip.namelist():
-    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + APP_PART + '");');
-    info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + VENDOR_PART + '");');
 
 def FullOTA_Assertions(info):
   if 'RADIO/bl33.bin' in info.input_zip.namelist():

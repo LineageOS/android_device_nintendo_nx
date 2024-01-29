@@ -32,9 +32,9 @@ TARGET_COPY_OUT_VENDOR                 := vendor
 BOARD_USES_FULL_RECOVERY_IMAGE         := true
 
 BOARD_NVIDIA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext vendor odm
-BOARD_NVIDIA_DYNAMIC_PARTITIONS_SIZE           := 6434062336
+BOARD_NVIDIA_DYNAMIC_PARTITIONS_SIZE           := 6169821184
 BOARD_SUPER_PARTITION_GROUPS                   := nvidia_dynamic_partitions
-BOARD_SUPER_PARTITION_SIZE                     := 6442450944
+BOARD_SUPER_PARTITION_SIZE                     := 6178209792
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
@@ -77,6 +77,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
+TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_nx
 
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2022-04-05

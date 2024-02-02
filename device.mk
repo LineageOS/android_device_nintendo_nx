@@ -29,6 +29,8 @@ TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
 TARGET_TEGRA_WIREGUARD ?= compat
 
+TARGET_ATV_FORCE_1080_SCALING := false
+
 include device/nvidia/t210-common/t210.mk
 
 # Properties

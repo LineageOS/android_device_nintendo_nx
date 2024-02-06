@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87b5ff7_edca5e46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-02-06T19:06:37Z",
+      "side": 1,
+      "message": "verified on nx (frig)\nlooks and works perfectly",
+      "revId": "0350794d909f8bad2019496ab1dd84050311c7ab",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

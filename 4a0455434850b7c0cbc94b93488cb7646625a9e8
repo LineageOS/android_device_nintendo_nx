@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c34db9e_97dcd6a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-02-06T07:45:20Z",
+      "side": 1,
+      "message": "Not really much reason to have the controller modules on this device, tbh. Usb-storage might be useful, though.",
+      "revId": "4a0455434850b7c0cbc94b93488cb7646625a9e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": []
 }

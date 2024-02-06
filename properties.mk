@@ -10,6 +10,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_PROPERTY_OVERRIDES += \
     persist.sys.NV_ECO.IF.CHARGING=false
 
+# GMS
+PRODUCT_SYSTEM_EXT_PROPERTY_OVERRIDES += \
+    atv.setup.bt_remote_pairing=false
+
 # HWC
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.tegra.stb.mode=0

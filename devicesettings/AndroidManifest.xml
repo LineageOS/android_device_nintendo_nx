@@ -15,6 +15,7 @@
         android:targetSdkVersion="33" />
 
     <protected-broadcast android:name="com.lineage.devicesettings.UPDATE_POWER" />
+    <protected-broadcast android:name="com.nvidia.NvCPLSvc.action.APP_PROFILE_UPDATE" />
 
     <application
         android:label="@string/display_panel_title"

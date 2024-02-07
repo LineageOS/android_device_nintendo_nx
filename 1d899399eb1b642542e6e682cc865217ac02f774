@@ -46,6 +46,30 @@
       },
       "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23692a6_c0749db2",
+        "filename": "devicesettings/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-02-07T16:52:28Z",
+      "side": 1,
+      "message": "My bad, was basing off some of what pro1 did, which just did this. Also fwiw most of the libs set defaults for the lib so wouldn\u0027t be needed. But yea I\u0027ll nuke that.",
+      "parentUuid": "3da218da_3faa2a45",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

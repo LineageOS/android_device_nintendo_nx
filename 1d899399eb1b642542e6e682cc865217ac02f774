@@ -22,6 +22,30 @@
       },
       "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da218da_3faa2a45",
+        "filename": "devicesettings/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-02-07T12:25:33Z",
+      "side": 1,
+      "message": "Hold on, why do you need this at all considering that \"org.lineageos.settings.resources\" is already added as a static lib? You could even remove \"androidx.preference_preference\" and \"androidx.appcompat_appcompat\" in a follow-up change.",
+      "parentUuid": "cfd83d75_32b924b2",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

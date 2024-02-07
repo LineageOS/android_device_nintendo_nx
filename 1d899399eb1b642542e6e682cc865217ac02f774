@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd83d75_32b924b2",
+        "filename": "devicesettings/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-02-07T09:00:53Z",
+      "side": 1,
+      "message": "Remove it from here and add the following:\n\n    defaults: [\n        \"SettingsLibDefaults\",\n    ],",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

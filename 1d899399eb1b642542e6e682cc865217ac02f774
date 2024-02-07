@@ -94,6 +94,30 @@
       },
       "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421f0177_0c26e1df",
+        "filename": "devicesettings/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-02-07T17:08:04Z",
+      "side": 1,
+      "message": "You\u0027re probably right, fwiw the copy in tegra-common isn\u0027t tailored for ATV, but it has like no features and no DockService, and hasn\u0027t implemented leanback activity upstream yet. But I probably could. I generally treat this as its own thing. Anyway, I nuked that line, I can nuke more or refactor in another commit later.",
+      "parentUuid": "737062e3_62f960d2",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

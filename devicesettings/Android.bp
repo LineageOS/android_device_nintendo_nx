@@ -44,6 +44,7 @@ android_app {
         "org.lineageos.settings.resources",
         "org.lineageos.platform.internal",
         "vendor.nvidia.hardware.graphics.display-V1.0-java",
+        "SettingsLib",
     ],
 }
 

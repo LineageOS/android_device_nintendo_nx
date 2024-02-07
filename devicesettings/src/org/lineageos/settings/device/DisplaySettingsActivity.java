@@ -24,9 +24,10 @@ import android.os.Bundle;
 import android.os.SystemProperties;
 import android.view.WindowManagerPolicyConstants;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.widget.R;
 
-public class DisplaySettingsActivity extends AppCompatActivity {
+public class DisplaySettingsActivity extends CollapsingToolbarBaseActivity {
     public final Receiver mReceiver = new Receiver();
     public boolean mExternalDisplayConnected;
     private String sku = SystemProperties.get("ro.product.name", "");
@@ -35,10 +36,8 @@ public class DisplaySettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(android.R.id.content, DisplaySettingsFragment.class, null)
-                    .commit();
+            getFragmentManager().beginTransaction().replace(R.id.content_frame,
+                    new DisplaySettingsFragment()).commit();
         }
     }
 

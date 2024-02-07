@@ -29,8 +29,6 @@ import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
 
-import com.nvidia.NvAppProfiles;
-
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DockService extends Service {
@@ -44,7 +42,6 @@ public class DockService extends Service {
     private static final int MODE_MODIN_FRIG_DOCKED_PERF = 5;
 
     final private Receiver mReceiver = new Receiver();
-    final private NvAppProfiles mAppProfiles = new NvAppProfiles(this);
     private INvDisplay mDisplayService;
     private IWindowManager mWindowManager;
 
@@ -83,22 +80,22 @@ public class DockService extends Service {
             if (perfMode) {
                 if (connected) {
                     DisplayUtils.setFanProfile("Cool");
-                    mAppProfiles.setPowerMode(sku.equals("odin")
+                    DisplayUtils.setPowerMode(context, sku.equals("odin")
                                 ? MODE_ODIN_DOCKED_PERF
                                 : MODE_MODIN_FRIG_DOCKED_PERF);
                 } else {
                     DisplayUtils.setFanProfile("Console");
-                    mAppProfiles.setPowerMode((sku.equals("odin") || sku.equals("vali"))
+                    DisplayUtils.setPowerMode(context, (sku.equals("odin") || sku.equals("vali"))
                             ? MODE_ODIN_VALI_UNDOCKED_PERF
                             : MODE_MODIN_FRIG_UNDOCKED_PERF);
                 }
             } else {
                 if (connected) {
                     DisplayUtils.setFanProfile("Console");
-                    mAppProfiles.setPowerMode(MODE_DOCKED);
+                    DisplayUtils.setPowerMode(context, MODE_DOCKED);
                 } else {
                     DisplayUtils.setFanProfile("Handheld");
-                    mAppProfiles.setPowerMode(MODE_UNDOCKED);
+                    DisplayUtils.setPowerMode(context, MODE_UNDOCKED);
                 }
             }
         }

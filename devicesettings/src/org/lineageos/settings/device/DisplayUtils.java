@@ -16,7 +16,10 @@
 
 package org.lineageos.settings.device;
 
+import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.RemoteException;
 import android.provider.Settings;
@@ -35,6 +38,8 @@ import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayModePixEnc;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcEdidInfo;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcModeType;
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
+
+import com.nvidia.NvConstants;
 
 public class DisplayUtils {
     private static final String TAG = DisplayUtils.class.getSimpleName();
@@ -61,6 +66,19 @@ public class DisplayUtils {
             intModeFile.close();
         } catch (IOException e) {
             Log.w(TAG, "Failed to write display state");
+        }
+    }
+
+    public static void setPowerMode(Context context, int mode) {
+        Intent intent = new Intent();
+        intent.setClassName(NvConstants.NvCPLSvc, NvConstants.NvCPLService);
+        intent.putExtra(NvConstants.NvOrigin, 1);
+        intent.putExtra(NvConstants.NvPowerMode , String.valueOf(mode));
+
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "setPowerMode: Failed to send intent");
         }
     }
 

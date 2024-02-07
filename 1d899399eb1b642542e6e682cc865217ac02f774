@@ -70,6 +70,30 @@
       },
       "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737062e3_62f960d2",
+        "filename": "devicesettings/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-02-07T17:01:29Z",
+      "side": 1,
+      "message": "Just another suggestion. Since this DeviceSettingsNx is overriding DeviceSetttings (which I assumme it\u0027s somewhere in a common Nvidia repo, but tailored for ATV), you could probably just set that the most common defaults and then make DeviceSettingsNx inherit those.",
+      "parentUuid": "e23692a6_c0749db2",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "1d899399eb1b642542e6e682cc865217ac02f774",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

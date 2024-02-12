@@ -101,6 +101,6 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
     hid-nvidia-blake \
     hid-jarvis-remote \
-    usb_storage
+    usb-storage
 
 RECOVERY_KERNEL_MODULES := $(addsuffix .ko,$(BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD))

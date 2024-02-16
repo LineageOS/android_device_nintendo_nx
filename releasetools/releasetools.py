@@ -83,6 +83,19 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('      package_extract_file("firmware-update/bootlogo_android.bmp", "' + NX_FILES + '/switchroot/android/bootlogo_android.bmp");')
   info.script.AppendExtra('      package_extract_file("firmware-update/icon_android_hue.bmp", "' + NX_FILES + '/switchroot/android/icon_android_hue.bmp");')
   info.script.AppendExtra('      run_program("/system/bin/umount", "' + NX_FILES + '");')
+
+  """ flash super_empty if needed """
+  info.script.AppendExtra('      ifelse(')
+  info.script.AppendExtra('        nx.check_super() == "",')
+  info.script.AppendExtra('        (')
+  info.script.AppendExtra('          ui_print("Super partition not set up--flashing super_empty");')
+  info.script.AppendExtra('          package_extract_file("firmware-update/super_dummy.img", "/tmp/super_dummy.img");')
+  info.script.AppendExtra('          run_program("/system/bin/dd", "if=/tmp/super_dummy.img", "of=' + SUPER_PART + '", "bs=4k");')
+  info.script.AppendExtra('        ),')
+  info.script.AppendExtra('        (')
+  info.script.AppendExtra('          ui_print("Super partition already present");')
+  info.script.AppendExtra('        )')
+  info.script.AppendExtra('      );')
   info.script.AppendExtra('    )')
   info.script.AppendExtra('  );')
 

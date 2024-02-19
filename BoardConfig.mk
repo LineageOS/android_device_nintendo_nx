@@ -64,6 +64,7 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := \
     NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 include device/nintendo/nx/modules.mk
+BOARD_KERNEL_CMDLINE           += androidboot.selinux=permissive
 
 # Kernel Image Parameters
 BOARD_KERNEL_IMAGE_NAME        := Image.gz

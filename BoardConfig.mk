@@ -93,3 +93,6 @@ PRODUCT_FULL_TREBLE_OVERRIDE           := true
 BOARD_AVB_ENABLE := false
 
 include device/nvidia/t210-common/BoardConfigCommon.mk
+
+BOARD_KERNEL_CMDLINE           += androidboot.selinux=permissive
+

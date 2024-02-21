@@ -104,10 +104,6 @@ PRODUCT_PACKAGES += \
     cec_disable.xml \
     RC_for_stdp2550_cec
 
-# Device Settings
-PRODUCT_PACKAGES += \
-    DeviceSettingsNX
-
 # GMS
 ifeq ($(WITH_GMS),true)
 WITH_GMS_COMMS_SUITE := false

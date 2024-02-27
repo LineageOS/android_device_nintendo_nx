@@ -1,0 +1,5 @@
+# Access to JoyCons
+r_dir_file(system_server, sysfs_serial)
+
+# HDMI CEC permission symlink
+allow system_server permission_vendor_data_file:lnk_file read;

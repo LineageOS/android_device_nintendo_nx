@@ -1,0 +1,2 @@
+# Allow jc_setup init scripts to mount hos_data and relabel
+allow factory_file self:filesystem associate;

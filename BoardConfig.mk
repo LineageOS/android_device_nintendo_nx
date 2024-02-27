@@ -83,6 +83,10 @@ TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_nx
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2022-04-05
 
+# SELinux
+BOARD_VENDOR_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/private
+
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 BOARD_VNDK_VERSION                     := current

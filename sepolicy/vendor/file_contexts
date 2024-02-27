@@ -1,0 +1,35 @@
+# Block Devices
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/boot             u:object_r:boot_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/cache            u:object_r:cache_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/dtb              u:object_r:dtb_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/hos_data         u:object_r:factory_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/misc             u:object_r:misc_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/recovery         u:object_r:recovery_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/super            u:object_r:super_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]+/by-name/userdata         u:object_r:userdata_block_device:s0
+
+# jc_setup
+(/system)?/vendor/bin/jc_setup.sh u:object_r:jc_setup_exec:s0
+
+# HDMI CEC permissions symlink
+/data/vendor/permissions/android.hardware.hdmi.cec.xml u:object_r:permission_vendor_data_file:s0
+
+# Serial sysfs (JoyCons)
+/sys/devices/70006200.serial/serial1/serial1-0/power_supply/nintendo_switch_controller_battery_serial1-0/type u:object_r:sysfs_serial:s0
+/sys/devices/70006040.serial/serial0/serial0-0/power_supply/nintendo_switch_controller_battery_serial0-0/type u:object_r:sysfs_serial:s0
+/sys/devices/70006040.serial/serial0/serial0-0/leds/serial0-0:player[0-9]+/max_brightness                     u:object_r:sysfs_serial:s0
+/sys/devices/70006200.serial/serial1/serial1-0/leds/serial1-0:player[0-9]+/max_brightness                     u:object_r:sysfs_serial:s0
+/sys/devices/70006040.serial/serial0/serial0-0/leds/serial0-0:home/max_brightness                             u:object_r:sysfs_serial:s0
+/sys/devices/70006200.serial/serial1/serial1-0/power_supply/nintendo_switch_controller_battery_serial1-0/scope     u:object_r:sysfs_serial:s0
+/sys/devices/70006040.serial/serial0/serial0-0(/.*)? u:object_r:sysfs_serial:s0
+/sys/devices/70006040.serial/serial0/serial0-0/leds/serial0-0:player[0-9]+/brightness  u:object_r:sysfs_serial:s0
+/sys/devices/70006200.serial/serial1/serial1-0/leds/serial1-0:player[0-9]+/brightness                     u:object_r:sysfs_serial:s0
+
+# Regulators sysfs
+/sys/devices/7000d000.i2c/i2c-4/4-0033/regulator/regulator.[0-9]+/name                              u:object_r:sysfs_regulator_name:s0
+/sys/devices/7000d000.i2c/i2c-4/4-0033/regulator/regulator.27/name                              u:object_r:sysfs_regulator_name:s0
+/sys/devices/7000d000.i2c/i2c-4/4-0033/regulator/regulator.26/name                              u:object_r:sysfs_regulator_name:s0
+/sys/devices/7000d000.i2c/i2c-4/4-0018/regulator/regulator.16/name                              u:object_r:sysfs_regulator_name:s0
+/sys/devices/regulators/regulators:regulator@0xe/regulator/regulator.23/name                    u:object_r:sysfs_regulator_name:s0
+/sys/devices/regulators/regulators:regulator@0xb/regulator/regulator.22/name                    u:object_r:sysfs_regulator_name:s0
+/sys/devices/regulators/regulators:regulator@0xf/regulator/regulator.24/name                    u:object_r:sysfs_regulator_name:s0

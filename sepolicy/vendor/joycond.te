@@ -1,0 +1,6 @@
+# Access to JoyCons
+r_dir_file(joycond, sysfs_serial)
+allow joycond sysfs_serial:file rw_file_perms;
+
+# TMP - Access to JoyCons - pre-LKM load
+r_dir_file(joycond, sysfs)

@@ -1,0 +1,2 @@
+# neverallow wifi_reset.sh
+#allow platform_app vendor_firmware_gpu_file:file r_file_perms;

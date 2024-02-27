@@ -1,0 +1,5 @@
+# IIO Sensors
+ro.iio. u:object_r:iio_sensors_prop:s0
+
+# JoyCons
+persist.joycond. u:object_r:vendor_persist_joycond_prop:s0

@@ -1,0 +1,2 @@
+# Calls out to /dev directly
+allow hal_tv_cec_default device:dir r_dir_perms;

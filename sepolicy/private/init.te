@@ -1,0 +1,5 @@
+allow init servicemanager:binder { call transfer };
+allow init system_server:binder { call transfer };
+
+# wifi_reset.sh
+allow init wifi_reset_exec:file { execute execute_no_trans };

@@ -1,0 +1,5 @@
+# Serial sysfs (JoyCons)
+type sysfs_serial, fs_type, sysfs_type;
+
+# HDMI CEC permission symlink
+type permission_vendor_data_file, file_type, data_file_type;

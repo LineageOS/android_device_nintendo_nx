@@ -1,0 +1,5 @@
+# IIO Sensors
+vendor_public_prop(iio_sensors_prop);
+
+# JoyCons
+vendor_public_prop(vendor_persist_joycond_prop)

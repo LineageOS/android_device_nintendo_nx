@@ -1,0 +1,3 @@
+# Block Device Types
+type factory_block_device, dev_type;
+type sda_block_device, dev_type;

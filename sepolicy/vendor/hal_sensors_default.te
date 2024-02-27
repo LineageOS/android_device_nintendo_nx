@@ -1,0 +1,5 @@
+# Access to generic sensors
+allow hal_sensors_default iio_device:chr_file r_file_perms;
+
+# Access to NV sensors
+#allow hal_sensors_default sysfs_nvi2c:file r_file_perms;

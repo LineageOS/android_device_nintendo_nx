@@ -1,0 +1,2 @@
+# wifi_reset.sh
+/system/bin/wifi_reset.sh u:object_r:wifi_reset_exec:s0

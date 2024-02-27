@@ -1,0 +1,4 @@
+# neverallow wifi_reset.sh
+#allow system_server init:binder { call transfer };
+
+allow system_server init:fifo_file rw_file_perms;

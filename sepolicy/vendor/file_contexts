@@ -1,0 +1,32 @@
+# HDMI CEC permissions symlink
+/data/vendor/permissions/android.hardware.hdmi.cec.xml u:object_r:permission_vendor_data_file:s0
+
+# Block Devices
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/boot             u:object_r:boot_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/cache            u:object_r:cache_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/dtb              u:object_r:dtb_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/hos_data         u:object_r:factory_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/misc             u:object_r:misc_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/recovery         u:object_r:recovery_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/super            u:object_r:super_block_device:s0
+/dev/block/platform/(sdhci-tegra|tegra-xhci).[0-9]/by-name/userdata         u:object_r:userdata_block_device:s0
+
+# IIO sysfs (Sensors)
+/sys/devices/7000c400.i2c/i2c-1/1-0029/iio:device0/in_illuminance_input     u:object_r:sysfs_iio:s0
+
+# Serial sysfs (JoyCons)
+/sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/power_supply/nintendo_switch_controller_battery_serial[0-1]-[0-1]/scope u:object_r:sysfs_serial:s0
+/sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/power_supply/nintendo_switch_controller_battery_serial[0-1]-[0-1]/type  u:object_r:sysfs_serial:s0
+/sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/leds/serial[0-1]-[0-1]:player[0-9]+/brightness                          u:object_r:sysfs_serial:s0
+/sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/leds/serial[0-1]-[0-1]:player[0-9]+/max_brightness                      u:object_r:sysfs_serial:s0
+/sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1](/.*)? u:object_r:sysfs_serial:s0
+
+# Regulators sysfs
+/sys/devices/7000d000.i2c/i2c-4/4-[0-9]+/regulator/regulator.[0-9]+/name                        u:object_r:sysfs_regulator_name:s0
+/sys/devices/regulators/regulators:regulator@0x[a-fA-F]+/regulator/regulator.[0-9]+/name        u:object_r:sysfs_regulator_name:s0
+
+# USB sysfs
+/sys/devices/7000c000.i2c/i2c-0/0-006b/power_supply/usb/type u:object_r:sysfs_usb:s0
+
+# jc_setup
+/vendor/bin/jc_setup.sh u:object_r:jc_setup_exec:s0

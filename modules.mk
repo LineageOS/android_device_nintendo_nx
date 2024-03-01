@@ -53,10 +53,6 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     input-cfboost
 
-# JoyCons
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-	joycon-serdev
-
 # Fan
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     pwm_fan

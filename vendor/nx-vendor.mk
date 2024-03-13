@@ -18,7 +18,7 @@ include device/nintendo/nx/vendor/bcm_firmware/bcm.mk
 
 PRODUCT_PACKAGES += public.libraries
 
-ATF_PATH   := $(BUILD_TOP)/hardware/nintendo/arm-trusted-firmware
+ATF_PATH   := $(abspath hardware/nintendo/arm-trusted-firmware)
 
 # Platform defaults
 ATF_PARAMS := PLAT=tegra TARGET_SOC=t210 TZDRAM_BASE=0xFFF00000 RESET_TO_BL31=1 COLD_BOOT_SINGLE_CPU=1 \

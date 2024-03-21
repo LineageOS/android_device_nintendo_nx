@@ -180,10 +180,6 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia \
     thermalhal.nx.xml
 
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # WiFi
 PRODUCT_PACKAGES += \
     wifi_reset \

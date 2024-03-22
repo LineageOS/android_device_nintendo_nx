@@ -54,6 +54,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nintendo/nx/comms
 # Charger
 WITH_LINEAGE_CHARGER := false
 
+# Fingerprint override
+BUILD_FINGERPRINT := NVIDIA/nx/nx:11/RQ1A.210105.003/7825230_3167.5736:user/release-keys
+
 # Kernel Source
 KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-9.3/bin
 KERNEL_TOOLCHAIN_PREFIX        := aarch64-buildroot-linux-gnu-

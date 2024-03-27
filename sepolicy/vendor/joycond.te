@@ -1,4 +1,7 @@
 # Access to JoyCons
+r_dir_file(joycond, sysfs_hid)
+allow joycond sysfs_hid:file rw_file_perms;
+
 r_dir_file(joycond, sysfs_serial)
 allow joycond sysfs_serial:file rw_file_perms;
 

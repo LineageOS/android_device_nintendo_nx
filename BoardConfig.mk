@@ -70,8 +70,10 @@ TARGET_KERNEL_CLANG_COMPILE    := false
 TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)-nx
 TARGET_KERNEL_CONFIG           := tegra_android_defconfig
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)
-    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+    NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL) \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" \
+    CONFIG_EXFAT_FS=m
+
 include device/nintendo/nx/modules.mk
 
 # Kernel Image Parameters

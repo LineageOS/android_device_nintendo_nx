@@ -78,6 +78,10 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     cx25840 \
     cx231xx-dvb
 
+# FS
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    exfat
+
 # USB Storage
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     usb-storage

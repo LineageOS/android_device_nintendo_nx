@@ -70,8 +70,19 @@ TARGET_KERNEL_CLANG_COMPILE    := false
 TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)-nx
 TARGET_KERNEL_CONFIG           := tegra_android_defconfig
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
+<<<<<<< HEAD   (b523e1 Revert "fixup! Build nx dtimage")
     NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+=======
+    NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL) \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" \
+    CONFIG_EXFAT_FS=m
+
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/nvidia
+TARGET_KERNEL_EXT_MODULES := \
+    exfat:kbuild \
+    nvgpu/drivers/gpu/nvgpu:kbuild
+>>>>>>> CHANGE (0cd1cc Build exfat support)
 include device/nintendo/nx/modules.mk
 
 # Kernel Image Parameters

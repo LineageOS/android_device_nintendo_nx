@@ -78,6 +78,10 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     cx25840 \
     cx231xx-dvb
 
+# FS
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    exfat
+
 # USB Storage
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     usb-storage
@@ -96,3 +100,15 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     hid-xinmo \
     hid-betopff
+<<<<<<< HEAD   (b523e1 Revert "fixup! Build nx dtimage")
+=======
+
+# Copy to recovery
+BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
+    exfat \
+    hid-nvidia-blake \
+    hid-jarvis-remote \
+    usb-storage
+
+RECOVERY_KERNEL_MODULES := $(addsuffix .ko,$(BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD))
+>>>>>>> CHANGE (0cd1cc Build exfat support)

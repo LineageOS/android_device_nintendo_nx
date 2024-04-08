@@ -29,4 +29,4 @@ product                                                 /product            ext4
 /dev/block/platform/70090000.xusb/by-num/p1             /usbdrive           auto        defaults                                                            recoveryonly
 
 # zram
-/dev/block/zram0                                        none                swap        defaults                                                            zramsize=536870912
+/dev/block/zram0                                        none                swap        defaults                                                            zramsize=50%

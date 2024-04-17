@@ -17,6 +17,8 @@
 package org.lineageos.settings.device;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.RemoteException;
 import android.provider.Settings;
@@ -28,6 +30,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+
+import com.nvidia.NvCPLSvc.INvCPLRemoteService;
+import com.nvidia.framework.NvConstants;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayMode;
@@ -218,5 +223,21 @@ public class DisplayUtils {
         } catch (IOException e) {
             Log.w(TAG, "Failed to update fan profile");
         }
+    }
+
+    public static void setPowerMode(INvCPLRemoteService service, int index) throws RemoteException {
+        Log.i(TAG, "Setting power mode: " + String.valueOf(index));
+
+        if(service == null) {
+            Log.e(TAG, "setPowerMode called on null INvCPLRemoteService");
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.setClassName(NvConstants.NvCPLSvc, NvConstants.NvCPLService);
+        intent.putExtra(NvConstants.NvOrigin, 1);
+        intent.putExtra(NvConstants.NvPowerMode , String.valueOf(index));
+
+        service.handleIntent(intent);
     }
 }

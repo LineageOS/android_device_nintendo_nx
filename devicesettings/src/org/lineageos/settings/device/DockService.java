@@ -30,6 +30,7 @@ import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
 
 import com.nvidia.NvAppProfiles;
+import com.nvidia.NvCPLSvc.INvCPLRemoteService;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
@@ -44,9 +45,9 @@ public class DockService extends Service {
     private static final int MODE_MODIN_FRIG_DOCKED_PERF = 5;
 
     final private Receiver mReceiver = new Receiver();
-    final private NvAppProfiles mAppProfiles = new NvAppProfiles(this);
     private INvDisplay mDisplayService;
     private IWindowManager mWindowManager;
+    private INvCPLRemoteService mNvCPLSvc = null;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -80,26 +81,40 @@ public class DockService extends Service {
             final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
             final String sku = SystemProperties.get("ro.boot.hardware.sku", "");
 
-            if (perfMode) {
-                if (connected) {
-                    DisplayUtils.setFanProfile("Cool");
-                    mAppProfiles.setPowerMode(sku.equals("odin")
-                                ? MODE_ODIN_DOCKED_PERF
-                                : MODE_MODIN_FRIG_DOCKED_PERF);
-                } else {
-                    DisplayUtils.setFanProfile("Console");
-                    mAppProfiles.setPowerMode((sku.equals("odin") || sku.equals("vali"))
-                            ? MODE_ODIN_VALI_UNDOCKED_PERF
-                            : MODE_MODIN_FRIG_UNDOCKED_PERF);
+            if (mNvCPLSvc == null) {
+                try {
+                    mNvCPLSvc = INvCPLRemoteService.Stub.asInterface(
+                            ServiceManager.getService("nvcpl"));
+                } catch (Exception e) {
+                    Log.e(TAG, "Failed to bind to service. " + e.getMessage());
+                    return;
                 }
-            } else {
-                if (connected) {
-                    DisplayUtils.setFanProfile("Console");
-                    mAppProfiles.setPowerMode(MODE_DOCKED);
+            }
+
+            try {
+                if (perfMode) {
+                    if (connected) {
+                        DisplayUtils.setFanProfile("Cool");
+                        DisplayUtils.setPowerMode(mNvCPLSvc, sku.equals("odin")
+                                    ? MODE_ODIN_DOCKED_PERF
+                                    : MODE_MODIN_FRIG_DOCKED_PERF);
+                    } else {
+                        DisplayUtils.setFanProfile("Console");
+                        DisplayUtils.setPowerMode(mNvCPLSvc, (sku.equals("odin") || sku.equals("vali"))
+                                ? MODE_ODIN_VALI_UNDOCKED_PERF
+                                : MODE_MODIN_FRIG_UNDOCKED_PERF);
+                    }
                 } else {
-                    DisplayUtils.setFanProfile("Handheld");
-                    mAppProfiles.setPowerMode(MODE_UNDOCKED);
+                    if (connected) {
+                        DisplayUtils.setFanProfile("Console");
+                        DisplayUtils.setPowerMode(mNvCPLSvc, MODE_DOCKED);
+                    } else {
+                        DisplayUtils.setFanProfile("Handheld");
+                        DisplayUtils.setPowerMode(mNvCPLSvc, MODE_UNDOCKED);
+                    }
                 }
+            } catch (RemoteException e) {
+                Log.e(TAG, "Failed to set power profiles");
             }
         }
 

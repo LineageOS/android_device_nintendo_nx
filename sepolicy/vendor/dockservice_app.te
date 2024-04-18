@@ -1,0 +1,44 @@
+# dockservice_app
+type dockservice_app, domain, coredomain;
+typeattribute dockservice_app mlstrustedsubject;
+
+binder_use(dockservice_app)
+
+app_domain(dockservice_app)
+net_domain(dockservice_app)
+
+allow dockservice_app servicemanager:service_manager list;
+
+# Access standard system services
+allow dockservice_app{
+  activity_service
+  app_api_service
+  audioserver_service
+  cameraserver_service
+  content_capture_service
+  drmserver_service
+  game_service
+  gpu_service
+  mediadrmserver_service
+  mediaextractor_service
+  mediametrics_service
+  mediaserver_service
+  netstats_service
+  #nvcpl_service
+  surfaceflinger_service
+}:service_manager find;
+
+binder_call(essential_camera_app, gpuservice)
+binder_call(essential_camera_app, hal_graphics_composer_tegra)
+
+# Allow writting to /dev/stune/foreground/tasks
+allow dockservice_app cgroup:file w_file_perms;
+
+allow dockservice_app dockservice_app_data_file:dir create_dir_perms;
+allow dockservice_app dockservice_app_data_file:file create_file_perms;
+allow dockservice_app system_app_data_file:file r_file_perms;
+allow dockservice_app system_data_file:dir search;
+
+allow dockservice_app sysfs_disp_dev:file rw_file_perms;
+allow dockservice_app sysfs_pwm_fan:file rw_file_perms;
+allow dockservice_app sysfs_disp_dev:file rw_file_perms;

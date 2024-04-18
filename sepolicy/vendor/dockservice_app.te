@@ -28,8 +28,8 @@ allow dockservice_app{
   surfaceflinger_service
 }:service_manager find;
 
-binder_call(essential_camera_app, gpuservice)
-binder_call(essential_camera_app, hal_graphics_composer_tegra)
+binder_call(dockservice_app, gpuservice)
+binder_call(dockservice_app, hal_graphics_composer_tegra)
 
 # Allow writting to /dev/stune/foreground/tasks
 allow dockservice_app cgroup:file w_file_perms;

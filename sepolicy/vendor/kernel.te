@@ -1,0 +1,3 @@
+# Access to USB firmware
+r_dir_file(kernel, vendor_firmware_usb_file)
+

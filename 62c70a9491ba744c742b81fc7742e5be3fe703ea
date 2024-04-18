@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4745b0_6b7bd2d1",
+        "filename": "sepolicy/vendor/dockservice_app.te",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-04-18T04:56:08Z",
+      "side": 1,
+      "message": "private type - mehhhhh - let it fail to find it I guess? Nothing seems effected by this - and nvcpl wants this on all apps.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "62c70a9491ba744c742b81fc7742e5be3fe703ea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

@@ -1,5 +1,11 @@
+# DockService data file
+type dockservice_app_data_file, file_type, data_file_type, app_data_file_type;
+
 # HDMI CEC permission symlink
 type permission_vendor_data_file, file_type, data_file_type;
 
 # Serial sysfs (JoyCons)
 type sysfs_serial, fs_type, sysfs_type;
+
+# USB firmware
+type vendor_firmware_usb_file, file_type, vendor_file_type;

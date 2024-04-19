@@ -28,8 +28,7 @@
 /sys/devices/7000c000.i2c/i2c-0/0-006b/extcon/extcon[0-1]/name        u:object_r:sysfs_extcon_name:s0
 
 # GPU firmware
-/vendor/firmware/tegra21x/vic04_ucode.bin    u:object_r:vendor_firmware_gpu_file:s0
-/vendor/firmware/tegra21x/nvhost_nvenc050.fw u:object_r:vendor_firmware_gpu_file:s0
+/vendor/firmware/tegra21x(/.*)? u:object_r:vendor_firmware_gpu_file:s0
 
 # IIO sysfs (Sensors)
 /sys/devices/7000c400.i2c/i2c-1/1-0029/iio:device[0-9]                          u:object_r:sysfs_iio:s0

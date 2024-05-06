@@ -20,6 +20,7 @@ TARGET_TEGRA_BT       ?= bcm
 TARGET_TEGRA_CEC      := aosp
 TARGET_TEGRA_KERNEL   ?= 4.9
 TARGET_TEGRA_KEYSTORE := software
+TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
 
@@ -176,9 +177,10 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)
 
 # Thermal
+ifneq ($(TARGET_TEGRA_THERMAL),)
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-service-nvidia \
     thermalhal.nx.xml
+endif
 
 # WiFi
 PRODUCT_PACKAGES += \

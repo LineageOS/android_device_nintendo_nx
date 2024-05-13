@@ -20,6 +20,7 @@ TARGET_TEGRA_BT       ?= bcm
 TARGET_TEGRA_CEC      := aosp
 TARGET_TEGRA_KERNEL   ?= 4.9
 TARGET_TEGRA_KEYSTORE := software
+TARGET_TEGRA_LIGHT    ?= lineage
 TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
@@ -126,10 +127,6 @@ PRODUCT_PACKAGES += \
 # Keylayouts
 PRODUCT_PACKAGES += \
     gpio-keys.kl
-
-# Light
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service-nvidia
 
 # Loadable kernel modules
 PRODUCT_PACKAGES += \

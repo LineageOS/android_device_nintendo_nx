@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d5f729_8dfa1b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-05-14T02:24:25Z",
+      "side": 1,
+      "message": "I hate this. But this is what it is for now.\n\nIf we rework wifi_reset we can revert this directly.",
+      "revId": "96d9f85a55417c34e91be30fbcba50300b0eb7a8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

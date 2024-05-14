@@ -1,4 +1,6 @@
 # HDMI CEC permission symlink
 allow vendor_init permission_vendor_data_file:lnk_file {rw_file_perms unlink};
 
+get_prop(vendor_init, wifi_hal_prop)
+
 set_prop(vendor_init, iio_sensors_prop)

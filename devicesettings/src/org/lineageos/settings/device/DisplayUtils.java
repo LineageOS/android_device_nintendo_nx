@@ -93,7 +93,6 @@ public class DisplayUtils {
             displayService.modeDefaultSetIndex(display, index);
             displayService.modeDefaultCommit(display);
             displayService.modeDefaultStore(display);
-            displayService.modeUpdate(display);
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to set mode!");
         }

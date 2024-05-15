@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The LineageOS Project
+ * Copyright (C) 2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,19 +29,18 @@ import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
 
+<<<<<<< HEAD   (a7954c nx: tos: atf: Add bl31 to radio image files)
 import com.nvidia.NvAppProfiles;
+=======
+import com.nvidia.NvCPLSvc.INvCPLRemoteService;
+>>>>>>> CHANGE (cb9024 nx: power: Rework again)
+
+import com.nvidia.framework.NvConstants;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DockService extends Service {
     private static final String TAG = DockService.class.getSimpleName();
-
-    private static final int MODE_UNDOCKED = 0;
-    private static final int MODE_DOCKED = 1;
-    private static final int MODE_ODIN_VALI_UNDOCKED_PERF = 2;
-    private static final int MODE_MODIN_FRIG_UNDOCKED_PERF = 3;
-    private static final int MODE_ODIN_DOCKED_PERF = 4;
-    private static final int MODE_MODIN_FRIG_DOCKED_PERF = 5;
 
     final private Receiver mReceiver = new Receiver();
     final private NvAppProfiles mAppProfiles = new NvAppProfiles(this);
@@ -80,17 +79,43 @@ public class DockService extends Service {
             final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
             final String sku = SystemProperties.get("ro.boot.hardware.sku", "");
 
+<<<<<<< HEAD   (a7954c nx: tos: atf: Add bl31 to radio image files)
             if (perfMode) {
                 if (connected) {
                     DisplayUtils.setFanProfile("Cool");
                     mAppProfiles.setPowerMode(sku.equals("odin")
                                 ? MODE_ODIN_DOCKED_PERF
                                 : MODE_MODIN_FRIG_DOCKED_PERF);
+=======
+            if (mNvCPLSvc == null) {
+                try {
+                    mNvCPLSvc = INvCPLRemoteService.Stub.asInterface(
+                            ServiceManager.getService("nvcpl"));
+                } catch (Exception e) {
+                    Log.e(TAG, "Failed to bind to service. " + e.getMessage());
+                    return;
+                }
+            }
+
+            try {
+                if (connected) {
+                    DisplayUtils.setFanProfile(perfMode ? "Cool" : "Console");
+                    DisplayUtils.setPowerMode(mNvCPLSvc, perfMode ?
+                            NvConstants.NV_POWER_MODE_MAX_PERF :
+                            NvConstants.NV_POWER_MODE_OPTIMIZED);
+>>>>>>> CHANGE (cb9024 nx: power: Rework again)
                 } else {
+<<<<<<< HEAD   (a7954c nx: tos: atf: Add bl31 to radio image files)
                     DisplayUtils.setFanProfile("Console");
                     mAppProfiles.setPowerMode((sku.equals("odin") || sku.equals("vali"))
                             ? MODE_ODIN_VALI_UNDOCKED_PERF
                             : MODE_MODIN_FRIG_UNDOCKED_PERF);
+=======
+                    DisplayUtils.setFanProfile(perfMode ? "Cool" : "Handheld");
+                    DisplayUtils.setPowerMode(mNvCPLSvc, perfMode ?
+                            NvConstants.NV_POWER_MODE_OPTIMIZED :
+                            NvConstants.NV_POWER_MODE_BATTERY_SAVER);
+>>>>>>> CHANGE (cb9024 nx: power: Rework again)
                 }
             } else {
                 if (connected) {

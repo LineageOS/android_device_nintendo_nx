@@ -29,6 +29,8 @@ TARGET_COPY_OUT_ODM                    := odm
 TARGET_COPY_OUT_PRODUCT                := product
 TARGET_COPY_OUT_VENDOR                 := vendor
 
+BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE ?= 20000000
+
 -include vendor/lineage/config/BoardConfigReservedSize.mk
 
 BOARD_NVIDIA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext vendor odm

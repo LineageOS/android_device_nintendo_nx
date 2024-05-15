@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The LineageOS Project
+ * Copyright (C) 2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,20 +29,14 @@ import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
 
-import com.nvidia.NvAppProfiles;
 import com.nvidia.NvCPLSvc.INvCPLRemoteService;
+
+import com.nvidia.framework.NvConstants;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DockService extends Service {
     private static final String TAG = DockService.class.getSimpleName();
-
-    private static final int MODE_UNDOCKED = 0;
-    private static final int MODE_DOCKED = 1;
-    private static final int MODE_ODIN_VALI_UNDOCKED_PERF = 2;
-    private static final int MODE_MODIN_FRIG_UNDOCKED_PERF = 3;
-    private static final int MODE_ODIN_DOCKED_PERF = 4;
-    private static final int MODE_MODIN_FRIG_DOCKED_PERF = 5;
 
     final private Receiver mReceiver = new Receiver();
     private INvDisplay mDisplayService;
@@ -92,26 +86,16 @@ public class DockService extends Service {
             }
 
             try {
-                if (perfMode) {
-                    if (connected) {
-                        DisplayUtils.setFanProfile("Cool");
-                        DisplayUtils.setPowerMode(mNvCPLSvc, sku.equals("odin")
-                                    ? MODE_ODIN_DOCKED_PERF
-                                    : MODE_MODIN_FRIG_DOCKED_PERF);
-                    } else {
-                        DisplayUtils.setFanProfile("Console");
-                        DisplayUtils.setPowerMode(mNvCPLSvc, (sku.equals("odin") || sku.equals("vali"))
-                                ? MODE_ODIN_VALI_UNDOCKED_PERF
-                                : MODE_MODIN_FRIG_UNDOCKED_PERF);
-                    }
+                if (connected) {
+                    DisplayUtils.setFanProfile(perfMode ? "Cool" : "Console");
+                    DisplayUtils.setPowerMode(mNvCPLSvc, perfMode ?
+                            NvConstants.NV_POWER_MODE_MAX_PERF :
+                            NvConstants.NV_POWER_MODE_OPTIMIZED);
                 } else {
-                    if (connected) {
-                        DisplayUtils.setFanProfile("Console");
-                        DisplayUtils.setPowerMode(mNvCPLSvc, MODE_DOCKED);
-                    } else {
-                        DisplayUtils.setFanProfile("Handheld");
-                        DisplayUtils.setPowerMode(mNvCPLSvc, MODE_UNDOCKED);
-                    }
+                    DisplayUtils.setFanProfile(perfMode ? "Cool" : "Handheld");
+                    DisplayUtils.setPowerMode(mNvCPLSvc, perfMode ?
+                            NvConstants.NV_POWER_MODE_OPTIMIZED :
+                            NvConstants.NV_POWER_MODE_BATTERY_SAVER);
                 }
             } catch (RemoteException e) {
                 Log.e(TAG, "Failed to set power profiles");

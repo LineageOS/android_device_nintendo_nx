@@ -16,8 +16,3 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_nx.mk
-
-COMMON_LUNCH_CHOICES := \
-    lineage_nx-eng \
-    lineage_nx-user \
-    lineage_nx-userdebug

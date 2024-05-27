@@ -1,5 +1,5 @@
 # Allow init to mount and label hos_data
-allow init factory_file:filesystem {relabelfrom relabelto associate mount};
+allow init factory_file:filesystem {relabelfrom relabelto associate mount unmount};
 
 # jc_setup
 allow init jc_setup_exec:file {execute};

@@ -73,5 +73,3 @@ for jc_section in ${jc_sections[@]}; do
         fi
     fi
 done
-
-/system/bin/umount /mnt/vendor/factory

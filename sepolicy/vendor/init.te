@@ -6,3 +6,6 @@ allow init jc_setup_exec:file {execute};
 
 # HDMI CEC permission symlink
 allow init permission_vendor_data_file:lnk_file relabelto;
+
+# wifi_reset.sh
+allow init wifi_reset_exec:file {execute r_file_perms};

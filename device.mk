@@ -20,6 +20,8 @@ TARGET_TEGRA_BT       ?= bcm
 TARGET_TEGRA_CEC      := aosp
 TARGET_TEGRA_KERNEL   ?= 4.9
 TARGET_TEGRA_KEYSTORE := software
+TARGET_TEGRA_LIGHT    ?= lineage
+TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
 
@@ -39,6 +41,8 @@ else
 PRODUCT_CHARACTERISTICS   := tablet
 PRODUCT_AAPT_PREF_CONFIG  := xhdpi
 endif
+
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
 
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
 
@@ -126,10 +130,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gpio-keys.kl
 
-# Light
-PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service-nvidia
-
 # Loadable kernel modules
 PRODUCT_PACKAGES += \
     init.lkm.rc \
@@ -176,9 +176,10 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)
 
 # Thermal
+ifneq ($(TARGET_TEGRA_THERMAL),)
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-service-nvidia \
     thermalhal.nx.xml
+endif
 
 # WiFi
 PRODUCT_PACKAGES += \

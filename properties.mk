@@ -35,3 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.nv.usb.vid=057E \
     sys.usb.controller=700d0000.xudc \
     vendor.sys.usb.udc=700d0000.xudc
+
+# Disable compression
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.tegra.compression=off \

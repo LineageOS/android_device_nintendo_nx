@@ -44,3 +44,4 @@ $(_uboot_bin):
 
 include $(BUILD_SYSTEM)/base_rules.mk
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl33.bin
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl31.bin

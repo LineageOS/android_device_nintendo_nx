@@ -5,4 +5,4 @@ allow init system_server:binder { call transfer };
 allow init settings_service:service_manager find;
 
 # wifi_reset.sh
-allow init wifi_reset_exec:file execute;
+allow init wifi_reset_exec:file {execute r_file_perms};

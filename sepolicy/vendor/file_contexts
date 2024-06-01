@@ -34,6 +34,9 @@
 /sys/devices/7000c400.i2c/i2c-1/1-0029/iio:device[0-9]                          u:object_r:sysfs_iio:s0
 /sys/devices/7000c400.i2c/i2c-1/1-0029/iio:device[0-9](/.*)?                    u:object_r:sysfs_iio:s0
 /sys/devices/7000da00.spi/spi_master/spi3/spi3.0/iio:device[0-1](/.*)?          u:object_r:sysfs_iio:s0
+/sys/devices/iio:device[0-9]                                                    u:object_r:sysfs_iio:s0
+/sys/devices/iio:device[0-9](/.*)?                                              u:object_r:sysfs_iio:s0
+/sys/devices/iio:device[0-9]/buffer(/.*)?                                       u:object_r:sysfs_iio:s0
 
 # jc_setup
 /vendor/bin/jc_setup.sh u:object_r:jc_setup_exec:s0
@@ -41,12 +44,15 @@
 # PWM sysfs (Fan)
 /sys/devices/thermal-fan-est/fan_profile u:object_r:sysfs_pwm_fan:s0
 
+# Serial (UART)
+/dev/ttyS1 u:object_r:tty_device:s0
+
 # Serial sysfs (JoyCons)
 /sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/power_supply/nintendo_switch_controller_battery_serial[0-1]-[0-1]/scope u:object_r:sysfs_serial:s0
 /sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/power_supply/nintendo_switch_controller_battery_serial[0-1]-[0-1]/type  u:object_r:sysfs_serial:s0
 /sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/leds/serial[0-1]-[0-1]:player[0-9]+/brightness                          u:object_r:sysfs_serial:s0
 /sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1]/leds/serial[0-1]-[0-1]:player[0-9]+/max_brightness                      u:object_r:sysfs_serial:s0
-/sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1](/.*)? u:object_r:sysfs_serial:s0
+/sys/devices/[0-9]+.serial/serial[0-1]/serial[0-1]-[0-1](/.*)?                                                                   u:object_r:sysfs_serial:s0
 
 # Regulators sysfs
 /sys/devices/7000c000.i2c/i2c-[0-9]+/[0-9]+-[0-9a-f]*/regulator/regulator.[0-9]+/name           u:object_r:sysfs_regulator_name:s0
@@ -59,4 +65,4 @@
 
 # USB sysfs
 /sys/devices/7000c000.i2c/i2c-0/0-006b/power_supply/usb/online u:object_r:sysfs_usb:s0
-/sys/devices/7000c000.i2c/i2c-0/0-006b/power_supply/usb/type u:object_r:sysfs_usb:s0
+/sys/devices/7000c000.i2c/i2c-0/0-006b/power_supply/usb/type   u:object_r:sysfs_usb:s0

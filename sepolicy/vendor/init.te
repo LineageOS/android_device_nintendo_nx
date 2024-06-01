@@ -6,3 +6,6 @@ allow init jc_setup_exec:file {execute};
 
 # HDMI CEC permission symlink
 allow init permission_vendor_data_file:lnk_file relabelto;
+
+# Allow UART to function when enabled
+allow init serial_device:chr_file rw_file_perms;

@@ -34,6 +34,8 @@
 /sys/devices/7000c400.i2c/i2c-1/1-0029/iio:device[0-9]                          u:object_r:sysfs_iio:s0
 /sys/devices/7000c400.i2c/i2c-1/1-0029/iio:device[0-9](/.*)?                    u:object_r:sysfs_iio:s0
 /sys/devices/7000da00.spi/spi_master/spi3/spi3.0/iio:device[0-1](/.*)?          u:object_r:sysfs_iio:s0
+/sys/devices/iio:device[0-9(/.*)?                                               u:object_r:sysfs_iio:s0
+/sys/devices/iio:device0/buffer/length/devices/iio:device0
 
 # jc_setup
 /vendor/bin/jc_setup.sh u:object_r:jc_setup_exec:s0

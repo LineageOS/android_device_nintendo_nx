@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit NX-specific LineageOS additions.
+include device/nintendo/nx/lineage.mk
 
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_tv.mk)
-
-# Inherit NX-specific LineageOS additions.
-include device/nintendo/nx/lineage.mk
 
 # Inherit some common AOSP stuff.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)

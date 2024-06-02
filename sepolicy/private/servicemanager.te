@@ -1,2 +1,0 @@
-# neverallow wifi_reset.sh
-allow servicemanager init:binder transfer;

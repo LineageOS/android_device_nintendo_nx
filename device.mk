@@ -114,6 +114,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     DeviceSettingsNX
 
+# DocumentsUI
+# We are the exception, being an ATV device with touch
+PRODUCT_PACKAGES += \
+    DocumentsUI
+
 # GMS
 ifeq ($(WITH_GMS),true)
 WITH_GMS_COMMS_SUITE := false

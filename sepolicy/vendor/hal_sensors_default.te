@@ -1,6 +1,7 @@
 # Access to IIO sensors
 allow hal_sensors_default iio_device:chr_file r_file_perms;
 
-rw_dir_file(hal_sensors_default sysfs_iio)
+r_dir_file(hal_sensors_default sysfs_iio)
+allow hal_sensors_default sysfs_iio:file rw_file_perms;
 
 get_prop(hal_sensors_default, iio_sensors_prop)

@@ -43,13 +43,13 @@ _brcmfmac4356A3_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLA
 _brcmfmac4356A3_archive       := $(_brcmfmac4356A3_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
 $(_brcmfmac4356A3_archive):
-	@mkdir -p $(dir $@)
-	@mkdir -p $(TARGET_OUT_VENDOR)/firmware
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,odin.txt
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,modin.txt
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,vali.txt
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,frig.txt
-	@touch $(_brcmfmac4356A3_archive)
+    @mkdir -p $(dir $@)
+    @mkdir -p $(TARGET_OUT_VENDOR)/firmware
+    @cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,odin.txt)
+    @cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,modin.txt)
+    @cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,vali.txt)
+    @cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,frig.txt)
+    @touch $(_brcmfmac4356A3_archive)
 
 include $(BUILD_SYSTEM)/base_rules.mk
 

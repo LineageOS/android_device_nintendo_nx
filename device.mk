@@ -166,6 +166,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     nvphsd.conf
 
+# Recovery
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.vendor.recovery_update=true
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service \

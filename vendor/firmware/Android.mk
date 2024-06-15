@@ -30,7 +30,7 @@ LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 _uboot_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
 _uboot_bin := $(_uboot_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
-$(_uboot_bin):
+$(_uboot_bin): $(sort $(shell find -L $(UBOOT_PATH)))
 	@mkdir -p $(dir $@)
 	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) \
 		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \

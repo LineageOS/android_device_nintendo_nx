@@ -193,5 +193,4 @@ endif
 
 # WiFi
 PRODUCT_PACKAGES += \
-    wifi_reset \
     WifiOverlay

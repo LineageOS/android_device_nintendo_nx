@@ -101,15 +101,6 @@ LOCAL_MODULE_CLASS  := EXECUTABLES
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)
 
-# Goes on system due to needing `settings` and `svc`
-include $(CLEAR_VARS)
-LOCAL_MODULE        := wifi_reset
-LOCAL_SRC_FILES     := wifi_reset.sh
-LOCAL_MODULE_SUFFIX := .sh
-LOCAL_INIT_RC       := wifi_reset.rc
-LOCAL_MODULE_CLASS  := EXECUTABLES
-include $(BUILD_PREBUILT)
-
 include $(CLEAR_VARS)
 LOCAL_MODULE               := nx_cec.rc
 LOCAL_MODULE_CLASS         := ETC

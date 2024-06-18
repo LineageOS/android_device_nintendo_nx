@@ -91,9 +91,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
 VENDOR_SECURITY_PATCH := 2022-04-05
 
 # SELinux
-SELINUX_IGNORE_NEVERALLOWS := true
 BOARD_VENDOR_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/vendor
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/private
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true

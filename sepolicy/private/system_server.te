@@ -1,6 +1,0 @@
-# wifi_reset.sh
-allow system_server wifi_reset:fifo_file rw_file_perms;
-
-allow system_server wifi_reset:binder call;
-
-allow system_server wifi_reset:fd use;

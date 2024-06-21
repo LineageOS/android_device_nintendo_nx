@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fab111b_6ce3dc6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-06-21T05:32:10Z",
+      "side": 1,
+      "message": "Hold for FP of cypress-fmac-upstream",
+      "revId": "92953b431927bbeaf572b3cd689d5a6bfe2ce873",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

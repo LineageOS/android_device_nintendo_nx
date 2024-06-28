@@ -2,7 +2,8 @@
 /data/vendor/permissions/android.hardware.hdmi.cec.xml u:object_r:permission_vendor_data_file:s0
 
 # Backlight sysfs (Panel)
-/sys/devices/backlight/backlight/pwm-backlight/brightness u:object_r:sysfs_class_backlight:s0
+/sys/devices/50000000.host1x/tegradc.0/backlight/brightness  u:object_r:sysfs_class_backlight:s0
+/sys/devices/backlight/backlight/pwm-backlight/brightness    u:object_r:sysfs_class_backlight:s0
 
 # Battery
 /sys/devices/70006040.serial/serial[0-9]/serial[0-9]-[0-9]/power_supply/nintendo_switch_controller_battery_serial[0-9]-[0-9]/type u:object_r:sysfs_power_supply:s0

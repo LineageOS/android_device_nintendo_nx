@@ -2,6 +2,7 @@
 /data/vendor/permissions/android.hardware.hdmi.cec.xml u:object_r:permission_vendor_data_file:s0
 
 # Backlight sysfs (Panel)
+/sys/class/backlight/backlight/brightness                 u:object_r:sysfs_class_backlight:s0
 /sys/devices/backlight/backlight/pwm-backlight/brightness u:object_r:sysfs_class_backlight:s0
 
 # Battery

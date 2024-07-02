@@ -86,7 +86,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
-TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_nx
 
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2022-04-05

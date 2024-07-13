@@ -7,11 +7,11 @@ PRODUCT_SYSTEM_PROPERTY_OVERRIDES += \
     persist.sys.NV_ECO.IF.CHARGING=false
 
 # Display Mirroring Dialog
-PRODUCT_SYSTEM_EXT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.sysui.disable_mirroring_confirmation_dialog=true
 
 # GMS
-PRODUCT_SYSTEM_EXT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     atv.setup.bt_remote_pairing=false
 
 # HWC

@@ -15,3 +15,6 @@
 on init
     # take ownership of panel color mode node
     chown system /sys/devices/50000000.host1x/tegradc.0/panel_color_mode
+
+on post-fs-data
+    chown system system /sys/class/backlight/backlight/brightness

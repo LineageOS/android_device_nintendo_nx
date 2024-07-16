@@ -19,10 +19,7 @@ Attributes for cpu-usages
 <thermalhal>
 	<thermal_devices>
 		<thermal_device>
-			<thermal-prop name="DIODE" type="DEVICE_TEMPERATURE_SKIN" sensor-label="Tdiode_tegra" multiplier='0.001' />
-		</thermal_device>
-		<thermal_device>
-			<thermal-prop name="BOARD" type="DEVICE_TEMPERATURE_SKIN" sensor-label="Tboard_tegra" multiplier='0.001' />
+			<thermal-prop name="SKIN" type="DEVICE_TEMPERATURE_SKIN" sensor-label="thermal-fan-est" multiplier='0.001' />
 		</thermal_device>
 		<thermal_device>
 			<thermal-prop name="CPU" type="DEVICE_TEMPERATURE_CPU" sensor-label="CPU-therm" multiplier='0.001' />

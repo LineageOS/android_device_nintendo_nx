@@ -36,6 +36,8 @@ BOARD_NVIDIA_DYNAMIC_PARTITIONS_SIZE           := 6169821184
 BOARD_SUPER_PARTITION_GROUPS                   := nvidia_dynamic_partitions
 BOARD_SUPER_PARTITION_SIZE                     := 6178209792
 
+
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
 
@@ -101,5 +103,9 @@ PRODUCT_FULL_TREBLE_OVERRIDE           := true
 # Verity
 # Only needed for signing
 BOARD_AVB_ENABLE := false
+
+# Wi-Fi
+WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WIFI_AVOID_IFACE_RESET_MAC_CHANGE := true
 
 include device/nvidia/t210-common/BoardConfigCommon.mk

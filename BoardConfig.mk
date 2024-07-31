@@ -102,4 +102,8 @@ PRODUCT_FULL_TREBLE_OVERRIDE           := true
 # Only needed for signing
 BOARD_AVB_ENABLE := false
 
+# Wi-Fi
+WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WIFI_AVOID_IFACE_RESET_MAC_CHANGE := true
+
 include device/nvidia/t210-common/BoardConfigCommon.mk

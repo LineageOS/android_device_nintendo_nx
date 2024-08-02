@@ -15,4 +15,4 @@
 # limitations under the License.
 #
 
-exec ${BASH_SOURCE%/*}/../tegra-common/extract/extract-files.sh "$@"
+exec ${BASH_SOURCE%/*}/../../nvidia/tegra-common/extract/extract-files.sh "$@"

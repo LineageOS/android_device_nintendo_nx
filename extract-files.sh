@@ -15,4 +15,7 @@
 # limitations under the License.
 #
 
+export DEVICE="nx";
+export VENDOR="nintendo"
+
 exec ${BASH_SOURCE%/*}/../../nvidia/tegra-common/extract/extract-files.sh "$@"

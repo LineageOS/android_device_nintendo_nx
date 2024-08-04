@@ -13,7 +13,7 @@
 # limitations under the License.
 
 LOCAL_PATH := $(call my-dir)
-NX_BCM_PATH := vendor/nintendo/nx/bcm_firmware
+NX_BCM_PATH := vendor/nintendo/nx/rel-shield-r/bcm_firmware/bcm4356
 
 # Bluetooth Patchfile
 include $(CLEAR_VARS)

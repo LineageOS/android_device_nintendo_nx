@@ -14,4 +14,6 @@
 # limitations under the License.
 #
 
-FILELIST_PATHS+=("nx");
+SOURCE_PATHS+=("nintendo/nx");
+FILELIST_PATHS+=("nintendo/nx");
+PATCH_PATHS+=("nintendo/nx");

@@ -1,0 +1,20 @@
+<!--
+    Nintendo excluded devices list
+
+    Copyright (C) 2024 The LineageOS Project
+ -->
+
+<devices>
+    <!-- Handled by joycond, prevent multiple controllers -->
+    <device name="Nintendo Switch Right Joy-Con Serial" />
+    <device name="Nintendo Switch Left Joy-Con Serial" />
+    <device name="Nintendo Switch Right Joy-Con" />
+    <device name="Nintendo Switch Left Joy-Con" />
+    <device name="Nintendo Switch Lite Gamepad" />
+    <device name="Nintendo Switch Right Joy-Con IMU" />
+    <device name="Nintendo Switch Left Joy-Con IMU" />
+    <device name="Nintendo Switch Lite Gamepad IMU" />
+
+    <!-- Handled by CEC HAL, prevent double input -->
+    <device name="RC for stdp2550_cec" />
+</devices>

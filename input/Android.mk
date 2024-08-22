@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2021-2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +11,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-LOCAL_PATH:= $(call my-dir)
+
+LOCAL_PATH := $(call my-dir)
+
+# Excluded input devices
+include $(CLEAR_VARS)
+LOCAL_MODULE        := excluded-input-devices.xml
+LOCAL_SRC_FILES     := excluded-input-devices.xml
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE        := gpio-keys.kl

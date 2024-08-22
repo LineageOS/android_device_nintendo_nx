@@ -107,8 +107,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     nx_cec.rc \
-    cec_disable.xml \
-    RC_for_stdp2550_cec
+    cec_disable.xml
 
 # Device Settings
 PRODUCT_PACKAGES += \
@@ -123,6 +122,10 @@ PRODUCT_PACKAGES += \
 ifeq ($(WITH_GMS),true)
 WITH_GMS_COMMS_SUITE := false
 endif
+
+# Input
+PRODUCT_PACKAGES += \
+    excluded-input-devices.xml
 
 # Joycons
 PRODUCT_PACKAGES += \

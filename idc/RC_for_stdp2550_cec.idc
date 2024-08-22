@@ -1,1 +1,0 @@
-device.disabled=1

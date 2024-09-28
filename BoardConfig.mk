@@ -38,6 +38,8 @@ BOARD_SUPER_PARTITION_SIZE                     := 6178209792
 
 
 
+TARGET_SCREEN_DENSITY := 186
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
 

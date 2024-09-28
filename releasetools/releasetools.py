@@ -22,7 +22,9 @@ import os
 DTB_PART     = '/dev/block/by-name/dtb'
 NX_FILES     = '/mnt/vendor/hos_data'
 
-NX_BL_VERSION = '2022.10-g4f111ee6dc'
+# https://github.com/CTCaer/hekate/blob/master/bootloader/l4t/l4t.c#L41
+LOADER_VERSION = '6'
+UBOOT_VERSION  = '2022.10-g4f111ee6dc'
 
 def FullOTA_Assertions(info):
   if 'RADIO/bl33.bin' in info.input_zip.namelist():
@@ -50,41 +52,44 @@ def AddBootloaderAssertion(info, input_zip):
       info.script.AssertSomeBootloader(*bootloaders)
 
 def AddBootloaderFlash(info, input_zip):
-  """ nx """
-  info.script.AppendExtra('  ifelse(')
-  info.script.AppendExtra('    getprop("ro.bootloader") == "' + NX_BL_VERSION + '",')
-  info.script.AppendExtra('    (')
-  info.script.AppendExtra('      ui_print("Correct bootloader already installed for " + getprop(ro.hardware));')
-  info.script.AppendExtra('    ),')
-  info.script.AppendExtra('    (')
-  info.script.AppendExtra('      ui_print("Flashing updated bootloader for " + getprop(ro.hardware));')
-  info.script.AppendExtra('      run_program("/system/bin/mkdir", "-p", "' + NX_FILES + '");')
-  info.script.AppendExtra('      run_program("/system/bin/mount", "/dev/block/by-name/hos_data", "' + NX_FILES + '");')
+  # check if L4T-Loader version is correct if passed by uscript
+  info.script.AppendExtra("""
+  ifelse(
+    getprop("ro.boot.loader_rev") == "{0}" || getprop("ro.boot.loader_rev") == "",
+    (
+      ui_print("Correct hekate already installed for " + getprop(ro.hardware));
+    ),
+    (
+      abort("Old L4T-Loader revision detected! Please update hekate.");
+    )
+  );
+""".format(LOADER_VERSION))
 
-  """ clean old bootloader """
-  info.script.AppendExtra('      ifelse(')
-  info.script.AppendExtra('        read_file("' + NX_FILES + '/switchroot/android/bl31.bin"),')
-  info.script.AppendExtra('        (')
-  info.script.AppendExtra('          ui_print("Your bootloader is already compatible with L4T-Loader");')
-  info.script.AppendExtra('        ),')
-  info.script.AppendExtra('        (')
-  info.script.AppendExtra('          ui_print("Updating bootloader for L4T-Loader");')
-  info.script.AppendExtra('          run_program("/system/bin/rm", "-f", "' + NX_FILES + '/switchroot/android/coreboot.rom");')
-  info.script.AppendExtra('          run_program("/system/bin/rm", "-f", "' + NX_FILES + '/bootloader/ini/00-android.ini");')
-  info.script.AppendExtra('          package_extract_file("firmware-update/android.ini", "' + NX_FILES + '/bootloader/ini/android.ini");')
-  info.script.AppendExtra('        )')
-  info.script.AppendExtra('      );')
+  # check generated bl id
+  info.script.AppendExtra("""
+  ifelse(
+    getprop("ro.bootloader") == "{0}",
+    (
+      ui_print("Correct bootloader already installed for " + getprop(ro.hardware));
+    ),
+    (
+      ui_print("Flashing updated bootloader for " + getprop(ro.hardware));
+      run_program("/system/bin/mkdir", "-p", "{1}");
+      run_program("/system/bin/mount", "/dev/block/by-name/hos_data", "{1}");
+""".format(UBOOT_VERSION, NX_FILES))
 
-  """ flash uploaded bl files """
-  info.script.AppendExtra('      run_program("/system/bin/sed", "-i", "s/LineageOS.*\]/LineageOS]/g", "' + NX_FILES + '/bootloader/ini/android.ini");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/bl31.bin", "' + NX_FILES + '/switchroot/android/bl31.bin");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/bl33.bin", "' + NX_FILES + '/switchroot/android/bl33.bin");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/bootlogo_android.bmp", "' + NX_FILES + '/switchroot/android/bootlogo_android.bmp");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/icon_android_hue.bmp", "' + NX_FILES + '/switchroot/android/icon_android_hue.bmp");')
-  info.script.AppendExtra('      package_extract_file("firmware-update/boot.scr", "' + NX_FILES + '/switchroot/android/boot.scr");')
-  info.script.AppendExtra('      run_program("/system/bin/umount", "' + NX_FILES + '");')
-  info.script.AppendExtra('    )')
-  info.script.AppendExtra('  );')
+  # flash uploaded bl files
+  info.script.AppendExtra("""
+      run_program("/system/bin/sed", "-i", "s/LineageOS.*\]/LineageOS]/g", "{0}/bootloader/ini/android.ini");
+      package_extract_file("firmware-update/bl31.bin", "{0}/switchroot/android/bl31.bin");
+      package_extract_file("firmware-update/bl33.bin", "{0}/switchroot/android/bl33.bin");
+      package_extract_file("firmware-update/boot.scr", "{0}/switchroot/android/boot.scr");
+      run_program("/system/bin/umount", "{0}");
+    )
+  );
+""".format(NX_FILES))
 
-  """ flash dtb """
-  info.script.AppendExtra('  package_extract_file("install/nx-plat.dtimg", "' + DTB_PART + '");')
+  # flash dtb
+  info.script.AppendExtra("""
+  package_extract_file("install/nx-plat.dtimg", "{0}");
+""".format(DTB_PART))

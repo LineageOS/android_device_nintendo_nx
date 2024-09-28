@@ -36,8 +36,6 @@ BOARD_NVIDIA_DYNAMIC_PARTITIONS_SIZE           := 6169821184
 BOARD_SUPER_PARTITION_GROUPS                   := nvidia_dynamic_partitions
 BOARD_SUPER_PARTITION_SIZE                     := 6178209792
 
-
-
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
 
@@ -54,6 +52,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nintendo/nx/comms
 
 # Charger
 WITH_LINEAGE_CHARGER := false
+
+# DPI
+TARGET_SCREEN_DENSITY := 186
 
 # Fingerprint override
 BUILD_FINGERPRINT := NVIDIA/nx/nx:11/RQ1A.210105.003/7825230_3167.5736:user/release-keys

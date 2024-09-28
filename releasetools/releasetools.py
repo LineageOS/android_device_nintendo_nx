@@ -81,6 +81,7 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('      package_extract_file("firmware-update/bl33.bin", "' + NX_FILES + '/switchroot/android/bl33.bin");')
   info.script.AppendExtra('      package_extract_file("firmware-update/bootlogo_android.bmp", "' + NX_FILES + '/switchroot/android/bootlogo_android.bmp");')
   info.script.AppendExtra('      package_extract_file("firmware-update/icon_android_hue.bmp", "' + NX_FILES + '/switchroot/android/icon_android_hue.bmp");')
+  info.script.AppendExtra('      package_extract_file("firmware-update/boot.scr", "' + NX_FILES + '/switchroot/android/boot.scr");')
   info.script.AppendExtra('      run_program("/system/bin/umount", "' + NX_FILES + '");')
   info.script.AppendExtra('    )')
   info.script.AppendExtra('  );')

@@ -15,6 +15,7 @@
 LOCAL_PATH := $(call my-dir)
 
 UBOOT_PATH := $(BUILD_TOP)/hardware/nintendo/u-boot
+NX_FW_PATH := vendor/nintendo/nx/rel-shield-r/
 
 BUILD_TOOLS_BINS         := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin
 LINEAGE_TOOLS_PATH       := $(BUILD_TOP)/prebuilts/tools-lineage/$(HOST_PREBUILT_TAG)/bin
@@ -27,6 +28,11 @@ LOCAL_MODULE_SUFFIX := .bin
 LOCAL_MODULE_CLASS  := EXECUTABLES
 LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 
+ifeq ($(TARGET_TEGRA_UBOOT),prebuilt)
+LOCAL_SRC_FILES        := ../../../../../$(NX_FW_PATH)/bl33.bin
+LOCAL_REQUITED_MODULES := boot.scr
+include $(BUILD_PREBUILT)
+else # TARGET_TEGRA_UBOOT
 _uboot_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
 _uboot_bin := $(_uboot_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
@@ -43,5 +49,7 @@ $(_uboot_bin): $(sort $(shell find -L $(UBOOT_PATH)))
 	@mv $(_uboot_intermediates)/u-boot-dtb.bin $(_uboot_bin)
 
 include $(BUILD_SYSTEM)/base_rules.mk
+endif # TARGET_TEGRA_UBOOT
+
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl33.bin
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl31.bin

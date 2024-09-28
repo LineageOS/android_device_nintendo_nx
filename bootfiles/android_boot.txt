@@ -351,6 +351,9 @@ fi
 echo PTSA rework done
 setenv bootargs_extra ${bootargs_extra} "latency_allowance.ptsa_rework"
 
+# Set loader_rev to prop to check hekate version
+setenv bootargs_extra ${bootargs_extra} "androidboot.loader_rev=${loader_rev}"
+
 # Set serial number.
 if test -n ${device_serial_restricted};   then fdt set / serial-number ${device_serial_restricted}; fi
 

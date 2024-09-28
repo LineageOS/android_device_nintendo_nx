@@ -29,6 +29,8 @@ TARGET_TEGRA_WIFI     ?= bcm
 
 TARGET_TEGRA_WIREGUARD ?= compat
 
+TARGET_NX_UBOOT := prebuilt
+
 include device/nvidia/t210-common/t210.mk
 
 # Properties

@@ -106,4 +106,7 @@ BOARD_AVB_ENABLE := false
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_AVOID_IFACE_RESET_MAC_CHANGE := true
 
+# DPI
+TARGET_SCREEN_DENSITY := 186
+
 include device/nvidia/t210-common/BoardConfigCommon.mk

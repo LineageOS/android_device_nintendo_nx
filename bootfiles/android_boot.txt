@@ -9,7 +9,6 @@ test -n ${earlycon}             || setenv earlycon 0
 test -n ${r2p_action}           || setenv r2p_action bootloader
 test -n ${autoboot}             || setenv autoboot 0
 test -n ${autoboot_list}        || setenv autoboot_list 0
-test -n ${als_enable}           || setenv als_enable 0
 test -n ${usb3_enable}          || setenv usb3_enable 0
 test -n ${4k60_disable}         || setenv 4k60_disable 0
 test -n ${dvfsb}                || setenv dvfsb 0
@@ -18,7 +17,7 @@ test -n ${limit_gpu_clk}        || setenv limit_gpu_clk 0
 test -n ${jc_rail_disable}      || setenv jc_rail_disable 0
 test -n ${cec_disable}          || setenv cec_disable 0
 test -n ${touch_skip_tuning}    || setenv touch_skip_tuning 0
-test -n ${bt_ertm_disable}      || setenv bt_ertm_disable 0
+test -n ${bt_ertm_disable}      || setenv bt_ertm_disable 1
 test -n ${wifi_disable_vht80}   || setenv wifi_disable_vht80 0
 
 test -n ${acc_cal_off_x}        || setenv acc_cal_off_x 0x0
@@ -230,12 +229,6 @@ fi
 # 	fdt set /sdhci@700b0000 enable-ddr200
 # fi
 
-# Enable ALS sensor.
-if test ${als_enable} = 1; then
-	echo ALS sensor enabled
-	fdt set /i2c@7000c400/bh1730fvc@29 status okay
-fi
-
 # Disable WiFi VHT80 bonding.
 if test ${wifi_disable_vht80} = 1; then
 	echo WiFi VHT80 bonding disabled
@@ -354,6 +347,9 @@ fi
 # Set ptsa rework.
 echo PTSA rework done
 setenv bootargs_extra ${bootargs_extra} "latency_allowance.ptsa_rework"
+
+# Set loader_rev to prop to check hekate version
+setenv bootargs_extra ${bootargs_extra} "androidboot.loader_rev=${loader_rev}"
 
 # Set serial number.
 if test -n ${device_serial_restricted};   then fdt set / serial-number ${device_serial_restricted}; fi

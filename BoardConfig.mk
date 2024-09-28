@@ -105,4 +105,7 @@ PRODUCT_FULL_TREBLE_OVERRIDE           := true
 # Only needed for signing
 BOARD_AVB_ENABLE := false
 
+# DPI
+TARGET_SCREEN_DENSITY := 186
+
 include device/nvidia/t210-common/BoardConfigCommon.mk

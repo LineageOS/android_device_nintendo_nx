@@ -1,1 +1,1 @@
-require version-bootloader=2022.10-g4f111ee6dc
+require version-bootloader=2024.NX02.b201801

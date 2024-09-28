@@ -78,8 +78,10 @@ include device/nintendo/nx/modules.mk
 
 # Kernel Image Parameters
 BOARD_KERNEL_IMAGE_NAME        := Image.gz
-BOARD_KERNEL_LOAD_BASE         := 0x88000000
-BOARD_MKBOOTIMG_ARGS           := --base $(BOARD_KERNEL_LOAD_BASE)
+BOARD_MKBOOTIMG_ARGS           := \
+    --base 0x80000000 \
+    --kernel_offset 0x200000 \
+    --ramdisk_offset 0x4000000
 
 # Recovery
 TARGET_RECOVERY_DENSITY      := hdpi

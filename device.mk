@@ -24,9 +24,9 @@ TARGET_TEGRA_LIGHT    ?= lineage
 TARGET_TEGRA_MAN_LVL  := 5
 TARGET_TEGRA_MEMTRACK ?= rel-shield-r
 TARGET_TEGRA_THERMAL  ?= lineage
+TARGET_TEGRA_UBOOT    := prebuilt
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
-
 TARGET_TEGRA_WIREGUARD ?= compat
 
 include device/nvidia/t210-common/t210.mk

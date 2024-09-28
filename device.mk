@@ -125,7 +125,7 @@ PRODUCT_PACKAGES += \
 
 # Joycons
 PRODUCT_PACKAGES += \
-    joycond \
+    android.hardware.nintendo.joycond-service \
     jc_setup
 
 # Kernel Modules

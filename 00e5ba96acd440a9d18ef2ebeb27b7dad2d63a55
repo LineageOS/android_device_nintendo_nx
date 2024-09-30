@@ -16,6 +16,24 @@
       "message": "should probably go to tegra-common, fine here for now.",
       "revId": "00e5ba96acd440a9d18ef2ebeb27b7dad2d63a55",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a073c005_1882ff22",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-09-30T02:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe74971_501bc7d8",
+      "revId": "00e5ba96acd440a9d18ef2ebeb27b7dad2d63a55",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

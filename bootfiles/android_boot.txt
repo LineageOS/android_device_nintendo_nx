@@ -9,7 +9,6 @@ test -n ${earlycon}             || setenv earlycon 0
 test -n ${r2p_action}           || setenv r2p_action bootloader
 test -n ${autoboot}             || setenv autoboot 0
 test -n ${autoboot_list}        || setenv autoboot_list 0
-test -n ${als_enable}           || setenv als_enable 0
 test -n ${usb3_enable}          || setenv usb3_enable 0
 test -n ${4k60_disable}         || setenv 4k60_disable 0
 test -n ${dvfsb}                || setenv dvfsb 0
@@ -224,12 +223,6 @@ fi
 if test "${loader_rev}" != 0 -a ${ddr200_enable} = 1; then
 	echo SD DDR200 mode enabled
 	fdt set /sdhci@700b0000 enable-ddr200
-fi
-
-# Enable ALS sensor.
-if test ${als_enable} = 1; then
-	echo ALS sensor enabled
-	fdt set /i2c@7000c400/bh1730fvc@29 status okay
 fi
 
 # Disable WiFi VHT80 bonding.

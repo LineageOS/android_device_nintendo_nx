@@ -380,13 +380,13 @@ fi
 
 # Set kernel cmdline.
 setenv bootargs ${bootargs_extra} "ro init=/init nvdec_enabled=0 \
- loglevel=8 firmware_class.path=/vendor/firmware tegra_fbmem=0x800000@0xf5a00000 \
+ firmware_class.path=/vendor/firmware tegra_fbmem=0x800000@0xf5a00000 \
  pmc_r2p.enabled=1 pmc_r2p.action=${r2p_action} \
  pmc_r2p.param1=${autoboot} pmc_r2p.param2=${autoboot_list} \
  fbcon=map:${fbconsole} consoleblank=0 \
  androidboot.bootloader=${blver} androidboot.hardware=nx \
  androidboot.hardware.sku=${variant} androidboot.serialno=${device_serial_restricted} \
- androidboot.modem=none androidboot.dtb_idx=${sku} androidboot.selinux=permissive "
+ androidboot.modem=none androidboot.dtb_idx=${sku} "
 
 # Boot kernel.
 if gpio input 190 && test ${recovery} = "0"; then

@@ -20,6 +20,7 @@ test -n ${bt_ertm_disable}      || setenv bt_ertm_disable 0
 test -n ${wifi_disable_vht80}   || setenv wifi_disable_vht80 0
 test -n ${alarms_disable}       || setenv alarms_disable 0
 test -n ${ddr200_enable}        || setenv ddr200_enable 0
+test -n ${cec_disable}          || setenv cec_disable 0
 
 test -n ${acc_cal_off_x}        || setenv acc_cal_off_x 0x0
 test -n ${acc_cal_off_y}        || setenv acc_cal_off_y 0x0
@@ -223,6 +224,11 @@ fi
 if test "${loader_rev}" != 0 -a ${ddr200_enable} = 1; then
 	echo SD DDR200 mode enabled
 	fdt set /sdhci@700b0000 enable-ddr200
+fi
+
+if test ${sku} = 2 -o ${cec_disable} = 1; then
+	echo HDMI-CEC disabled
+	setenv bootargs ${bootargs} cec_disable=1 androidboot.cec_disable=1
 fi
 
 # Disable WiFi VHT80 bonding.

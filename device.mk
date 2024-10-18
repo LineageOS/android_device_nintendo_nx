@@ -114,6 +114,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     DocumentsUI
 
+# Fingerprint
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BuildFingerprint=NVIDIA/nx/nx:11/RQ1A.210105.003/7825230_3167.5736:user/release-keys
+
 # GMS
 ifeq ($(WITH_GMS),true)
 WITH_GMS_COMMS_SUITE := false

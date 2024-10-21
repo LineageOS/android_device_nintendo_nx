@@ -353,20 +353,21 @@ setenv bootargs_extra ${bootargs_extra} "latency_allowance.ptsa_rework"
 # Set serial number.
 if test -n ${device_serial_restricted};   then fdt set / serial-number ${device_serial_restricted}; fi
 
-host_mac_addr=0xff
-# load mac address info file from sd
-if fatload mmc 1:1 0x90000000 switchroot/joycon_mac.ini; then
+# Load mac address info file from sd
+if fatload mmc 1:1 ${enviraddr} switchroot/joycon_mac.ini; then
     echo Parsing JoyCon pairing info
-    ini "joycon_00" 0x90000000
+    if ini "joycon_00" ${enviraddr}; then
+        echoe Malformed joycon_mac.ini!
+    fi
 fi
 
 # We only get BT MAC from JoyCons, so use BT MAC with FF as the last byte for Wi-Fi
-if test ! -n ${wifi_mac}; then
-    if test -n ${host} -a ${host} != 00:00:00:00:00:00; then setexpr wifi_mac sub "\:..$" ":FF" ${host}; else setenv wifi_mac ${device_wifi_mac}; fi;
+if test ! -n "${wifi_mac}"; then
+    if test -n "${host}" -a "${host}" != "00:00:00:00:00:00"; then setexpr wifi_mac sub "\:..$" ":FF" ${host}; else setenv wifi_mac ${device_wifi_mac}; fi;
 fi
 
-if test ! -n ${bt_mac}; then
-    if test -n ${host} -a ${host} != 00:00:00:00:00:00; then setenv bt_mac ${host}; else setenv bt_mac ${device_bt_mac}; fi;
+if test ! -n "${bt_mac}"; then
+    if test -n "${host}" -a "${host}" != "00:00:00:00:00:00"; then setenv bt_mac ${host}; else setenv bt_mac ${device_bt_mac}; fi;
 fi
 
 echo BT MAC: ${bt_mac}

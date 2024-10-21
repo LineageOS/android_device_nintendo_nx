@@ -365,16 +365,16 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
 
                 panelColorPref.setValue(current);
                 panelColorPref.setSummary(modeMap[index]);
-    
+
                 panelColorPref.setOnPreferenceChangeListener(
                         new Preference.OnPreferenceChangeListener() {
                             @Override
                             public boolean onPreferenceChange(Preference preference,
                                     Object newValue) {
                                 int newIndex;
-    
+
                                 DisplayUtils.setPanelColorMode((String) newValue);
-    
+
                                 for (newIndex = 0; newIndex < modes.length; newIndex++) {
                                     if (((String) newValue).equals(modes[newIndex])) {
                                         panelColorPref.setSummary(modeMap[newIndex]);
@@ -507,7 +507,7 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
 
                 category.addPreference(disableInternalOnExternalConnectedPreference);
 
-                if (sku.equals("frig")) {
+                if (sku.equals("fric")) {
                     createPanelModeSettings();
                 }
             }

@@ -24,7 +24,7 @@ $(INSTALLED_DTBIMAGE_TARGET): $(INSTALLED_KERNEL_TARGET) | mkdtimg
 		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210-odin.dtb    --id=0x4F44494E --rev=0xa00 \
 		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-odin.dtb --id=0x4F44494E --rev=0xb01 \
 		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-vali.dtb --id=0x56414C49 --rev=0xa00 \
-		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-frig.dtb --id=0x46524947 --rev=0xa00
+		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-fric.dtb --id=0x46524947 --rev=0xa00
 
 ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_DTBIMAGE_TARGET)
 

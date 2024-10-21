@@ -1,0 +1,99 @@
+/*
+ * Copyright (C) 2024 The LineageOS Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+prebuilt_etc {
+    name: "fstab.nx",
+    src: "fstab.nx",
+    vendor: true,
+    ramdisk_available: true,
+}
+
+prebuilt_etc {
+    name: "init.nx.rc",
+    src: "init.nx.rc",
+    vendor: true,
+    sub_dir: "init/hw",
+}
+
+prebuilt_etc {
+    name: "init.vali.rc",
+    src: "init.vali.rc",
+    vendor: true,
+    sub_dir: "init/hw",
+}
+
+prebuilt_etc {
+    name: "init.fric.rc",
+    src: "init.fric.rc",
+    vendor: true,
+    sub_dir: "init/hw",
+}
+
+prebuilt_etc {
+    name: "init.sensors.nx.rc",
+    src: "init.sensors.nx.rc",
+    vendor: true,
+    sub_dir: "init/hw",
+}
+
+prebuilt_etc {
+    name: "init.loki_foster_e_common.rc",
+    src: "init.loki_foster_e_common.rc",
+    vendor: true,
+    sub_dir: "init/hw",
+}
+
+prebuilt_etc {
+    name: "init.recovery.nx.rc",
+    src: "init.recovery.nx.rc",
+    sub_dir: "init",
+    recovery: true,
+}
+
+prebuilt_etc {
+    name: "nx_cec.rc",
+    src: "nx_cec.rc",
+    vendor: true,
+    sub_dir: "init",
+}
+
+prebuilt_etc {
+    name: "cec_disable.xml",
+    src: "cec_disable.xml",
+    vendor: true,
+    sub_dir: "staging",
+}
+
+prebuilt_etc {
+    name: "power.nx.rc",
+    src: "power.nx.rc",
+    device_specific: true, // odm
+}
+
+cc_prebuilt_binary {
+    name: "lkm_loader_target",
+    srcs: ["lkm_loader_target.sh"],
+    stem: "lkm_loader_target.sh",
+    vendor: true,
+}
+
+cc_prebuilt_binary {
+    name: "jc_setup",
+    srcs: ["jc_setup.sh"],
+    stem: "jc_setup.sh",
+    vendor: true,
+    init_rc: ["nx_jc.rc"],
+}

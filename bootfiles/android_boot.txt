@@ -84,7 +84,7 @@ if test ${t210b01} = 1; then setenv plat_info T210B01; else setenv plat_info T21
 if   test ${sku} = 0; then setenv sku_info ODIN; setenv variant odin; setenv sku_rev a00
 elif test ${sku} = 1; then setenv sku_info ODIN; setenv variant modin; setenv sku_rev b01
 elif test ${sku} = 2; then setenv sku_info VALI; setenv variant vali; setenv sku_rev a00
-elif test ${sku} = 3; then setenv sku_info FRIG; setenv variant frig; setenv sku_rev a00
+elif test ${sku} = 3; then setenv sku_info FRIG; setenv variant fric; setenv sku_rev a00
 fi
 
 # Print platform info.

@@ -241,7 +241,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
                                         SharedPreferences sharedPrefs =
                                             PreferenceManager
                                             .getDefaultSharedPreferences(getActivity());
-                                        SharedPreferences.Editor editor = 
+                                        SharedPreferences.Editor editor =
                                                                     sharedPrefs.edit();
                                         editor.putBoolean("perf_mode", true);
                                         editor.commit();
@@ -429,7 +429,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
 
             category.addPreference(disableInternalOnExternalConnectedPreference);
 
-            if (sku.equals("frig")) {
+            if (sku.equals("fric")) {
                 createPanelModeSettings();
             }
         }

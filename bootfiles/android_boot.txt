@@ -227,7 +227,7 @@ if test "${loader_rev}" != 0 -a ${ddr200_enable} = 1; then
 fi
 
 if test ${sku} = 2 -o ${cec_disable} = 1; then
-	echoe HDMI-CEC disabled
+	echo HDMI-CEC disabled
 	setenv bootargs_extra ${bootargs_extra} cec_disable=1 androidboot.cec_disable=1
 fi
 

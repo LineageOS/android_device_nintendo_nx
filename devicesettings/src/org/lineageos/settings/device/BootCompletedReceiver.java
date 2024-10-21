@@ -31,7 +31,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         }
 
         // Set preferred OLED panel mode
-        if(SystemProperties.get("ro.boot.hardware.sku", "").equals("frig")) {
+        if(SystemProperties.get("ro.boot.hardware.sku", "").equals("fric")) {
             final SharedPreferences sharedPrefs = context.getSharedPreferences(
                     "org.lineageos.settings.device_preferences", Context.MODE_PRIVATE);
             final String panelMode = sharedPrefs.getString("panel_color_mode", "0x23");

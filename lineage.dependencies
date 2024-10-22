@@ -12,10 +12,6 @@
    "target_path": "hardware/nintendo/joycond"
  },
  {
-   "repository": "android_hardware_nintendo_u-boot",
-   "target_path": "hardware/nintendo/u-boot"
- },
- {
    "repository": "android_kernel_nvidia_cypress-fmac-upstream",
    "target_path": "kernel/nvidia/cypress-fmac-upstream"
  },

@@ -1,1 +1,1 @@
-require version-bootloader=2024.NX02.b201801
+require version-bootloader=2024.NX01A.b201801

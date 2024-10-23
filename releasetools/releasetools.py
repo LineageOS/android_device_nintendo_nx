@@ -22,7 +22,7 @@ import os
 DTB_PART     = '/dev/block/by-name/dtb'
 NX_FILES     = '/mnt/vendor/hos_data'
 
-UBOOT_VERSION  = '2024.NX02.b201801'
+UBOOT_VERSION  = '2024.NX01A.b201801'
 
 def FullOTA_Assertions(info):
   if 'RADIO/bl33.bin' in info.input_zip.namelist():

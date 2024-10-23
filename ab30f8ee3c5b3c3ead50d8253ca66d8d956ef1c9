@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2251d2b_ba6caf24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-10-23T15:11:23Z",
+      "side": 1,
+      "message": "needs sepolicy done b4 merge",
+      "revId": "ab30f8ee3c5b3c3ead50d8253ca66d8d956ef1c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

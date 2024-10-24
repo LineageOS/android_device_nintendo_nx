@@ -1,4 +1,4 @@
-# Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2022-2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,4 +17,6 @@ COMMON_BCM_PATH := device/nvidia/tegra-common/vendor/rel-shield-r/bcm_firmware
 
 PRODUCT_PACKAGES += \
     BCM4356A3 \
-    brcmfmac4356A3-pcie
+    brcmfmac4356-pcie \
+    brcmfmac4356-pcie.clm_blob \
+    brcmfmac4356-pcie.txt

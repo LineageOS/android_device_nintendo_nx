@@ -1,4 +1,4 @@
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2020-2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,32 +26,42 @@ LOCAL_MODULE_TAGS   := optional
 LOCAL_MODULE_OWNER  := nintendo
 include $(BUILD_PREBUILT)
 
-# Unified target for Switch brcmfmac4356A3 wifi
+# WiFi NVRAM copies per-sku
 include $(CLEAR_VARS)
-LOCAL_MODULE        := brcmfmac4356A3-pcie
+LOCAL_MODULE        := brcmfmac4356-pcie.nvidia,odin.txt
+LOCAL_SRC_FILES     := ../../../../../$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt
 LOCAL_MODULE_CLASS  := ETC
 LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/firmware
 LOCAL_MODULE_TAGS   := optional
 LOCAL_MODULE_OWNER  := nintendo
+include $(BUILD_PREBUILT)
 
-# mdarcy fw and clm, plus hos nvram copies with ccode mod
-LOCAL_REQUIRED_MODULES := \
-    brcmfmac4356-pcie \
-    brcmfmac4356-pcie.clm_blob
+include $(CLEAR_VARS)
+LOCAL_MODULE        := brcmfmac4356-pcie.nvidia,modin.txt
+LOCAL_SRC_FILES     := ../../../../../$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/firmware
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_OWNER  := nintendo
+include $(BUILD_PREBUILT)
 
-_brcmfmac4356A3_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
-_brcmfmac4356A3_archive       := $(_brcmfmac4356A3_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+include $(CLEAR_VARS)
+LOCAL_MODULE        := brcmfmac4356-pcie.nvidia,vali.txt
+LOCAL_SRC_FILES     := ../../../../../$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/firmware
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_OWNER  := nintendo
+include $(BUILD_PREBUILT)
 
-$(_brcmfmac4356A3_archive):
-	@mkdir -p $(dir $@)
-	@mkdir -p $(TARGET_OUT_VENDOR)/firmware
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,odin.txt)
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,modin.txt)
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,vali.txt)
-	@cp -f $(BUILD_TOP)/$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt $(abspath $(TARGET_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,fric.txt)
-	@touch $(_brcmfmac4356A3_archive)
-
-include $(BUILD_SYSTEM)/base_rules.mk
+include $(CLEAR_VARS)
+LOCAL_MODULE        := brcmfmac4356-pcie.nvidia,fric.txt
+LOCAL_SRC_FILES     := ../../../../../$(NX_BCM_PATH)/brcmfmac4356A3-pcie.txt
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/firmware
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_OWNER  := nintendo
+include $(BUILD_PREBUILT)
 
 # mdarcy clm target
 include $(CLEAR_VARS)

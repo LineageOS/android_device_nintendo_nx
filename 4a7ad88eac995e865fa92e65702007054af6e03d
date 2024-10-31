@@ -16,6 +16,24 @@
       "message": "blocked on https://review.lineageos.org/c/LineageOS/android_build_soong/+/406664/1 merge",
       "revId": "4a7ad88eac995e865fa92e65702007054af6e03d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb837911_23d5020d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-10-31T17:31:06Z",
+      "side": 1,
+      "message": "nope",
+      "parentUuid": "99d359eb_f5a5b2a8",
+      "revId": "4a7ad88eac995e865fa92e65702007054af6e03d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

@@ -356,9 +356,7 @@ if test -n ${device_serial_restricted};   then fdt set / serial-number ${device_
 # Load mac address info file from sd
 if fatload mmc 1:1 ${enviraddr} switchroot/joycon_mac.ini; then
     echo Parsing JoyCon pairing info
-    if ini "joycon_00" ${enviraddr}; then
-        echoe Malformed joycon_mac.ini!
-    fi
+    ini "joycon_00" ${enviraddr}; then
 fi
 
 # We only get BT MAC from JoyCons, so use BT MAC with FF as the last byte for Wi-Fi

@@ -52,26 +52,18 @@ def AddBootloaderAssertion(info, input_zip):
 def AddBootloaderFlash(info, input_zip):
   # check generated bl id
   info.script.AppendExtra("""
-  ifelse(
-    getprop("ro.bootloader") == "{0}",
-    (
-      ui_print("Correct bootloader already installed for " + getprop(ro.hardware));
-    ),
-    (
-      ui_print("Flashing updated bootloader for " + getprop(ro.hardware));
-      run_program("/system/bin/mkdir", "-p", "{1}");
-      run_program("/system/bin/mount", "/dev/block/by-name/hos_data", "{1}");
+  ui_print("Flashing updated bootloader for " + getprop(ro.hardware));
+  run_program("/system/bin/mkdir", "-p", "{1}");
+  run_program("/system/bin/mount", "/dev/block/by-name/hos_data", "{1}");
 """.format(UBOOT_VERSION, NX_FILES))
 
   # flash uploaded bl files
   info.script.AppendExtra("""
-      run_program("/system/bin/sed", "-i", "s/LineageOS.*\]/LineageOS]/g", "{0}/bootloader/ini/android.ini");
-      package_extract_file("firmware-update/bl31.bin", "{0}/switchroot/android/bl31.bin");
-      package_extract_file("firmware-update/bl33.bin", "{0}/switchroot/android/bl33.bin");
-      package_extract_file("firmware-update/boot.scr", "{0}/switchroot/android/boot.scr");
-      run_program("/system/bin/umount", "{0}");
-    )
-  );
+   run_program("/system/bin/sed", "-i", "s/LineageOS.*\]/LineageOS]/g", "{0}/bootloader/ini/android.ini");
+   package_extract_file("firmware-update/bl31.bin", "{0}/switchroot/android/bl31.bin");
+   package_extract_file("firmware-update/bl33.bin", "{0}/switchroot/android/bl33.bin");
+   package_extract_file("firmware-update/boot.scr", "{0}/switchroot/android/boot.scr");
+   run_program("/system/bin/umount", "{0}");
 """.format(NX_FILES))
 
   # flash dtb

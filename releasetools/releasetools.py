@@ -22,8 +22,6 @@ import os
 DTB_PART     = '/dev/block/by-name/dtb'
 NX_FILES     = '/mnt/vendor/hos_data'
 
-UBOOT_VERSION  = '2024.NX01A.b201801'
-
 def FullOTA_Assertions(info):
   if 'RADIO/bl33.bin' in info.input_zip.namelist():
     CopyBlobs(info.input_zip, info.output_zip)
@@ -50,28 +48,15 @@ def AddBootloaderAssertion(info, input_zip):
       info.script.AssertSomeBootloader(*bootloaders)
 
 def AddBootloaderFlash(info, input_zip):
-  # check generated bl id
+  # flash bootloader files
   info.script.AppendExtra("""
-  ifelse(
-    getprop("ro.bootloader") == "{0}",
-    (
-      ui_print("Correct bootloader already installed for " + getprop(ro.hardware));
-    ),
-    (
-      ui_print("Flashing updated bootloader for " + getprop(ro.hardware));
-      run_program("/system/bin/mkdir", "-p", "{1}");
-      run_program("/system/bin/mount", "/dev/block/by-name/hos_data", "{1}");
-""".format(UBOOT_VERSION, NX_FILES))
-
-  # flash uploaded bl files
-  info.script.AppendExtra("""
-      run_program("/system/bin/sed", "-i", "s/LineageOS.*\]/LineageOS]/g", "{0}/bootloader/ini/android.ini");
-      package_extract_file("firmware-update/bl31.bin", "{0}/switchroot/android/bl31.bin");
-      package_extract_file("firmware-update/bl33.bin", "{0}/switchroot/android/bl33.bin");
-      package_extract_file("firmware-update/boot.scr", "{0}/switchroot/android/boot.scr");
-      run_program("/system/bin/umount", "{0}");
-    )
-  );
+  ui_print("Flashing updated bootloader for " + getprop(ro.hardware));
+  run_program("/system/bin/mkdir", "-p", "{0}");
+  run_program("/system/bin/mount", "/dev/block/by-name/hos_data", "{0}");
+  package_extract_file("firmware-update/bl31.bin", "{0}/switchroot/android/bl31.bin");
+  package_extract_file("firmware-update/bl33.bin", "{0}/switchroot/android/bl33.bin");
+  package_extract_file("firmware-update/boot.scr", "{0}/switchroot/android/boot.scr");
+  run_program("/system/bin/umount", "{0}");
 """.format(NX_FILES))
 
   # flash dtb

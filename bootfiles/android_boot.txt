@@ -274,7 +274,7 @@ if test ${usb3_enable} = 0; then
 	fdt set /xusb_padctl@7009f000/ports/usb2-0 nvidia,usb3-port-fake <0xffffffff>
 	fdt set /xusb_padctl@7009f000/ports/usb3-0 status disabled
 else
-	echoe USB3 enabled
+	echo USB3 enabled
 fi
 
 # Disable 4 DP lanes (4K@60) on Fric.

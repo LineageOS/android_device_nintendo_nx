@@ -16,6 +16,23 @@
       "message": "you set this as board config, but others don\u0027t.\n\nI think this originated as a board configuration but later was moved to product MK?",
       "revId": "d1cf447965d12827efd93c234d38627346429102",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9df895_ea42c23f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-12-12T05:34:14Z",
+      "side": 1,
+      "message": "meh. no one else can agree on it and boardconfig appears more right",
+      "revId": "d1cf447965d12827efd93c234d38627346429102",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

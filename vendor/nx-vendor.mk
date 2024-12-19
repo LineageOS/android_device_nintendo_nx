@@ -16,8 +16,6 @@ include device/nvidia/t210-common/vendor/t210-by-flags.mk
 include device/nvidia/tegra-common/vendor/common-by-flags.mk
 include device/nintendo/nx/vendor/bcm_firmware/bcm.mk
 
-PRODUCT_PACKAGES += public.libraries
-
 ATF_PATH   := $(abspath hardware/nintendo/arm-trusted-firmware)
 
 # Platform defaults

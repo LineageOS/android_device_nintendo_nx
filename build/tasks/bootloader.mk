@@ -53,6 +53,10 @@ $(PRODUCT_OUT)/boot.scr: $(_uscript_archive)
 .PHONY: boot.scr
 boot.scr: $(PRODUCT_OUT)/boot.scr
 
+INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/android.ini
+INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/bootlogo_android.bmp
+INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/icon_android_hue.bmp
+
 ifneq ($(TARGET_TEGRA_UBOOT),prebuilt)
 INSTALLED_RADIOIMAGE_TARGET += $(_uboot_bin)
 else

@@ -16,14 +16,16 @@
 function fetch_nx_firmware() {
   echo -n "Fetching Wi-Fi firmware for NX from SWR...";
 
-  wget -q https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/brcmfmac4356A3-pcie.txt?ref_type=heads -O ${LINEAGE_ROOT}/vendor/nintendo/nx/rel-shield-r/bcm_firmware/bcm4356/brcmfmac4356A3-pcie.txt
-  wget -q https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/CYW4356A3_001.004.009.0092.0095.bin?ref_type=heads -O ${LINEAGE_ROOT}/vendor/nintendo/nx/rel-shield-r/bcm_firmware/bcm4356/CYW4356A3_001.004.009.0092.0095.bin
+  mkdir -p ${LINEAGE_ROOT}/vendor/nintendo/nx/swr/bcm/bcm4356
+  mkdir -p ${LINEAGE_ROOT}/vendor/nintendo/nx/swr/u-boot
+  wget -q https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/brcmfmac4356A3-pcie.txt?ref_type=heads -O ${LINEAGE_ROOT}/vendor/nintendo/nx/swr/bcm/bcm4356/brcmfmac4356A3-pcie.txt
+  wget -q https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/CYW4356A3_001.004.009.0092.0095.bin?ref_type=heads -O ${LINEAGE_ROOT}/vendor/nintendo/nx/swr/bcm/bcm4356/CYW4356A3_001.004.009.0092.0095.bin
 
   echo "";
 
   echo -n "Fetching BL33 for NX from SWR...";
 
-  wget -q https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/bl33.bin?ref_type=heads -O ${LINEAGE_ROOT}/vendor/nintendo/nx/rel-shield-r/bl33.bin
+  wget -q https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/bl33.bin?ref_type=heads -O ${LINEAGE_ROOT}/vendor/nintendo/nx/swr/u-boot/bl33.bin
 
   echo "";
 

@@ -18,6 +18,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.tegra.stb.mode=0
 
+# Perfmgr
+PRODUCT_PROPERTY_OVERRIDES += \
+	vendor.powerhal.disp.idle_support=0
+
 # USB configfs
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.nv.usb.pid.adb=2000 \

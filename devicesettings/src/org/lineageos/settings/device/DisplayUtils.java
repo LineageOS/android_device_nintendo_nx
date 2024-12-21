@@ -31,9 +31,6 @@ import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
-import com.nvidia.NvCPLSvc.INvCPLRemoteService;
-import com.nvidia.framework.NvConstants;
-
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayMode;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayModePixEnc;
@@ -48,8 +45,6 @@ public class DisplayUtils {
             "/sys/class/backlight/backlight/brightness";
     public static final String PANEL_MODE_SYSFS =
             "/sys/devices/50000000.host1x/tegradc.0/panel_color_mode";
-    public static final String PWM_FAN_PROFILE_SYSFS = "/sys/devices/pwm-fan/fan_profile";
-    public static final String EST_FAN_PROFILE_SYSFS = "/sys/devices/thermal-fan-est/fan_profile";
     public static final String INT_DISPLAY_MODE_SYSFS =
             "/sys/bus/platform/devices/tegradc.0/enable";
 
@@ -208,36 +203,5 @@ public class DisplayUtils {
 
     public static Integer getPanelBrightness(ContentResolver resolver) {
         return Settings.System.getInt(resolver, Settings.System.SCREEN_BRIGHTNESS, 0);
-    }
-
-
-    public static void setFanProfile(String profile) {
-        Log.i(TAG, "Setting fan profile: " + profile);
-        try {
-            final FileOutputStream pwmProfile = new FileOutputStream(PWM_FAN_PROFILE_SYSFS);
-            pwmProfile.write(profile.getBytes());
-            pwmProfile.close();
-            final FileOutputStream estProfile = new FileOutputStream(EST_FAN_PROFILE_SYSFS);
-            estProfile.write(profile.getBytes());
-            estProfile.close();
-        } catch (IOException e) {
-            Log.w(TAG, "Failed to update fan profile");
-        }
-    }
-
-    public static void setPowerMode(INvCPLRemoteService service, int index) throws RemoteException {
-        Log.i(TAG, "Setting power mode: " + String.valueOf(index));
-
-        if(service == null) {
-            Log.e(TAG, "setPowerMode called on null INvCPLRemoteService");
-            return;
-        }
-
-        Intent intent = new Intent();
-        intent.setClassName(NvConstants.NvCPLSvc, NvConstants.NvCPLService);
-        intent.putExtra(NvConstants.NvOrigin, 1);
-        intent.putExtra(NvConstants.NvPowerMode , String.valueOf(index));
-
-        service.handleIntent(intent);
     }
 }

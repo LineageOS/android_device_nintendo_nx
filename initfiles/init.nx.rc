@@ -21,10 +21,22 @@ import /vendor/etc/init/hw/init.${ro.boot.hardware.sku}.rc
 on init
     setprop ro.surface_flinger.primary_display_orientation ORIENTATION_270
     setprop ro.boot.secureos none
+    setprop vendor.powerhal.config powerhint.${ro.boot.hardware.sku}.json
+    setprop vendor.powerhal.init 1
 
 on fs
     mount_all /vendor/etc/fstab.nx
     swapon_all /vendor/etc/fstab.nx
+
+on post-fs-data
+    chmod 0664 /sys/devices/57000000.gpu/devfreq/57000000.gpu/max_freq
+    chown system system /sys/devices/57000000.gpu/devfreq/57000000.gpu/min_freq
+    chmod 0664 /sys/devices/57000000.gpu/devfreq/57000000.gpu/max_freq
+    chown system system /sys/devices/57000000.gpu/devfreq/57000000.gpu/min_freq
+    chmod 0664 /sys/devices/pwm-fan/fan_profile
+    chown system system /sys/devices/pwm-fan/fan_profile
+    chmod 0664  /sys/devices/thermal-fan-est/fan_profile
+    chown system system /sys/devices/thermal-fan-est/fan_profile
 
 on boot
     write /sys/devices/system/cpu/cpufreq/schedutil/up_rate_limit_us 500

@@ -1,0 +1,49 @@
+/*
+ * Copyright (C) 2024 The LineageOS Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+phony {
+    name: "powerhint.json",
+    required: [
+        "powerhint.odin.json",
+        "powerhint.modin.json",
+        "powerhint.vali.json",
+        "powerhint.fric.json",
+    ],
+}
+
+prebuilt_etc {
+    name: "powerhint.odin.json",
+    src: "powerhint.odin.json",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "powerhint.modin.json",
+    src: "powerhint.modin.json",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "powerhint.vali.json",
+    src: "powerhint.vali.json",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "powerhint.fric.json",
+    src: "powerhint.modin.json",
+    vendor: true,
+}

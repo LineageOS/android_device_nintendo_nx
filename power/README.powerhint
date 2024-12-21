@@ -1,0 +1,30 @@
+# `libperfmgr` Power Profiles
+
+In lieu of comments, this document is presented.
+
+## Configs
+
+We have three `powerhint.${sku}.json` configs, parsed by `libperfmgr` and chosen on init via `vendor.powerhal.config` (see `init.nx.rc`).
+
+The `odin` config handles T210 performance, based on `CPU_PLL_CVB_TABLE_ODN` and `NA_FREQ_CVB_TABLE`.
+
+The `modin` config handles performance for `modin` and `fric` which have more robuse cooling and power solutions than `vali` and can support the range of T210B01 freqs, based on `CPUB01_PLL_CVB_TABLE` and `GPUB01_NA_CVB_TABLE`. We rely on `cpufreq` and `devfreq` closest freq matching for the SLT freqs instead of having a billion configs for different tables.
+
+The `vali` config is tuned for stripped-down B01 performance due to its limited nature.
+
+## Clocks
+
+Clocks are based on DVFS tables for ODN (`odin`) and B01. Defaults are chosen based on HOS (low-power and standard profiles) and Shield (perf mode, now mapped to `SUSTAINED_PERFORMANCE` hint fired by `devicesettings`).
+
+For overclocking, we will provide an option to have init poke the OC sysfs node, and with the perf mode profiles we will likely not have userspace clock limits. This does not allow for fine-grained control, so we may opt to set up some other system for setting `userspace` governor or something like that and allowing users with experience to manually set freqs.
+
+Profiles are as such:
+- LOW_POWER (handheld standard)
+- Default (docked standard / handheld perf mode)
+- SUSTAINED_PERFORMANCE (docked perf mode)
+
+DeviceSettings's BootCompletedRecevier handles requesting these on boot.
+
+## `nvcpl`, `nvphs`
+
+`libperfmgr` replaces both here. It does not do all CPL does but this is for the best, especially on `nx` where undefined behavior tuned for Shield tables is nsuboptimal. We do not implement CPL's app profiles functionality or some of PHS's hinting--this is stubbed in `tegra-common` and not much uses these APIs anyway.

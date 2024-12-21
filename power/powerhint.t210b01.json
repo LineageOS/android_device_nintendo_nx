@@ -1,0 +1,276 @@
+{
+    "Nodes": [
+        {
+            "Name": "CPUMinFreq",
+            "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
+            "Values": [
+                "0",
+                "204000",
+                "306000",
+                "408000",
+                "510000",
+                "612000",
+                "714000",
+                "816000",
+                "918000",
+                "1020000",
+                "1122000",
+                "1224000",
+                "1326000",
+                "1428000",
+                "1581000",
+                "1683000",
+                "1785000",
+                "1887000",
+                "1963500",
+                "2014500",
+                "2091000",
+                "2193000",
+                "2295000",
+                "2397000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUMaxFreq",
+            "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq",
+            "Values": [
+                "0",
+                "204000",
+                "306000",
+                "408000",
+                "510000",
+                "612000",
+                "714000",
+                "816000",
+                "918000",
+                "1020000",
+                "1122000",
+                "1224000",
+                "1326000",
+                "1428000",
+                "1581000",
+                "1683000",
+                "1785000",
+                "1887000",
+                "1963500",
+                "2014500",
+                "2091000",
+                "2193000",
+                "2295000",
+                "2397000"
+            ],
+            "DefaultIndex": 18,
+            "ResetOnInit": false
+        },
+        {
+            "Name": "GPUMinFreq",
+            "Path": "/sys/devices/57000000.gpu/devfreq/57000000.gpu/min_freq",
+            "Values": [
+                "0",
+                "76800000",
+                "153600000",
+                "230400000",
+                "307200000",
+                "384000000",
+                "460800000",
+                "537600000",
+                "614400000",
+                "691200000",
+                "768000000",
+                "844800000",
+                "921600000",
+                "998400000",
+                "1075200000",
+                "1152000000",
+                "1228800000",
+                "1267200000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "GPUMaxFreq",
+            "Path": "/sys/devices/57000000.gpu/devfreq/57000000.gpu/max_freq",
+            "Values": [
+                "0",
+                "76800000",
+                "153600000",
+                "230400000",
+                "307200000",
+                "384000000",
+                "460800000",
+                "537600000",
+                "614400000",
+                "691200000",
+                "768000000",
+                "844800000",
+                "921600000",
+                "998400000",
+                "1075200000",
+                "1152000000",
+                "1228800000",
+                "1267200000"
+            ],
+            "DefaultIndex": 14,
+            "ResetOnInit": false
+        },
+        {
+            "Name": "PwmFanProfile",
+            "Path": "/sys/devices/pwm-fan/fan_profile",
+            "Values": [
+                "Handheld",
+                "Console",
+                "Cool"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": false
+        },
+        {
+            "Name": "EstFanProfile",
+            "Path": "/sys/devices/thermal-fan-est/fan_profile",
+            "Values": [
+                "Handheld",
+                "Console",
+                "Cool"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": false
+        }
+    ],
+    "Actions": [
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUMinFreq",
+            "Duration": 1000,
+            "Value": "1326000"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "GPUMinFreq",
+            "Duration": 1000,
+            "Value": "537600000"
+        },
+        {
+            "PowerHint": "GAME_LOADING",
+            "Node": "CPUMinFreq",
+            "Duration": 0,
+            "Value": "1326000"
+        },
+        {
+            "PowerHint": "GAME",
+            "Node": "CPUMinFreq",
+            "Duration": 0,
+            "Value": "1326000"
+        },
+        {
+            "PowerHint": "GAME",
+            "Node": "GPUMinFreq",
+            "Duration": 0,
+            "Value": "537600000"
+        },
+        {
+            "PowerHint": "INTERACTIVE",
+            "Node": "GPUMinFreq",
+            "Duration": 0,
+            "Value": "537600000"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "GPUMinFreq",
+            "Duration": 0,
+            "Value": "0"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "CPUMinFreq",
+            "Duration": 0,
+            "Value": "0"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPUMinFreq",
+            "Duration": 5000,
+            "Value": "1428000"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "GPUMinFreq",
+            "Duration": 5000,
+            "Value": "307200000"
+        },
+        {
+            "PowerHint": "DISPLAY_CHANGE",
+            "Node": "CPUMinFreq",
+            "Duration": 5000,
+            "Value": "1581000"
+        },
+        {
+            "PowerHint": "DISPLAY_CHANGE",
+            "Node": "GPUMinFreq",
+            "Duration": 5000,
+            "Value": "307200000"
+        },
+        {
+            "PowerHint": "DISPLAY_UPDATE_IMMINENT",
+            "Node": "CPUMinFreq",
+            "Duration": 5000,
+            "Value": "1581000"
+        },
+        {
+            "PowerHint": "DISPLAY_UPDATE_IMMINENT",
+            "Node": "GPUMinFreq",
+            "Duration": 5000,
+            "Value": "307200000"
+        },
+        {
+            "PowerHint": "SUSTAINED_PERFORMANCE",
+            "Node": "PwmFanProfile",
+            "Duration": 0,
+            "Value": "Cool"
+        },
+        {
+            "PowerHint": "SUSTAINED_PERFORMANCE",
+            "Node": "EstFanProfile",
+            "Duration": 0,
+            "Value": "Cool"
+        },
+        {
+            "PowerHint": "SUSTAINED_PERFORMANCE",
+            "Node": "CPUMaxFreq",
+            "Duration": 0,
+            "Value": "2397000"
+        },
+        {
+            "PowerHint": "SUSTAINED_PERFORMANCE",
+            "Node": "GPUMaxFreq",
+            "Duration": 0,
+            "Value": "1267200000"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "PwmFanProfile",
+            "Duration": 0,
+            "Value": "Handheld"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "EstFanProfile",
+            "Duration": 0,
+            "Value": "Handheld"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "CPUMaxFreq",
+            "Duration": 0,
+            "Value": "1785000"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "GPUMaxFreq",
+            "Duration": 0,
+            "Value": "768000000"
+        }
+    ]
+}

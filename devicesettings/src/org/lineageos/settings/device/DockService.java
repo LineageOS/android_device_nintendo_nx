@@ -29,9 +29,8 @@ import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
 
-import com.nvidia.NvCPLSvc.INvCPLRemoteService;
-
-import com.nvidia.framework.NvConstants;
+import android.hardware.power.IPower;
+import android.hardware.power.Mode;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
@@ -41,7 +40,7 @@ public class DockService extends Service {
     final private Receiver mReceiver = new Receiver();
     private INvDisplay mDisplayService;
     private IWindowManager mWindowManager;
-    private INvCPLRemoteService mNvCPLSvc = null;
+    private IPower mPerfMgr;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -53,6 +52,8 @@ public class DockService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         mWindowManager = IWindowManager.Stub.asInterface(
                                 ServiceManager.getService(Context.WINDOW_SERVICE));
+        mPerfMgr = IPower.Stub.asInterface(
+            ServiceManager.waitForDeclaredService(IPower.DESCRIPTOR + "/default"));
 
         try {
             mDisplayService = INvDisplay.getService(true /* retry */);
@@ -73,29 +74,17 @@ public class DockService extends Service {
                     .getSharedPreferences("org.lineageos.settings.device_preferences",
                             Context.MODE_PRIVATE);
             final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
-            final String sku = SystemProperties.get("ro.boot.hardware.sku", "");
-
-            if (mNvCPLSvc == null) {
-                try {
-                    mNvCPLSvc = INvCPLRemoteService.Stub.asInterface(
-                            ServiceManager.getService("nvcpl"));
-                } catch (Exception e) {
-                    Log.e(TAG, "Failed to bind to service. " + e.getMessage());
-                    return;
-                }
-            }
 
             try {
                 if (connected) {
-                    DisplayUtils.setFanProfile(perfMode ? "Cool" : "Console");
-                    DisplayUtils.setPowerMode(mNvCPLSvc, perfMode ?
-                            NvConstants.NV_POWER_MODE_MAX_PERF :
-                            NvConstants.NV_POWER_MODE_OPTIMIZED);
+                    mPerfMgr.setMode(Mode.LOW_POWER, false);
+                    if (perfMode)
+                        mPerfMgr.setMode(Mode.SUSTAINED_PERFORMANCE, true);
                 } else {
-                    DisplayUtils.setFanProfile(perfMode ? "Cool" : "Handheld");
-                    DisplayUtils.setPowerMode(mNvCPLSvc, perfMode ?
-                            NvConstants.NV_POWER_MODE_OPTIMIZED :
-                            NvConstants.NV_POWER_MODE_BATTERY_SAVER);
+                    mPerfMgr.setMode(Mode.FIXED_PERFORMANCE, false);
+                    mPerfMgr.setMode(Mode.SUSTAINED_PERFORMANCE, false);
+                    if (!perfMode)
+                        mPerfMgr.setMode(Mode.LOW_POWER, true);
                 }
             } catch (RemoteException e) {
                 Log.e(TAG, "Failed to set power profiles");

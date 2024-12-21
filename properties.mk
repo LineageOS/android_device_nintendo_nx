@@ -6,6 +6,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_PROPERTY_OVERRIDES += \
     persist.sys.NV_ECO.IF.CHARGING=false
 
+# C2
+PRODUCT_SYSTEM_PROPERTY_OVERRIDES += \
+	debug.stagefright.c2inputsurface=-1
+
 # Display Mirroring Dialog
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.sysui.disable_mirroring_confirmation_dialog=true
@@ -17,6 +21,11 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 # HWC
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.tegra.stb.mode=0
+
+# SF
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.sf.enable_layer_caching=1 \
+	ro.surface_flinger.protected_contents=true
 
 # USB configfs
 PRODUCT_PROPERTY_OVERRIDES += \

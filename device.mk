@@ -18,11 +18,13 @@ TARGET_TEGRA_VARIANT    ?= common
 
 TARGET_TEGRA_BT       ?= bcm
 TARGET_TEGRA_CEC      := aosp
+TARGET_TEGRA_CPL      := none
 TARGET_TEGRA_KERNEL   ?= 4.9
 TARGET_TEGRA_KEYSTORE := software
 TARGET_TEGRA_LIGHT    ?= lineage
 TARGET_TEGRA_MAN_LVL  := 5
 TARGET_TEGRA_MEMTRACK ?= rel-shield-r
+TARGET_TEGRA_POWER    := perfmgr
 TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_UBOOT    := prebuilt
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
@@ -167,8 +169,10 @@ PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/task_profiles_28.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 # PHS
+ifneq ($(TARGET_TEGRA_PHS),)
 PRODUCT_PACKAGES += \
     nvphsd.conf
+endif
 
 # Recovery
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.vendor.recovery_update=true

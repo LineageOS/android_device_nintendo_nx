@@ -20,9 +20,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.power.IPower;
+import android.hardware.power.Mode;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.util.Log;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
+    private static final String TAG = BootCompletedReceiver.class.getSimpleName();
+    private IPower mPerfMgr;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (SystemProperties.get("ro.product.device", "").equals("nx") &&
@@ -30,10 +38,27 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             context.startService(new Intent(context, DockService.class));
         }
 
+        final SharedPreferences sharedPrefs = context.getSharedPreferences(
+            "org.lineageos.settings.device_preferences", Context.MODE_PRIVATE);
+
+        mPerfMgr = IPower.Stub.asInterface(
+            ServiceManager.waitForDeclaredService(IPower.DESCRIPTOR + "/default"));
+
+        // Enable/disable perf mode power mode with perfmgr
+        final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
+
+        try {
+            mPerfMgr.setMode(Mode.SUSTAINED_PERFORMANCE, false);
+            if (!perfMode)
+                mPerfMgr.setMode(Mode.LOW_POWER, true);
+            else
+            mPerfMgr.setMode(Mode.LOW_POWER, false);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Failed to set on boot power mode!");
+        }
+
         // Set preferred OLED panel mode
         if(SystemProperties.get("ro.boot.hardware.sku", "").equals("fric")) {
-            final SharedPreferences sharedPrefs = context.getSharedPreferences(
-                    "org.lineageos.settings.device_preferences", Context.MODE_PRIVATE);
             final String panelMode = sharedPrefs.getString("panel_color_mode", "0x23");
 
             DisplayUtils.setPanelColorMode(panelMode);

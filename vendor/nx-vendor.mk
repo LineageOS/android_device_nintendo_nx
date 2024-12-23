@@ -32,8 +32,4 @@ ATF_PARAMS += CRASH_REPORTING=1 ENABLE_ASSERTIONS=1 LOG_LEVEL=0 PLAT_LOG_LEVEL_A
 PRODUCT_PACKAGES += \
 	android.ini \
 	bootlogo_android \
-	icon_android_hue \
-	bl31 \
-	bl33
-
-INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl31.bin
+	icon_android_hue

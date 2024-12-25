@@ -3,69 +3,69 @@
     {
       "unresolved": true,
       "key": {
-        "uuid": "f62b343a_a874fbb7",
-        "filename": "/PATCHSET_LEVEL",
+        "uuid": "49be11af_30b24736",
+        "filename": "bootfiles/android_boot.txt",
         "patchSetId": 1
       },
-      "lineNbr": 0,
+      "lineNbr": 22,
       "author": {
-        "id": 27741
+        "id": 16185
       },
-      "writtenOn": "2024-12-25T03:45:14Z",
-      "side": 1,
-      "message": "will verify #soon",
-      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "writtenOn": "2024-12-25T04:59:53Z",
+      "side": 0,
+      "message": "killed?",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
       "unresolved": true,
       "key": {
-        "uuid": "b7dd5797_e208dc9b",
+        "uuid": "92bfe719_1784cda2",
         "filename": "bootfiles/android_boot.txt",
         "patchSetId": 1
       },
-      "lineNbr": 229,
+      "lineNbr": 62,
       "author": {
         "id": 16185
       },
       "writtenOn": "2024-12-25T04:59:53Z",
-      "side": 1,
-      "message": "so wait, any Samsung card that reports Samsung gets this treatment? that seems... iffy.",
-      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "side": 0,
+      "message": "nuking comments? Are they inaccurate?",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
       "unresolved": true,
       "key": {
-        "uuid": "ce0db426_f8049105",
+        "uuid": "5afff639_01802d48",
         "filename": "bootfiles/android_boot.txt",
         "patchSetId": 1
       },
-      "lineNbr": 289,
+      "lineNbr": 125,
       "author": {
         "id": 16185
       },
       "writtenOn": "2024-12-25T04:59:53Z",
-      "side": 1,
-      "message": "we intentionally killed this. Pls to not reintroduce it.",
-      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "side": 0,
+      "message": "where did this go?",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
       "unresolved": true,
       "key": {
-        "uuid": "ba54bc6f_1a3b6257",
+        "uuid": "ed282b7d_71c6831d",
         "filename": "bootfiles/android_boot.txt",
         "patchSetId": 1
       },
-      "lineNbr": 402,
+      "lineNbr": 413,
       "author": {
         "id": 16185
       },
       "writtenOn": "2024-12-25T04:59:53Z",
-      "side": 1,
-      "message": "where did this come from? What does it do?",
-      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "side": 0,
+      "message": "do we really not want to spot check kernel load for reset?",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]

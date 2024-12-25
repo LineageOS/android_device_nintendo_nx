@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5596741c_f0d35fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 1,
+      "message": "TODO: decide on overlays, add unconditional usb3 for recovery as WAR",
+      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7dd5797_e208dc9b",
         "filename": "bootfiles/android_boot.txt",
         "patchSetId": 1
@@ -48,6 +65,24 @@
       "writtenOn": "2024-12-25T04:59:53Z",
       "side": 1,
       "message": "so wait, any Samsung card that reports Samsung gets this treatment? that seems... iffy.",
+      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60565e6_a7ef7ba6",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 1,
+      "message": "every samsung card either does not report (so it will not be used) or 100% works. it\u0027s not a card-by-card issue, it\u0027s impl-by-impl and we have tests from all gens of reporting samsung cards. really we should have a LUT for a list of 100% supported vendors but we only have good data from samsung. they are also the best and see the most perf gain.",
+      "parentUuid": "b7dd5797_e208dc9b",
       "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -69,6 +104,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43dfdeb_93212701",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 1,
+      "message": "reintroducing intentionally\nreminder this is intentionally disabled\nwill be adding manual enable to recovery path though as discussed",
+      "parentUuid": "ce0db426_f8049105",
+      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba54bc6f_1a3b6257",
@@ -82,6 +135,24 @@
       "writtenOn": "2024-12-25T04:59:53Z",
       "side": 1,
       "message": "where did this come from? What does it do?",
+      "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a390620_956e5f8f",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 1,
+      "message": "this was there before but above and under an l4t-loader ver check. we now require newer outright. users should not be using ancient hekate.",
+      "parentUuid": "ba54bc6f_1a3b6257",
       "revId": "61772e4ee8bfe66c2ff44ad90118f82b7ba9f57a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }

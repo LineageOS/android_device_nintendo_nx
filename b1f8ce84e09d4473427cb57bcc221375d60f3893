@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f69d44_bd1fdd84",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 0,
+      "message": "default handled below",
+      "parentUuid": "49be11af_30b24736",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92bfe719_1784cda2",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-25T04:59:53Z",
       "side": 0,
       "message": "nuking comments? Are they inaccurate?",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be5875e_c6257791",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 0,
+      "message": "they are irrelevant\nreal used addrs are below\ncan add back if you\u0027d like",
+      "parentUuid": "92bfe719_1784cda2",
       "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7898d0d_a90c25ec",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 0,
+      "message": "good point, can add but should not be needed at all though, and we don\u0027t want people using the overlays we used to distribute. long time ago this was how we did uart and stuff.\nup to you",
+      "parentUuid": "5afff639_01802d48",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed282b7d_71c6831d",
         "filename": "bootfiles/android_boot.txt",
         "patchSetId": 1
@@ -65,6 +119,24 @@
       "writtenOn": "2024-12-25T04:59:53Z",
       "side": 0,
       "message": "do we really not want to spot check kernel load for reset?",
+      "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427b3f89_03dfe7af",
+        "filename": "bootfiles/android_boot.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-25T14:36:22Z",
+      "side": 0,
+      "message": "read below\nwe had duplicated it\nthe failed to launch kernel at the end remains\nuboot cmd returns are not what you would expect and this check was incorrect too afaik",
+      "parentUuid": "ed282b7d_71c6831d",
       "revId": "b1f8ce84e09d4473427cb57bcc221375d60f3893",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }

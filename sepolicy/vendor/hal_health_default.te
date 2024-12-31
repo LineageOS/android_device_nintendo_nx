@@ -1,6 +1,9 @@
 # Access to JoyCons
 r_dir_file(hal_health_default, sysfs_serial)
 
+# Access to JoyCons - Reattached
+r_dir_file(hal_health_default, sysfs)
+
 # Access to Sensors
 r_dir_file(hal_health_default, sysfs_iio)
 

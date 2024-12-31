@@ -16,6 +16,24 @@
       "message": "Leave this",
       "revId": "a73113a66f4551fb2b57352e8b6a7f4d219ab7cf",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53a26d3_57bdbdf8",
+        "filename": "device.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-31T01:01:56Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "117d9eae_750302f5",
+      "revId": "a73113a66f4551fb2b57352e8b6a7f4d219ab7cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

@@ -95,6 +95,9 @@ VENDOR_SECURITY_PATCH := 2022-04-05
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/vendor
 
+# Include Joycond sepolicy if present
+-include hardware/nintendo/joycond/joycond-sepolicy.mk
+
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 BOARD_VNDK_VERSION                     := current

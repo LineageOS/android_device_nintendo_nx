@@ -1,0 +1,1 @@
+allow wifi_loader sysfs_brcmfmac_fwpath:file rw_file_perms;

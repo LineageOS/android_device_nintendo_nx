@@ -1,11 +1,3 @@
-# Access to JoyCons
-r_dir_file(joycond, sysfs_hid)
-allow joycond sysfs_hid:file rw_file_perms;
-
+# Access to JoyCons - keep this here as we define sysfs_serial
 r_dir_file(joycond, sysfs_serial)
 allow joycond sysfs_serial:file rw_file_perms;
-
-# TMP - Access to JoyCons - before LMK labels it
-r_dir_file(joycond, sysfs)
-
-set_prop(joycond, vendor_persist_joycond_prop)

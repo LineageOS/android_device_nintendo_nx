@@ -30,13 +30,6 @@
             android:key="perf_mode"
             android:title="@string/perf_setting_title"
             android:summary="@string/perf_setting_summary" />
-        
-        <ListPreference
-            android:key="panel_color_mode"
-            android:title="@string/panel_color_setting_title"
-            android:entries="@array/panel_mode_map"
-            app:useSimpleSummaryProvider="false"
-            android:entryValues="@array/panel_modes" />
     </PreferenceCategory>
 
 </PreferenceScreen>

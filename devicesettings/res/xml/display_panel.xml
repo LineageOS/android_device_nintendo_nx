@@ -27,6 +27,16 @@
             android:key="perf_mode"
             android:title="@string/perf_setting_title"
             android:summary="@string/perf_setting_summary" />
+
+        <SwitchPreference
+            android:key="joycond_analog"
+            android:title="@string/analog_setting_title"
+            android:summary="@string/analog_setting_summary" />
+
+        <SwitchPreference
+            android:key="joycond_xbox"
+            android:title="@string/xbox_setting_title"
+            android:summary="@string/xbox_setting_summary" />
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -47,6 +47,8 @@ import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayType;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcModeType;
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
+import android.hardware.nintendo.joycond.IJoycond;
+
 public class DisplaySettingsFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -54,6 +56,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
     private final String sku = SystemProperties.get("ro.product.name", "");
     public boolean mInModeChange = false;
     private INvDisplay mDisplayService;
+    private IJoycond mJoycond;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -64,6 +67,8 @@ public class DisplaySettingsFragment extends PreferenceFragment
                 throw new RuntimeException(e);
             }
         }
+
+        mJoycond = IJoycond.getService(true);
 
         addPreferencesFromResource(R.xml.display_panel);
         PreferenceScreen preferenceScreen = this.getPreferenceScreen();

@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01dbb79_66ece2d3",
+        "filename": "build/tasks/bootloader.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-01-09T07:03:25Z",
+      "side": 1,
+      "message": "?",
+      "revId": "f0122f224c5dd26605163909562ca0ec6421644f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e7b407_8e725949",
+        "filename": "build/tasks/bootloader.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-01-09T07:03:25Z",
+      "side": 1,
+      "message": "This section and the var supporting it should probably be dropped in favor of the tegra-common copy.",
+      "revId": "f0122f224c5dd26605163909562ca0ec6421644f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

@@ -145,9 +145,11 @@ PRODUCT_PACKAGES += \
 
 # Loadable kernel modules
 PRODUCT_PACKAGES += \
-    init.lkm.rc \
     lkm_loader \
     lkm_loader_target
+
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/initfiles/init.lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lkm.rc
 
 # Media config
 PRODUCT_PACKAGES += \

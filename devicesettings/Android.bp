@@ -30,12 +30,13 @@ android_app {
     overrides: ["DeviceSettings"],
     platform_apis: true,
     certificate: "platform",
-    required: ["privapp-permissions-lineage-displaysettings-nx.xml"],
+    required: ["privapp-permissions-lineage-displaysettings-nx.xml", "TVSettingsOverlay"],
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
     privileged: true,
     static_libs: [
+        "TvSettingsStaticLibs",
         "androidx.preference_preference",
         "androidx.appcompat_appcompat",
         "androidx.legacy_legacy-preference-v14",
@@ -44,7 +45,7 @@ android_app {
         "org.lineageos.settings.resources",
         "org.lineageos.platform.internal",
         "vendor.nvidia.hardware.graphics.display-V1.0-java",
-        "android.hardware.nintendo.joycond",
+        "android.hardware.nintendo.joycond-java",
     ],
 }
 

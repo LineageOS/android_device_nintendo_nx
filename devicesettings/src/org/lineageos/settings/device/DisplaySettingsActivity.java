@@ -35,9 +35,10 @@ public class DisplaySettingsActivity extends CollapsingToolbarBaseActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction().replace(
-                    com.android.settingslib.collapsingtoolbar.R.id.content_frame,
-                    new DisplaySettingsFragment()).commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.content_frame, new DisplaySettingsFragment())
+                    .commitNow();
         }
     }
 

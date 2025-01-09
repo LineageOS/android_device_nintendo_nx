@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,7 +32,7 @@ import android.view.MenuItem;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
@@ -49,7 +50,7 @@ import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 import android.hardware.nintendo.joycond.IJoycond;
 
-public class DisplaySettingsFragment extends PreferenceFragment
+public class DisplaySettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = DisplaySettingsFragment.class.getSimpleName();
@@ -68,7 +69,8 @@ public class DisplaySettingsFragment extends PreferenceFragment
             }
         }
 
-        mJoycond = IJoycond.getService(true);
+        mJoycond = IJoycond.Stub.asInterface(
+                ServiceManager.waitForDeclaredService(IJoycond.DESCRIPTOR + "/default"));
 
         addPreferencesFromResource(R.xml.display_panel);
         PreferenceScreen preferenceScreen = this.getPreferenceScreen();

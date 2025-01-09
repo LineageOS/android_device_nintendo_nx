@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7e0284_fba22564",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-01-09T06:31:19Z",
+      "side": 1,
+      "message": "everything makes it to radio images now - BUT not to PRODUCT_OUT, I\u0027d like to fix those.",
+      "revId": "8556a32cffcccbf47a3fe54c0e663aa5d58307d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

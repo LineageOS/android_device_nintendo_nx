@@ -69,6 +69,24 @@
       "parentUuid": "43e7b407_8e725949",
       "revId": "f0122f224c5dd26605163909562ca0ec6421644f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261f53ee_7fb4fa53",
+        "filename": "build/tasks/bootloader.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-01-09T07:26:18Z",
+      "side": 1,
+      "message": "It is?",
+      "parentUuid": "e98e99dc_cdcd4b8f",
+      "revId": "f0122f224c5dd26605163909562ca0ec6421644f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

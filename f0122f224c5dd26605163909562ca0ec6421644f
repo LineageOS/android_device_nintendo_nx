@@ -87,6 +87,24 @@
       "parentUuid": "e98e99dc_cdcd4b8f",
       "revId": "f0122f224c5dd26605163909562ca0ec6421644f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aae4557a_0f1f9d71",
+        "filename": "build/tasks/bootloader.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-01-09T16:10:54Z",
+      "side": 1,
+      "message": "I thought you meant the variables above that were duplicated from Tegra-common, but this one will take more time, probably best in a follow up.",
+      "parentUuid": "261f53ee_7fb4fa53",
+      "revId": "f0122f224c5dd26605163909562ca0ec6421644f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

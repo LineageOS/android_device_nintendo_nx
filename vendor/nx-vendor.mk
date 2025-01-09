@@ -14,7 +14,6 @@
 
 include device/nvidia/t210-common/vendor/t210-by-flags.mk
 include device/nvidia/tegra-common/vendor/common-by-flags.mk
-include device/nintendo/nx/vendor/bcm_firmware/bcm.mk
 
 ATF_PATH   := $(abspath hardware/nintendo/arm-trusted-firmware)
 
@@ -28,12 +27,11 @@ ATF_PARAMS += SDEI_SUPPORT=0
 # Error reporting
 ATF_PARAMS += CRASH_REPORTING=1 ENABLE_ASSERTIONS=1 LOG_LEVEL=0 PLAT_LOG_LEVEL_ASSERT=0
 
-# Switch firmware files
-PRODUCT_PACKAGES += \
-	android.ini \
-	bootlogo_android \
-	icon_android_hue \
-	bl31 \
-	bl33
+NX_BCM_PATH := vendor/nintendo/nx/rel-shield-r/bcm
+NX_BOOTFILES_PATH := device/nintendo/nx/bootfiles
+NX_FIRMWARE_PATH := vendor/nintendo/nx/rel-shield-r
 
-INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl31.bin
+PRODUCT_COPY_FILES += \
+    $(NX_BCM_PATH)/bcm4356/brcmfmac4356-pcie.clm_blob:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.clm_blob \
+    $(NX_BCM_PATH)/bcm4356/brcmfmac4356A3-pcie.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.txt \
+    $(NX_BCM_PATH)/bcm4356/CYW4356A3_001.004.009.0092.0095.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/BCM4356A3.hcd

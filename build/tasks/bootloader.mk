@@ -17,7 +17,7 @@ ifneq ($(filter nx nx_tab,$(TARGET_DEVICE)),)
 UBOOT_PATH := $(BUILD_TOP)/hardware/nintendo/u-boot
 
 NX_BOOTFILES_PATH := $(BUILD_TOP)/device/nintendo/nx/bootfiles
-NX_FIRMWARE_PATH := $(BUILD_TOP)/vendor/nintendo/nx/swr/u-boot
+NX_FIRMWARE_PATH := $(BUILD_TOP)/vendor/nintendo/nx/external/u-boot
 
 ifneq ($(TARGET_TEGRA_UBOOT),prebuilt)
 

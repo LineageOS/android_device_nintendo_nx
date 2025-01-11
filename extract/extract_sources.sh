@@ -15,4 +15,3 @@
 #
 
 FILELIST_PATHS+=("nintendo/nx");
-PATCH_PATHS+=("nintendo/nx");

@@ -1,1 +1,8 @@
 stock-t210	vendor/firmware/brcmfmac4356-pcie.clm_blob	bcm/bcm4356/
+
+# HOS FW
+external	https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/brcmfmac4356A3-pcie.txt?ref_type=heads	vendor/nintendo/nx/swr/bcm/bcm4356/
+external	https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/CYW4356A3_001.004.009.0092.0095.bin?ref_type=heads	vendor/nintendo/nx/swr/bcm/bcm4356/
+
+# u-boot
+external	https://gitlab.com/switchroot/android/nx-firmware/-/raw/main/bl33.bin?ref_type=heads	vendor/nintendo/nx/swr/u-boot/bl33.bin

@@ -53,6 +53,15 @@ $(PRODUCT_OUT)/boot.scr: $(_uscript_archive)
 .PHONY: boot.scr
 boot.scr: $(PRODUCT_OUT)/boot.scr
 
+BUILT_TARGET_FILES_ZIPROOT := $(call intermediates-dir-for,PACKAGING,target_files)/$(TARGET_PRODUCT)-target_files
+$(BUILT_TARGET_FILES_ZIPROOT).zip: $(BUILT_TARGET_FILES_ZIPROOT)/IMAGES/bl31.bin $(BUILT_TARGET_FILES_ZIPROOT)/IMAGES/boot.scr
+
+$(BUILT_TARGET_FILES_ZIPROOT)/IMAGES/bl31.bin: $(BUILT_TARGET_FILES_ZIPROOT).zip.list $(PRODUCT_OUT)/bl31.bin $(PRODUCT_OUT)/boot.scr
+	@mkdir -p $(dir $@)
+	@cp $(PRODUCT_OUT)/bl31.bin $@
+	@cp $(PRODUCT_OUT)/boot.scr $@
+	@echo $@ >> $(BUILT_TARGET_FILES_ZIPROOT).zip.list
+
 INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/android.ini
 INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/bootlogo_android.bmp
 INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/icon_android_hue.bmp
@@ -63,7 +72,7 @@ else
 INSTALLED_RADIOIMAGE_TARGET += $(NX_FIRMWARE_PATH)/bl33.bin
 endif
 
-INSTALLED_RADIOIMAGE_TARGET += $(_uscript_archive)
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/boot.scr
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl31.bin
 
 endif # TARGET_DEVICE

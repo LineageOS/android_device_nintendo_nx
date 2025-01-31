@@ -108,10 +108,17 @@ ifeq ($(PRODUCT_IS_ATV),true)
 endif
 
 # Audio
+ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_AUDIO)),)
 PRODUCT_PACKAGES += \
     audio_effects.xml \
     audio_policy_configuration.xml \
     nvaudio_conf.xml
+PRODUCT_COPY_FILES += \
+    device/nintendo/nx/media/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
+else ifeq ($(TARGET_TEGRA_AUDIO),aidl)
+PRODUCT_COPY_FILES += \
+    device/nintendo/nx/media/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
+endif
 
 # CEC
 PRODUCT_COPY_FILES := $(filter-out frameworks/native/data/etc/android.hardware.hdmi.cec.xml%android.hardware.hdmi.cec.xml,$(PRODUCT_COPY_FILES))

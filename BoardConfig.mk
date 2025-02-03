@@ -43,7 +43,8 @@ TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
 TARGET_BOARD_INFO_FILE := device/nintendo/nx/board-info.txt
 
 # Manifest
-DEVICE_MANIFEST_FILE := device/nintendo/nx/manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/nintendo/nx/manifests/device_framework_matrix.xml
+DEVICE_MANIFEST_FILE := device/nintendo/nx/manifests/manifest.xml
 
 # Bluetooth
 TARGET_VENDOR_PROP += device/nintendo/nx/bluetooth.prop

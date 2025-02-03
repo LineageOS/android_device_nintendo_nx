@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2023 The LineageOS Project
+     Copyright (C) 2023-2025 The LineageOS Project
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -30,13 +30,16 @@
             android:key="perf_mode"
             android:title="@string/perf_setting_title"
             android:summary="@string/perf_setting_summary" />
-        
-        <ListPreference
-            android:key="panel_color_mode"
-            android:title="@string/panel_color_setting_title"
-            android:entries="@array/panel_mode_map"
-            app:useSimpleSummaryProvider="false"
-            android:entryValues="@array/panel_modes" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="joycon_category"
+        android:title="@string/joycon_category_title">
+
+        <SwitchPreference
+            android:key="joycon_analog"
+            android:title="@string/analog_title"
+            android:summary="@string/analog_summary" />
     </PreferenceCategory>
 
 </PreferenceScreen>

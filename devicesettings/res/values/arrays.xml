@@ -37,4 +37,38 @@
         <item>0x75</item> <!-- DCS_SM_COLOR_MODE_NIGHT3 -->
     </string-array>
 
+    <string-array name="keys_map">
+        <item>B</item>
+        <item>A</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Screenshot</item>
+        <item>L1</item>
+        <item>R1</item>
+        <item>L2</item>
+        <item>R2</item>
+        <item>Minus</item>
+        <item>Plus</item>
+        <item>Home</item>
+        <item>Left Thumb</item>
+        <item>Right Thumb</item>
+    </string-array>
+
+    <string-array name="keys">
+        <item>304</item>
+        <item>305</item>
+        <item>307</item>
+        <item>308</item>
+        <item>309</item>
+        <item>310</item>
+        <item>311</item>
+        <item>312</item>
+        <item>313</item>
+        <item>314</item>
+        <item>315</item>
+        <item>316</item>
+        <item>317</item>
+        <item>318</item>
+    </string-array>
+
 </resources>

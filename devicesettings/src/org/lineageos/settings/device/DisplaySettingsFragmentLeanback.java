@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024 The LineageOS Project
+ * Copyright (C) 2023-2025 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,37 +16,28 @@
 
 package org.lineageos.settings.device;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.view.MenuItem;
+
 import androidx.leanback.preference.LeanbackPreferenceFragmentCompat;
 import androidx.leanback.preference.LeanbackSettingsFragmentCompat;
 import androidx.preference.DialogPreference;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SeekBarPreference;
-import androidx.preference.SwitchPreference;
 
-import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayMode;
-import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayType;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcModeType;
 import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
@@ -99,6 +90,7 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
 
         private final String sku = SystemProperties.get("ro.product.name", "");
         private INvDisplay mDisplayService;
+        private DisplaySettingsPrefsCommon commonPrefs;
 
         @Override
         public void onCreatePreferences(Bundle bundle, String s) {
@@ -121,11 +113,13 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
 
             PreferenceScreen preferenceScreen = this.getPreferenceScreen();
 
-            createPerfSettings();
+            commonPrefs = new DisplaySettingsPrefsCommon((PreferenceFragmentCompat) this, mDisplayService, sku);
+
+            commonPrefs.createPerfSettings();
             createBrightSettings();
 
             if (!sku.equals("vali")) {
-                createDisplaySettings(preferenceScreen);
+                commonPrefs.createDisplaySettings(preferenceScreen);
             }
         }
 
@@ -146,7 +140,7 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             if (item.getItemId() == android.R.id.home) {
-                getActivity().onBackPressed();
+                getActivity().getOnBackPressedDispatcher().onBackPressed();
                 return true;
             }
             return false;
@@ -171,8 +165,7 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
 
                 if (key.equals("disable_internal_on_external_connected")) {
                     DisplayUtils.setInternalDisplayState(
-                            !(((DisplaySettingsLeanbackActivity) getActivity())
-                                    .mExternalDisplayConnected
+                            !(((DisplaySettingsLeanbackActivity) getActivity()).mExternalDisplayConnected
                                     && sharedPrefs.getBoolean(key, false)));
                     return;
                 }
@@ -188,8 +181,7 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
                 return;
             }
 
-            DialogInterface.OnClickListener confirmationDialogClickListener =
-                    new DialogInterface.OnClickListener() {
+            DialogInterface.OnClickListener confirmationDialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which) {
@@ -220,8 +212,7 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
                                 HwcSvcModeType.HWC_SVC_MODE_TYPE_CURRENT);
                     } catch (RemoteException e) {
                         Log.e(TAG, "Failed to read display mode");
-                        ((DisplaySettingsLeanbackActivity) getActivity()).mReceiver.mBlocked
-                                = false;
+                        ((DisplaySettingsLeanbackActivity) getActivity()).mReceiver.mBlocked = false;
                         getActivity().recreate();
                         return;
                     }
@@ -265,65 +256,6 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
             }.start();
         }
 
-        private void createPerfSettings() {
-            SwitchPreference perfPreference = findPreference("perf_mode");
-
-            perfPreference.setOnPreferenceChangeListener(
-                    new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(Preference preference, Object newValue) {
-                            if (((Boolean) newValue) != PreferenceManager
-                                    .getDefaultSharedPreferences(getActivity())
-                                    .getBoolean("perf_mode", false)) {
-
-                                final boolean isEnabled = (Boolean) newValue;
-                                if (isEnabled) {
-                                    new AlertDialog.Builder(getActivity())
-                                            .setTitle(R.string.perf_warning_title)
-                                            .setMessage(R.string.perf_warning_summary)
-                                            .setNegativeButton(getString(android.R.string.cancel),
-                                                    new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog,
-                                                                int whichButton) {
-                                                        }
-                                                    })
-                                            .setPositiveButton(getString(android.R.string.ok),
-                                                    new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog,
-                                                                int whichButton) {
-                                                            SharedPreferences sharedPrefs =
-                                                                    PreferenceManager
-                                                                    .getDefaultSharedPreferences(
-                                                                            getActivity());
-                                                            SharedPreferences.Editor editor =
-                                                                    sharedPrefs.edit();
-                                                            editor.putBoolean("perf_mode", true);
-                                                            editor.commit();
-                                                            perfPreference.setChecked(true);
-                                                        }
-                                                    })
-                                            .setOnDismissListener(
-                                                    new DialogInterface.OnDismissListener() {
-                                                        @Override
-                                                        public void onDismiss(DialogInterface dialog) {
-                                                            Intent intent = new Intent(
-                                                                    DisplayUtils.POWER_UPDATE_INTENT);
-                                                            getActivity().sendBroadcast(intent);
-                                                        }
-                                                    })
-                                            .create().show();
-                                    return false;
-                                }
-                            }
-                            Intent intent = new Intent(DisplayUtils.POWER_UPDATE_INTENT);
-                            getActivity().sendBroadcast(intent);
-                            return true;
-                        }
-                    });
-        }
-
         private void createBrightSettings() {
             SeekBarPreference brightPref = findPreference("bright_pref");
             int current = DisplayUtils.getPanelBrightness(getActivity().getContentResolver());
@@ -337,180 +269,10 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
                         public boolean onPreferenceChange(Preference preference,
                                 Object newValue) {
 
-                            DisplayUtils.setPanelBrightness(getActivity().getContentResolver(), (Integer)newValue);
+                            DisplayUtils.setPanelBrightness(getActivity().getContentResolver(), (Integer) newValue);
                             return true;
                         }
                     });
-        }
-
-        private void createPanelModeSettings() {
-            ListPreference panelColorPref = findPreference("panel_color_mode");
-            String current = DisplayUtils.getPanelColorMode();
-            int index;
-
-            Resources res = getResources();
-            String[] modes = res.getStringArray(R.array.panel_modes);
-            String[] modeMap = res.getStringArray(R.array.panel_mode_map);
-
-            for (index = 0; index < modes.length; index++) {
-                if (current.equals(modes[index]))
-                    break;
-            }
-
-            if (index == modes.length) {
-                Log.e(TAG, "Unsupported OLED panel mode! ID: " + current);
-            } else {
-
-                Log.w(TAG, "OLED Panel Mode Index: " + String.valueOf(index));
-
-                panelColorPref.setValue(current);
-                panelColorPref.setSummary(modeMap[index]);
-
-                panelColorPref.setOnPreferenceChangeListener(
-                        new Preference.OnPreferenceChangeListener() {
-                            @Override
-                            public boolean onPreferenceChange(Preference preference,
-                                    Object newValue) {
-                                int newIndex;
-
-                                DisplayUtils.setPanelColorMode((String) newValue);
-
-                                for (newIndex = 0; newIndex < modes.length; newIndex++) {
-                                    if (((String) newValue).equals(modes[newIndex])) {
-                                        panelColorPref.setSummary(modeMap[newIndex]);
-                                        break;
-                                    }
-                                }
-                                return true;
-                            }
-                        });
-            }
-        }
-
-        private void createDisplaySettings(PreferenceScreen preferenceScreen) {
-            for (int i = HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL; i <= HwcSvcDisplay.HWC_SVC_DISPLAY_HDMI2; i++) {
-                PreferenceCategory category = new PreferenceCategory(
-                        preferenceScreen.getContext());
-
-                if (!initializeDisplayCategory(category, i)) {
-                    continue;
-                }
-
-                preferenceScreen.addPreference(category);
-                populateDisplayCategory(category, i);
-
-            }
-        }
-
-        private boolean initializeDisplayCategory(PreferenceCategory category,
-                int display) {
-            try {
-                int type = mDisplayService.displayGetType(display);
-                ArrayList<HwcSvcDisplayMode> availableModes = mDisplayService
-                        .modeGetList(display);
-
-                if (availableModes.size() == 0)
-                    return false; // Display is not connected
-
-                category.setTitle(DisplayUtils.makeDisplayLabel(mDisplayService
-                        .edidGetInfo(display), display));
-                category.setSummary(HwcSvcDisplayType.toString(type));
-            } catch (RemoteException e) {
-                Log.e(TAG, "Failed to read display info");
-                return false;
-            }
-
-            return true;
-        }
-
-        private void populateDisplayCategory(PreferenceCategory category, int display) {
-            String displayUid;
-            HwcSvcDisplayMode currentMode;
-            ArrayList<HwcSvcDisplayMode> availableModes;
-
-            try {
-                displayUid = String.valueOf(DisplayUtils.makeDisplayLabel(mDisplayService
-                        .edidGetInfo(display), display).hashCode());
-                currentMode = mDisplayService.getMode(display,
-                        HwcSvcModeType.HWC_SVC_MODE_TYPE_CURRENT);
-                availableModes = mDisplayService.modeGetList(display);
-            } catch (RemoteException e) {
-                Log.e(TAG, "Failed to read display info");
-                return;
-            }
-
-            // Sort by resolution and refresh rate
-            Collections.sort(availableModes, (Comparator<HwcSvcDisplayMode>) (a, b) -> {
-                HwcSvcDisplayMode modeA = (HwcSvcDisplayMode) a;
-                HwcSvcDisplayMode modeB = (HwcSvcDisplayMode) b;
-
-                if (modeA.xres == modeB.xres) {
-                    if (modeA.yres == modeB.yres) {
-                        if (modeA.refresh == modeB.refresh) {
-                            if (modeA.flags > modeB.flags) {
-                                return -1;
-                            } else if (modeA.flags < modeB.flags) {
-                                return 1;
-                            } else {
-                                return 0;
-                            }
-                        } else if (modeA.refresh > modeB.refresh) {
-                            return -1;
-                        } else {
-                            return 1;
-                        }
-                    } else if (modeA.yres > modeB.yres) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                } else if (modeA.xres > modeB.xres) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            });
-
-            ListPreference modesPreference = new ListPreference(category.getContext());
-            ArrayList<String> displayedModes = new ArrayList<>();
-            ArrayList<String> modeIndices = new ArrayList<>();
-
-            availableModes.forEach((mode) -> displayedModes.add(DisplayUtils
-                    .makeModeInfoString(mode) + " " + DisplayUtils.makeColorInfoString(mode)));
-            availableModes.forEach((mode) -> modeIndices.add(String.valueOf(mode.index)));
-
-            modesPreference.setEntries(displayedModes.toArray(
-                    new CharSequence[displayedModes.size()]));
-            modesPreference.setEntryValues(modeIndices.toArray(
-                    new CharSequence[modeIndices.size()]));
-            modesPreference.setTitle(R.string.mode_selection_title);
-            modesPreference.setSummary(DisplayUtils.makeModeInfoString(currentMode) + "\n"
-                    + DisplayUtils.makeColorInfoString(currentMode));
-            modesPreference.setKey("mode_" + displayUid);
-            modesPreference.setValue(String.valueOf(currentMode.index));
-
-            category.addPreference(modesPreference);
-
-            // Show checkbox to disable internal panel when an external display is connected
-            if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL) {
-                SwitchPreference disableInternalOnExternalConnectedPreference =
-                        new SwitchPreference(category.getContext());
-                disableInternalOnExternalConnectedPreference
-                        .setTitle(R.string.disable_internal_on_external_connected_title);
-                disableInternalOnExternalConnectedPreference
-                        .setSummaryOn(R.string.disable_internal_on_external_connected_summary_on);
-                disableInternalOnExternalConnectedPreference
-                        .setSummaryOff(
-                                R.string.disable_internal_on_external_connected_summary_off);
-                disableInternalOnExternalConnectedPreference
-                        .setKey("disable_internal_on_external_connected");
-
-                category.addPreference(disableInternalOnExternalConnectedPreference);
-
-                if (sku.equals("fric")) {
-                    createPanelModeSettings();
-                }
-            }
         }
     }
 }

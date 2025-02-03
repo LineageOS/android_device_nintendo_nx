@@ -23,11 +23,12 @@ import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.IBinder;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.view.MenuItem;
-
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -40,6 +41,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+
+import android.hardware.nintendo.joycond.IJoycond;
+import android.hardware.nintendo.joycond.KeyMap;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayMode;
@@ -54,6 +59,10 @@ public class DisplaySettingsFragment extends PreferenceFragment
     private final String sku = SystemProperties.get("ro.product.name", "");
     public boolean mInModeChange = false;
     private INvDisplay mDisplayService;
+    private IJoycond mJoycond;
+
+    public static final String JOYCOND_ANALOG_PROP = "persist.vendor.joycond.analog";
+    public static final String JOYCOND_COMBINED_PROP = "persist.vendor.joycond.combined";
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -65,6 +74,13 @@ public class DisplaySettingsFragment extends PreferenceFragment
             }
         }
 
+        IBinder binder = ServiceManager.getService("android.hardware.nintendo.joycond.IJoycond/default");
+        if (binder != null) {
+            mJoycond = IJoycond.Stub.asInterface(binder);
+        } else {
+            Log.e(TAG, "Failed to get Joycond service");
+        }
+
         addPreferencesFromResource(R.xml.display_panel);
         PreferenceScreen preferenceScreen = this.getPreferenceScreen();
 
@@ -73,6 +89,8 @@ public class DisplaySettingsFragment extends PreferenceFragment
         if (!sku.equals("vali")) {
             createDisplaySettings(preferenceScreen);
         }
+
+        createJoyConSettings(preferenceScreen);
     }
 
     @Override
@@ -308,6 +326,146 @@ public class DisplaySettingsFragment extends PreferenceFragment
                             return true;
                         }
                     });
+        }
+    }
+
+    private void createJoyConSettings(PreferenceScreen preferenceScreen) {
+        int index;
+        boolean analog = true;
+        final List<KeyMap> mapping;
+
+        if (mJoycond == null) {
+            Log.w(TAG, "Joycond instance is null, skipping JoyCon settings creation...");
+            return;
+        }
+
+        PreferenceCategory category = new PreferenceCategory(
+                                            preferenceScreen.getContext());
+
+        category.setTitle("JoyCon Customization");
+        category.setSummary("Make changes to Nintendo controller behavior");
+
+        preferenceScreen.addPreference(category);
+
+        // Analog trigger preference
+        SwitchPreference analogPref = new SwitchPreference(category.getContext());
+
+        try {
+            analog = mJoycond.getAnalog();
+        } catch (RemoteException e) {
+            Log.w(TAG, "Could not get analog preference! Inferring from prop...");
+            analog = SystemProperties.getBoolean(JOYCOND_ANALOG_PROP, true);
+        }
+
+        Log.i(TAG, "Joycond current analog value: " + String.valueOf(analog));
+
+        analogPref.setKey("joycon_analog");
+        analogPref.setTitle(R.string.analog_title);
+        analogPref.setSummary(R.string.analog_summary);
+        analogPref.setChecked(analog);
+
+        analogPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                try {
+                    mJoycond.setAnalog((boolean)newValue);
+                } catch (RemoteException e) {
+                    Log.w(TAG, "Could not set analog preference! Setting prop and deferring...");
+                    SystemProperties.set(JOYCOND_ANALOG_PROP, (boolean)newValue ? "1" : "0");
+                }
+                return true;
+            }
+        });
+
+        category.addPreference(analogPref);
+
+        // Controller mapping
+
+        try {
+            mapping  = mJoycond.getLayout();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Failed to get mapping!");
+            return;
+        }
+
+        // retrieve keys and mapped key names
+        Resources res = getResources();
+        final String[] keys = res.getStringArray(R.array.keys);
+        final String[] keysMap = res.getStringArray(R.array.keys_map);
+
+        // set up pref per key
+        for (index=0; index<keys.length; index++) {
+            ListPreference pref = new ListPreference(category.getContext());
+
+            // key the preference from the index, indices will remain in sync
+            pref.setKey(String.valueOf(index));
+            pref.setTitle(keysMap[index]);
+
+            // get key name from index
+            int toIndex;
+            for (toIndex=0; toIndex<keys.length; toIndex++) {
+                if (Integer.parseInt(keys[toIndex]) == mapping.get(index).to)
+                    break;
+            }
+            pref.setSummary("Current value: " + keysMap[toIndex]);
+            pref.setValue(keys[toIndex]);
+
+            // options should be the key namaes
+            pref.setEntries(keysMap);
+            pref.setEntryValues(keys);
+
+            pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    final List<KeyMap> mapping;
+
+                    // get again to handle changes
+                    try {
+                        mapping  = mJoycond.getLayout();
+                    } catch (RemoteException e) {
+                        Log.e(TAG, "Failed to get mapping!");
+                        return false;
+                    }
+
+                    // copy mapping
+                    List<KeyMap> newMap = new ArrayList<KeyMap>(mapping);
+
+                    // retrieve mapping index of this preference
+                    int indexKey = Integer.parseInt(preference.getKey());
+
+                    // construct keymap and set
+                    KeyMap change = new KeyMap();
+                    change.from = Integer.parseInt(keys[indexKey]);
+
+                    Log.w(TAG, "from: " + keys[indexKey] + " to: " + (String)newValue);
+
+                    change.to = Integer.parseInt((String)newValue);
+
+                    newMap.set(indexKey, change);
+
+                    // get key name from index
+                    int toIndex;
+                    for (toIndex=0; toIndex<keys.length; toIndex++) {
+                        if (keys[toIndex].equals((String)newValue))
+                            break;
+                    }
+                    pref.setSummary("Current value: " + keysMap[toIndex]);
+
+                    for (KeyMap km : newMap) {
+                        Log.w(TAG, "KeyMap Entry: from=" + km.from + ", to=" + km.to);
+                    }
+
+                    try {
+                        mJoycond.setLayout(newMap);
+                    } catch (RemoteException e) {
+                        Log.e(TAG, "Failed to set layout!");
+                        return false;
+                    }
+                    return true;
+                }
+            });
+
+            category.addPreference(pref);
         }
     }
 

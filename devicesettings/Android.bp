@@ -38,12 +38,12 @@ android_app {
     static_libs: [
         "androidx.preference_preference",
         "androidx.appcompat_appcompat",
-        "androidx.legacy_legacy-preference-v14",
         "androidx.leanback_leanback-preference",
         "androidx.leanback_leanback",
         "org.lineageos.settings.resources",
         "org.lineageos.platform.internal",
         "vendor.nvidia.hardware.graphics.display-V1.0-java",
+        "android.hardware.nintendo.joycond-V1-java",
     ],
 }
 

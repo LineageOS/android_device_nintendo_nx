@@ -24,7 +24,6 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.os.SystemProperties;
 import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;

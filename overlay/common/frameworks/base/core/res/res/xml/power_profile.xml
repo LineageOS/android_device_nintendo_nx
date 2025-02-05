@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** Copyright 2009, The Android Open Source Project
+** Copyright 2025, The LineageOS Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License")
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<device name="Android">
+    <!-- Different CPU speeds for cluster 0 as reported in
+       /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state.
+
+       There must be one of these for each cluster, labeled:
+       cpu.speeds.cluster0, cpu.speeds.cluster1, etc... -->
+  <array name="cpu.speeds.cluster0">
+    <value>102000</value>
+    <value>204000</value>
+    <value>306000</value>
+    <value>408000</value>
+    <value>510000</value>
+    <value>612000</value>
+    <value>714000</value>
+    <value>816000</value>
+    <value>918000</value>
+    <value>1020000</value>
+    <value>1122000</value>
+    <value>1224000</value>
+    <value>1326000</value>
+    <value>1428000</value>
+    <value>1581000</value>
+    <value>1683000</value>
+    <value>1785000</value>
+    <value>1887000</value>
+    <value>1963500</value>
+    <value>2091000</value>
+    <value>2193000</value>
+    <value>2295000</value>
+  </array>
+
+  <!-- This is the battery capacity in mAh (measured at nominal voltage) -->
+  <item name="battery.capacity">4310</item>
+</device>

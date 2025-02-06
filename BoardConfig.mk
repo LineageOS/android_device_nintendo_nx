@@ -90,7 +90,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
 
 # Security Patch Level
-VENDOR_SECURITY_PATCH := 2022-04-05
+VENDOR_SECURITY_PATCH := 2024-12-05
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/vendor

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aeade8a_6c7652cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-02-09T21:14:31Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_device_nintendo_nx/+/344656\nHaven\u0027t we been here before? Still waiting on reasonable proof that it makes any difference. And if it does, then moving it to tegra_sd or someplace more common. The same claims were made last time, but no one could ever give real numbers.",
+      "revId": "a7ae07eb16b91bce62b43fa78a2d05e50fdd362a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

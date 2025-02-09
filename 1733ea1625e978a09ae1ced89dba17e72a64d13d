@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9963c2f8_8ad13595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-02-09T16:43:39Z",
+      "side": 1,
+      "message": "required for joycond, wait for merge of parent",
+      "revId": "1733ea1625e978a09ae1ced89dba17e72a64d13d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

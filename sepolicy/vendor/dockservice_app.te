@@ -44,3 +44,8 @@ allow dockservice_app system_data_file:dir search;
 allow dockservice_app sysfs_disp_dev:file rw_file_perms;
 allow dockservice_app sysfs_pwm_fan:file rw_file_perms;
 allow dockservice_app sysfs_disp_dev:file rw_file_perms;
+
+hal_client_domain(dockservice_app, hal_power)
+
+allow dockservice_app hal_power_service:service_manager find;
+allow dockservice_app joycon_service:service_manager find;

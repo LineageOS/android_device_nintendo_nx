@@ -23,19 +23,57 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.WindowManager.LayoutParams;
 import android.view.WindowManagerPolicyConstants;
-import androidx.fragment.app.FragmentActivity;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class DisplaySettingsLeanbackActivity extends FragmentActivity {
+public class DisplaySettingsLeanbackActivity extends AppCompatActivity {
     private final static String TAG = DisplaySettingsLeanbackActivity.class.getSimpleName();
     public final Receiver mReceiver = new Receiver();
     public boolean mExternalDisplayConnected;
     private String sku = SystemProperties.get("ro.product.name", "");
 
+    public DisplaySettingsLeanbackActivity() {
+        super(R.xml.settings_fragment);
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "Starting " + DisplaySettingsFragmentLeanback.class.getSimpleName());
+
         super.onCreate(savedInstanceState);
-        setContentView(R.xml.settings_fragment);
+
+        LayoutParams layoutParams = new LayoutParams();
+        layoutParams.width = LayoutParams.WRAP_CONTENT;
+        layoutParams.height = LayoutParams.MATCH_PARENT;
+        layoutParams.gravity = Gravity.TOP | Gravity.END;
+
+        this.getWindow().setAttributes(layoutParams);
+
+        overrideActivityTransition(
+            OVERRIDE_TRANSITION_OPEN,
+            R.anim.slide_in_right,
+            R.anim.slide_out_right
+        );
+
+        overrideActivityTransition(
+            OVERRIDE_TRANSITION_CLOSE,
+            R.anim.slide_in_right,
+            R.anim.slide_out_right
+        );
+
+        TextView titleTextView = findViewById(R.id.titleTextView);
+        titleTextView.setText(R.string.display_panel_title);
+
+        TextView summaryTextView = findViewById(R.id.summaryTextView);
+        summaryTextView.setText(R.string.display_panel_summary);
+
+        getSupportFragmentManager()
+        .beginTransaction()
+        .add(R.id.settingsFragment,
+                new DisplaySettingsFragmentLeanback())
+        .commitNow();
     }
 
     @Override
@@ -50,7 +88,7 @@ public class DisplaySettingsLeanbackActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         if (!sku.equals("vali")) {
-            mReceiver.init(this);   
+            mReceiver.init(this);
         }
     }
 

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CONTROL_KEYGUARD" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
     <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
@@ -73,7 +74,7 @@
         <activity
             android:name=".DisplaySettingsLeanbackActivity"
             android:label="@string/display_panel_title"
-            android:theme="@style/LeanbackPreferences"
+            android:theme="@style/Theme.Catapult.SideActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

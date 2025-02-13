@@ -20,6 +20,7 @@ test -n ${touch_skip_tuning}    || setenv touch_skip_tuning 0
 test -n ${bt_ertm_disable}      || setenv bt_ertm_disable 0
 test -n ${wifi_disable_vht80}   || setenv wifi_disable_vht80 0
 test -n ${alarms_disable}       || setenv alarms_disable 0
+test -n ${ddr200_enable}	|| setenv ddr200_enable 0
 
 # Built-in IMU.
 test -n ${acc_cal_off_x} || setenv acc_cal_off_x 0x0
@@ -240,16 +241,14 @@ if test "${sd_1bit}" = 1; then
 fi
 
 # Check if SD DDR200 mode can be enabled.
-if test -n ${ddr200_enable}; then
-	setenv ddr200_enable 0
-	# Set ddr200 if Samsung.
-	if mmc 1 && mmc info manid && test ${manid} = 1b; then
-		setenv ddr200_enable 1
-	fi
+mmc info manid
+if test ${manid} = 1b; then
+	echo Samsung SD Card Detected
+	setenv ddr200_enable 1
 fi
 
-if test "${ddr200_enable}" != 0; then
-	echo SD DDR200 mode enabled
+if test ${ddr200_enable} = 1; then
+	echoe SD DDR200 mode enabled
 	fdt set /sdhci@700b0000 enable-ddr200
 fi
 

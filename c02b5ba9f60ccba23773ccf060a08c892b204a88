@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c744520_0c84cc8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34874
+      },
+      "writtenOn": "2025-02-13T20:05:12Z",
+      "side": 1,
+      "message": "tested all the cases on my device, everything works fine.",
+      "revId": "c02b5ba9f60ccba23773ccf060a08c892b204a88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

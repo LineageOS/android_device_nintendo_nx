@@ -15,4 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_nx.mk
+    $(LOCAL_DIR)/lineage_nx.mk \
+    $(LOCAL_DIR)/lineage_nx_car.mk

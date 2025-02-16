@@ -16,6 +16,11 @@
 
 package org.lineageos.settings.device;
 
+import java.util.UUID;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -26,9 +31,13 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.util.Log;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = BootCompletedReceiver.class.getSimpleName();
+    private static final String SEEN_RSMOUSE_PROP = "persist.devicesettingsnx.hasseenrsmouse";
+    private static final String CHANNEL_ID = "switchconfig";
     private IPower mPerfMgr;
 
     @Override
@@ -62,6 +71,26 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             final String panelMode = sharedPrefs.getString("panel_color_mode", "0x23");
 
             DisplayUtils.setPanelColorMode(panelMode);
+        }
+
+        if (!SystemProperties.getBoolean(SEEN_RSMOUSE_PROP, false)) {
+            CharSequence name = "Switch Configuration";
+            String description = "Provides important info about new features";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_settings_additional_buttons)
+                .setContentTitle("Right Stick Mouse Now Enabled by Default")
+                .setContentText("Click with triggers, toggle mouse with screenshot button")
+                .setPriority(NotificationCompat.PRIORITY_MAX);
+            SystemProperties.set(SEEN_RSMOUSE_PROP, "true");
+
+            notificationManager.notify(UUID.randomUUID().hashCode(), builder.build());
         }
     }
 }

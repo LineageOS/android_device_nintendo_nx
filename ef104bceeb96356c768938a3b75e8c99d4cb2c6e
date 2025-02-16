@@ -16,6 +16,24 @@
       "message": "You should consider using SettingsLib theme instead, if a leanback version of it exists",
       "revId": "ef104bceeb96356c768938a3b75e8c99d4cb2c6e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ebed23_811624c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-02-16T01:44:12Z",
+      "side": 1,
+      "message": "So! Tl;dr\n- settingslib does not include leanback\n- twopanelsettingslib does not include enuf stuff or docs to have a full standalone impl\n- I hate two panel settings--less functionality than original leanback settings (where you\u0027d have an overlay rather than switching activities)\n- this is wip cuz I plan to separate the styles to a lib and redo some tvsettings stuff in this style in addition to this so we have a nice consistent thing\n- I pushed this cuz uh I wanted to re sync what I had and then re pick",
+      "parentUuid": "a4848fc2_101dd0ac",
+      "revId": "ef104bceeb96356c768938a3b75e8c99d4cb2c6e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

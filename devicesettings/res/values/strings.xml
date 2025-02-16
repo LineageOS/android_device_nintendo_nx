@@ -17,6 +17,7 @@
 <resources>
     <string name="display_panel_title">Switch Configuration</string>
     <string name="display_panel_summary">Adjust docking, performance, and controller settings</string>
+    <string name="notif_provider_desc">Provides important info about new features</string>
     <string name="cust_category_title">Customization</string>
     <string name="bright_pref_title">Adjust System Brightness</string>
     <string name="perf_setting_title">Performance Mode</string>
@@ -34,4 +35,6 @@
     <string name="disable_internal_on_external_connected_title">Turn off when an external display is connected</string>
     <string name="disable_internal_on_external_connected_summary_on">The internal panel will be turned off when an external display is connected</string>
     <string name="disable_internal_on_external_connected_summary_off">Both the internal panel and external display will show the same image</string>
+    <string name="rsmouse_notif_title">Right Stick Mouse Now Enabled by Default</string>
+    <string name="rsmouse_notif_content">Click with triggers, toggle mouse with screenshot button</string>
 </resources>

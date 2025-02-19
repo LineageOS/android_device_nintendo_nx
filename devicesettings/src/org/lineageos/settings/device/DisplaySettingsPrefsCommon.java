@@ -26,6 +26,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreference;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
@@ -38,6 +39,11 @@ public class DisplaySettingsPrefsCommon {
     private static final String TAG = DisplaySettingsPrefsCommon.class.getSimpleName();
     public static final String JOYCOND_ANALOG_PROP = "persist.vendor.joycond.analog";
     public static final String JOYCOND_COMBINED_PROP = "persist.vendor.joycond.combined";
+    public static final String JOYCOND_RSMOUSE_PROP = "persist.vendor.joycond.rsmouse";
+    public static final String JOYCOND_SENSE_X_PROP = "persist.vendor.joycond.mouse_sense.x";
+    public static final String JOYCOND_SENSE_Y_PROP = "persist.vendor.joycond.mouse_sense.y";
+    public static final String JOYCOND_DEAD_X_PROP = "persist.vendor.joycond.mouse_dead.y";
+    public static final String JOYCOND_DEAD_Y_PROP = "persist.vendor.joycond.mouse_dead.y";
 
     private PreferenceFragmentCompat fragment;
     private Activity activity;
@@ -66,6 +72,9 @@ public class DisplaySettingsPrefsCommon {
     public void createJoyConSettings(PreferenceScreen preferenceScreen) {
         int index;
         boolean analog = true;
+        boolean rsmouse = true;
+        float mouseSense = 0;
+        float mouseDead = 0;
         final List<KeyMap> mapping;
 
         if (mJoycond == null) {
@@ -102,6 +111,83 @@ public class DisplaySettingsPrefsCommon {
                     Log.w(TAG, "Could not set analog preference! Setting prop and deferring...");
                     SystemProperties.set(JOYCOND_ANALOG_PROP, (boolean) newValue ? "1" : "0");
                 }
+                return true;
+            }
+        });
+
+        // RSMouse preference
+        SwitchPreference rsmousePref = fragment.findPreference("joycon_rsmouse");
+
+        if (rsmousePref == null) {
+            Log.e(TAG, "No preference with key joycon_rsmouse found! Skipping rest of JoyCon settings creation...");
+            return;
+        }
+
+        try {
+            rsmouse = mJoycond.getRsmouse();
+        } catch (RemoteException e) {
+            Log.w(TAG, "Could not get rsmouse preference! Inferring from prop...");
+            rsmouse = SystemProperties.getBoolean(JOYCOND_RSMOUSE_PROP, true);
+        }
+
+        Log.i(TAG, "Joycond current rsmouse value: " + String.valueOf(rsmouse));
+        rsmousePref.setChecked(analog);
+
+        rsmousePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                try {
+                    mJoycond.setRsmouse((boolean) newValue);
+                } catch (RemoteException e) {
+                    Log.w(TAG, "Could not set rsmouse preference! Setting prop and deferring...");
+                    SystemProperties.set(JOYCOND_RSMOUSE_PROP, (boolean) newValue ? "1" : "0");
+                }
+                return true;
+            }
+        });
+
+        // RSMouse sense preference
+        SeekBarPreference mouseSensePref = fragment.findPreference("joycon_rsmouse_sense");
+
+        if (mouseSensePref == null) {
+            Log.e(TAG, "No preference with key joycon_rsmouse_sense found! Skipping rest of JoyCon settings creation...");
+            return;
+        }
+
+        mouseSense = Float.parseFloat(SystemProperties.get(JOYCOND_SENSE_X_PROP, "0.0003"));
+
+        Log.i(TAG, "Joycond current sense (x) value: " + String.valueOf(mouseSense));
+        mouseSensePref.setValue((int)(10000f * mouseSense));
+
+        mouseSensePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String sense = String.valueOf((float)newValue / 10000f);
+                SystemProperties.set(JOYCOND_SENSE_X_PROP, sense);
+                SystemProperties.set(JOYCOND_SENSE_Y_PROP, sense);
+                return true;
+            }
+        });
+
+        // RSMouse dead preference
+        SeekBarPreference mouseDeadPref = fragment.findPreference("joycon_rsmouse_deadzone");
+
+        if (mouseDeadPref == null) {
+            Log.e(TAG, "No preference with key joycon_rsmouse_deadzone found! Skipping rest of JoyCon settings creation...");
+            return;
+        }
+
+        mouseDead = Float.parseFloat(SystemProperties.get(JOYCOND_DEAD_X_PROP, "1"));
+
+        Log.i(TAG, "Joycond current dead (x) value: " + String.valueOf(mouseDead));
+        mouseDeadPref.setValue((int)(10f * mouseDead));
+
+        mouseDeadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String dead = String.valueOf((float)newValue / 10f);
+                SystemProperties.set(JOYCOND_DEAD_X_PROP, dead);
+                SystemProperties.set(JOYCOND_DEAD_Y_PROP, dead);
                 return true;
             }
         });

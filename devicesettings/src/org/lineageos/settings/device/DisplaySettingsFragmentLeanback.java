@@ -121,6 +121,8 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
             if (!sku.equals("vali")) {
                 commonPrefs.createDisplaySettings(preferenceScreen);
             }
+
+            commonPrefs.createJoyConSettings(preferenceScreen);
         }
 
         @Override

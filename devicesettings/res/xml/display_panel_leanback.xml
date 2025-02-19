@@ -40,6 +40,23 @@
             android:key="joycon_analog"
             android:title="@string/analog_title"
             android:summary="@string/analog_summary" />
+
+        <SwitchPreferenceCompat
+            android:key="joycon_rsmouse"
+            android:title="@string/rsmouse_title"
+            android:summary="@string/rsmouse_summary" />
+
+        <SeekBarPreference
+            android:key="joycon_rsmouse_sense"
+            android:title="@string/rsmouse_sense_title"
+            android:max="@integer/max_rsmouse_sense"
+            android:min="@integer/min_rsmouse_sense" />
+
+        <SeekBarPreference
+            android:key="joycon_rsmouse_deadzone"
+            android:title="@string/rsmouse_dead_title"
+            android:max="@integer/max_rsmouse_dead"
+            android:min="@integer/min_rsmouse_dead" />
     </PreferenceCategory>
 
 </PreferenceScreen>

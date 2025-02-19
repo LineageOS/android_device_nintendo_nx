@@ -18,4 +18,8 @@
     <integer name="mode_confirmation_wait_time">15</integer>
     <integer name="max_brightness">255</integer>
     <integer name="min_brightness">255</integer>
+    <integer name="min_rsmouse_sense">0</integer>
+    <integer name="max_rsmouse_sense">50</integer>
+    <integer name="min_rsmouse_dead">0</integer>
+    <integer name="max_rsmouse_dead">50</integer>
 </resources>

@@ -35,6 +35,8 @@ on post-fs-data
     chmod 0666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
+    chown system system /sys/bus/platform/devices/tegradc.0/enable
+
 on boot
     write /sys/devices/system/cpu/cpufreq/schedutil/up_rate_limit_us 500
     write /sys/module/input_cfboost/parameters/boost_gpu 460800

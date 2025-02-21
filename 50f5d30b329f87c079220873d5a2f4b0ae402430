@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b6fbe4_3fbe3ae8",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-02-21T09:23:37Z",
+      "side": 1,
+      "message": "java.* imports always come at the end",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b61d396_2c61c656",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-02-21T09:23:37Z",
+      "side": 1,
+      "message": "split with newline",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3402def7_83a8eb05",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-02-21T09:23:37Z",
+      "side": 1,
+      "message": "over 100 chars",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

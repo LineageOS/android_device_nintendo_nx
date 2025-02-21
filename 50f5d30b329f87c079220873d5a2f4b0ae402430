@@ -50,6 +50,63 @@
       "message": "over 100 chars",
       "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf6cf6f_fe1fe0f9",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-21T11:40:53Z",
+      "side": 1,
+      "message": "Don\u0027t hardcode user facing strings",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad08f97_4058bb93",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-21T11:40:53Z",
+      "side": 1,
+      "message": "Don\u0027t hardcode user facing strings",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94911b92_b7f47922",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-21T11:40:53Z",
+      "side": 1,
+      "message": "not worth using a UUID here - the id just has to be unique per application, so use 1, 2 or whatever comes next",
+      "range": {
+        "startLine": 93,
+        "startChar": 39,
+        "endLine": 93,
+        "endChar": 67
+      },
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

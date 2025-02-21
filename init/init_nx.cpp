@@ -36,7 +36,7 @@ void vendor_load_properties()
 	std::vector<tegra_init::devices> devices = {
         { "nx",     "odin",   "nx",      "Switch",        0x494E, 0,  27, 186 },
         { "nx",     "modin",  "nx",      "Switch v2",     0x494E, 1,  27, 186 },
-        { "nx",     "vali",   "nx",      "Switch Lite",   0x4C49, 2,  27, 186 },
+        { "nx",     "vali",   "nx",      "Switch Lite",   0x4C49, 2,  27, 192 },
         { "nx",     "fric",   "nx",      "Switch OLED",   0x4947, 3,  27, 186 }
     };
 

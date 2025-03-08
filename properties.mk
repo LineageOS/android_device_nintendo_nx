@@ -14,6 +14,13 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     atv.setup.bt_remote_pairing=false
 
+# Graphics
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.latch_unsignaled=1 \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
+    ro.surface_flinger.max_virtual_display_dimension=4096
+
 # HWC
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.tegra.stb.mode=0

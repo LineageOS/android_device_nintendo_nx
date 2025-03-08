@@ -63,6 +63,10 @@ endif
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += device/nintendo/nx
 
+# AAPT
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+
 # Init related
 PRODUCT_PACKAGES += \
     fstab.nx \

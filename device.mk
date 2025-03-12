@@ -72,8 +72,12 @@ PRODUCT_PACKAGES += \
     init.nx.rc \
     init.recovery.nx.rc \
     init.sensors.nx.rc \
-    init.vali.rc \
+    init.vali.rc
+
+ifneq ($(TARGET_TEGRA_CPL),none)
+PRODUCT_PACKAGES += \
     power.nx.rc
+endif
 
 # Permissions
 PRODUCT_COPY_FILES += \

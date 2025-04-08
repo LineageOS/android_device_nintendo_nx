@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemProperties;
 import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
@@ -35,6 +36,7 @@ import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DockService extends Service {
     private static final String TAG = DockService.class.getSimpleName();
+    private static final String SUSTAINED_PERF_PROP = "ro.boot.oc";
 
     final private Receiver mReceiver = new Receiver();
     private INvDisplay mDisplayService;
@@ -73,9 +75,10 @@ public class DockService extends Service {
                     .getSharedPreferences("org.lineageos.settings.device_preferences",
                             Context.MODE_PRIVATE);
             final boolean perfMode = sharedPrefs.getBoolean("perf_mode", false);
+            final boolean sustainedPerf = SystemProperties.getBoolean(SUSTAINED_PERF_PROP, false);
 
             try {
-                if (connected) {
+                if (connected || sustainedPerf) {
                     mPerfMgr.setMode(Mode.LOW_POWER, false);
                     if (perfMode)
                         mPerfMgr.setMode(Mode.SUSTAINED_PERFORMANCE, true);

@@ -21,6 +21,7 @@ test -n ${bt_ertm_disable}      || setenv bt_ertm_disable 0
 test -n ${wifi_disable_vht80}   || setenv wifi_disable_vht80 0
 test -n ${alarms_disable}       || setenv alarms_disable 0
 test -n ${oc}                   || setenv oc 0
+test -n ${lite_imu_sys}         || setenv lite_imu_sys 0
 test -n ${ddr200_enable}	|| setenv ddr200_enable 0
 test -n ${ext_sd_disable}	|| setenv ext_sd_disable 0
 
@@ -327,6 +328,27 @@ if test ${sku} = 2 -a -n "${VLIM}"; then
 		fdt set /i2c@7000c000/battery-charger@6b/charger ti,fast-charge-current-limit-milliamp <0x600>
 		fdt set /i2c@7000c000/battery-charger@6b/charger ti,charge-current-limit <0x200 0x240 0x600 0x600>
 	fi
+fi
+
+# Swap IMU control from Sio mcu to SPI for Vali.
+if test ${sku} = 2 -a ${lite_imu_sys} = 1; then
+	echo VALI: IMU over SPI enabled, Sio IMU disabled
+	fdt set /spi@7000da00 status "okay"
+
+	fdt set /serial@70006200/sio imu-disable
+
+	# set up spi4 pinmux
+	fdt set /pinmux@700008d4/common/spi4_mosi_pc7 nvidia,enable-input <0>
+	fdt set /pinmux@700008d4/common/spi4_mosi_pc7 nvidia,function "spi4"
+	fdt set /pinmux@700008d4/common/spi4_miso_pd0 nvidia,tristate <1>
+	fdt set /pinmux@700008d4/common/spi4_miso_pd0 nvidia,function "spi4"
+	fdt set /pinmux@700008d4/common/spi4_sck_pc5 nvidia,enable-input <0>
+	fdt set /pinmux@700008d4/common/spi4_sck_pc5 nvidia,function "spi4"
+	fdt set /pinmux@700008d4/common/spi4_cs0_pc6 nvidia,enable-input <0>
+	fdt set /pinmux@700008d4/common/spi4_cs0_pc6 nvidia,function "spi4"
+
+	# remove boot-sio-imu-input
+	fdt rm /gpio@6000d000/boot-sio-imu-input gpio-hog
 fi
 
 # DVFS B-Side.

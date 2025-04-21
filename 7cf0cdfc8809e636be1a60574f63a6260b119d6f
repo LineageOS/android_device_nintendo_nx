@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d27847c_bc6f3ab3",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-21T23:21:59Z",
+      "side": 1,
+      "message": "indentation here is off by 4 spaces.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 62
+      },
+      "revId": "7cf0cdfc8809e636be1a60574f63a6260b119d6f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

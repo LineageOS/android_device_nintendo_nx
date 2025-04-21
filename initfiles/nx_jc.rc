@@ -6,6 +6,6 @@ on post-fs-data
 service vendor.jc_setup /vendor/bin/jc_setup.sh /mnt/vendor/factory/switchroot/joycon_mac.ini /data/misc/bluedroid/bt_config.conf
     class main
     user root
-    group root
+    group root bluetooth
     disabled
     oneshot

@@ -1,4 +1,4 @@
-#!/system/xbin/bash
+#!/system_ext/bin/bash
 set -e
 
 # https://stackoverflow.com/a/28409737

@@ -60,14 +60,34 @@ for jc_section in ${jc_sections[@]}; do
         echo "[${jc_mac}]" >> ${bdroid_ini}
         echo "LinkKey = ${jc_ltk}" >> ${bdroid_ini}
         echo "LinkKeyType = 4" >> ${bdroid_ini}
+        echo "Service = 00001124-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b34fb" >> ${bdroid_ini}
+        echo "DevClass = 1288" >> ${bdroid_ini}
+        echo "DevType = 1" >> ${bdroid_ini}
+        echo "AddrType = 0" >> ${bdroid_ini}
+        echo "SecureConnectionsSupported = 0" >> ${bdroid_ini}
+        echo "LinkKeyType = 4" >> ${bdroid_ini}
+        echo "PinLength = 0" >> ${bdroid_ini}
+        echo "MaxSessionKeySize = 16" >> ${bdroid_ini}
+        echo "SdpDiManufacturer = 1406" >> ${bdroid_ini}
+        echo "SdpDiHardwareVersion = 1" >> ${bdroid_ini}
+        echo "SdpDiVendorIdSource = 2" >> ${bdroid_ini}
+        echo "HidDbVersion = 1" >> ${bdroid_ini}
+        echo "HidAttrMask = 32885" >> ${bdroid_ini}
+        echo "HidSubClass = 8" >> ${bdroid_ini}
+        echo "HidAppId = 6" >> ${bdroid_ini}
+        echo "HidVendorId = 1406" >> ${bdroid_ini}
+        echo "HidVersion = 1" >> ${bdroid_ini}
+        echo "HidCountryCode = 33" >> ${bdroid_ini}
+        echo "HidSSRMaxLatency = 65535" >> ${bdroid_ini}
+        echo "HidSSRMinTimeout = 65535" >> ${bdroid_ini}
+        echo "HidDescriptor = 05010905a1010601ff8521092175089530810285300930750895308102853109317508966901810285320932750896690181028533093375089669018102853f05091901291015002501750195108102050109391500250775049501814205097504950181010501093009310933093416000027ffff00007510950481020601ff85010901750895309102851009107508953091028511091175089530910285120912750895309102c0" >> ${bdroid_ini}
+        echo "HidReConnectAllowed = 1" >> ${bdroid_ini}
         if [ ${jc_type} = "1" ]; then
                 echo "Name = Joy-Con (L)"  >> ${bdroid_ini}
-                echo "MetricsId = 1"       >> ${bdroid_ini}
                 echo "SdpDiModel = 8198"   >> ${bdroid_ini}
                 echo "HidProductId = 8198" >> ${bdroid_ini}
         else
                 echo "Name = Joy-Con (R)"  >> ${bdroid_ini}
-                echo "MetricsId = 2"       >> ${bdroid_ini}
                 echo "SdpDiModel = 8199"   >> ${bdroid_ini}
                 echo "HidProductId = 8199" >> ${bdroid_ini}
         fi

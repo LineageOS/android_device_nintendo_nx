@@ -13,4 +13,10 @@ allow jc_setup vendor_shell_exec:file rx_file_perms;
 not_full_treble(`allow jc_setup shell_exec:file rx_file_perms;')
 
 allow jc_setup vendor_toolbox_exec:file rx_file_perms;
-not_full_treble(`allow jc_setup toolbox_exec:file rx_file_perms;')
+not_full_treble(allow jc_setup toolbox_exec:file rx_file_perms;')
+
+# Allow jc_setup to execute properly
+allow jc_setup jc_setup_exec:file ioctl;
+
+# Allow jc_setup to read factory file
+allow jc_setup factory_file:file r_file_perms;

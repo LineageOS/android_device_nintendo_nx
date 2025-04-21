@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1f773c_9890f328",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-04-21T23:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b6fbe4_3fbe3ae8",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b61d396_2c61c656",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-21T09:23:37Z",
       "side": 1,
       "message": "split with newline",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c85376_25975729",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-04-21T23:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b61d396_2c61c656",
       "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -52,6 +88,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eaa92ed_c75be71b",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-04-21T23:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3402def7_83a8eb05",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bf6cf6f_fe1fe0f9",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-02-21T11:40:53Z",
       "side": 1,
       "message": "Don\u0027t hardcode user facing strings",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d986dc09_307c8eec",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-04-21T23:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bf6cf6f_fe1fe0f9",
       "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -86,6 +158,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50a8bb3_d3497a70",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-04-21T23:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aad08f97_4058bb93",
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94911b92_b7f47922",
@@ -99,6 +189,30 @@
       "writtenOn": "2025-02-21T11:40:53Z",
       "side": 1,
       "message": "not worth using a UUID here - the id just has to be unique per application, so use 1, 2 or whatever comes next",
+      "range": {
+        "startLine": 93,
+        "startChar": 39,
+        "endLine": 93,
+        "endChar": 67
+      },
+      "revId": "50f5d30b329f87c079220873d5a2f4b0ae402430",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8618e35_0d91126e",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2025-04-21T23:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94911b92_b7f47922",
       "range": {
         "startLine": 93,
         "startChar": 39,

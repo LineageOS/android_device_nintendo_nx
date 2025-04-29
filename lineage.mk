@@ -22,7 +22,7 @@ TARGET_SCREEN_WIDTH       := 1080
 PRODUCT_NO_CAMERA := true
 
 # Unified device support
-TARGET_INIT_VENDOR_LIB := //device/nintendo/nx:libinit_nx
+$(call soong_config_set,libinit,vendor_init_lib,//device/nintendo/nx:libinit_nx)
 
 PRODUCT_VENDOR_PROPERTY_BLACKLIST := \
     ro.product.vendor.device \

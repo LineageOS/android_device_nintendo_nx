@@ -1,2 +1,2 @@
 # IIO Sensors
-ro.iio. u:object_r:iio_sensors_prop:s0
+ro.vendor.iio. u:object_r:vendor_iio_sensors_prop:s0

@@ -18,41 +18,41 @@
 
 on init
     # Force polling mode for accel and gyro
-    setprop ro.iio.accel.quirks no-trig,no-event
-    setprop ro.iio.anglvel.quirks no-trig,no-event
+    setprop ro.vendor.iio.accel.quirks no-trig,no-event
+    setprop ro.vendor.iio.anglvel.quirks no-trig,no-event
 
     # LSM6DS3H
-    setprop ro.iio.anglvel.lsm6ds3.name "LSM6DS3H Gyroscope"
-    setprop ro.iio.anglvel.lsm6ds3.vendor STMicroelectronics
-    setprop ro.iio.anglvel.lsm6ds3.max_rang 35
-    setprop ro.iio.accel.lsm6ds3.name "LSM6DS3H Accelerometer"
-    setprop ro.iio.accel.lsm6ds3.vendor STMicroelectronics
-    setprop ro.iio.accel.lsm6ds3.max_range 79
+    setprop ro.vendor.iio.anglvel.lsm6ds3.name "LSM6DS3H Gyroscope"
+    setprop ro.vendor.iio.anglvel.lsm6ds3.vendor STMicroelectronics
+    setprop ro.vendor.iio.anglvel.lsm6ds3.max_rang 35
+    setprop ro.vendor.iio.accel.lsm6ds3.name "LSM6DS3H Accelerometer"
+    setprop ro.vendor.iio.accel.lsm6ds3.vendor STMicroelectronics
+    setprop ro.vendor.iio.accel.lsm6ds3.max_range 79
 
     # LSM6DSE
-    setprop ro.iio.anglvel.lsm6dse.name "LSM6DSE Gyroscope"
-    setprop ro.iio.anglvel.lsm6dse.vendor STMicroelectronics
-    setprop ro.iio.anglvel.lsm6dse.max_rang 35
-    setprop ro.iio.accel.lsm6dse.name "LSM6DSE Accelerometer"
-    setprop ro.iio.accel.lsm6dse.vendor STMicroelectronics
-    setprop ro.iio.accel.lsm6dse.max_range 79
+    setprop ro.vendor.iio.anglvel.lsm6dse.name "LSM6DSE Gyroscope"
+    setprop ro.vendor.iio.anglvel.lsm6dse.vendor STMicroelectronics
+    setprop ro.vendor.iio.anglvel.lsm6dse.max_rang 35
+    setprop ro.vendor.iio.accel.lsm6dse.name "LSM6DSE Accelerometer"
+    setprop ro.vendor.iio.accel.lsm6dse.vendor STMicroelectronics
+    setprop ro.vendor.iio.accel.lsm6dse.max_range 79
 
     # LSM6DS0
-    setprop ro.iio.anglvel.lsm6ds0.name "LSM6DS0 Gyroscope"
-    setprop ro.iio.anglvel.lsm6ds0.vendor STMicroelectronics
-    setprop ro.iio.anglvel.lsm6ds0.max_rang 35
-    setprop ro.iio.accel.lsm6ds0.name "LSM6DSE Accelerometer"
-    setprop ro.iio.accel.lsm6ds0.vendor STMicroelectronics
-    setprop ro.iio.accel.lsm6ds0.max_range 79
+    setprop ro.vendor.iio.anglvel.lsm6ds0.name "LSM6DS0 Gyroscope"
+    setprop ro.vendor.iio.anglvel.lsm6ds0.vendor STMicroelectronics
+    setprop ro.vendor.iio.anglvel.lsm6ds0.max_rang 35
+    setprop ro.vendor.iio.accel.lsm6ds0.name "LSM6DSE Accelerometer"
+    setprop ro.vendor.iio.accel.lsm6ds0.vendor STMicroelectronics
+    setprop ro.vendor.iio.accel.lsm6ds0.max_range 79
 
     # ICM40607
-    setprop ro.iio.anglvel.icm4060.name "ICM40607 Gyroscope"
-    setprop ro.iio.anglvel.icm4060.vendor Invensense
-    setprop ro.iio.anglvel.icm4060.max_rang 18
-    setprop ro.iio.accel.icm4060.name "ICM40607 Accelerometer"
-    setprop ro.iio.accel.icm4060.vendor Invensense
-    setprop ro.iio.accel.icm4060.max_range 11
+    setprop ro.vendor.iio.anglvel.icm4060.name "ICM40607 Gyroscope"
+    setprop ro.vendor.iio.anglvel.icm4060.vendor Invensense
+    setprop ro.vendor.iio.anglvel.icm4060.max_rang 18
+    setprop ro.vendor.iio.accel.icm4060.name "ICM40607 Accelerometer"
+    setprop ro.vendor.iio.accel.icm4060.vendor Invensense
+    setprop ro.vendor.iio.accel.icm4060.max_range 11
 
     # BH1730FVC
-    setprop ro.iio.illuminance.bh1730.name "BH1730FVC Ambient Light Sensor"
-    setprop ro.iio.illuminance.bh1730.vendor ROHM
+    setprop ro.vendor.iio.illuminance.bh1730.name "BH1730FVC Ambient Light Sensor"
+    setprop ro.vendor.iio.illuminance.bh1730.vendor ROHM

@@ -23,7 +23,11 @@ on init
     setprop ro.boot.secureos none
     setprop vendor.powerhal.config powerhint.${ro.boot.hardware.sku}.json
 
+on fs && property:ro.boot.nosd=1
+    symlink /vendor/etc/fstab.nosd.nx /vendor/etc/fstab.nx
+
 on fs
+    symlink /vendor/etc/fstab.sd.nx /vendor/etc/fstab.nx
     mount_all /vendor/etc/fstab.nx
     swapon_all /vendor/etc/fstab.nx
 

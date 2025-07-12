@@ -22,6 +22,7 @@ test -n ${wifi_disable_vht80}   || setenv wifi_disable_vht80 0
 test -n ${alarms_disable}       || setenv alarms_disable 0
 test -n ${oc}                   || setenv oc 0
 test -n ${ddr200_enable}	|| setenv ddr200_enable 0
+test -n ${ext_sd_disable}	|| setenv ext_sd_disable 0
 
 # Built-in IMU.
 test -n ${acc_cal_off_x} || setenv acc_cal_off_x 0x0
@@ -396,6 +397,12 @@ if test ${alarms_disable} = 1; then
     fdt set /rtc nvidia,pmc-wakeup <0>
     fdt set /pcie@1003000 nvidia,wake-gpio <0>
     fdt set /brcmfmac@0 nvidia,pmc-wakeup <0>
+fi
+
+# Disable external SD mounting.
+if test ${ext_sd_disable} = 1; then
+        echoe "External SD mounting disabled"
+        setenv bootargs_extra ${bootargs_extra} "androidboot.nosd=1"
 fi
 
 

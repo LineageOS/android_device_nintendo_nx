@@ -15,8 +15,15 @@
  */
 
 prebuilt_etc {
-    name: "fstab.nx",
-    src: "fstab.nx",
+    name: "fstab.sd.nx",
+    src: "fstab.sd.nx",
+    vendor: true,
+    ramdisk_available: true,
+}
+
+prebuilt_etc {
+    name: "fstab.nosd.nx",
+    src: "fstab.nosd.nx",
     vendor: true,
     ramdisk_available: true,
 }
@@ -94,6 +101,7 @@ cc_prebuilt_binary {
     name: "jc_setup",
     srcs: ["jc_setup.sh"],
     stem: "jc_setup.sh",
-    vendor: true,
+    system_ext_specific: true,
+    installable: true,
     init_rc: ["nx_jc.rc"],
 }

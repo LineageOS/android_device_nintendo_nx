@@ -67,8 +67,10 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Init related
 PRODUCT_PACKAGES += \
-    fstab.nx \
-    fstab.nx.ramdisk \
+    fstab.sd.nx \
+    fstab.nosd.nx \
+    fstab.sd.nx.ramdisk \
+    fstab.nosd.nx.ramdisk \
     init.fric.rc \
     init.loki_foster_e_common.rc \
     init.nx.rc \

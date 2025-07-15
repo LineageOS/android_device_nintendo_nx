@@ -61,10 +61,10 @@ TARGET_SCREEN_DENSITY := 186
 KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-9.3/bin
 KERNEL_TOOLCHAIN_PREFIX        := aarch64-buildroot-linux-gnu-
 TARGET_KERNEL_CLANG_COMPILE    := false
-TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)-nx
+TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_KERNEL_VERSION)-nx
 TARGET_KERNEL_CONFIG           := tegra_android_defconfig
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL) \
+    NV_BUILD_KERNEL_OPTIONS=$(TARGET_KERNEL_VERSION) \
     HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" \
     CONFIG_EXFAT_FS=m
 

@@ -27,7 +27,8 @@ $(call soong_config_set,libinit,vendor_init_lib,//device/nintendo/nx:libinit_nx)
 PRODUCT_VENDOR_PROPERTY_BLACKLIST := \
     ro.product.vendor.device \
     ro.product.vendor.model \
-    ro.product.vendor.name
+    ro.product.vendor.name \
+    ro.vendor.build.fingerprint
 
 PRODUCT_PACKAGES += \
     init_tegra

@@ -15,21 +15,28 @@
 #
 
 TARGET_TEGRA_VARIANT    ?= common
+TARGET_KERNEL_VERSION   ?= 4.9
 
-TARGET_TEGRA_BT       ?= bcm
-TARGET_TEGRA_CEC      := aosp
-TARGET_TEGRA_CPL      := none
-TARGET_KERNEL_VERSION ?= 4.9
-TARGET_TEGRA_KEYSTORE := software
 TARGET_TEGRA_LIGHT    ?= lineage
-TARGET_TEGRA_MAN_LVL  := 5
-TARGET_TEGRA_MEMTRACK ?= rel-shield-r
-TARGET_TEGRA_POWER    := perfmgr
 TARGET_TEGRA_THERMAL  ?= lineage
-TARGET_TEGRA_UBOOT    := prebuilt
-TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= bcm
-TARGET_TEGRA_WIREGUARD ?= compat
+
+ifneq ($(filter 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
+TARGET_TEGRA_BT        ?= bcm
+TARGET_TEGRA_CAMERA    ?= rel-shield-r
+TARGET_TEGRA_WIDEVINE  ?= rel-shield-r
+else
+TARGET_TEGRA_FIRMWARE_BRANCH ?= linux-firmware
+
+TARGET_TEGRA_BT        ?= btlinux
+
+PRODUCT_COPY_FILES += \
+    device/nintendo/nx/initfiles/ack.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/ack.rc \
+    device/nintendo/nx/initfiles/init.recovery.ack.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ack.rc
+endif
+
+TARGET_TEGRA_KEYSTORE := software
+TARGET_TEGRA_UBOOT    := prebuilt
 
 TARGET_ATV_FORCE_1080_SCALING := false
 

@@ -187,8 +187,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)
 
 # Thermal
 ifneq ($(TARGET_TEGRA_THERMAL),)
+ifeq ($(filter 3.10 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
+TARGET_TEGRA_THERMAL_SUFFIX ?= .ack
+endif
+
 PRODUCT_PACKAGES += \
-    thermalhal.nx.xml
+    thermalhal.nx$(TARGET_TEGRA_THERMAL_SUFFIX).xml
 endif
 
 # WiFi

@@ -19,3 +19,9 @@ prebuilt_etc {
     src: "thermalhal.nx.xml",
     vendor: true,
 }
+
+prebuilt_etc {
+    name: "thermalhal.nx.ack.xml",
+    src: "thermalhal.nx.ack.xml",
+    vendor: true,
+}

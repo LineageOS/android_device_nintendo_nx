@@ -48,8 +48,6 @@ DEVICE_MANIFEST_FILE := device/nintendo/nx/manifests/manifest.xml
 
 # Bluetooth
 TARGET_VENDOR_PROP += device/nintendo/nx/bluetooth.prop
-BOARD_CUSTOM_BT_CONFIG := device/nintendo/nx/comms/vnd_nx.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nintendo/nx/comms
 
 # Charger
 WITH_LINEAGE_CHARGER := false

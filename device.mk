@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
     audio_policy_configuration.xml \
     nvaudio_conf.xml
 
+# Bluetooth
+$(call soong_config_set,brcm_libbt,bdroid_buildcfg_include_dir,device/nintendo/nx/comms)
+$(call soong_config_set,brcm_libbt,custom_bt_config,//device/nintendo/nx:vnd_nx.txt)
+
 # CEC
 PRODUCT_COPY_FILES := $(filter-out frameworks/native/data/etc/android.hardware.hdmi.cec.xml%android.hardware.hdmi.cec.xml,$(PRODUCT_COPY_FILES))
 

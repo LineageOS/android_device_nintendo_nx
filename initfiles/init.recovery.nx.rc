@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import init.recovery.ack.rc
 import init.recovery.usb.rc
 
 on init

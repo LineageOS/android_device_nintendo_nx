@@ -1,0 +1,9 @@
+on init
+    write /sys/kernel/debug/clk/emc/clk_rate 1600000000
+
+    stop watchdogd
+
+# Override and disable watchdog
+service watchdogd /system/bin/true
+    override
+    disabled

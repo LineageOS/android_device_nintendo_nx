@@ -108,16 +108,15 @@ ifeq ($(PRODUCT_IS_ATV),true)
 endif
 
 # Audio
-ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_AUDIO)),)
+ifneq ($(TARGET_TEGRA_AUDIO),)
 PRODUCT_PACKAGES += \
     audio_effects.xml \
-    audio_policy_configuration.xml \
+    audio_policy_configuration.xml
+
+ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_AUDIO)),)
+PRODUCT_PACKAGES += \
     nvaudio_conf.xml
-PRODUCT_COPY_FILES += \
-    device/nintendo/nx/media/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
-else ifeq ($(TARGET_TEGRA_AUDIO),aidl)
-PRODUCT_COPY_FILES += \
-    device/nintendo/nx/media/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
+endif
 endif
 
 # CEC
@@ -158,8 +157,10 @@ PRODUCT_PACKAGES += \
     jc_setup
 
 # Kernel Modules
+ifneq ($(filter 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
 PRODUCT_PACKAGES += \
     cypress-fmac-upstream
+endif
 
 # Keylayouts
 PRODUCT_PACKAGES += \

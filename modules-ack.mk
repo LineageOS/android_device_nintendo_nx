@@ -119,6 +119,7 @@ BOOT_KERNEL_MODULES := \
     drm_dp_aux_bus.ko \
     tegra-drm.ko \
     panel-jdi-58-1440-810.ko \
+    panel-nx-dsi.ko \
     pwm_bl.ko
 
 ifeq ($(TARGET_TEGRA_TOS),trusty)

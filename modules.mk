@@ -106,7 +106,7 @@ BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
     exfat \
     hid-nvidia-blake \
     hid-jarvis-remote \
-    usb-storage
+    usb-storage \
     pwm_fan \
     therm_fan_est
 

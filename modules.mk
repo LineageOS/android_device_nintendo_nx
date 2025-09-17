@@ -107,7 +107,5 @@ BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
     hid-nvidia-blake \
     hid-jarvis-remote \
     usb-storage
-    pwm_fan \
-    therm_fan_est
 
 RECOVERY_KERNEL_MODULES := $(addsuffix .ko,$(BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD))

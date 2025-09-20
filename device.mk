@@ -61,9 +61,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 endif
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    device/nintendo/nx \
-    hardware/intel/sensors-iio
+PRODUCT_SOONG_NAMESPACES += device/nintendo/nx
 
 # Init related
 PRODUCT_PACKAGES += \

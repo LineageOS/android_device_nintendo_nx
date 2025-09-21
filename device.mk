@@ -17,6 +17,7 @@
 TARGET_TEGRA_VARIANT    ?= common
 
 TARGET_TEGRA_BT       ?= bcm
+TARGET_TEGRA_CAMERA   := rel-shield-r
 TARGET_TEGRA_CEC      := aosp
 TARGET_TEGRA_CPL      := none
 TARGET_KERNEL_VERSION ?= 4.9

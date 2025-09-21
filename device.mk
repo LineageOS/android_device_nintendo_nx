@@ -25,6 +25,8 @@ TARGET_TEGRA_LIGHT    ?= lineage
 TARGET_TEGRA_MAN_LVL  := 5
 TARGET_TEGRA_MEMTRACK ?= rel-shield-r
 TARGET_TEGRA_POWER    := perfmgr
+TARGET_TEGRA_SENSORS  := iio
+TARGET_TEGRA_SENSOR_FEATURES := accelerometer gyroscope light
 TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_UBOOT    := prebuilt
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
@@ -184,17 +186,6 @@ endif
 
 # Recovery
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.vendor.recovery_update=true
-
-# Sensors
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-service \
-    android.hardware.sensors@1.0-impl \
-    sensors.iio
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml
 
 # Shipping API
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)

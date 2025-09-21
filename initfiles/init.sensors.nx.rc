@@ -17,8 +17,6 @@
 #       props are cut to 31.
 
 on init
-    setprop ro.hardware.sensors iio
-
     # Force polling mode for accel and gyro
     setprop ro.iio.accel.quirks no-trig,no-event
     setprop ro.iio.anglvel.quirks no-trig,no-event

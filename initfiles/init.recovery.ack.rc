@@ -1,0 +1,3 @@
+on early-init
+    mount debugfs debugfs /sys/kernel/debug mode=0755
+    write /sys/kernel/debug/bpmp/debug/clk/emc/min_rate 2133000000

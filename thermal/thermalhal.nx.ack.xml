@@ -29,7 +29,7 @@ Attributes for cpu-usages
 	</thermal_devices>
 	<cooling_devices>
 		<cooling_device>
-			<cooling-prop name="FAN" type="FAN_RPM" cooling-path="/sys/class/hwmon/hwmon1/rpm" />
+			<cooling-prop name="FAN" type="FAN_RPM" cooling-path="/sys/class/hwmon/hwmon0/rpm" />
 		</cooling_device>
 	</cooling_devices>
 	<cpu_usages cpus="4" />

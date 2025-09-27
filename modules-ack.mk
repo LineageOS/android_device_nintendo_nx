@@ -36,10 +36,6 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     brcmfmac-wcc
 
-# Realtek ethernet
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    r8169
-
 # Tegra cec
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     tegra_cec
@@ -64,17 +60,13 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     snd-soc-tegra210-dmic \
     snd-soc-tegra210-mvc \
     snd-soc-tegra210-ope \
-    snd-soc-tegra-audio-graph-card
+    snd-soc-tegra-audio-graph-card \
+    snd-soc-rt5640
 
 # Nvidia Controllers
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     hid-nvidia-shield \
     hid-nvidia-shield-oot
-
-# JoyCons
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-	joycon-serdev \
-    hid-nintendo
 
 # Copy to boot
 BOOT_KERNEL_MODULES := \
@@ -98,7 +90,6 @@ BOOT_KERNEL_MODULES := \
     max77812-regulator.ko \
     gpio-pca953x.ko \
     tegra20-apb-dma.ko \
-    tegra210-emc.ko \
     phy-tegra-xusb.ko \
     xhci-tegra.ko \
     tegra-xudc.ko \
@@ -109,16 +100,17 @@ BOOT_KERNEL_MODULES := \
     pwm-fan.ko \
     pwm-regulator.ko \
     tegra-soctherm.ko \
-    lm90.ko \
     cqhci.ko \
     sdhci-tegra.ko \
-    simplefb.ko \
     host1x.ko \
     drm_display_helper.ko \
     drm_dp_aux_bus.ko \
     tegra-drm.ko \
+    panel-jdi-58-1440-810.ko \
     panel-nx-dsi.ko \
-    pwm_bl.ko
+    pwm_bl.ko \
+    bm92txx.ko \
+    ftm4.ko
 
 # Load in first stage boot
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
@@ -129,6 +121,7 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
     spi-tegra114 \
     spi-tegra210-quad \
     bq24190_charger \
+    bq27xxx_battery_i2c \
     rtc-tegra \
     gpio-tegra \
     max77620 \
@@ -138,7 +131,7 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
     max77812-regulator \
     gpio-pca953x \
     tegra20-apb-dma \
-    tegra210-emc \
+    phy-tegra-xusb \
     xhci-tegra \
     tegra-xudc \
     usb-conn-gpio \
@@ -147,8 +140,21 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
     pwm-fan \
     pwm-regulator \
     tegra-soctherm \
-    lm90 \
     sdhci-tegra \
-    simplefb \
     tegra-drm \
-    pwm_bl
+    panel-nx-dsi \
+    pwm_bl \
+    bm92txx \
+    ftm4
+
+# Copy to recovery
+RECOVERY_KERNEL_MODULES := \
+    $(BOOT_KERNEL_MODULES) \
+    hid-nvidia-shield.ko \
+    hid-nvidia-shield-oot.ko
+
+# Load in recovery
+BOARD_RECOVERY_KERNEL_MODULES_LOAD := \
+    $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD) \
+    hid-nvidia-shield \
+    hid-nvidia-shield-oot

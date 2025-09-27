@@ -43,7 +43,7 @@ TARGET_OTA_ASSERT_DEVICE := nx,nx_tab
 TARGET_BOARD_INFO_FILE := device/nintendo/nx/board-info.txt
 
 # Manifest
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/nintendo/nx/manifests/device_framework_matrix.xml
+#DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/nintendo/nx/manifests/device_framework_matrix.xml
 
 # Bluetooth
 TARGET_VENDOR_PROP += device/nintendo/nx/bluetooth.prop
@@ -85,7 +85,7 @@ TARGET_KERNEL_SOURCE          := vendor/nvidia/$(TARGET_KERNEL_PLATFORM_TARGET)
 BOARD_KERNEL_IMAGE_NAME       := Image.gz
 endif
 BOARD_KERNEL_CMDLINE          := firmware_class.path=/vendor/firmware cpufreq.default_governor=performance cma=512MB nouveau.atomic=1
-include device/nvidia/foster/modules-ack.mk
+include device/nintendo/nx/modules-ack.mk
 endif
 
 # Kernel Image Parameters
@@ -108,11 +108,13 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
 VENDOR_SECURITY_PATCH := 2024-12-05
 
 # SELinux
-BOARD_VENDOR_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/vendor
+ifneq ($(filter 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
+BOARD_VENDOR_SEPOLICY_DIRS   += device/nvidia/foster/sepolicy/vendor
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Include Joycond sepolicy if present
 -include hardware/nintendo/joycond/joycond-sepolicy.mk
+endif
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true

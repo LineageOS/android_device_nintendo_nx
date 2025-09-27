@@ -15,11 +15,13 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     atv.setup.bt_remote_pairing=false
 
 # Graphics
+ifneq ($(filter 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.latch_unsignaled=1 \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
     ro.surface_flinger.max_virtual_display_dimension=4096
+endif
 
 # HWC
 PRODUCT_PROPERTY_OVERRIDES += \

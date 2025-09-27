@@ -42,7 +42,13 @@ $(PRODUCT_OUT)/bl33.bin: $(_uboot_bin)
 u-boot-dtb: $(PRODUCT_OUT)/bl33.bin
 endif # TARGET_TEGRA_UBOOT
 
-_uscript_input := $(abspath $(NX_BOOTFILES_PATH)/android_boot.txt)
+ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
+NX_BOOTSCRIPT ?= android_boot.txt
+else
+NX_BOOTSCRIPT ?= android_boot.ack.txt
+endif
+
+_uscript_input := $(abspath $(NX_BOOTFILES_PATH)/$(NX_BOOTSCRIPT))
 _uscript_archive := $(call intermediates-dir-for,EXECUTABLES,boot.scr)/boot.scr
 $(_uscript_archive): $(_uscript_input)
 	@mkdir -p $(dir $@)

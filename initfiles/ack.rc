@@ -1,0 +1,14 @@
+on init
+    stop watchdogd
+
+on early-init
+    write /sys/kernel/debug/bpmp/debug/clk/emc/min_rate 2133000000
+
+on early-fs
+    wait /dev/dri/card0 10
+
+# Override and disable watchdog
+service watchdogd /system/bin/true
+    override
+    disabled
+    user root

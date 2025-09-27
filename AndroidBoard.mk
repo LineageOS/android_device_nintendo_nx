@@ -13,6 +13,7 @@
 # limitations under the License.
 
 INSTALLED_KERNEL_TARGET := $(PRODUCT_OUT)/kernel
+KERNEL_OUT ?= $(PRODUCT_OUT)/obj/KERNEL_OBJ
 
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 DTB_PATH := $(dir $(TARGET_PREBUILT_KERNEL))

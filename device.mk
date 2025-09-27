@@ -16,25 +16,29 @@
 
 TARGET_TEGRA_VARIANT    ?= common
 
-TARGET_TEGRA_BT       ?= bcm
-TARGET_TEGRA_CAMERA   := rel-shield-r
-TARGET_TEGRA_CEC      := aosp
-TARGET_TEGRA_CPL      := none
 TARGET_KERNEL_VERSION ?= 4.9
 TARGET_TEGRA_KEYSTORE := software
 TARGET_TEGRA_LIGHT    ?= lineage
-TARGET_TEGRA_POWER    := perfmgr
-TARGET_TEGRA_SENSORS  := iio
-TARGET_TEGRA_SENSOR_FEATURES := accelerometer gyroscope light
 TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_UBOOT    := prebuilt
-TARGET_TEGRA_WIDEVINE ?= rel-shield-r
-TARGET_TEGRA_WIFI     ?= bcm
+TARGET_TEGRA_POWER    := perfmgr
 
 TARGET_ATV_FORCE_1080_SCALING := false
 
 ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
-TARGET_TEGRA_MEMTRACK ?= rel-shield-r
+TARGET_TEGRA_BT        ?= bcm
+TARGET_TEGRA_CAMERA    ?= rel-shield-r
+TARGET_TEGRA_CEC      := aosp
+TARGET_TEGRA_CPL      := none
+TARGET_TEGRA_SENSORS  := iio
+TARGET_TEGRA_SENSOR_FEATURES := accelerometer gyroscope light
+TARGET_TEGRA_WIDEVINE  ?= rel-shield-r
+TARGET_TEGRA_WIFI     ?= bcm
+else
+TARGET_TEGRA_FIRMWARE_BRANCH ?= linux-firmware
+PRODUCT_COPY_FILES += \
+    device/nintendo/nx/initfiles/ack.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/ack.rc \
+    device/nintendo/nx/initfiles/init.recovery.ack.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ack.rc
 endif
 
 include device/nvidia/t210-common/t210.mk
@@ -48,7 +52,7 @@ else
 PRODUCT_CHARACTERISTICS   := tablet
 endif
 
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS ?= true
 
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
 
@@ -78,9 +82,20 @@ PRODUCT_PACKAGES += \
     init.sensors.nx.rc \
     init.vali.rc
 
+ifneq ($(filter 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
 ifneq ($(TARGET_TEGRA_CPL),none)
 PRODUCT_PACKAGES += \
     power.nx.rc
+endif
+endif
+
+ifeq ($(TARGET_POWER_HAL),perfmgr-lineage)
+ifeq ($(TARGET_GRAPHICS),mesa)
+PRODUCT_PACKAGES += \
+    powerhint.nouveau.json
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.powerhal.config=powerhint.nouveau.json
+endif
 endif
 
 # Permissions
@@ -147,10 +162,12 @@ endif
 PRODUCT_PACKAGES += \
     excluded-input-devices.xml
 
+ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
 # Joycons
 PRODUCT_PACKAGES += \
     android.hardware.nintendo.joycond-service \
     jc_setup
+endif
 
 # Kernel Modules
 ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
@@ -201,7 +218,11 @@ endif
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.vendor.recovery_update=true
 
 # Shipping API
+ifneq ($(filter 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l.mk)
+else
+PRODUCT_SHIPPING_API_LEVEL := 36
+endif
 
 # Thermal
 ifneq ($(TARGET_TEGRA_THERMAL),)

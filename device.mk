@@ -95,12 +95,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
 endif
 
-# ATV specific stuff
-ifeq ($(PRODUCT_IS_ATV),true)
-    PRODUCT_PACKAGES += \
-        android.hardware.tv.input@1.0-impl
-endif
-
 # Audio
 PRODUCT_PACKAGES += \
     audio_effects.xml \

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf11ae0_c3fe49ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-10-22T18:25:17Z",
+      "side": 1,
+      "message": "pick to keep 23.0 ack building, will merge once we are ready to diverge and backports are done to kernel",
+      "revId": "0ed4070c53276c8ecc3ccb6d32766b4715df1201",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

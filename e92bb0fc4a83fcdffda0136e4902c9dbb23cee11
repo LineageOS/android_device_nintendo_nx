@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09242f0e_0a63d2b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 36115
+      },
+      "writtenOn": "2025-10-25T21:59:34Z",
+      "side": 1,
+      "message": "Requires https://review.lineageos.org/c/LineageOS/android_device_nvidia_tegra-common/+/458265 for this to actually work.",
+      "revId": "e92bb0fc4a83fcdffda0136e4902c9dbb23cee11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

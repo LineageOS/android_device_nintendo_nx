@@ -16,6 +16,23 @@
       "message": "Requires https://review.lineageos.org/c/LineageOS/android_device_nvidia_tegra-common/+/458265 for this to actually work.",
       "revId": "e92bb0fc4a83fcdffda0136e4902c9dbb23cee11",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb16820_5a0d9cd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-10-26T23:27:00Z",
+      "side": 1,
+      "message": "move permission declaration to Tegra-common, just squash into you other change. All Tegra can support this.",
+      "revId": "e92bb0fc4a83fcdffda0136e4902c9dbb23cee11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

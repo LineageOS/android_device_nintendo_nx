@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The LineageOS Project
+ * Copyright (C) 2023-2025 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,11 +30,11 @@ android_app {
     overrides: ["DeviceSettings"],
     platform_apis: true,
     certificate: "platform",
-    required: ["privapp-permissions-lineage-displaysettings-nx.xml"],
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
     privileged: true,
+    privapp_allowlist: "org.lineageos.settings.device.xml",
     static_libs: [
         "androidx.preference_preference",
         "androidx.appcompat_appcompat",
@@ -45,11 +45,4 @@ android_app {
         "vendor.nvidia.hardware.graphics.display-V1.0-java",
         "android.hardware.nintendo.joycond-V1-java",
     ],
-}
-
-prebuilt_etc {
-    name: "privapp-permissions-lineage-displaysettings-nx.xml",
-    sub_dir: "permissions",
-    src: "permissions/privapp-permissions-lineage-displaysettings.xml",
-    filename_from_src: false,
 }

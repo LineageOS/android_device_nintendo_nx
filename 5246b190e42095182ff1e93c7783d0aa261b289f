@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fdc805_5ff86bbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-12-21T18:45:17Z",
+      "side": 1,
+      "message": "It builds, it puts the file in place. 23.0 on nx is _only_ mainline at the moment so ofc I can\u0027t boot test.",
+      "revId": "5246b190e42095182ff1e93c7783d0aa261b289f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

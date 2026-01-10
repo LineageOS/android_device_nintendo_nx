@@ -22,6 +22,30 @@
       },
       "revId": "b248807a4be080c4d8f52d6629f373af5cb323a9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8acf60c3_02ed3a8c",
+        "filename": "devicesettings/src/org/lineageos/settings/device/BootCompletedReceiver.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2026-01-10T21:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff9c02e_3dcdeb88",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 78
+      },
+      "revId": "b248807a4be080c4d8f52d6629f373af5cb323a9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

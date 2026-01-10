@@ -26,7 +26,7 @@
             android:max="@integer/max_brightness"
             android:min="@integer/min_brightness" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:key="perf_mode"
             android:title="@string/perf_setting_title"
             android:summary="@string/perf_setting_summary" />
@@ -36,7 +36,7 @@
         android:key="joycon_category"
         android:title="@string/joycon_category_title">
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:key="joycon_analog"
             android:title="@string/analog_title"
             android:summary="@string/analog_summary" />

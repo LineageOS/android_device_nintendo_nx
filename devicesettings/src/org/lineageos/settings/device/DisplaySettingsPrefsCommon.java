@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +18,7 @@ import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.util.Log;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -26,7 +26,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayMode;
@@ -74,7 +74,7 @@ public class DisplaySettingsPrefsCommon {
         }
 
         // Analog trigger preference
-        SwitchPreference analogPref = fragment.findPreference("joycon_analog");
+        SwitchPreferenceCompat analogPref = fragment.findPreference("joycon_analog");
 
         if (analogPref == null) {
             Log.e(TAG, "No preference with key joycon_analog found! Skipping JoyCon settings creation...");
@@ -196,7 +196,7 @@ public class DisplaySettingsPrefsCommon {
     }
 
     public void createPerfSettings() {
-        SwitchPreference perfPreference = fragment.findPreference("perf_mode");
+        SwitchPreferenceCompat perfPreference = fragment.findPreference("perf_mode");
 
         perfPreference.setOnPreferenceChangeListener(
                 new Preference.OnPreferenceChangeListener() {
@@ -405,7 +405,8 @@ public class DisplaySettingsPrefsCommon {
 
         // Show checkbox to disable internal panel when an external display is connected
         if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL) {
-            SwitchPreference disableInternalOnExternalConnectedPreference = new SwitchPreference(category.getContext());
+            SwitchPreferenceCompat disableInternalOnExternalConnectedPreference =
+                new SwitchPreferenceCompat(category.getContext());
             disableInternalOnExternalConnectedPreference
                     .setTitle(R.string.disable_internal_on_external_connected_title);
             disableInternalOnExternalConnectedPreference

@@ -31,6 +31,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import org.lineageos.settings.device.DisplaySettingsPrefsCommon;
+
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = BootCompletedReceiver.class.getSimpleName();
     private static final String SEEN_RSMOUSE_PROP = "persist.devicesettingsnx.hasseenrsmouse";
@@ -70,7 +72,8 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             DisplayUtils.setPanelColorMode(panelMode);
         }
 
-        if (!SystemProperties.getBoolean(SEEN_RSMOUSE_PROP, false)) {
+        if (SystemProperties.getBoolean(DisplaySettingsPrefsCommon.JOYCOND_RSMOUSE_PROP, true) &&
+                !SystemProperties.getBoolean(SEEN_RSMOUSE_PROP, false)) {
             NotificationChannelCompat channel = new NotificationChannelCompat.Builder(
                     CHANNEL_ID,
                     NotificationManagerCompat.IMPORTANCE_MAX

@@ -92,6 +92,7 @@ VENDOR_SECURITY_PATCH := 2024-12-05
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += device/nintendo/nx/sepolicy/vendor
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Include Joycond sepolicy if present
 -include hardware/nintendo/joycond/joycond-sepolicy.mk

@@ -22,6 +22,30 @@
       },
       "revId": "601562100f7dd113675fba372e7c679ceac18b25",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea53d84_0f38344d",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplaySettingsPrefsCommon.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2026-01-11T00:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cab4edb8_93640487",
+      "range": {
+        "startLine": 127,
+        "startChar": 12,
+        "endLine": 127,
+        "endChar": 116
+      },
+      "revId": "601562100f7dd113675fba372e7c679ceac18b25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

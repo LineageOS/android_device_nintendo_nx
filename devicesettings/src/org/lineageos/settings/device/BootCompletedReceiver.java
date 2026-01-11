@@ -27,14 +27,8 @@ import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.util.Log;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationChannelCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = BootCompletedReceiver.class.getSimpleName();
-    private static final String SEEN_RSMOUSE_PROP = "persist.devicesettingsnx.hasseenrsmouse";
-    private static final String CHANNEL_ID = "switchconfig";
     private IPower mPerfMgr;
 
     @Override
@@ -68,32 +62,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             final String panelMode = sharedPrefs.getString("panel_color_mode", "0x23");
 
             DisplayUtils.setPanelColorMode(panelMode);
-        }
-
-        if (!SystemProperties.getBoolean(SEEN_RSMOUSE_PROP, false)) {
-            NotificationChannelCompat channel = new NotificationChannelCompat.Builder(
-                    CHANNEL_ID,
-                    NotificationManagerCompat.IMPORTANCE_MAX
-            )
-                    .setName(context.getString(R.string.display_panel_title))
-                    .setDescription(context.getString(R.string.notif_provider_desc))
-                    .setShowBadge(true)
-                    .build();
-
-            NotificationManagerCompat notificationManager =
-                    NotificationManagerCompat.from(context);
-            notificationManager.createNotificationChannel(channel);
-
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                    .setSmallIcon(R.drawable.ic_settings_additional_buttons)
-                    .setContentTitle(context.getString(R.string.rsmouse_notif_title))
-                    .setContentText(context.getString(R.string.rsmouse_notif_content))
-                    .setCategory(NotificationCompat.CATEGORY_SYSTEM)
-                    .setPriority(NotificationCompat.PRIORITY_MAX)
-                    .extend(new NotificationCompat.TvExtender().setChannelId(CHANNEL_ID));
-            SystemProperties.set(SEEN_RSMOUSE_PROP, "true");
-
-            notificationManager.notify(1, builder.build());
         }
     }
 }

@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +18,7 @@ import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.util.Log;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -26,7 +26,8 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SeekBarPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplayMode;
@@ -38,6 +39,16 @@ public class DisplaySettingsPrefsCommon {
     private static final String TAG = DisplaySettingsPrefsCommon.class.getSimpleName();
     public static final String JOYCOND_ANALOG_PROP = "persist.vendor.joycond.analog";
     public static final String JOYCOND_COMBINED_PROP = "persist.vendor.joycond.combined";
+    public static final String JOYCOND_RSMOUSE_PROP = "persist.vendor.joycond.rsmouse";
+    public static final String JOYCOND_SENSE_X_PROP = "persist.vendor.joycond.mouse_sense.x";
+    public static final String JOYCOND_SENSE_Y_PROP = "persist.vendor.joycond.mouse_sense.y";
+    public static final String JOYCOND_DEAD_X_PROP = "persist.vendor.joycond.mouse_dead.x";
+    public static final String JOYCOND_DEAD_Y_PROP = "persist.vendor.joycond.mouse_dead.y";
+
+    public static final float JOYCON_SENSE_MULTIPLIER = 100000f;
+    public static final String JOYCON_SENSE_DEFAULT = "0.0003";
+    public static final float JOYCON_DEAD_MULTIPLIER = 1f;
+    public static final String JOYCON_DEAD_DEFAULT = "1";
 
     private PreferenceFragmentCompat fragment;
     private Activity activity;
@@ -66,6 +77,9 @@ public class DisplaySettingsPrefsCommon {
     public void createJoyConSettings(PreferenceScreen preferenceScreen) {
         int index;
         boolean analog = true;
+        boolean rsmouse = true;
+        float mouseSense = 0;
+        float mouseDead = 0;
         final List<KeyMap> mapping;
 
         if (mJoycond == null) {
@@ -74,7 +88,7 @@ public class DisplaySettingsPrefsCommon {
         }
 
         // Analog trigger preference
-        SwitchPreference analogPref = fragment.findPreference("joycon_analog");
+        SwitchPreferenceCompat analogPref = fragment.findPreference("joycon_analog");
 
         if (analogPref == null) {
             Log.e(TAG, "No preference with key joycon_analog found! Skipping JoyCon settings creation...");
@@ -102,6 +116,92 @@ public class DisplaySettingsPrefsCommon {
                     Log.w(TAG, "Could not set analog preference! Setting prop and deferring...");
                     SystemProperties.set(JOYCOND_ANALOG_PROP, (boolean) newValue ? "1" : "0");
                 }
+                return true;
+            }
+        });
+
+        // RSMouse preference
+        SwitchPreferenceCompat rsmousePref = fragment.findPreference("joycon_rsmouse");
+
+        if (rsmousePref == null) {
+            Log.e(TAG, "No preference with key joycon_rsmouse found! " +
+                    "Skipping rest of JoyCon settings creation...");
+            return;
+        }
+
+        try {
+            rsmouse = mJoycond.getRsmouse();
+        } catch (RemoteException e) {
+            Log.w(TAG, "Could not get rsmouse preference! Inferring from prop...");
+            rsmouse = SystemProperties.getBoolean(JOYCOND_RSMOUSE_PROP, true);
+        }
+
+        Log.i(TAG, "Joycond current rsmouse value: " + String.valueOf(rsmouse));
+        rsmousePref.setChecked(analog);
+
+        rsmousePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                try {
+                    mJoycond.setRsmouse((boolean) newValue);
+                } catch (RemoteException e) {
+                    Log.w(TAG, "Could not set rsmouse preference! Setting prop and deferring...");
+                    SystemProperties.set(JOYCOND_RSMOUSE_PROP, (boolean) newValue ? "1" : "0");
+                }
+                return true;
+            }
+        });
+
+        // RSMouse sense preference
+        SeekBarPreference mouseSensePref = fragment.findPreference("joycon_rsmouse_sense");
+
+        if (mouseSensePref == null) {
+            Log.e(TAG, "No preference with key joycon_rsmouse_sense found! " +
+                    "Skipping rest of JoyCon settings creation...");
+            return;
+        }
+
+        // assume X and Y are same, go by X otherwise
+        mouseSense = Float.parseFloat(
+                SystemProperties.get(JOYCOND_SENSE_X_PROP, JOYCON_SENSE_DEFAULT));
+
+        Log.i(TAG, "Joycond current sense (x) value: " + String.valueOf(mouseSense));
+        mouseSensePref.setDefaultValue((int)(JOYCON_SENSE_MULTIPLIER * mouseSense));
+        mouseSensePref.setUpdatesContinuously(true);
+        mouseSensePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String sense = String.valueOf((Integer)newValue / JOYCON_SENSE_MULTIPLIER);
+                Log.i(TAG, "Setting Joycond sense value: " + sense);
+                SystemProperties.set(JOYCOND_SENSE_X_PROP, sense);
+                SystemProperties.set(JOYCOND_SENSE_Y_PROP, sense);
+                return true;
+            }
+        });
+
+        // RSMouse dead preference
+        SeekBarPreference mouseDeadPref = fragment.findPreference("joycon_rsmouse_deadzone");
+
+        if (mouseDeadPref == null) {
+            Log.e(TAG, "No preference with key joycon_rsmouse_deadzone found! " +
+                    "Skipping rest of JoyCon settings creation...");
+            return;
+        }
+
+        // assume X and Y are same, go by X otherwise
+        mouseDead = Float.parseFloat(
+                SystemProperties.get(JOYCOND_DEAD_X_PROP, JOYCON_DEAD_DEFAULT));
+
+        Log.i(TAG, "Joycond current dead (x) value: " + String.valueOf(mouseDead));
+        mouseDeadPref.setDefaultValue((int)mouseDead);
+        mouseDeadPref.setUpdatesContinuously(true);
+        mouseDeadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String dead = String.valueOf((Integer)newValue);
+                Log.i(TAG, "Setting Joycond dead value: " + dead);
+                SystemProperties.set(JOYCOND_DEAD_X_PROP, dead);
+                SystemProperties.set(JOYCOND_DEAD_Y_PROP, dead);
                 return true;
             }
         });
@@ -196,7 +296,7 @@ public class DisplaySettingsPrefsCommon {
     }
 
     public void createPerfSettings() {
-        SwitchPreference perfPreference = fragment.findPreference("perf_mode");
+        SwitchPreferenceCompat perfPreference = fragment.findPreference("perf_mode");
 
         perfPreference.setOnPreferenceChangeListener(
                 new Preference.OnPreferenceChangeListener() {
@@ -405,7 +505,8 @@ public class DisplaySettingsPrefsCommon {
 
         // Show checkbox to disable internal panel when an external display is connected
         if (display == HwcSvcDisplay.HWC_SVC_DISPLAY_PANEL) {
-            SwitchPreference disableInternalOnExternalConnectedPreference = new SwitchPreference(category.getContext());
+            SwitchPreferenceCompat disableInternalOnExternalConnectedPreference =
+                    new SwitchPreferenceCompat(category.getContext());
             disableInternalOnExternalConnectedPreference
                     .setTitle(R.string.disable_internal_on_external_connected_title);
             disableInternalOnExternalConnectedPreference

@@ -18,7 +18,6 @@ package org.lineageos.settings.device;
 
 import java.util.HashMap;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,6 +27,7 @@ import android.os.SystemProperties;
 import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.leanback.preference.LeanbackPreferenceFragmentCompat;
 import androidx.leanback.preference.LeanbackSettingsFragmentCompat;
 import androidx.preference.DialogPreference;
@@ -121,6 +121,8 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
             if (!sku.equals("vali")) {
                 commonPrefs.createDisplaySettings(preferenceScreen);
             }
+
+            commonPrefs.createJoyConSettings(preferenceScreen);
         }
 
         @Override

@@ -16,6 +16,7 @@
 
 package org.lineageos.settings.device;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,8 +25,6 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.view.MenuItem;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;

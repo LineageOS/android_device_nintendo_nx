@@ -1,2 +1,5 @@
+# DeviceSettings Properties
+persist.devicesettingsnx. u:object_r:vendor_persist_devicesettingsnx_prop:s0
+
 # IIO Sensors
 ro.vendor.iio. u:object_r:vendor_iio_sensors_prop:s0

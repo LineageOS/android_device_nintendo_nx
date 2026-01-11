@@ -33,12 +33,12 @@
     <string name="analog_title">Analog Trigger Emulation</string>
     <string name="analog_summary">Enable/disable L2/R2 analog trigger emulation on Nintendo Controllers</string>
     <string name="rsmouse_title">Right Stick Mouse</string>
-    <string name="rsmouse_summary">Use the right stick to control a virtual mouse pointer. Click with triggers, toggle usability with screenshot button</string>
+    <string name="rsmouse_summary">Use the right stick to control an on-screen mouse pointer, and the triggers to click. Click the screenshot button to enable/disable</string>
     <string name="rsmouse_sense_title">Right Stick Mouse Sensitivity</string>
     <string name="rsmouse_dead_title">Right Stick Mouse Deadzone</string>
     <string name="disable_internal_on_external_connected_title">Turn off when an external display is connected</string>
     <string name="disable_internal_on_external_connected_summary_on">The internal panel will be turned off when an external display is connected</string>
     <string name="disable_internal_on_external_connected_summary_off">Both the internal panel and external display will show the same image</string>
-    <string name="rsmouse_notif_title">Right Stick Mouse Now Enabled by Default</string>
-    <string name="rsmouse_notif_content">Click with triggers, toggle mouse with screenshot button</string>
+    <string name="rsmouse_notif_title">Right Stick Mouse enabled</string>
+    <string name="rsmouse_notif_content">Click with triggers, use the screenshot button to enable/disable</string>
 </resources>

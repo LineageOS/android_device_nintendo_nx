@@ -54,3 +54,6 @@ allow dockservice_app joycond:binder call;
 
 # Allow settings persist.devicesettingsnx.* properties
 set_prop(dockservice_app, vendor_persist_devicesettingsnx_prop)
+
+# Allow dockservice to set persist.joycond.* properties
+set_prop(dockservice_app, vendor_persist_joycond_prop)

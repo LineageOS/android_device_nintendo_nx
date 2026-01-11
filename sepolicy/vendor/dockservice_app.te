@@ -51,3 +51,9 @@ allow dockservice_app hal_power_service:service_manager find;
 allow dockservice_app joycon_service:service_manager find;
 
 allow dockservice_app joycond:binder call;
+
+# Allow settings persist.devicesettingsnx.* properties - NEVERALLOW
+set_prop(dockservice_app, vendor_persist_devicesettingsnx_prop)
+
+# Allow dockservice to set persist.joycond.* properties - NEVERALLOW
+set_prop(dockservice_app, vendor_persist_joycond_prop)

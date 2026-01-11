@@ -9,6 +9,7 @@ allow jc_setup jc_setup_exec:file { execute_no_trans open };
 init_daemon_domain(jc_setup)
 
 # Allow jc_setup to utilize the tools it needs
+allow jc_setup self:capability chown;
 allow jc_setup vendor_shell_exec:file rx_file_perms;
 not_full_treble(`allow jc_setup shell_exec:file rx_file_perms;')
 

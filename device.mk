@@ -65,6 +65,7 @@ endif
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += device/nintendo/nx
+PRODUCT_SOONG_NAMESPACES += hardware/interfaces
 
 # Init related
 PRODUCT_PACKAGES += \
@@ -110,6 +111,9 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 $(call soong_config_set,brcm_libbt,bdroid_buildcfg_include_dir,device/nintendo/nx/comms)
 $(call soong_config_set,brcm_libbt,custom_bt_config,//device/nintendo/nx:vnd_nx.txt)
+
+# Graphics - Enable gralloc mutex unlock workaround for Tegra driver deadlock fix
+$(call soong_config_set,tegra_gralloc,unlock_before_hal_free,true)
 
 # CEC
 PRODUCT_COPY_FILES := $(filter-out frameworks/native/data/etc/android.hardware.hdmi.cec.xml%android.hardware.hdmi.cec.xml,$(PRODUCT_COPY_FILES))

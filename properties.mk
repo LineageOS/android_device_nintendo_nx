@@ -17,6 +17,7 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.latch_unsignaled=1 \
+    ro.hardware.gralloc.tegra_dequeue_workaround=true \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
     ro.surface_flinger.max_virtual_display_dimension=4096

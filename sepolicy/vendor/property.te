@@ -1,2 +1,5 @@
+# DeviceSettings Properties
+vendor_public_prop(vendor_persist_devicesettingsnx_prop)
+
 # IIO Sensors
 vendor_public_prop(vendor_iio_sensors_prop);

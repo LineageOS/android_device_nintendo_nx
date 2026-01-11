@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c8c484_fef0fb72",
+        "filename": "device.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-01-11T16:19:24Z",
+      "side": 1,
+      "message": "Use soong_config_set_bool",
+      "range": {
+        "startLine": 116,
+        "startChar": 7,
+        "endLine": 116,
+        "endChar": 23
+      },
+      "revId": "7cd171820e07439aa5719e50c5237a324186455d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}

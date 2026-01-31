@@ -16,8 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <style name="LeanbackPreferences" parent="Theme.Leanback">
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Leanback</item>
+    <style name="LeanbackPreferences" parent="Theme.AppCompat.Leanback">
+        <item name="preferenceTheme">@style/PreferenceThemeOverlayLeanback</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>

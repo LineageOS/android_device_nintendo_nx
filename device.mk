@@ -132,7 +132,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildFingerprint=NVIDIA/nx/nx:11/RQ1A.210105.003/7825230_4040.2147:user/release-keys
+    BuildFingerprint=NVIDIA/nx/nx:11/RQ1A.210105.003/7825230_4387.0822:user/release-keys
 
 # GMS
 ifeq ($(WITH_GMS),true)

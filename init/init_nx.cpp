@@ -42,7 +42,7 @@ void vendor_load_properties()
 
 	tegra_init ti(devices);
 
-	tegra_init::build_version tav = { "11", "RQ1A.210105.003", "7825230_4040.2147" };
+	tegra_init::build_version tav = { "11", "RQ1A.210105.003", "7825230_4387.0822" };
 	ti.set_fingerprints(tav);
 
 	ti.set_properties();

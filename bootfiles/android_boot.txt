@@ -296,6 +296,12 @@ else echoe Unknown Display ID: ${display_id}! Please report it!; fi
 # Set active display handle.
 if test -n "${DHANDLE}" -a ${sku} != 3; then echo Setting Display panel; fdt set /host1x/dsi nvidia,active-panel <$DHANDLE>; fi
 
+# Increase fbmem-size for 1080p displays
+if test ${display_id} = 10e1 -o test ${display_id} = 0fe1 -o test ${display_id} = 20e1; then
+    echoe 1080p display detected, increasing fbmem size
+    fdt set /host1x@50000000/dc@54200000 nvidia,fbmem-size <33554432>
+fi
+
 # Disable USB3.
 if test ${usb3_enable} = 0; then
 	echo USB3 disabled

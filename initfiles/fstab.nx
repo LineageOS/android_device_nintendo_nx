@@ -28,5 +28,5 @@ product                                                 /product            ext4
 /dev/block/platform/sdhci-tegra.0/by-num/p1             /sdcard             vfat        defaults                                                            recoveryonly
 /dev/block/platform/70090000.xusb/by-num/p1             /usbdrive           auto        defaults                                                            recoveryonly
 
-# zram
-/dev/block/zram0                                        none                swap        defaults                                                            zramsize=50%
+# zram (use upstream pixel fstab.zram.2g settings modified for switch)
+/dev/block/zram0                                        none                swap        defaults                                                            zramsize=50%,max_comp_streams=4,zram_backingdev_size=512M

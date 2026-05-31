@@ -25,6 +25,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.tegra.stb.mode=0
 
+
+# Low RAM tunables
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.low_ram=1 \
+    ro.config.force_multi_window=1
+
 # USB configfs
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.nv.usb.pid.adb=2000 \

@@ -274,6 +274,8 @@ if load mmc ${devnum}:${distro_bootpart} ${enviraddr} /switchroot/switch.cal; th
 	fi
 fi
 
+setenv tegra_fbmem 0x800000
+
 # Get display handle.
 if   test ${display_id} = f20;  then echo Display is INN 6.2; fdt get value DHANDLE /host1x/dsi/panel-i-720p-6-2 phandle
 elif test ${display_id} = f30;  then echo Display is AUO 6.2; fdt get value DHANDLE /host1x/dsi/panel-a-720p-6-2 phandle
@@ -297,9 +299,10 @@ else echoe Unknown Display ID: ${display_id}! Please report it!; fi
 if test -n "${DHANDLE}" -a ${sku} != 3; then echo Setting Display panel; fdt set /host1x/dsi nvidia,active-panel <$DHANDLE>; fi
 
 # Increase fbmem-size for 1080p displays
-if test ${display_id} = 10e1 -o test ${display_id} = 0fe1 -o test ${display_id} = 20e1; then
+if test ${display_id} = 10e1 -o ${display_id} = 0fe1 -o ${display_id} = 20e1; then
     echoe 1080p display detected, increasing fbmem size
     fdt set /host1x@50000000/dc@54200000 nvidia,fbmem-size <33554432>
+    setenv tegra_fbmem 0x2000000
 fi
 
 # Disable USB3.
@@ -444,7 +447,7 @@ setenv bootargs ${bootargs_extra} "ro init=/init firmware_class.path=/vendor/fir
  pmc_r2p.param1=${autoboot} pmc_r2p.param2=${autoboot_list} \
  fbcon=map:${fbconsole} consoleblank=0 \
  latency_allowance.ptsa_rework \
- nvdec_enabled=0 tegra_fbmem=0x800000@0xf5a00000 \
+ nvdec_enabled=0 tegra_fbmem=${tegra_fbmem}@0xf5a00000 \
  androidboot.bootloader=${blver} androidboot.hardware=nx \
  androidboot.hardware.sku=${variant} androidboot.serialno=${device_serial_restricted} \
  androidboot.modem=none androidboot.dtb_idx=${sku} androidboot.panel_id=${display_id} "

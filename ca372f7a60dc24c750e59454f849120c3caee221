@@ -16,6 +16,24 @@
       "message": "dep on https://review.lineageos.org/c/LineageOS/android_frameworks_base/+/488176",
       "revId": "ca372f7a60dc24c750e59454f849120c3caee221",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3166f267_26c0c9d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-06-02T17:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bedb995a_51d63095",
+      "revId": "ca372f7a60dc24c750e59454f849120c3caee221",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }

@@ -274,8 +274,6 @@ if load mmc ${devnum}:${distro_bootpart} ${enviraddr} /switchroot/switch.cal; th
 	fi
 fi
 
-setenv tegra_fbmem 0x800000
-
 # Get display handle.
 if   test ${display_id} = f20;  then echo Display is INN 6.2; fdt get value DHANDLE /host1x/dsi/panel-i-720p-6-2 phandle
 elif test ${display_id} = f30;  then echo Display is AUO 6.2; fdt get value DHANDLE /host1x/dsi/panel-a-720p-6-2 phandle
@@ -283,12 +281,6 @@ elif test ${display_id} = 10;   then echo Display is JDI 6.2; fdt get value DHAN
 elif test ${display_id} = 1020; then echo Display is INN 5.5; fdt get value DHANDLE /host1x/dsi/panel-i-720p-5-5 phandle
 elif test ${display_id} = 1030; then echo Display is AUO 5.5; fdt get value DHANDLE /host1x/dsi/panel-a-720p-5-5 phandle
 elif test ${display_id} = 1040; then echo Display is SHP 5.5; fdt get value DHANDLE /host1x/dsi/panel-s-720p-5-5 phandle
-elif test ${display_id} = 10e0; then echo Display is RR 5.5 720p; fdt get value DHANDLE /host1x/dsi/panel-rr-720p-5-5 phandle
-elif test ${display_id} = 10e1; then echo Display is RR 5.5 1080p; fdt get value DHANDLE /host1x/dsi/panel-rr-1080p-5-5 phandle
-elif test ${display_id} = 0fe0; then echo Display is RR IPS 7.0 720p; fdt get value DHANDLE /host1x/dsi/panel-rr-ips-720p-7-0 phandle
-elif test ${display_id} = 0fe1; then echo Display is RR IPS 7.0 1080p; fdt get value DHANDLE /host1x/dsi/panel-rr-ips-1080p-7-0 phandle
-elif test ${display_id} = 20e0; then echo Display is RR OLED 7.0 720p; fdt get value DHANDLE /host1x/dsi/panel-rr-720p-7-0 phandle
-elif test ${display_id} = 20e1; then echo Display is RR OLED 7.0 1080p; fdt get value DHANDLE /host1x/dsi/panel-rr-1080p-7-0 phandle
 elif test ${display_id} = 2050; then echo Display is SAM 7.0
 elif test ${display_id} = f83;  then echo Display is Clone 6.2
 elif test ${display_id} = B3;   then echo Display is Clone 5.5
@@ -297,13 +289,6 @@ else echoe Unknown Display ID: ${display_id}! Please report it!; fi
 
 # Set active display handle.
 if test -n "${DHANDLE}" -a ${sku} != 3; then echo Setting Display panel; fdt set /host1x/dsi nvidia,active-panel <$DHANDLE>; fi
-
-# Increase fbmem-size for 1080p displays
-if test ${display_id} = 10e1 -o ${display_id} = 0fe1 -o ${display_id} = 20e1; then
-    echoe 1080p display detected, increasing fbmem size
-    fdt set /host1x@50000000/dc@54200000 nvidia,fbmem-size <33554432>
-    setenv tegra_fbmem 0x2000000
-fi
 
 # Disable USB3.
 if test ${usb3_enable} = 0; then
@@ -447,10 +432,10 @@ setenv bootargs ${bootargs_extra} "ro init=/init firmware_class.path=/vendor/fir
  pmc_r2p.param1=${autoboot} pmc_r2p.param2=${autoboot_list} \
  fbcon=map:${fbconsole} consoleblank=0 \
  latency_allowance.ptsa_rework \
- nvdec_enabled=0 tegra_fbmem=${tegra_fbmem}@0xf5a00000 \
+ nvdec_enabled=0 tegra_fbmem=0x800000@0xf5a00000 \
  androidboot.bootloader=${blver} androidboot.hardware=nx \
  androidboot.hardware.sku=${variant} androidboot.serialno=${device_serial_restricted} \
- androidboot.modem=none androidboot.dtb_idx=${sku} androidboot.panel_id=${display_id} "
+ androidboot.modem=none androidboot.dtb_idx=${sku} "
 
 # Boot kernel.
 echo Launching Kernel!

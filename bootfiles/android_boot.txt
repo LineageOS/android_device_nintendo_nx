@@ -450,7 +450,7 @@ setenv bootargs ${bootargs_extra} "ro init=/init firmware_class.path=/vendor/fir
  nvdec_enabled=0 tegra_fbmem=${tegra_fbmem}@0xf5a00000 \
  androidboot.bootloader=${blver} androidboot.hardware=nx \
  androidboot.hardware.sku=${variant} androidboot.serialno=${device_serial_restricted} \
- androidboot.modem=none androidboot.dtb_idx=${sku} androidboot.panel_id=${display_id} "
+ androidboot.modem=none androidboot.dtb_idx=${sku} "
 
 # Boot kernel.
 echo Launching Kernel!

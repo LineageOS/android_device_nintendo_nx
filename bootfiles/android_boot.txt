@@ -241,13 +241,7 @@ if test "${sd_1bit}" = 1; then
 	fdt set /sdhci@700b0000 uhs-mask <0x7F>
 fi
 
-# Check if SD DDR200 mode can be enabled.
-mmc info manid
-if test ${manid} = 1b; then
-	echo Samsung SD Card Detected
-	setenv ddr200_enable 1
-fi
-
+# Enable DDR200 if user explicitly enables it
 if test ${ddr200_enable} = 1; then
 	echoe SD DDR200 mode enabled
 	fdt set /sdhci@700b0000 enable-ddr200

@@ -2,6 +2,12 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.media.avsync=true
 
+# Baylibre audio
+ifeq ($(TARGET_AUDIO_HAL),baylibre)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.audio.primary.device=3
+endif
+
 # Charger
 PRODUCT_SYSTEM_PROPERTY_OVERRIDES += \
     persist.sys.NV_ECO.IF.CHARGING=false

@@ -116,7 +116,7 @@ endif
 # Audio
 ifeq ($(TARGET_AUDIO_HAL),baylibre)
 PRODUCT_COPY_FILES += \
-    device/nvidia/tegra-common/nvaudio/primary_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/primary_audio_policy_configuration.xml
+    device/nvidia/tegra-common/audio/primary_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/primary_audio_policy_configuration.xml
 endif
 
 # Bluetooth

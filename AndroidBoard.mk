@@ -41,8 +41,8 @@ ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_DTBIMAGE_TARGET)
 
 INSTALLED_RADIOIMAGE_TARGET += $(INSTALLED_DTBIMAGE_TARGET)
 
-CEC_XML_SYMLINK := $(TARGET_OUT_VENDOR)/etc/permissions/android.hardware.hdmi.cec.xml
-$(CEC_XML_SYMLINK): $(LOCAL_INSTALLED_MODULE)
-	$(hide) ln -sf /data/vendor/permissions/android.hardware.hdmi.cec.xml $@
+#CEC_XML_SYMLINK := $(TARGET_OUT_VENDOR)/etc/permissions/android.hardware.hdmi.cec.xml
+#$(CEC_XML_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+#	$(hide) ln -sf /data/vendor/permissions/android.hardware.hdmi.cec.xml $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CEC_XML_SYMLINK)

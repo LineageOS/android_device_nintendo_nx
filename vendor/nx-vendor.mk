@@ -14,6 +14,7 @@
 
 include device/nvidia/t210-common/vendor/t210-by-flags.mk
 include device/nvidia/tegra-common/vendor/common-by-flags.mk
+include device/nintendo/nx/vendor/$(TARGET_TEGRA_FIRMWARE_BRANCH)/nx.mk
 
 ATF_PATH   := $(abspath hardware/nintendo/arm-trusted-firmware)
 
@@ -26,18 +27,3 @@ ATF_PARAMS += SDEI_SUPPORT=0
 
 # Error reporting
 ATF_PARAMS += CRASH_REPORTING=1 ENABLE_ASSERTIONS=1 LOG_LEVEL=0 PLAT_LOG_LEVEL_ASSERT=0
-
-COMMON_BCM_PATH := vendor/nvidia/common/rel-shield-r/bcm
-NX_BCM_PATH := vendor/nintendo/nx/rel-shield-r/bcm
-NX_BCM_EXTERNAL_PATH := vendor/nintendo/nx/external/bcm
-
-PRODUCT_COPY_FILES += \
-    $(NX_BCM_PATH)/bcm4356/brcmfmac4356-pcie.clm_blob:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.clm_blob \
-    $(NX_BCM_EXTERNAL_PATH)/bcm4356/brcmfmac4356A3-pcie.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,odin.txt \
-    $(NX_BCM_EXTERNAL_PATH)/bcm4356/brcmfmac4356A3-pcie.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,modin.txt \
-    $(NX_BCM_EXTERNAL_PATH)/bcm4356/brcmfmac4356A3-pcie.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,vali.txt \
-    $(NX_BCM_EXTERNAL_PATH)/bcm4356/brcmfmac4356A3-pcie.txt:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.nvidia,fric.txt \
-    $(NX_BCM_EXTERNAL_PATH)/bcm4356/CYW4356A3_001.004.009.0092.0095.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/BCM4356A3.hcd
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_BCM_PATH)/bcm4356/brcmfmac4356-pcie.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/brcmfmac4356-pcie.bin

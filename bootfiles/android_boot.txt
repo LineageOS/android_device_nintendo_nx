@@ -9,48 +9,6 @@ test -n ${earlycon}             || setenv earlycon 0
 test -n ${r2p_action}           || setenv r2p_action bootloader
 test -n ${autoboot}             || setenv autoboot 0
 test -n ${autoboot_list}        || setenv autoboot_list 0
-test -n ${usb3_enable}          || setenv usb3_enable 0
-test -n ${4k60_disable}         || setenv 4k60_disable 0
-test -n ${dvfsb}                || setenv dvfsb 0
-test -n ${gpu_dvfsc}            || setenv gpu_dvfsc 0
-test -n ${limit_gpu_clk}        || setenv limit_gpu_clk 0
-test -n ${jc_rail_disable}      || setenv jc_rail_disable 0
-test -n ${cec_disable}          || setenv cec_disable 0
-test -n ${touch_skip_tuning}    || setenv touch_skip_tuning 0
-test -n ${bt_ertm_disable}      || setenv bt_ertm_disable 0
-test -n ${wifi_disable_vht80}   || setenv wifi_disable_vht80 0
-test -n ${alarms_disable}       || setenv alarms_disable 0
-test -n ${oc}                   || setenv oc 0
-test -n ${ddr200_enable}	|| setenv ddr200_enable 0
-
-# Built-in IMU.
-test -n ${acc_cal_off_x} || setenv acc_cal_off_x 0x0
-test -n ${acc_cal_off_y} || setenv acc_cal_off_y 0x0
-test -n ${acc_cal_off_z} || setenv acc_cal_off_z 0x0
-test -n ${acc_cal_scl_x} || setenv acc_cal_scl_x 0x0
-test -n ${acc_cal_scl_y} || setenv acc_cal_scl_y 0x0
-test -n ${acc_cal_scl_z} || setenv acc_cal_scl_z 0x0
-test -n ${gyr_cal_off_x} || setenv gyr_cal_off_x 0x0
-test -n ${gyr_cal_off_y} || setenv gyr_cal_off_y 0x0
-test -n ${gyr_cal_off_z} || setenv gyr_cal_off_z 0x0
-test -n ${gyr_cal_scl_x} || setenv gyr_cal_scl_x 0x0
-test -n ${gyr_cal_scl_y} || setenv gyr_cal_scl_y 0x0
-test -n ${gyr_cal_scl_z} || setenv gyr_cal_scl_z 0x0
-
-# Lite Gamepad analog sticks calibration.
-test -n ${lite_cal_lx_lof}  || setenv lite_cal_lx_lof 0x0
-test -n ${lite_cal_lx_cnt}  || setenv lite_cal_lx_cnt 0x0
-test -n ${lite_cal_lx_rof}  || setenv lite_cal_lx_rof 0x0
-test -n ${lite_cal_ly_dof}  || setenv lite_cal_ly_dof 0x0
-test -n ${lite_cal_ly_cnt}  || setenv lite_cal_ly_cnt 0x0
-test -n ${lite_cal_ly_uof}  || setenv lite_cal_ly_uof 0x0
-
-test -n ${lite_cal_rx_lof}  || setenv lite_cal_rx_lof 0x0
-test -n ${lite_cal_rx_cnt}  || setenv lite_cal_rx_cnt 0x0
-test -n ${lite_cal_rx_rof}  || setenv lite_cal_rx_rof 0x0
-test -n ${lite_cal_ry_dof}  || setenv lite_cal_ry_dof 0x0
-test -n ${lite_cal_ry_cnt}  || setenv lite_cal_ry_cnt 0x0
-test -n ${lite_cal_ry_uof}  || setenv lite_cal_ry_uof 0x0
 
 # Set logging params for each serial type.
 setenv uarta "no_console_suspend console=ttyS0,115200,8n1 loglevel=8 androidboot.console=ttyS0"
@@ -221,183 +179,25 @@ if test ${bt_ertm_disable} = 1; then setenv bootargs_extra ${bootargs_extra} "bl
 
 # Enable eMMC.
 if test ${emmc} = 1; then
-	fdt set /sdhci@700b0600 status okay
-	fdt set /firmware/android boot_devices sdhci-tegra.3
+	fdt set /mmc@700b0600 status okay
+	fdt set /firmware/android boot_devices 700b0600.mmc
 
 	# Check if eMMC is initialized in 1-bit mode.
 	if test "${mmc_1bit}" = 1; then
 		echoe eMMC is initialized in 1-bit mode!
-		fdt set /sdhci@700b0600 bus-width <0x1>
-		fdt set /sdhci@700b0600 uhs-mask <0x7F>
+		fdt set /mmc@700b0600 bus-width <0x1>
+		fdt set /mmc@700b0600 uhs-mask <0x7F>
 	fi
 else
-	fdt set /firmware/android boot_devices sdhci-tegra.0
+	fdt set /firmware/android boot_devices 700b0000.mmc
 fi
 
 # Check if SD is initialized in 1-bit mode.
 if test "${sd_1bit}" = 1; then
 	echoe SD Card is initialized in 1-bit mode!
-	fdt set /sdhci@700b0000 bus-width <0x1>
-	fdt set /sdhci@700b0000 uhs-mask <0x7F>
+	fdt set /mmc@700b0600 bus-width <0x1>
+	fdt set /mmc@700b0600 uhs-mask <0x7F>
 fi
-
-# Check if SD DDR200 mode can be enabled.
-mmc info manid
-if test ${manid} = 1b; then
-	echo Samsung SD Card Detected
-	setenv ddr200_enable 1
-fi
-
-if test ${ddr200_enable} = 1; then
-	echoe SD DDR200 mode enabled
-	fdt set /sdhci@700b0000 enable-ddr200
-fi
-
-# Force PLLP for 408/204MHz Host/Card clock if set.
-if test "${ddr200_mode}" = 2; then
-	echoe SD DDR200 PLLP enabled
-	fdt set /sdhci@700b0000 ddr200-clk-limit 210000000
-fi
-
-# Disable WiFi VHT80 bonding.
-if test ${wifi_disable_vht80} = 1; then setenv bootargs_extra ${bootargs_extra} "brcmfmac.vht_mask=12"; fi
-
-# Set calibration data.
-if load mmc ${devnum}:${distro_bootpart} ${enviraddr} /switchroot/switch.cal; then
-	env import -t -r ${enviraddr} ${filesize}
-	if test ${sku} = 2; then
-		echo Sio Calibration set
-		fdt set /serial@70006200/sio sio-stick-cal-l <$lite_cal_lx_lof $lite_cal_lx_cnt $lite_cal_lx_rof $lite_cal_ly_dof $lite_cal_ly_cnt $lite_cal_ly_uof>
-		fdt set /serial@70006200/sio sio-stick-cal-r <$lite_cal_rx_lof $lite_cal_rx_cnt $lite_cal_rx_rof $lite_cal_ry_dof $lite_cal_ry_cnt $lite_cal_ry_uof>
-		fdt set /serial@70006200/sio sio-acc-cal <$acc_cal_off_x $acc_cal_off_y $acc_cal_off_z $acc_cal_scl_x $acc_cal_scl_y $acc_cal_scl_z>
-		fdt set /serial@70006200/sio sio-gyr-cal <$gyr_cal_off_x $gyr_cal_off_y $gyr_cal_off_z $gyr_cal_scl_x $gyr_cal_scl_y $gyr_cal_scl_z>
-	fi
-fi
-
-# Get display handle.
-if   test ${display_id} = f20;  then echo Display is INN 6.2; fdt get value DHANDLE /host1x/dsi/panel-i-720p-6-2 phandle
-elif test ${display_id} = f30;  then echo Display is AUO 6.2; fdt get value DHANDLE /host1x/dsi/panel-a-720p-6-2 phandle
-elif test ${display_id} = 10;   then echo Display is JDI 6.2; fdt get value DHANDLE /host1x/dsi/panel-j-720p-6-2 phandle
-elif test ${display_id} = 1020; then echo Display is INN 5.5; fdt get value DHANDLE /host1x/dsi/panel-i-720p-5-5 phandle
-elif test ${display_id} = 1030; then echo Display is AUO 5.5; fdt get value DHANDLE /host1x/dsi/panel-a-720p-5-5 phandle
-elif test ${display_id} = 1040; then echo Display is SHP 5.5; fdt get value DHANDLE /host1x/dsi/panel-s-720p-5-5 phandle
-elif test ${display_id} = 2050; then echo Display is SAM 7.0
-elif test ${display_id} = f83;  then echo Display is Clone 6.2
-elif test ${display_id} = B3;   then echo Display is Clone 5.5
-elif test ${display_id} = 0;    then echo Display is Clone 5.5
-else echoe Unknown Display ID: ${display_id}! Please report it!; fi
-
-# Set active display handle.
-if test -n "${DHANDLE}" -a ${sku} != 3; then echo Setting Display panel; fdt set /host1x/dsi nvidia,active-panel <$DHANDLE>; fi
-
-# Disable USB3.
-if test ${usb3_enable} = 0; then
-	echo USB3 disabled
-	fdt get value DHANDLE_USB2 /xusb_padctl@7009f000/pads/usb2/lanes/usb2-0 phandle
-	fdt set /xusb@70090000 phys <$DHANDLE_USB2>
-	fdt set /xusb@70090000 phy-names usb2-0
-	fdt set /xudc@700d0000 phys <$DHANDLE_USB2>
-	fdt set /xudc@700d0000 phy-names usb2
-	fdt set /xusb_padctl@7009f000 usb3-no-mapping-war <0x1>
-	fdt set /xusb_padctl@7009f000/ports/usb2-0 nvidia,usb3-port-fake <0xffffffff>
-	fdt set /xusb_padctl@7009f000/ports/usb3-0 status disabled
-else
-	echoe USB3 enabled
-fi
-
-# Disable 4 DP lanes (4K@60) on Fric.
-if test ${sku} = 3 -a ${4k60_disable} = 1 -a ${usb3_enable} != 0; then
-	echoe 4K60 disabled
-	fdt set /i2c@7000c000/bm92t@18 rohm,dp-lanes <2>
-fi
-
-# Set battery voltage limit via cell age for Vali.
-if test ${sku} = 2 -a -n "${VLIM}"; then
-	echo VALI: voltage limits [${VLIM}, ${SOCLIM}]
-	if test "${VLIM}" != 1070; then
-		# Newer Vali. 4320 mV / 1664 mA.
-		fdt set /i2c@7000c000/battery-charger@6b/charger ti,charge-voltage-limit-millivolt <0x$VLIM>
-		fdt set /i2c@7000c000/battery-charger@6b/charger ti,charge-thermal-voltage-limit <0x$VLIM 0x$VLIM 0x$VLIM 0xFF0>
-		fdt set /i2c@7000c000/battery-gauge@36 maxim,kernel-maximum-soc <0x$SOCLIM>
-	else
-		# Old Vali. 4208 mV / 1536 mA. (Unreleased?)
-		fdt set /i2c@7000c000/battery-charger@6b/charger ti,charge-voltage-limit-millivolt <0x1070>
-		fdt set /i2c@7000c000/battery-charger@6b/charger ti,charge-thermal-voltage-limit <0x1070 0x1070 0x1070 0xF70>
-		fdt set /i2c@7000c000/battery-charger@6b/charger ti,fast-charge-current-limit-milliamp <0x600>
-		fdt set /i2c@7000c000/battery-charger@6b/charger ti,charge-current-limit <0x200 0x240 0x600 0x600>
-	fi
-fi
-
-# DVFS B-Side.
-if test ${t210b01} = 1 -a ${dvfsb} = 1; then
-	echoe DVFS B-Side enabled
-	setenv bootargs_extra ${bootargs_extra} "speedo_tegra210.sku_id=0x83 speedo_tegra210.cspd_id=2 speedo_tegra210.sspd_id=2"
-	fdt set /cpufreq/cpu-scaling-data max-frequency <0x249348>
-
-	if test ${gpu_dvfsc} = 0; then
-		setenv bootargs_extra ${bootargs_extra} "speedo_tegra210.gspd_id=2"
-	fi
-
-	if test ${sku} = 2; then
-		# 2091 MHz CPU and 844 MHz GPU hard limit. Vali.
-		fdt set /cpufreq/cpu-scaling-data max-frequency <0x1FE7F8>
-		fdt set /dvfs nvidia,gpu-max-freq-khz <0xCE400>
-	fi
-fi
-
-# GPU DVFS C-Side.
-if test ${t210b01} = 1 -a ${gpu_dvfsc} = 1; then
-	echoe DVFS C-Side GPU enabled
-
-	if test ${dvfsb} != 1; then
-		setenv bootargs_extra ${bootargs_extra} "speedo_tegra210.sku_id=0x83 speedo_tegra210.gspd_id=3"
-	else
-		setenv bootargs_extra ${bootargs_extra} "speedo_tegra210.gspd_id=3"
-	fi
-fi
-
-# Allow overclocking.
-if test ${oc} = 1; then
-	echoe "CPU OC enabled"
-	setenv bootargs_extra ${bootargs_extra} "androidboot.oc=1"
-fi
-
-if test -n ${max_cpu_freq}; then
-	echoe "Max CPU freq applied: ${max_cpu_freq} KHz"
-	fdt set /cpufreq/cpu-scaling-data max-frequency <${max_cpu_freq}>
-fi
-
-if test -n ${max_gpu_freq}; then
-	echoe "Max GPU freq applied: ${max_gpu_freq} KHz"
-	fdt set /dvfs nvidia,gpu-max-freq-khz <${max_gpu_freq}>
-fi
-
-# Limit GPU clock.
-if test ${t210b01} = 1 -a ${limit_gpu_clk} = 1; then
-	if test ${sku} != 2; then
-		# If not Vali set GPU hard limit to 1075 MHz.
-		echoe GPU clock limited
-		fdt set /dvfs nvidia,gpu-max-freq-khz <0x106800>
-	fi
-fi
-
-# Set pmic type if devboard.
-if test ${t210b01} = 1 -a -n "${pmic_type}" -a ${pmic_type} = 1; then
-	echoe GPU 15A Regulator enabled
-	fdt set /i2c@7000d000/max77812@33 reg <0x31>
-	fdt set /i2c@7000d000/max77812@33/m3vout status disabled
-	fdt set /i2c@7000d000/fan53528@52 status okay
-	fdt set /dvfs nvidia,gpu-max-volt-mv <0x3B6>
-fi
-
-# Disable Wake up from RTC.
-if test ${alarms_disable} = 1; then
-    echoe Wakeup Alarms disabled
-    fdt set /rtc nvidia,pmc-wakeup <0>
-    fdt set /pcie@1003000 nvidia,wake-gpio <0>
-    fdt set /brcmfmac@0 nvidia,pmc-wakeup <0>
-fi
-
 
 # Set serial number.
 if test -n ${device_serial_restricted};   then fdt set / serial-number ${device_serial_restricted}; fi

@@ -13,10 +13,10 @@
 # limitations under the License.
 
 # Override and disable cec HAL
-service vendor.cec-hal-1-0 /vendor/bin/hw/android.hardware.tv.cec@1.0-service
-    override
-    interface android.hardware.tv.cec@1.0::IHdmiCec default
-    class hal
-    user system
-    group system
-    disabled
+#service vendor.cec-hal-1-0 /vendor/bin/hw/android.hardware.tv.cec@1.0-service
+#    override
+#    interface android.hardware.tv.cec@1.0::IHdmiCec default
+#    class hal
+#    user system
+#    group system
+#    disabled

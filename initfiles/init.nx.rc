@@ -41,8 +41,8 @@ on post-fs-data
     chown system system /sys/bus/platform/devices/tegradc.0/enable
 
 # enable oc only if passed from bootloader (no userspace toggle)
-on property:vold.post_fs_data_done=1 && property:ro.boot.oc=1
-    write /sys/kernel/tegra_cpufreq/overclock 1
+#on property:vold.post_fs_data_done=1 && property:ro.boot.oc=1
+#    write /sys/kernel/tegra_cpufreq/overclock 1
 
 on boot
     write /sys/devices/system/cpu/cpufreq/schedutil/up_rate_limit_us 500

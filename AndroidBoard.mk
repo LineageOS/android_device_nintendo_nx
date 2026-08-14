@@ -19,12 +19,6 @@ ifneq ($(TARGET_PREBUILT_KERNEL),)
 DTB_PATH := $(dir $(TARGET_PREBUILT_KERNEL))
 else ifneq ($(TARGET_KERNEL_PLATFORM_TARGET),)
 DTB_PATH := $(abspath $(KERNEL_OUT))
-else ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
-DTB_PATH := $(abspath $(KERNEL_OUT)/arch/arm64/boot/dts)
-else ifneq ($(findstring dtstree,$(TARGET_KERNEL_ADDITIONAL_FLAGS)),)
-DTB_PATH := $(abspath $(KERNEL_OUT)/../lineage-oot/device-tree/platform/generic-dts/t21x/lineage)
-else
-DTB_PATH := $(abspath $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia)
 endif
 
 INSTALLED_DTBIMAGE_TARGET := $(PRODUCT_OUT)/install/nx-plat.dtimg

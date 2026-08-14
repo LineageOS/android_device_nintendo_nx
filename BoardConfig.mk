@@ -55,38 +55,13 @@ WITH_LINEAGE_CHARGER := false
 TARGET_SCREEN_DENSITY := 186
 
 # Kernel Source
-ifeq ($(TARGET_KERNEL_VERSION),4.9)
-KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-9.3/bin
-KERNEL_TOOLCHAIN_PREFIX        := aarch64-buildroot-linux-gnu-
-TARGET_KERNEL_CLANG_COMPILE    := false
-TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_KERNEL_VERSION)-nx
-TARGET_KERNEL_CONFIG           := tegra_android_defconfig
-TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    NV_BUILD_KERNEL_OPTIONS=$(TARGET_KERNEL_VERSION) \
-    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" \
-    CONFIG_EXFAT_FS=m
-
-TARGET_KERNEL_EXT_MODULE_ROOT := kernel/nvidia
-TARGET_KERNEL_EXT_MODULES := \
-    exfat:kbuild \
-    nvgpu/drivers/gpu/nvgpu:kbuild
-include device/nintendo/nx/modules.mk
-
-ifneq ($(TARGET_PREBUILT_KERNEL),)
-MODDIR := $(dir $(TARGET_PREBUILT_KERNEL))
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(MODDIR)/*.ko)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(MODDIR)/,$(BOOT_KERNEL_MODULES))
-BOARD_RECOVERY_KERNEL_MODULES := $(addprefix $(MODDIR)/,$(RECOVERY_KERNEL_MODULES))
-endif
-else
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_KERNEL_PLATFORM_TARGET := tegra
 TARGET_KERNEL_SOURCE          := vendor/nvidia/$(TARGET_KERNEL_PLATFORM_TARGET)
 BOARD_KERNEL_IMAGE_NAME       := Image.gz
 endif
 BOARD_KERNEL_CMDLINE          := firmware_class.path=/vendor/firmware cpufreq.default_governor=performance cma=512MB nouveau.atomic=1
-include device/nintendo/nx/modules-ack.mk
-endif
+include device/nintendo/nx/modules.mk
 
 # Kernel Image Parameters
 BOARD_KERNEL_IMAGE_NAME        := Image.gz
@@ -108,18 +83,10 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/nintendo/nx/releasetools
 VENDOR_SECURITY_PATCH := 2024-12-05
 
 # SELinux
-ifneq ($(filter 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
-BOARD_VENDOR_SEPOLICY_DIRS   += device/nvidia/foster/sepolicy/vendor
-SELINUX_IGNORE_NEVERALLOWS := true
+#SELINUX_IGNORE_NEVERALLOWS := true
 
 # Include Joycond sepolicy if present
--include hardware/nintendo/joycond/joycond-sepolicy.mk
-endif
-
-# Treble
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-BOARD_VNDK_VERSION                     := current
-PRODUCT_FULL_TREBLE_OVERRIDE           := true
+#-include hardware/nintendo/joycond/joycond-sepolicy.mk
 
 # Updater
 AB_OTA_UPDATER := false

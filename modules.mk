@@ -14,98 +14,144 @@
 # limitations under the License.
 #
 
-# Nvhost podgov
+# Gpu driver
+ifeq ($(TARGET_TEGRA_GPU),nvgpu)
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    governor_pod_scaling
-
-# Proprietary gpu driver
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    governor_pod_scaling \
     nvgpu
-
-# Bluedroid power management
+else
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    bluedroid_pm
+    nouveau
+endif
+
+# Tegra high speed serial
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    serial-tegra
+
+# Usb Bluetooth
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    btusb
+
+# Broadcom wifi
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    brcmfmac-wcc
+
+# Tegra cec
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    tegra_cec
 
 # Tegra hdmi audio
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    snd-hda-codec-hdmi \
     snd-hda-tegra
 
 # Tegra audio processing engine
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    snd-soc-tegra210-alt-xbar \
-    snd-soc-tegra210-alt-admaif \
-    snd-soc-tegra210-alt-sfc \
-    snd-soc-tegra210-alt-i2s \
-    snd-soc-tegra210-alt-mixer \
-    snd-soc-tegra210-alt-afc \
-    snd-soc-tegra210-alt-adx \
-    snd-soc-tegra210-alt-amx \
-    snd-soc-tegra210-alt-dmic \
-    snd-soc-tegra210-alt-mvc \
-    snd-soc-tegra210-alt-ope \
-    snd-soc-tegra-machine-driver
-
-# Userspace aes crypto access
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    tegra-cryptodev
-
-# Input cpufreq boost
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    input-cfboost
-
-# JoyCons
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-	joycon-serdev
-
-# Fan
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    pwm_fan
-
-# Power Monitor
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    ina3221
-
-# TV Tuners
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    videobuf-dvb \
-    lgdt3306a \
-    si2168 \
-    si2157 \
-    lgdt3305 \
-    tda18272 \
-    em28xx-dvb \
-    em28xx-rc \
-    cx25840 \
-    cx231xx-dvb
-
-# FS
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    exfat
-
-# USB Storage
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    usb-storage
-
-# USB Modem
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    cdc-acm
+    tegra-aconnect \
+    tegra210-adma \
+    snd-soc-tegra210-sfc \
+    snd-soc-tegra210-i2s \
+    snd-soc-tegra210-mixer \
+    snd-soc-tegra210-amx \
+    snd-soc-tegra210-admaif \
+    snd-soc-tegra210-adx \
+    snd-soc-tegra210-dmic \
+    snd-soc-tegra210-mvc \
+    snd-soc-tegra210-ope \
+    snd-soc-tegra-audio-graph-card \
+    snd-soc-rt5640
 
 # Nvidia Controllers
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    ozwpan \
-    hid-nvidia-blake \
-    hid-jarvis-remote
+    hid-nvidia-shield \
+    hid-nvidia-shield-oot
 
-# Misc Controllers
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    hid-xinmo \
-    hid-betopff
+# Copy to boot
+BOOT_KERNEL_MODULES := \
+    system_heap.ko \
+    tegra30-devfreq.ko \
+    cpufreq-dt.ko \
+    tegra124-cpufreq.ko \
+    i2c-tegra.ko \
+    spi-tegra114.ko \
+    spi-tegra210-quad.ko \
+    bq24190_charger.ko \
+    bq27xxx_battery.ko \
+    bq27xxx_battery_i2c.ko \
+    rtc-tegra.ko \
+    gpio-tegra.ko \
+    max77620.ko \
+    gpio-max77620.ko \
+    pinctrl-max77620.ko \
+    max77620-regulator.ko \
+    rtc-max77686.ko \
+    max77812-regulator.ko \
+    gpio-pca953x.ko \
+    tegra20-apb-dma.ko \
+    phy-tegra-xusb.ko \
+    xhci-tegra.ko \
+    tegra-xudc.ko \
+    usb-conn-gpio.ko \
+    pci-tegra.ko \
+    hwmon.ko \
+    pwm-tegra.ko \
+    pwm-fan.ko \
+    pwm-regulator.ko \
+    tegra-soctherm.ko \
+    cqhci.ko \
+    sdhci-tegra.ko \
+    host1x.ko \
+    drm_display_helper.ko \
+    drm_dp_aux_bus.ko \
+    tegra-drm.ko \
+    panel-nx-dsi.ko \
+    pwm_bl.ko \
+    bm92txx.ko \
+    ftm4.ko
+
+# Load in first stage boot
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
+    system_heap \
+    tegra30-devfreq \
+    tegra124-cpufreq \
+    i2c-tegra \
+    spi-tegra114 \
+    spi-tegra210-quad \
+    bq24190_charger \
+    bq27xxx_battery_i2c \
+    rtc-tegra \
+    gpio-tegra \
+    max77620 \
+    gpio-max77620 \
+    pinctrl-max77620 \
+    max77620-regulator \
+    max77812-regulator \
+    gpio-pca953x \
+    tegra20-apb-dma \
+    phy-tegra-xusb \
+    xhci-tegra \
+    tegra-xudc \
+    usb-conn-gpio \
+    pci-tegra \
+    pwm-tegra \
+    pwm-fan \
+    pwm-regulator \
+    tegra-soctherm \
+    sdhci-tegra \
+    tegra-drm \
+    panel-nx-dsi \
+    pwm_bl \
+    bm92txx \
+    ftm4
 
 # Copy to recovery
-BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
-    exfat \
-    hid-nvidia-blake \
-    hid-jarvis-remote \
-    usb-storage
+RECOVERY_KERNEL_MODULES := \
+    $(BOOT_KERNEL_MODULES) \
+    hid-nvidia-shield.ko \
+    hid-nvidia-shield-oot.ko
 
-RECOVERY_KERNEL_MODULES := $(addsuffix .ko,$(BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD))
+# Load in recovery
+BOARD_RECOVERY_KERNEL_MODULES_LOAD := \
+    $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD) \
+    hid-nvidia-shield \
+    hid-nvidia-shield-oot

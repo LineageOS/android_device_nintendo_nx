@@ -19,36 +19,7 @@ UBOOT_PATH := $(BUILD_TOP)/hardware/nintendo/u-boot
 NX_BOOTFILES_PATH := $(BUILD_TOP)/device/nintendo/nx/bootfiles
 NX_FIRMWARE_PATH := $(BUILD_TOP)/vendor/nintendo/nx/external/u-boot
 
-ifneq ($(TARGET_TEGRA_UBOOT),prebuilt)
-
-_uboot_bin := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
-_uboot_bin := $(_uboot_bin)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
-
-$(_uboot_bin): $(sort $(shell find -L $(UBOOT_PATH)))
-	@mkdir -p $(dir $@)
-	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) \
-		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
-		YACC=$(BUILD_TOOLS_BINS)/bin/bison LEX=$(BUILD_TOOLS_BINS)/bin/flex M4=$(BUILD_TOOLS_BINS)/bin/m4 \
-		-C $(UBOOT_PATH) O=$(dir $(_uboot_bin)) nx_defconfig
-	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) \
-		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
-		YACC=$(BUILD_TOOLS_BINS)/bin/bison LEX=$(BUILD_TOOLS_BINS)/bin/flex M4=$(BUILD_TOOLS_BINS)/bin/m4 \
-		-C $(UBOOT_PATH) O=$(dir $(_uboot_bin)) bl33.bin
-	@mv $(_uboot_bin)/bl33.bin $(_uboot_bin)
-
-$(PRODUCT_OUT)/bl33.bin: $(_uboot_bin)
-	$(hide) cp $< $@
-.PHONY: bl33
-u-boot-dtb: $(PRODUCT_OUT)/bl33.bin
-endif # TARGET_TEGRA_UBOOT
-
-ifneq ($(filter 4.9, $(TARGET_KERNEL_VERSION)),)
-NX_BOOTSCRIPT ?= android_boot.txt
-else
-NX_BOOTSCRIPT ?= android_boot.ack.txt
-endif
-
-_uscript_input := $(abspath $(NX_BOOTFILES_PATH)/$(NX_BOOTSCRIPT))
+_uscript_input := $(abspath $(NX_BOOTFILES_PATH)/android_boot.txt)
 _uscript_archive := $(call intermediates-dir-for,EXECUTABLES,boot.scr)/boot.scr
 $(_uscript_archive): $(_uscript_input)
 	@mkdir -p $(dir $@)
@@ -76,13 +47,7 @@ $(BUILT_TARGET_FILES_ZIPROOT)/IMAGES/boot.scr: $(BUILT_TARGET_FILES_ZIPROOT).zip
 INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/android.ini
 INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/bootlogo_android.bmp
 INSTALLED_RADIOIMAGE_TARGET += $(NX_BOOTFILES_PATH)/icon_android_hue.bmp
-
-ifneq ($(TARGET_TEGRA_UBOOT),prebuilt)
-INSTALLED_RADIOIMAGE_TARGET += $(_uboot_bin)
-else
 INSTALLED_RADIOIMAGE_TARGET += $(NX_FIRMWARE_PATH)/bl33.bin
-endif
-
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/boot.scr
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl31.bin
 

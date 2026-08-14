@@ -77,19 +77,6 @@ prebuilt_etc {
     sub_dir: "staging",
 }
 
-prebuilt_etc {
-    name: "power.nx.rc",
-    src: "power.nx.rc",
-    device_specific: true, // odm
-}
-
-cc_prebuilt_binary {
-    name: "lkm_loader_target",
-    srcs: ["lkm_loader_target.sh"],
-    stem: "lkm_loader_target.sh",
-    vendor: true,
-}
-
 cc_prebuilt_binary {
     name: "jc_setup",
     srcs: ["jc_setup.sh"],

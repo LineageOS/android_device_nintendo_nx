@@ -268,7 +268,7 @@ if load mmc ${devnum}:${distro_bootpart} ${enviraddr} /switchroot/switch.cal; th
 	fi
 fi
 
-# Get display handle.
+# Get display handle. Ids come from env_set_hex(): lowercase and unpadded, ie 0x0FE1 is fe1.
 if   test ${display_id} = f20;  then echo Display is INN 6.2; fdt get value DHANDLE /host1x/dsi/panel-i-720p-6-2 phandle
 elif test ${display_id} = f30;  then echo Display is AUO 6.2; fdt get value DHANDLE /host1x/dsi/panel-a-720p-6-2 phandle
 elif test ${display_id} = 10;   then echo Display is JDI 6.2; fdt get value DHANDLE /host1x/dsi/panel-j-720p-6-2 phandle
@@ -280,7 +280,7 @@ elif test ${display_id} = 1040; then echo Display is SHP 5.5; fdt get value DHAN
 elif test ${display_id} = 10e1; then echo Display is RR 5.5 1080p; fdt get value DHANDLE /host1x/dsi/panel-rr-1080p-5-5 phandle
 elif test ${display_id} = 2050; then echo Display is SAM 7.0
 elif test ${display_id} = f83;  then echo Display is Clone 6.2
-elif test ${display_id} = B3;   then echo Display is Clone 5.5
+elif test ${display_id} = b3;   then echo Display is Clone 5.5
 elif test ${display_id} = 0;    then echo Display is Clone 5.5
 else echoe Unknown Display ID: ${display_id}! Please report it!; fi
 
@@ -288,8 +288,8 @@ else echoe Unknown Display ID: ${display_id}! Please report it!; fi
 if test -n "${DHANDLE}" -a ${sku} != 3; then echo Setting Display panel; fdt set /host1x/dsi nvidia,active-panel <$DHANDLE>; fi
 
 setenv tegra_fbsize 0x800000
-# Increase fbmem-size for 1080p displays
-if test ${display_id} = 10e1 -o ${display_id} = 0fe1 -o ${display_id} = 20e1; then
+# Increase fbmem-size for 1080p displays. Keep in sync with the panel handles above.
+if test ${display_id} = 10e1; then
     echoe 1080p display detected, increasing fbmem size
     fdt set /host1x@50000000/dc@54200000 nvidia,fbmem-size <33554432>
     setenv tegra_fbsize 0x2000000

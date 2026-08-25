@@ -27,6 +27,7 @@
 
 #include "init_tegra.h"
 
+#include <cstdlib>
 #include <map>
 
 void vendor_load_properties()
@@ -50,5 +51,21 @@ void vendor_load_properties()
 	if (ti.recovery_context()) {
 		ti.property_set("ro.product.vendor.model", ti.property_get("ro.product.model"));
 		ti.property_set("ro.product.vendor.manufacturer", ti.property_get("ro.product.manufacturer"));
+	}
+
+	if (!ti.vendor_context()) {
+		//   panel id  dpi
+		static const struct { uint16_t id; const char *dpi; } panels[] = {
+			{ 0x0FE1,   "279" }, // RR Super7 FHD
+			{ 0x10E1,   "288" }  // RR Super5 OLED FHD
+		};
+
+		uint16_t panel_id = strtoul(ti.property_get("ro.boot.panel_id").c_str(), NULL, 16);
+		for (auto & panel : panels) {
+			if (panel_id == panel.id) {
+				ti.property_set("ro.sf.lcd_density", panel.dpi);
+				break;
+			}
+		}
 	}
 }

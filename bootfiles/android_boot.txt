@@ -288,8 +288,8 @@ else echoe Unknown Display ID: ${display_id}! Please report it!; fi
 if test -n "${DHANDLE}" -a ${sku} != 3; then echo Setting Display panel; fdt set /host1x/dsi nvidia,active-panel <$DHANDLE>; fi
 
 setenv tegra_fbsize 0x800000
-# Increase fbmem-size for 1080p displays
-if test ${display_id} = 10e1 -o ${display_id} = 0fe1 -o ${display_id} = 20e1; then
+# Increase fbmem-size for 1080p displays. IDs are unpadded: 0x0FE1 reads back as fe1.
+if test ${display_id} = 10e1 -o ${display_id} = fe1 -o ${display_id} = 20e1; then
     echoe 1080p display detected, increasing fbmem size
     fdt set /host1x@50000000/dc@54200000 nvidia,fbmem-size <33554432>
     setenv tegra_fbsize 0x2000000

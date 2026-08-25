@@ -280,7 +280,7 @@ elif test ${display_id} = 1040; then echo Display is SHP 5.5; fdt get value DHAN
 elif test ${display_id} = 10e1; then echo Display is RR 5.5 1080p; fdt get value DHANDLE /host1x/dsi/panel-rr-1080p-5-5 phandle
 elif test ${display_id} = 2050; then echo Display is SAM 7.0
 elif test ${display_id} = f83;  then echo Display is Clone 6.2
-elif test ${display_id} = B3;   then echo Display is Clone 5.5
+elif test ${display_id} = b3;   then echo Display is Clone 5.5
 elif test ${display_id} = 0;    then echo Display is Clone 5.5
 else echoe Unknown Display ID: ${display_id}! Please report it!; fi
 

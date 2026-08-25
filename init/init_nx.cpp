@@ -29,16 +29,31 @@
 
 #include <map>
 
+//	  id        dpi
+static const std::map<unsigned long, std::string> panel_map = {
+	{ 0xf20,    "186" }, // INN 6.2
+	{ 0xf30,    "186" }, // AUO 6.2
+	{ 0x10,     "186" }, // JDI 6.2
+	{ 0x1020,   "192" }, // INN 5.5
+	{ 0x1030,   "192" }, // AUO 5.5
+	{ 0x1040,   "192" }, // SHP 5.5
+	{ 0x10e1,   "288" }, // RR Super5 OLED FHD
+	{ 0x2050,   "186" }, // SAM 7.0
+	{ 0xf83,    "186" }, // Clone 6.2
+	{ 0xb3,     "192" }, // Clone 5.5
+	{ 0x0,      "192" }, // Clone 5.5
+};
+
 void vendor_load_properties()
 {
 
-    //   device     name      hardware   model            id      sku api dpi
+	//	  device    name      hardware   model            id      sku api dpi
 	std::vector<tegra_init::devices> devices = {
-        { "nx",     "odin",   "nx",      "Switch",        0x494E, 0,  27, 186 },
-        { "nx",     "modin",  "nx",      "Switch v2",     0x494E, 1,  27, 186 },
-        { "nx",     "vali",   "nx",      "Switch Lite",   0x4C49, 2,  27, 192 },
-        { "nx",     "fric",   "nx",      "Switch OLED",   0x4947, 3,  27, 186 }
-    };
+		{ "nx",     "odin",   "nx",      "Switch",        0x494E, 0,  27, 0 },
+		{ "nx",     "modin",  "nx",      "Switch v2",     0x494E, 1,  27, 0 },
+		{ "nx",     "vali",   "nx",      "Switch Lite",   0x4C49, 2,  27, 0 },
+		{ "nx",     "fric",   "nx",      "Switch OLED",   0x4947, 3,  27, 0 }
+ 	};
 
 	tegra_init ti(devices);
 
@@ -46,6 +61,13 @@ void vendor_load_properties()
 	ti.set_fingerprints(tav);
 
 	ti.set_properties();
+
+	unsigned long panel_id = std::stoul(ti.property_get("ro.boot.panel_id"), NULL, 16);
+
+	if (auto search = example.find(panel_id); search != example.end())
+		ti.property_set("ro.sf.lcd_density", search->second);
+	else
+		ti.property_set("ro.sf.lcd_density", "186");
 
 	if (ti.recovery_context()) {
 		ti.property_set("ro.product.vendor.model", ti.property_get("ro.product.model"));

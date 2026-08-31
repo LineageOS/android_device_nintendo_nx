@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6e989e_5b912d98",
+        "filename": "init/init_nx.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2026-08-31T16:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c41760_1a6c6f53",
+      "revId": "e15d81fd8227e902ac31d3b172b0091a5a6afa70",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c594fb0e_87073236",
@@ -35,6 +53,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87f8431_4d7c744b",
+        "filename": "init/init_nx.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2026-08-31T16:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c594fb0e_87073236",
+      "revId": "e15d81fd8227e902ac31d3b172b0091a5a6afa70",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bb97745_073256f7",
@@ -48,6 +84,24 @@
       "writtenOn": "2026-08-31T04:53:56Z",
       "side": 1,
       "message": "does this work? presumably the above `ti.set_properties();` sets this ro prop and ro props can\u0027t be set again (or at least shouldn\u0027t be?).\n\nperhaps better approach would be to modify dpi in `devices` prior to the parent calls since it\u0027s not const",
+      "revId": "e15d81fd8227e902ac31d3b172b0091a5a6afa70",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769c6002_77c800d4",
+        "filename": "init/init_nx.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2026-08-31T16:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bb97745_073256f7",
       "revId": "e15d81fd8227e902ac31d3b172b0091a5a6afa70",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }

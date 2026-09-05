@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bedeea8c_b11537a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-05T02:55:17Z",
+      "side": 1,
+      "message": "```\ndevice/nintendo/nx/init/init_nx.cpp:67:20: error: use of undeclared identifier \u0027example\u0027\n   67 |         if (auto search \u003d example.find(panel_id); search !\u003d example.end())\n      |                           ^\ndevice/nintendo/nx/init/init_nx.cpp:67:54: error: use of undeclared identifier \u0027example\u0027\n   67 |         if (auto search \u003d example.find(panel_id); search !\u003d example.end())\n      |                                                             ^\n2 errors generated.\n```",
+      "revId": "7418744175744be2ffe12e2d43e26aceb9b17dec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
